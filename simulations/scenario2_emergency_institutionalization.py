@@ -30,7 +30,7 @@ import os
 import sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from persian_shaping import reshape_persian as _r
-
+from theme_dark import apply_dark_theme, INK, MUTED, BRASS, RUST, GREEN, VERDIGRIS, FAINT
 # فونت FreeSerif پوشش کامل حروف فارسی دارد (روی اغلب توزیع‌های لینوکس/دبیان
 # از قبل نصب است). اگر پیدا نشد، matplotlib با فونت پیش‌فرض ادامه می‌دهد -
 # نمودار همچنان تولید می‌شود، فقط شکل‌دهی حروف فارسی ممکن است ناقص باشد.
@@ -162,32 +162,37 @@ if __name__ == "__main__":
         json.dump(results, f, ensure_ascii=False, indent=2)
 
     # نمودار
-    plt.rcParams['font.size'] = 11
+    apply_dark_theme()
+    plt.rcParams['font.size'] = 12
     fig, axes = plt.subplots(1, 2, figsize=(12, 5.5))
 
-    axes[0].hist(without_judicial * 100, bins=25, alpha=0.7, color="#c0392b",
+    axes[0].hist(without_judicial * 100, bins=25, alpha=0.75, color=RUST,
                  label=_r("بدون مرجع قضایی مستقل"))
-    axes[0].hist(with_judicial * 100, bins=25, alpha=0.7, color="#27ae60",
+    axes[0].hist(with_judicial * 100, bins=25, alpha=0.75, color=GREEN,
                  label=_r("با مرجع قضایی مستقل"))
-    axes[0].axvline(80, color="black", linestyle="--", linewidth=1, label=_r("آستانه‌ی هشدار (۸۰٪)"))
-    axes[0].set_xlabel(_r("درصد کل زمان جنگ در حالت اضطراری"))
-    axes[0].set_ylabel(_r("تعداد اجراهای شبیه‌سازی"))
-    axes[0].set_title(_r("توزیع درصد زمان اضطراری در ۵۰۰ اجرا"))
+    axes[0].axvline(80, color=INK, linestyle="--", linewidth=1, alpha=0.7, label=_r("آستانه‌ی هشدار (۸۰٪)"))
+    axes[0].set_xlabel(_r("درصد کل زمان جنگ در حالت اضطراری"), color=INK)
+    axes[0].set_ylabel(_r("تعداد اجراهای شبیه‌سازی"), color=INK)
+    axes[0].set_title(_r("توزیع درصد زمان اضطراری در ۵۰۰ اجرا"), color=INK, fontsize=13)
     axes[0].legend(fontsize=9)
-    axes[0].grid(alpha=0.3)
+    axes[0].grid(alpha=0.25)
 
     labels = [_r("بدون مرجع\nقضایی مستقل"), _r("با مرجع\nقضایی مستقل")]
     means = [without_judicial.mean() * 100, with_judicial.mean() * 100]
-    axes[1].bar(labels, means, color=["#c0392b", "#27ae60"])
-    axes[1].axhline(80, color="black", linestyle="--", linewidth=1)
-    axes[1].axhline(50, color="gray", linestyle=":", linewidth=1)
-    axes[1].set_ylabel(_r("میانگین درصد زمان در حالت اضطراری"))
-    axes[1].set_title(_r("مقایسه‌ی میانگین"))
+    axes[1].bar(labels, means, color=[RUST, GREEN])
+    axes[1].axhline(80, color=INK, linestyle="--", linewidth=1, alpha=0.7)
+    axes[1].axhline(50, color=MUTED, linestyle=":", linewidth=1, alpha=0.7)
+    axes[1].set_ylabel(_r("میانگین درصد زمان در حالت اضطراری"), color=INK)
+    axes[1].set_title(_r("مقایسه‌ی میانگین"), color=INK, fontsize=13)
     axes[1].set_ylim(0, 100)
-    axes[1].grid(axis="y", alpha=0.3)
+    axes[1].grid(axis="y", alpha=0.25)
     for i, m in enumerate(means):
-        axes[1].text(i, m + 2, f"{m:.1f}٪", ha="center", fontweight="bold")
+        axes[1].text(i, m + 2, f"{m:.1f}٪", ha="center", fontweight="bold", color=INK)
+    for ax in axes:
+        for spine in ax.spines.values():
+            spine.set_color("#c19a56")
+            spine.set_alpha(0.3)
 
     plt.tight_layout()
-    plt.savefig("/home/claude/scenario2_chart.png", dpi=150)
-    print("\nنمودار ذخیره شد: scenario2_chart.png")
+    plt.savefig("scenario2_chart.png", dpi=150, facecolor="#1c1811")
+    print("\nنمودار تیره ذخیره شد: scenario2_chart.png")
