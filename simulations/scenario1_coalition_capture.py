@@ -41,7 +41,7 @@ import os
 import sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from persian_shaping import reshape_persian as _r
-
+from theme_dark import apply_dark_theme, INK, MUTED, BRASS, RUST, GREEN, VERDIGRIS, FAINT
 # فونت FreeSerif پوشش کامل حروف فارسی دارد (روی اغلب توزیع‌های لینوکس/دبیان
 # از قبل نصب است). اگر پیدا نشد، matplotlib با فونت پیش‌فرض ادامه می‌دهد -
 # نمودار همچنان تولید می‌شود، فقط شکل‌دهی حروف فارسی ممکن است ناقص باشد.
@@ -205,7 +205,8 @@ if __name__ == "__main__":
     # ---------------------------------------------------------------
     # نمودار
     # ---------------------------------------------------------------
-    plt.rcParams['font.size'] = 11
+    apply_dark_theme()
+    plt.rcParams['font.size'] = 12
     fig, ax = plt.subplots(figsize=(8, 5.5))
 
     conditions = [_r("بدون مکانیزم\nکاهش‌دهنده"), _r("با مکانیزم‌های\nکاهش‌دهنده (۳.۶)")]
@@ -218,17 +219,22 @@ if __name__ == "__main__":
     width = 0.32
 
     ax.bar(x - width/2, cartel_means, width, yerr=cartel_stds, capsize=5,
-           label=_r("کارتل امنیت-انرژی-اقتصاد"), color="#c0392b")
+           label=_r("کارتل امنیت-انرژی-اقتصاد"), color=RUST,
+           error_kw={'ecolor': INK, 'alpha': 0.8})
     ax.bar(x + width/2, control_means, width, yerr=control_stds, capsize=5,
-           label=_r("ائتلاف تصادفی (کنترل / سطح شانس)"), color="#7f8c8d")
+           label=_r("ائتلاف تصادفی (کنترل / سطح شانس)"), color=FAINT,
+           error_kw={'ecolor': INK, 'alpha': 0.8})
 
-    ax.set_ylabel(_r("نرخ تصاحب تصمیمات کلیدی"))
-    ax.set_title(_r("سناریوی ۱ — نرخ تصاحب تصمیمات: کارتل ساختاری در برابر سطح شانس"))
+    ax.set_ylabel(_r("نرخ تصاحب تصمیمات کلیدی"), color=INK)
+    ax.set_title(_r("سناریوی ۱ — نرخ تصاحب تصمیمات: کارتل ساختاری در برابر سطح شانس"), color=INK, fontsize=13)
     ax.set_xticks(x)
     ax.set_xticklabels(conditions)
     ax.legend()
-    ax.grid(axis="y", alpha=0.3)
+    ax.grid(axis="y", alpha=0.25)
+    for spine in ax.spines.values():
+        spine.set_color("#c19a56")
+        spine.set_alpha(0.3)
 
     plt.tight_layout()
-    plt.savefig("/home/claude/scenario1_chart.png", dpi=150)
-    print("\nنمودار ذخیره شد: scenario1_chart.png")
+    plt.savefig("scenario1_chart.png", dpi=150, facecolor="#1c1811")
+    print("\nنمودار تیره ذخیره شد: scenario1_chart.png")
