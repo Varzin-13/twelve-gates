@@ -1,0 +1,12 @@
+{
+  "n_trials": 2000,
+  "mean_recovery_days_per_component": 21,
+  "mean_recovery_1_city": 39.35956361881379,
+  "mean_recovery_2_cities": 32.221270112209126,
+  "mean_recovery_3_cities": 20.556265083072468,
+  "reduction_pct_2_cities": 18.13610937290111,
+  "reduction_pct_3_cities": 47.77313772542281,
+  "prob_under_7days_1city": 0.018,
+  "prob_under_7days_3cities": 0.291,
+  "seed": 21
+}
