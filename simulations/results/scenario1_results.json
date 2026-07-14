@@ -1,0 +1,15 @@
+{
+  "baseline_collusion_prob": 0.55,
+  "mitigated_collusion_prob": 0.35750000000000004,
+  "baseline_capture_mean": 0.28146666666666664,
+  "baseline_capture_std": 0.010134950528849263,
+  "mitigated_capture_mean": 0.2391683333333333,
+  "mitigated_capture_std": 0.009472899796554144,
+  "control_capture_mean_baseline": 0.09857833333333334,
+  "control_capture_mean_mitigated": 0.09903666666666666,
+  "reduction_pct": 15.027830412126963,
+  "gap_above_chance_after_mitigation": 0.14013166666666663,
+  "n_trials": 300,
+  "n_periods_per_trial": 2000,
+  "seed": 42
+}
