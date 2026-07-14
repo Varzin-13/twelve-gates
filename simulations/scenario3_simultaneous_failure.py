@@ -32,7 +32,7 @@ import os
 import sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from persian_shaping import reshape_persian as _r
-
+from theme_dark import apply_dark_theme, INK, MUTED, BRASS, RUST, GREEN, VERDIGRIS, FAINT
 # فونت FreeSerif پوشش کامل حروف فارسی دارد (روی اغلب توزیع‌های لینوکس/دبیان
 # از قبل نصب است). اگر پیدا نشد، matplotlib با فونت پیش‌فرض ادامه می‌دهد -
 # نمودار همچنان تولید می‌شود، فقط شکل‌دهی حروف فارسی ممکن است ناقص باشد.
@@ -141,29 +141,35 @@ if __name__ == "__main__":
         json.dump(results, f, ensure_ascii=False, indent=2)
 
     # نمودار
-    plt.rcParams['font.size'] = 11
+    apply_dark_theme()
+    plt.rcParams['font.size'] = 12
     fig, axes = plt.subplots(1, 2, figsize=(12, 5.5))
 
-    axes[0].hist(t1, bins=40, alpha=0.6, color="#c0392b", label=_r("۱ شهر (بدون پراکندگی)"), density=True)
-    axes[0].hist(t2, bins=40, alpha=0.6, color="#e67e22", label=_r("۲ شهر (پراکندگی جزئی)"), density=True)
-    axes[0].hist(t3, bins=40, alpha=0.6, color="#27ae60", label=_r("۳ شهر (پراکندگی کامل)"), density=True)
-    axes[0].set_xlabel(_r("زمان بازیابی کارکرد حداقلی (روز)"))
-    axes[0].set_ylabel(_r("چگالی احتمال"))
-    axes[0].set_title(_r("توزیع زمان بازیابی پس از زلزله"))
+    axes[0].hist(t1, bins=40, alpha=0.65, color=RUST, label=_r("۱ شهر (بدون پراکندگی)"), density=True)
+    axes[0].hist(t2, bins=40, alpha=0.65, color=BRASS, label=_r("۲ شهر (پراکندگی جزئی)"), density=True)
+    axes[0].hist(t3, bins=40, alpha=0.65, color=GREEN, label=_r("۳ شهر (پراکندگی کامل)"), density=True)
+    axes[0].set_xlabel(_r("زمان بازیابی کارکرد حداقلی (روز)"), color=INK)
+    axes[0].set_ylabel(_r("چگالی احتمال"), color=INK)
+    axes[0].set_title(_r("توزیع زمان بازیابی پس از زلزله"), color=INK, fontsize=13)
     axes[0].set_xlim(0, 120)
     axes[0].legend(fontsize=9)
-    axes[0].grid(alpha=0.3)
+    axes[0].grid(alpha=0.25)
 
     labels = [_r("۱ شهر\n(بدون پراکندگی)"), _r("۲ شهر\n(پراکندگی جزئی)"), _r("۳ شهر\n(بند ۳.۶)")]
     means = [t1.mean(), t2.mean(), t3.mean()]
     stds = [t1.std(), t2.std(), t3.std()]
-    axes[1].bar(labels, means, yerr=stds, capsize=6, color=["#c0392b", "#e67e22", "#27ae60"])
-    axes[1].set_ylabel(_r("میانگین زمان بازیابی (روز)"))
-    axes[1].set_title(_r("مقایسه‌ی میانگین زمان بازیابی"))
-    axes[1].grid(axis="y", alpha=0.3)
+    axes[1].bar(labels, means, yerr=stds, capsize=6, color=[RUST, BRASS, GREEN],
+                error_kw={'ecolor': INK, 'alpha': 0.8})
+    axes[1].set_ylabel(_r("میانگین زمان بازیابی (روز)"), color=INK)
+    axes[1].set_title(_r("مقایسه‌ی میانگین زمان بازیابی"), color=INK, fontsize=13)
+    axes[1].grid(axis="y", alpha=0.25)
     for i, m in enumerate(means):
-        axes[1].text(i, m + stds[i] + 1, _r(f"{m:.1f} روز"), ha="center", fontweight="bold")
+        axes[1].text(i, m + stds[i] + 1, _r(f"{m:.1f} روز"), ha="center", fontweight="bold", color=INK)
+    for ax in axes:
+        for spine in ax.spines.values():
+            spine.set_color("#c19a56")
+            spine.set_alpha(0.3)
 
     plt.tight_layout()
-    plt.savefig("/home/claude/scenario3_chart.png", dpi=150)
-    print("\nنمودار ذخیره شد: scenario3_chart.png")
+    plt.savefig("scenario3_chart.png", dpi=150, facecolor="#1c1811")
+    print("\nنمودار تیره ذخیره شد: scenario3_chart.png")
