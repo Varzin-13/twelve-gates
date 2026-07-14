@@ -1,0 +1,14 @@
+{
+  "n_cycles": 60,
+  "n_trials": 500,
+  "war_continuation_prob": 0.93,
+  "base_extension_approval": 0.55,
+  "pressure_growth_per_cycle": 0.025,
+  "judicial_reject_prob": 0.3,
+  "without_judicial_mean": 0.760104250499808,
+  "with_judicial_mean": 0.6981823492704252,
+  "reduction_pct": 8.146501113323069,
+  "pct_trials_over_80pct_without_judicial": 0.292,
+  "pct_trials_over_80pct_with_judicial": 0.174,
+  "seed": 7
+}
