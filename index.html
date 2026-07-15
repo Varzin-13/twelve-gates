@@ -2,491 +2,699 @@
 <html lang="fa" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>دوازده گیت — مدل حکومت شورای مردمی غیرمتمرکز</title>
-<meta name="description" content="سند طراحی و ممیزی یک مدل حکومتی توزیع‌شده: دوازده گیت، Mirror-13، Gate Zero. همراه با شبیه‌سازی مونت‌کارلوی سه سناریوی سخت‌گیرانه.">
-<meta name="theme-color" content="#14110c">
-<meta name="color-scheme" content="dark">
-<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&family=Lora:ital,wght@0,500;0,600;0,700;1,500&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>دوازده گیت — مدل حکومت شورای مردمی غیرمتمرکز (v0.7)</title>
+<meta name="description" content="طراحی و ممیزی یک مدل حکومت شورای مردمی غیرمتمرکز — چارچوب پژوهشی تحت ممیزی، نه طرح آماده‌ی اجرا.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;900&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#14110c; --bg-soft:#1c1811; --surface:rgba(35,29,20,.85); --surface-strong:#241f16;
-  --ink:#f3ead9; --muted:#ab9c7c; --faint:#756a52; --line:rgba(193,154,86,.2);
-  --brass:#c9a35f; --verdigris:#7f9b8a;
-  --green:#83a374; --amber:#c9a35f; --rust:#c06248;
-  --shadow:0 24px 60px rgba(0,0,0,.45);
-  --radius:16px; --radius-lg:26px; --container:1080px;
-  --serif:'Lora',ui-serif,Georgia,serif; --sans:'Vazirmatn',ui-sans-serif,system-ui,sans-serif;
-  --mono:'IBM Plex Mono',Consolas,monospace;
+  --bg:#f7f8fa; --surface:#ffffff; --surface2:#eef1f5;
+  --ink:#1a2332; --ink2:#4a5568; --ink3:#8a94a6;
+  --line:#dde3ec; --accent:#1f4e8c; --accent2:#2d6cc0;
+  --red:#c0392b; --redbg:#fdeeec;
+  --amber:#b8860b; --amberbg:#fdf6e3;
+  --green:#1e8e5a; --greenbg:#e8f7f0;
+  --gray:#7f8c8d; --graybg:#f0f2f3;
+  --code:#16202e; --codeink:#d6e2f0;
+  --shadow:0 2px 12px rgba(20,30,50,.07);
+  --radius:14px;
 }
-*{box-sizing:border-box;}
-html{scroll-behavior:smooth;}
-body{margin:0;background:
-  radial-gradient(ellipse 55% 40% at 15% -5%, rgba(201,163,95,.10), transparent 60%),
-  radial-gradient(ellipse 45% 35% at 90% 15%, rgba(127,155,138,.08), transparent 55%),
-  linear-gradient(180deg,#14110c 0%,#181410 45%,#110e0a 100%);
-  color:var(--ink); font-family:var(--sans); line-height:1.75; overflow-x:hidden;}
-a{color:inherit;}
-.container{width:min(calc(100% - 40px),var(--container));margin-inline:auto;}
-.mono{font-family:var(--mono);direction:ltr;display:inline-block;}
+html[data-theme="dark"]{
+  --bg:#0f1520; --surface:#1a2332; --surface2:#212d40;
+  --ink:#e8edf5; --ink2:#b0bccf; --ink3:#77839a;
+  --line:#2c3a52; --accent:#6ea8e8; --accent2:#8dbcf2;
+  --red:#e5695a; --redbg:#3a2320;
+  --amber:#d9a441; --amberbg:#332a16;
+  --green:#4cc98e; --greenbg:#16criticalize;
+  --greenbg:#15352a;
+  --gray:#9aa7b0; --graybg:#232d38;
+  --code:#0b111c; --codeink:#c5d4e8;
+  --shadow:0 2px 14px rgba(0,0,0,.35);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{
+  font-family:'Vazirmatn',system-ui,sans-serif;
+  background:var(--bg); color:var(--ink);
+  line-height:1.9; font-size:16px;
+  transition:background .3s,color .3s;
+}
+.container{max-width:1060px;margin:0 auto;padding:0 20px}
 
-header{position:sticky;top:0;z-index:50;background:rgba(20,17,12,.88);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);}
-.nav-shell{min-height:64px;display:flex;align-items:center;justify-content:space-between;gap:16px;}
-.brand{display:flex;align-items:center;gap:10px;font-family:var(--serif);font-weight:700;font-size:1.15rem;letter-spacing:.02em;}
-.brand-mark{width:30px;height:30px;border-radius:50%;border:1.5px solid var(--brass);display:grid;place-items:center;color:var(--brass);font-family:var(--mono);font-size:.75rem;font-weight:700;}
-nav{display:flex;gap:4px;flex-wrap:wrap;}
-nav a{padding:7px 10px;border-radius:8px;font-size:.82rem;color:var(--muted);transition:.2s;}
-nav a:hover{color:var(--ink);background:rgba(201,163,95,.1);}
+/* ---------- nav ---------- */
+nav{
+  position:sticky;top:0;z-index:100;
+  background:var(--surface);border-bottom:1px solid var(--line);
+  box-shadow:var(--shadow);
+}
+.nav-inner{display:flex;align-items:center;gap:14px;height:60px;max-width:1060px;margin:0 auto;padding:0 20px}
+.brand{font-weight:900;color:var(--accent);font-size:1.05rem;white-space:nowrap;text-decoration:none}
+.brand span{color:var(--ink3);font-weight:400;font-size:.75rem;margin-right:6px}
+.nav-links{display:flex;gap:2px;overflow-x:auto;flex:1;scrollbar-width:none}
+.nav-links::-webkit-scrollbar{display:none}
+.nav-links a{
+  color:var(--ink2);text-decoration:none;font-size:.82rem;
+  padding:6px 10px;border-radius:8px;white-space:nowrap;transition:.2s;
+}
+.nav-links a:hover{background:var(--surface2);color:var(--ink)}
+.nav-links a.active{background:var(--accent);color:#fff}
+.theme-btn{
+  border:1px solid var(--line);background:var(--surface2);color:var(--ink);
+  border-radius:10px;width:38px;height:38px;cursor:pointer;font-size:1rem;flex-shrink:0;
+}
 
-.eyebrow{display:inline-flex;align-items:center;gap:8px;color:var(--brass);font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;margin-bottom:14px;}
-.eyebrow::before{content:"";width:20px;height:1px;background:currentColor;}
+/* ---------- hero ---------- */
+header.hero{
+  background:linear-gradient(160deg,var(--surface) 0%,var(--surface2) 100%);
+  border-bottom:1px solid var(--line);
+  padding:64px 0 56px;text-align:center;
+}
+.hero .badge-row{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:22px}
+.pill{
+  display:inline-block;padding:4px 14px;border-radius:99px;font-size:.78rem;font-weight:500;
+  border:1px solid var(--line);background:var(--surface);color:var(--ink2);
+}
+.pill.warn{border-color:var(--red);color:var(--red);background:var(--redbg)}
+.pill.info{border-color:var(--accent);color:var(--accent)}
+.hero h1{font-size:clamp(1.7rem,4.5vw,2.7rem);font-weight:900;line-height:1.5;margin-bottom:16px}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero p.lead{max-width:720px;margin:0 auto 26px;color:var(--ink2);font-size:1.02rem}
+.hero .cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn{
+  display:inline-block;padding:10px 22px;border-radius:11px;text-decoration:none;
+  font-weight:700;font-size:.9rem;transition:.2s;border:1px solid transparent;
+}
+.btn.primary{background:var(--accent);color:#fff}
+.btn.primary:hover{background:var(--accent2)}
+.btn.ghost{border-color:var(--line);color:var(--ink);background:var(--surface)}
+.btn.ghost:hover{border-color:var(--accent);color:var(--accent)}
+.stats{display:flex;gap:26px;justify-content:center;flex-wrap:wrap;margin-top:38px}
+.stat{min-width:120px}
+.stat b{display:block;font-size:1.7rem;font-weight:900;color:var(--accent)}
+.stat span{font-size:.8rem;color:var(--ink3)}
 
-.hero{padding:76px 0 56px;text-align:center;}
-.hero h1{font-family:var(--serif);font-weight:700;font-size:clamp(2.1rem,5.5vw,3.4rem);line-height:1.2;margin:0 0 18px;color:var(--ink);}
-.hero h1 em{font-style:italic;color:var(--brass);}
-.hero-lead{max-width:680px;margin:0 auto 34px;color:var(--muted);font-size:clamp(1rem,1.6vw,1.12rem);}
-.badge-row{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-bottom:44px;}
-.badge{display:inline-flex;align-items:center;gap:6px;padding:5px 12px;border-radius:999px;border:1px solid currentColor;font-size:.72rem;font-weight:700;letter-spacing:.02em;}
-.badge::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor;}
-.b-open{color:var(--rust);background:rgba(192,98,72,.08);}
-.b-audit{color:var(--brass);background:rgba(201,163,95,.08);}
+/* ---------- sections ---------- */
+section{padding:60px 0;border-bottom:1px solid var(--line)}
+.kicker{color:var(--accent);font-size:.82rem;font-weight:700;letter-spacing:.03em;margin-bottom:6px}
+h2{font-size:1.55rem;font-weight:900;margin-bottom:14px}
+h3{font-size:1.12rem;font-weight:700;margin:26px 0 10px}
+p.desc{color:var(--ink2);max-width:780px;margin-bottom:26px}
+.note{
+  background:var(--surface2);border-right:4px solid var(--accent);
+  padding:14px 18px;border-radius:10px;font-size:.92rem;color:var(--ink2);margin:18px 0;
+}
+.note.red{border-right-color:var(--red);background:var(--redbg);color:var(--ink)}
+.note.green{border-right-color:var(--green);background:var(--greenbg)}
 
-/* گیت‌های دوازده‌گانه: دایره */
-.gate-wheel-wrap{display:flex;flex-direction:column;align-items:center;gap:14px;margin:0 auto 20px;}
-.gate-wheel{width:min(78vw,340px);height:auto;}
-.gate-wheel circle.ring{fill:none;stroke:var(--line);}
-.gate-wheel circle.ring-outer{stroke:var(--brass);stroke-opacity:.5;}
-.gate-node{fill:var(--surface-strong);stroke:var(--brass);stroke-width:1.4;}
-.gate-node.p{fill:var(--brass);stroke:var(--brass);}
-.gate-node.a{fill:var(--verdigris);stroke:var(--verdigris);}
-.gate-label{font-family:var(--mono);font-size:9px;fill:var(--muted);text-anchor:middle;}
-.gate-center-label{font-family:var(--serif);font-size:13px;fill:var(--ink);text-anchor:middle;font-weight:600;}
+/* badges */
+.badge{display:inline-block;padding:2px 12px;border-radius:99px;font-size:.75rem;font-weight:700;white-space:nowrap}
+.b-open{background:var(--redbg);color:var(--red)}
+.b-partial{background:var(--amberbg);color:var(--amber)}
+.b-good{background:var(--greenbg);color:var(--green)}
+.b-neutral{background:var(--graybg);color:var(--gray)}
 
-.section{padding:64px 0;border-top:1px solid var(--line);}
-.section-soft{background:rgba(28,24,17,.4);}
-.section-head{max-width:720px;margin-bottom:34px;}
-.section-head h2{font-family:var(--serif);font-size:clamp(1.6rem,3.2vw,2.2rem);margin:0 0 12px;color:var(--ink);}
-.section-head p{color:var(--muted);margin:0;font-size:1rem;}
+/* cards */
+.grid{display:grid;gap:18px}
+.g2{grid-template-columns:repeat(auto-fit,minmax(290px,1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.card{
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+  padding:22px;box-shadow:var(--shadow);
+}
+.card h4{font-size:1.02rem;font-weight:700;margin-bottom:8px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.card p{font-size:.9rem;color:var(--ink2)}
+.card .q{margin-top:12px;font-size:.85rem;color:var(--red);font-weight:500}
+.num{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:34px;height:34px;border-radius:10px;background:var(--accent);color:#fff;
+  font-weight:900;font-size:.95rem;flex-shrink:0;
+}
 
-.status{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;border:1px solid currentColor;font-size:.68rem;font-weight:700;letter-spacing:.04em;}
-.status::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor;}
-.s-proved{color:var(--green);background:rgba(131,163,116,.08);}
-.s-partial{color:var(--amber);background:rgba(201,163,95,.08);}
-.s-open{color:var(--rust);background:rgba(192,98,72,.08);}
+/* tables */
+.tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius);background:var(--surface);box-shadow:var(--shadow)}
+table{width:100%;border-collapse:collapse;font-size:.88rem;min-width:560px}
+th{background:var(--surface2);padding:11px 14px;text-align:right;font-weight:700;white-space:nowrap}
+td{padding:10px 14px;border-top:1px solid var(--line);color:var(--ink2)}
+tr.hl td{background:var(--greenbg);color:var(--ink);font-weight:700}
+td b{color:var(--ink)}
 
-.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
-.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;}
-.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:22px;}
-.card h3{font-family:var(--serif);font-size:1.08rem;margin:10px 0 8px;color:var(--ink);}
-.card p{color:var(--muted);margin:0;font-size:.92rem;}
+/* rotation demo */
+.rot-demo{
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+  padding:24px;box-shadow:var(--shadow);margin-bottom:22px;
+}
+.rot-demo label{font-weight:700;font-size:.9rem}
+.rot-demo input[type=range]{width:100%;margin:14px 0;accent-color:var(--accent)}
+.rot-out{display:flex;gap:14px;flex-wrap:wrap}
+.rot-box{
+  flex:1;min-width:200px;background:var(--surface2);border-radius:12px;padding:14px 18px;text-align:center;
+}
+.rot-box small{display:block;color:var(--ink3);font-size:.75rem;margin-bottom:4px}
+.rot-box b{font-size:1.15rem;font-weight:900;color:var(--accent)}
+.formula{
+  direction:ltr;text-align:left;font-family:monospace;background:var(--code);color:var(--codeink);
+  padding:10px 16px;border-radius:10px;font-size:.85rem;display:inline-block;margin:8px 0;
+}
 
-.note{padding:16px 18px;border-right:3px solid var(--brass);border-radius:0 var(--radius) var(--radius) 0;background:rgba(201,163,95,.06);color:var(--muted);font-size:.9rem;line-height:1.8;}
-[dir="rtl"] .note{border-right:none;border-left:3px solid var(--brass);border-radius:var(--radius) 0 0 var(--radius);}
-.note.warn{border-color:var(--rust);background:rgba(192,98,72,.07);}
-.note strong{color:var(--ink);}
+/* sim bars */
+.sim-card{margin-bottom:22px}
+.sim-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap;margin-bottom:6px}
+.bar-row{display:flex;align-items:center;gap:12px;margin:10px 0}
+.bar-label{width:190px;font-size:.83rem;color:var(--ink2);flex-shrink:0}
+.bar-track{flex:1;background:var(--surface2);border-radius:8px;height:26px;overflow:hidden;min-width:120px}
+.bar-fill{height:100%;border-radius:8px;display:flex;align-items:center;justify-content:flex-end;padding-left:8px;
+  color:#fff;font-size:.78rem;font-weight:700;min-width:52px;transition:width 1s ease;width:0}
+.bar-fill span{padding:0 8px;direction:ltr}
+.f-red{background:var(--red)} .f-amber{background:#d68a2e} .f-green{background:var(--green)} .f-gray{background:var(--gray)}
 
-table{width:100%;border-collapse:collapse;font-size:.88rem;}
-th,td{padding:12px 14px;text-align:right;border-bottom:1px solid var(--line);vertical-align:top;}
-th{font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);}
-td{color:var(--muted);}
-.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius);}
-table.table-wrap{border:none;}
+/* accordion */
+.acc{border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:var(--surface);box-shadow:var(--shadow)}
+.acc-item+.acc-item{border-top:1px solid var(--line)}
+.acc-btn{
+  width:100%;background:none;border:none;padding:16px 20px;cursor:pointer;
+  display:flex;justify-content:space-between;align-items:center;gap:12px;
+  font-family:inherit;font-size:.98rem;font-weight:700;color:var(--ink);text-align:right;
+}
+.acc-btn .chev{transition:.25s;color:var(--ink3);flex-shrink:0}
+.acc-item.open .chev{transform:rotate(180deg)}
+.acc-body{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.acc-body-inner{padding:0 20px 18px;font-size:.9rem;color:var(--ink2)}
 
-/* نمودار میله‌ای ساده‌ی CSS */
-.barchart{display:flex;flex-direction:column;gap:14px;margin:18px 0;}
-.bar-row{display:grid;grid-template-columns:120px 1fr 64px;align-items:center;gap:10px;font-size:.82rem;}
-.bar-label{color:var(--muted);}
-.bar-track{height:22px;background:var(--surface-strong);border-radius:6px;overflow:hidden;position:relative;}
-.bar-fill{height:100%;border-radius:6px;}
-.bar-fill.cartel{background:linear-gradient(90deg,var(--rust),#d8886e);}
-.bar-fill.control{background:linear-gradient(90deg,var(--faint),var(--muted));}
-.bar-fill.judicial-no{background:linear-gradient(90deg,var(--rust),#d8886e);}
-.bar-fill.judicial-yes{background:linear-gradient(90deg,var(--amber),#e0bd7e);}
-.bar-fill.city1{background:linear-gradient(90deg,var(--rust),#d8886e);}
-.bar-fill.city2{background:linear-gradient(90deg,var(--amber),#e0bd7e);}
-.bar-fill.city3{background:linear-gradient(90deg,var(--green),#a3c491);}
-.bar-val{font-family:var(--mono);font-weight:600;color:var(--ink);}
+/* deadlocks */
+.dead{border-right:4px solid var(--red)}
+.dead .fix{margin-top:10px;padding:10px 14px;background:var(--surface2);border-radius:10px;font-size:.85rem}
+.dead .fix b{color:var(--green)}
+.dead .admit{margin-top:8px;font-size:.83rem;color:var(--red)}
 
-.roadmap{list-style:none;margin:0;padding:0;display:grid;gap:10px;}
-.roadmap li{display:flex;align-items:flex-start;gap:10px;color:var(--muted);font-size:.92rem;}
-.roadmap li::before{content:"◇";color:var(--brass);flex-shrink:0;}
+/* footer */
+footer{padding:48px 0 64px;text-align:center;color:var(--ink3);font-size:.88rem}
+footer a{color:var(--accent);text-decoration:none;font-weight:700}
+.foot-links{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin:14px 0}
 
-footer{padding:44px 0 30px;border-top:1px solid var(--line);text-align:center;color:var(--faint);font-size:.82rem;}
-footer p{max-width:640px;margin:0 auto 14px;}
+ol.steps{padding-right:22px;max-width:800px}
+ol.steps li{margin-bottom:10px;color:var(--ink2)}
+ol.steps li::marker{color:var(--accent);font-weight:900}
 
-@media(max-width:760px){.grid3,.grid2{grid-template-columns:1fr;}nav{display:none;}}
+@media(max-width:640px){
+  .bar-label{width:120px;font-size:.76rem}
+  section{padding:44px 0}
+  .hero{padding:44px 0}
+}
 </style>
 </head>
 <body>
 
-<header>
-  <div class="container nav-shell">
-    <div class="brand"><span class="brand-mark">۱۲</span> دوازده گیت</div>
-    <nav>
+<nav>
+  <div class="nav-inner">
+    <a class="brand" href="#top">۱۲ گیت <span>v0.7</span></a>
+    <div class="nav-links" id="navLinks">
       <a href="#structure">ساختار</a>
       <a href="#rotation">چرخش</a>
-      <a href="#evidence">یافته‌ها</a>
+      <a href="#findings">یافته‌ها</a>
       <a href="#challenges">چالش‌ها</a>
       <a href="#legitimacy">مشروعیت</a>
-      <a href="#coalition">راهکار مادی</a>
-      <a href="#simulation">شبیه‌سازی</a>
+      <a href="#deadlocks">بن‌بست‌ها</a>
+      <a href="#simulations">شبیه‌سازی</a>
       <a href="#gaps">شکاف‌ها</a>
       <a href="#limits">محدودیت‌ها</a>
       <a href="#next">مراحل بعدی</a>
-    </nav>
+    </div>
+    <button class="theme-btn" id="themeBtn" title="تغییر حالت روشن/تاریک">◐</button>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="container">
+    <div class="badge-row">
+      <span class="pill info">نسخه‌ی ۰.۷ · چارچوب پژوهشی تحت ممیزی</span>
+      <span class="pill warn">نه طرح آماده‌ی اجرا</span>
+      <span class="pill">۳ شبیه‌سازی مونت‌کارلو با معیار شکست پیش‌ثبت‌شده</span>
+    </div>
+    <h1>مدل حکومت <em>شورای مردمی غیرمتمرکز</em></h1>
+    <p class="lead">
+      دوازده گیت مستقل، یک هماهنگ‌کننده‌ی چرخشی بدون قدرت اضافه (Mirror-13)، و یک لایه‌ی
+      اعتبارسنجی شایستگی (Gate Zero) — طراحی و آزموده‌شده با این انضباط:
+      هر ادعا یا با شواهد تأیید می‌شود، یا صریحاً به‌عنوان سؤال باز ثبت می‌ماند.
+    </p>
+    <div class="cta">
+      <a class="btn primary" href="#simulations">نتایج شبیه‌سازی‌ها</a>
+      <a class="btn ghost" href="https://github.com/Varzin-13/twelve-gates" target="_rel">مخزن گیت‌هاب ↗</a>
+    </div>
+    <div class="stats">
+      <div class="stat"><b>۱۲</b><span>گیت کارکردی مستقل</span></div>
+      <div class="stat"><b>۳</b><span>بن‌بست ساختاری اذعان‌شده</span></div>
+      <div class="stat"><b>۴</b><span>محدودیت بنیادین باز</span></div>
+      <div class="stat"><b>۲۸۰۰</b><span>اجرای مستقل مونت‌کارلو</span></div>
+    </div>
   </div>
 </header>
 
-<section class="hero">
+<!-- ساختار -->
+<section id="structure">
   <div class="container">
-    <div class="eyebrow">نسخه‌ی ۰.۷ · چارچوب پژوهشی تحت ممیزی</div>
-    <h1>مدل حکومت شورای مردمی <em>غیرمتمرکز</em></h1>
-    <p class="hero-lead">دوازده گیت مستقل، یک هماهنگ‌کننده‌ی چرخشی بدون قدرت اضافه (Mirror-13)، و یک لایه‌ی اعتبارسنجی شایستگی (Gate Zero) — طراحی و آزموده‌شده با همان انضباطی که هر ادعا یا تأیید می‌شود یا صریحاً باز می‌ماند.</p>
-    <div class="badge-row">
-      <span class="badge b-audit">تحت ممیزی جدی — نه طرح آماده‌ی اجرا</span>
-      <span class="badge b-open">۴ محدودیت بنیادین بدون راه‌حل شناخته‌شده</span>
-    </div>
-
-    <div class="gate-wheel-wrap">
-      <svg class="gate-wheel" viewBox="0 0 360 360">
-        <circle class="ring ring-outer" cx="180" cy="180" r="150"/>
-        <circle class="ring" cx="180" cy="180" r="112"/>
-        <g id="gateNodes"></g>
-        <text class="gate-center-label" x="180" y="176">Mirror-13</text>
-        <text class="gate-center-label" x="180" y="196" style="font-size:10px;fill:var(--muted);font-weight:400;">هماهنگ‌کننده، نه حاکم</text>
-      </svg>
-      <span style="font-family:var(--mono);font-size:.78rem;color:var(--muted);">دوره‌ی نمونه: P₀=گیت اقتصاد (هماهنگ‌کننده) · A₀=گیت دادگستری (ناظر)</span>
-    </div>
-  </div>
-</section>
-
-<section class="section" id="structure">
-  <div class="container">
-    <div class="section-head">
-      <div class="eyebrow">اصل ۰</div>
-      <h2>ساختار پایه</h2>
-      <p>این سند از همان انضباطی پیروی می‌کند که در ممیزی VARZIN اعمال شد: هر ادعا یا تأییدشده با شواهد بیرونی است، یا صریحاً علامت‌گذاری‌شده به‌عنوان فرضیه. <strong style="color:var(--ink);">این پروژه کاملاً جداست از VARZIN</strong> — فقط روش ممیزی مشترک است؛ هیچ ادعای علمی یا زبان‌شناختی آن پروژه به این‌جا منتقل نمی‌شود.</p>
-    </div>
-    <div class="grid3">
+    <div class="kicker">بخش ۱ · اصل صفر</div>
+    <h2>ساختار پایه</h2>
+    <p class="desc">
+      این سند از انضباط ممیزی VARZIN پیروی می‌کند اما پروژه‌ای کاملاً جداست — فقط روش ممیزی مشترک است؛
+      هیچ ادعای علمی یا زبان‌شناختی آن پروژه به این‌جا منتقل نمی‌شود. این یک پروژه‌ی طراحی سیستم
+      حکمرانی است، بدون موضع‌گیری درباره‌ی هیچ کشور یا نظام سیاسی مشخص.
+    </p>
+    <div class="grid g3">
       <div class="card">
-        <span class="status s-proved">ساختار پایه</span>
-        <h3>۱۲ گیت</h3>
-        <p>دوازده حوزه‌ی کارکردی مستقل کشور (اقتصاد، علم، امنیت، فرهنگ، انرژی، آموزش، دادگستری، سلامت، محیط‌زیست، زیرساخت، روابط خارجی، رفاه اجتماعی). هر گیت مسئولیت مستقل و قابل‌ردیابی دارد — نه مسئولیت جمعی مبهم.</p>
+        <h4><span class="num">۱۲</span> دوازده گیت <span class="badge b-good">پایه</span></h4>
+        <p>دوازده حوزه‌ی کارکردی مستقل: اقتصاد، علم، امنیت، فرهنگ، انرژی، آموزش، دادگستری، سلامت،
+        محیط‌زیست، زیرساخت، روابط خارجی، رفاه اجتماعی (قابل تعدیل). هر گیت واحد تصمیم‌گیری با
+        <b>مسئولیت مستقل و قابل‌ردیابی</b> است — نه مسئولیت جمعی مبهم.</p>
       </div>
       <div class="card">
-        <span class="status s-open">باز</span>
-        <h3>Mirror-13</h3>
-        <p>هماهنگی بین‌گیتی، نه حکمرانی، نه تصمیم‌گیری نهایی. حذفش نباید سیستم را متوقف کند. <strong style="color:var(--ink);">باز:</strong> چه کسی اعضایش را تعیین می‌کند، و چطور از تبدیل‌شدن به مرکز غیررسمی قدرت جلوگیری می‌شود؟</p>
+        <h4><span class="num">M</span> Mirror-13 <span class="badge b-open">باز</span></h4>
+        <p>هماهنگی بین‌گیتی — <b>نه</b> حکمرانی، <b>نه</b> تصمیم‌گیری نهایی. معیار طراحی: حذفش نباید
+        سیستم را متوقف کند.</p>
+        <p class="q">سؤال باز: چه کسی اعضایش را تعیین می‌کند و چطور از تبدیل‌شدن به مرکز غیررسمی قدرت جلوگیری می‌شود؟</p>
       </div>
       <div class="card">
-        <span class="status s-partial">جزئی</span>
-        <h3>Gate Zero</h3>
-        <p>لایه‌ی اعتبارسنجی شایستگی (تخصص، سابقه، سلامت مالی، عدم تعارض منافع) پیش از ورود افراد به هر گیت. حکومت نمی‌کند — فقط دروازه‌بانی می‌کند.</p>
+        <h4><span class="num">۰</span> Gate Zero <span class="badge b-partial">جزئی</span></h4>
+        <p>لایه‌ی اعتبارسنجی شایستگی (تخصص، سابقه، سلامت مالی، عدم تعارض منافع، پاسخگویی) پیش از
+        ورود افراد به هر گیت. <b>حکومت نمی‌کند</b> — فقط دروازه‌بانی می‌کند.</p>
+        <p class="q">مسئله‌ی بازگشتی «ناظر بر ناظر» همچنان باز است (بند ۳.۱).</p>
       </div>
     </div>
   </div>
 </section>
 
-<section class="section" id="rotation">
+<!-- چرخش -->
+<section id="rotation">
   <div class="container">
-    <div class="section-head">
-      <div class="eyebrow">بخش ۴ · کاربرد محدود و صادقانه</div>
-      <h2>چرخش دوره‌ای ۱۲ گیت</h2>
-      <p>تنها کاربرد ریاضی که از پروژه‌ی VARZIN وام گرفته شده — یک مسئله‌ی ترکیبیاتی محدود، نه ادعای علمی. دو نقش موازی در هر دوره‌ی <span class="mono">t</span> تعریف می‌شود: گیت هماهنگ‌کننده (<span class="mono">P_t</span>) و گیت ناظر (<span class="mono">A_t</span>)، با فرمول <span class="mono">P_t = (5×t) mod 12</span> و <span class="mono">A_t = (P_t+6) mod 12</span>.</p>
+    <div class="kicker">بخش ۴ · کاربرد محدود و صادقانه‌ی ابزار ریاضی</div>
+    <h2>چرخش دوره‌ای ۱۲ گیت (Z₁₂)</h2>
+    <p class="desc">
+      تنها کاربرد ریاضی وام‌گرفته از پروژه‌ی VARZIN — یک مسئله‌ی ترکیبیاتی محدود، نه ادعای علمی.
+      در هر دوره‌ی <b dir="ltr">t</b> دو نقش موازی تعریف می‌شود: گیت هماهنگ‌کننده و گیت ناظر (با فاصله‌ی نیم‌دوره).
+    </p>
+    <div class="formula">P_t = (5 × t) mod 12&nbsp;&nbsp;·&nbsp;&nbsp;A_t = (P_t + 6) mod 12</div>
+
+    <div class="rot-demo">
+      <label>دوره‌ی <span dir="ltr">t</span> را انتخاب کنید: <b id="tVal">۰</b></label>
+      <input type="range" id="tSlider" min="0" max="11" value="0" step="1">
+      <div class="rot-out">
+        <div class="rot-box"><small>گیت هماهنگ‌کننده (P_t)</small><b id="pOut">گیت ۰ — اقتصاد</b></div>
+        <div class="rot-box"><small>گیت ناظر (A_t)</small><b id="aOut">گیت ۶ — دادگستری</b></div>
+      </div>
     </div>
 
-    <div class="table-wrap">
-      <table>
+    <div class="tbl-wrap">
+      <table id="rotTable">
         <thead><tr><th>دوره (t)</th><th>گیت هماهنگ‌کننده (P_t)</th><th>گیت ناظر (A_t)</th></tr></thead>
-        <tbody>
-          <tr><td class="mono">۰</td><td>اقتصاد</td><td>دادگستری</td></tr>
-          <tr><td class="mono">۱</td><td>آموزش</td><td>رفاه اجتماعی</td></tr>
-          <tr><td class="mono">۲</td><td>روابط خارجی</td><td>انرژی</td></tr>
-          <tr><td class="mono">۳</td><td>فرهنگ</td><td>زیرساخت</td></tr>
-          <tr><td class="mono">۴</td><td>محیط‌زیست</td><td>امنیت</td></tr>
-          <tr><td class="mono">۵</td><td>علم</td><td>سلامت</td></tr>
-          <tr><td class="mono">۶</td><td>دادگستری</td><td>اقتصاد</td></tr>
-          <tr><td class="mono">۷</td><td>رفاه اجتماعی</td><td>آموزش</td></tr>
-          <tr><td class="mono">۸</td><td>انرژی</td><td>روابط خارجی</td></tr>
-          <tr><td class="mono">۹</td><td>زیرساخت</td><td>فرهنگ</td></tr>
-          <tr><td class="mono">۱۰</td><td>امنیت</td><td>محیط‌زیست</td></tr>
-          <tr><td class="mono">۱۱</td><td>سلامت</td><td>علم</td></tr>
-        </tbody>
+        <tbody></tbody>
       </table>
     </div>
 
-    <div class="note" style="margin-top:20px;">
-      چون <span class="mono">gcd(5,12)=1</span>، این چرخش یک دور کامل ۱۲مرحله‌ای می‌سازد: هر گیت دقیقاً یک‌بار رئیس و یک‌بار ناظر می‌شود پیش از تکرار چرخه — قابل‌اثبات، نه فرضی.
-    </div>
-    <div class="note warn" style="margin-top:12px;">
-      <strong>دو اصلاح نسبت به نسخه‌ی اول:</strong> گام ۵ «فوق‌العاده» نیست — هر عدد اول نسبت به ۱۲ (۱، ۵، ۷، ۱۱) یک چرخه‌ی کامل می‌سازد؛ گام ۷ هم همین خاصیت «عدم توالی گیت‌های همسایه» را دارد. همچنین بحث «ماتریس انتقال» و «مقدار ویژه» از نسخه‌ی اول حذف شد — این خاصیت برای <em>هر</em> ماتریس جایگشت برقرار است و اطلاعات اضافه‌ای نمی‌داد. نگه‌داشتنش دقیقاً همان الگوی تزئین ریاضی بدون محتوا بود که در ممیزی VARZIN رد شده بود.
-    </div>
-  </div>
-</section>
-
-<section class="section section-soft" id="evidence">
-  <div class="container">
-    <div class="section-head">
-      <div class="eyebrow">یافته‌های تأییدشده، با منبع</div>
-      <h2>این ایده تئوری محض نیست</h2>
-      <p>دو عنصر اصلی این مدل، نمونه‌ی واقعی و کارکرد در دنیای امروز دارند.</p>
-    </div>
-    <div class="grid2">
-      <div class="card">
-        <span class="status s-proved">نمونه‌ی واقعی</span>
-        <h3>شورای فدرال سوئیس</h3>
-        <p>۷ عضو، انتخاب ۴ساله توسط پارلمان. ریاست فقط نقشی تشریفاتی و چرخشی («اول در میان برابرها»)، بدون اختیار اضافه، از دهه‌ی ۱۸۹۰ بدون بحران جانشینی. مکانیزم پایداری: «همکاری‌گرایی» اجباری.</p>
-        <div class="note" style="margin-top:14px;"><strong>هزینه‌ی این مدل:</strong> شفافیت اختلاف‌نظر داخلی پایین می‌آید — آیا گیت‌های ما هم باید «متحد ظاهر شوند»؟</div>
-      </div>
-      <div class="card">
-        <span class="status s-proved">در حال گسترش</span>
-        <h3>Sortition / مجامع شهروندی</h3>
-        <p>از آتن باستان (۹۰٪ مقام‌ها با قرعه) تا مجامع امروزی ایرلند، هلند، آلمان، اتحادیه‌ی اروپا. انتخاب تصادفیِ طبقه‌بندی‌شده از میان داوطلبان واجد شرایط.</p>
-        <div class="note warn" style="margin-top:14px;"><strong>محدودیت تجربی:</strong> استخر داوطلبان خودش از نظر جمعیت‌شناختی منحرف است — نسخه‌ی کوچک‌تر همان مسئله‌ی بازگشتی Gate Zero.</div>
-      </div>
+    <div class="note">
+      چون <span dir="ltr">gcd(5,12)=1</span>، این چرخش یک دور کامل ۱۲مرحله‌ای می‌سازد: هر گیت دقیقاً
+      یک‌بار هماهنگ‌کننده و یک‌بار ناظر می‌شود پیش از تکرار چرخه — قابل‌اثبات، نه فرضی.
+      <b>دو اصلاح صادقانه:</b> گام ۵ «فوق‌العاده» نیست (گام‌های ۱، ۵، ۷، ۱۱ همگی چرخه‌ی کامل می‌سازند؛
+      فقط ۵ و ۷ خاصیت عدم توالی گیت‌های همسایه را دارند)، و بحث تزئینیِ «ماتریس انتقال / مقدار ویژه»
+      از نسخه‌ی اول حذف شد چون اطلاعات اضافه‌ای نمی‌داد.
     </div>
   </div>
 </section>
 
-<section class="section" id="challenges">
+<!-- یافته‌ها -->
+<section id="findings">
   <div class="container">
-    <div class="section-head">
-      <div class="eyebrow">ارزیابی ساختاری</div>
-      <h2>چهار چالش — تفکیک «کاهش ریسک» از «حل‌شده»</h2>
-      <p>هیچ‌کدام از این چهار مورد «حل‌شده» اعلام نمی‌شود؛ هرکدام با وضعیت دقیق و ریسک باقی‌مانده‌اش ثبت شده.</p>
+    <div class="kicker">بخش ۲ · یافته‌های تأییدشده، با منبع</div>
+    <h2>این ایده تئوری محض نیست</h2>
+    <p class="desc">دو عنصر اصلی این مدل نمونه‌ی واقعی و کارکردی در دنیای امروز دارند — همراه با هزینه‌ها و محدودیت‌های مستندشان.</p>
+    <div class="grid g2">
+      <div class="card">
+        <h4>شورای فدرال سوئیس <span class="badge b-good">نمونه‌ی واقعی</span></h4>
+        <p>۷ عضو با انتخاب ۴ساله توسط پارلمان (نه انتخاب مستقیم مردمی). ریاست فقط تشریفاتی و چرخشی
+        («اول در میان برابرها»)، بدون اختیار اضافه، بدون رأی عدم اعتماد در طول دوره. مکانیزم پایداری
+        اصلی: <b>«همکاری‌گرایی» اجباری</b> — اعضا حتی مخالفت شخصی را علناً بیان نمی‌کنند.</p>
+        <p class="q">⚠ هزینه: شفافیت اختلاف‌نظر داخلی پایین می‌آید. آیا گیت‌های این مدل هم باید «متحد ظاهر شوند» یا اختلاف داخلی علنی مجاز است؟ (به بند ۳.۳ رجوع شود)</p>
+      </div>
+      <div class="card">
+        <h4>Sortition / مجامع شهروندی <span class="badge b-good">در حال گسترش</span></h4>
+        <p>از آتن باستان تا مجامع امروزی ایرلند (مواد مخدر)، هلند (سیاست اقلیمی)، آلمان (تغذیه) و
+        اتحادیه‌ی اروپا. سازوکار: انتخاب تصادفیِ طبقه‌بندی‌شده از میان داوطلبانی که به دعوت‌نامه پاسخ داده‌اند.</p>
+        <p class="q">⚠ محدودیت تجربی: استخر داوطلبان خودش از نظر جمعیت‌شناختی/ایدئولوژیک منحرف است —
+        نسخه‌ی کوچک‌ترِ همان مسئله‌ی بازگشتی «چه کسی Gate Zero را کنترل می‌کند». حمایت اولیه ممکن است
+        بازتاب نارضایتی از نخبگان باشد، نه اعتقاد پایدار به خودِ مدل.</p>
+      </div>
     </div>
-    <div class="table-wrap">
+  </div>
+</section>
+
+<!-- چالش‌ها -->
+<section id="challenges">
+  <div class="container">
+    <div class="kicker">بخش ۳ · ارزیابی ساختاری (v0.4)</div>
+    <h2>چهار چالش — تفکیک «کاهش ریسک» از «حل‌شده»</h2>
+    <p class="desc">هیچ‌کدام از این چهار مورد «حل‌شده» اعلام نمی‌شود؛ هرکدام با وضعیت دقیق و ریسک باقی‌مانده‌اش ثبت شده است.</p>
+    <div class="tbl-wrap">
       <table>
-        <thead><tr><th>حوزه‌ی چالش</th><th>وضعیت</th><th>ماهیت ریسک باقی‌مانده</th></tr></thead>
+        <thead><tr><th>#</th><th>حوزه‌ی چالش</th><th>وضعیت</th><th>ماهیت ریسک باقی‌مانده</th></tr></thead>
         <tbody>
-          <tr><td>کنترل Gate Zero (مسئله‌ی ناظر بر ناظر)</td><td><span class="status s-partial">جزئی</span></td><td>کاهش تمرکز از طریق قرعه‌کشی؛ منبع انتروپی و لایه‌ی مدیریت کد همچنان آسیب‌پذیرند</td></tr>
-          <tr><td>سرعت واکنش در بحران</td><td><span class="status s-partial">جزئی</span></td><td>فیوز زمانی استعاره است؛ پایداری نهایی به اراده‌ی انسان‌ها بستگی دارد، نه سخت‌افزار</td></tr>
-          <tr><td>پاسخگویی توزیع‌شده</td><td><span class="status s-proved">بهبود واقعی</span></td><td>شفافیت آرا مشکل لوث‌شدن مسئولیت را حل می‌کند، اما ریسک اثر خاموش‌کننده دارد</td></tr>
-          <tr><td>مشروعیت روانی</td><td><span class="status s-open">کاملاً باز</span></td><td>فاقد هرگونه داده‌ی تجربی یا فرموله‌سازی معتبر</td></tr>
+          <tr><td>۱</td><td><b>کنترل Gate Zero</b> (مسئله‌ی بازگشتی ناظر)</td><td><span class="badge b-partial">جزئی</span></td>
+          <td>کاهش تمرکز از طریق قرعه‌کشی؛ اما منبع انتروپی و لایه‌ی مدیریت کد همچنان آسیب‌پذیرند (حلقه‌ی بازخورد قابل‌دستکاری، مشابه RANDAO)</td></tr>
+          <tr><td>۲</td><td><b>سرعت واکنش در بحران‌ها</b></td><td><span class="badge b-partial">جزئی</span></td>
+          <td>فیوز زمانی یک استعاره است؛ پایداری نهایی به اراده‌ی انسان‌ها بستگی دارد، نه سخت‌افزار — ریسک تمدیدهای پیاپی تاریخاً مستند است</td></tr>
+          <tr><td>۳</td><td><b>پاسخگویی توزیع‌شده</b></td><td><span class="badge b-good">بهبود واقعی</span></td>
+          <td>سجل شفاف آرا مشکل لوث‌شدن مسئولیت را حل می‌کند، اما دو ریسک ثانویه دارد: اثر خاموش‌کننده بر مخالفت واقعی، و تبدیل‌شدن به ابزار برچسب‌زنی و دوقطبی‌سازی</td></tr>
+          <tr><td>۴</td><td><b>مشروعیت روانی</b></td><td><span class="badge b-open">کاملاً باز</span></td>
+          <td>فاقد هرگونه داده‌ی تجربی یا فرموله‌سازی معتبر</td></tr>
         </tbody>
       </table>
     </div>
-
-    <div class="note warn" style="margin-top:22px;">
-      <strong>بن‌بست منطقی Gate Zero و Sortition:</strong> اگر Gate Zero مشمول قرعه شود، تصادف با هدف سنجش شایستگی در تضاد است. اگر مشمول نشود، سؤال «چه کسی آن را انتخاب می‌کند» بازمی‌گردد. هیچ نظام حکمرانی شناخته‌شده این «مسئله‌ی ناظر بر ناظر» را کاملاً حل نکرده — دموکراسی‌های موجود هم آن را با قانون اساسی «مدیریت» می‌کنند، نه «حل».
+    <div class="note red">
+      <b>بن‌بست منطقی Gate Zero و Sortition:</b> اگر Gate Zero مشمول قرعه شود، تصادف با هدف سنجش
+      شایستگی در تضاد است؛ اگر مشمول نشود، سؤال «چه کسی آن را انتخاب می‌کند» بازمی‌گردد
+      (quis custodiet ipsos custodes). هیچ نظام حکمرانی شناخته‌شده‌ای این مسئله را «حل» نکرده —
+      دموکراسی‌های موجود هم آن را با قانون اساسی + دادگاه قانون اساسی «مدیریت» می‌کنند. مشروعیت این
+      لایه در نهایت از توافق سیاسی/فرهنگی می‌آید، نه از پروتکل ریاضی.
     </div>
   </div>
 </section>
 
-<section class="section section-soft" id="legitimacy">
+<!-- مشروعیت -->
+<section id="legitimacy">
   <div class="container">
-    <div class="section-head">
-      <div class="eyebrow">بخش ۳.۴ · کاملاً باز</div>
-      <h2>مشروعیت روانی در بستر ایران</h2>
-      <p>حاکمیت پدیده‌ای بیناذهنی است. چهار گسل روانی-اجتماعی زیر مشخصاً برای پیاده‌سازی این مدل در جامعه‌ی ایران بررسی شد — هرکدام هنوز کاملاً باز.</p>
-    </div>
-    <div class="grid2">
+    <div class="kicker">بخش ۳.۴ · کاملاً باز — با تمرکز بر بستر ایران</div>
+    <h2>مشروعیت روانی و حس نمایندگی</h2>
+    <p class="desc">حاکمیت پدیده‌ای بیناذهنی (inter-subjective) است. چهار گسل روانی-اجتماعی زیر مشخصاً برای پیاده‌سازی این مدل بررسی شد — هرکدام هنوز کاملاً باز.</p>
+    <div class="grid g2">
       <div class="card">
-        <span class="status s-open">۳.۴.۱</span>
-        <h3>بحران ذهنیِ «حاکمیت بی‌سر»</h3>
-        <p>حافظه‌ی تاریخی معمولاً حاکمیت را با یک اراده/چهره‌ی واحد در رأس صورت‌بندی می‌کند. انتزاعی‌شدن قدرت در پروتکل‌های چرخشی ممکن است در بحران به «بی‌صاحب‌بودن سیستم» تعبیر شود و حس امنیت روانی را مخدوش کند.</p>
+        <h4>۳.۴.۱ · بحران ذهنیِ «حاکمیت بی‌سر»</h4>
+        <p>حافظه‌ی تاریخی معمولاً حاکمیت را با یک اراده/چهره‌ی واحد در رأس صورت‌بندی کرده است.
+        انتزاعی‌شدن قدرت در پروتکل‌های چرخشی ممکن است در بحران به‌جای «توزیع سالم قدرت»، به
+        «بی‌صاحب‌بودن سیستم» تعبیر شود و حس امنیت روانی را مخدوش کند.</p>
       </div>
       <div class="card">
-        <span class="status s-open">۳.۴.۲</span>
-        <h3>«قحط‌الرجال» در برابر نخبگان گمنام</h3>
-        <p>تمایل به شناخت چهره‌های شاخص و بی‌اعتمادی به بوروکراسی گمنام می‌تواند مقاومت در برابر افراد قرعه‌کشی‌شده ایجاد کند؛ ریسک جانبی: واگذاری تصمیم به کارشناسان پشت‌پرده — الیگارشی تکنوکراتیک پنهان.</p>
+        <h4>۳.۴.۲ · «قحط‌الرجال» در برابر نخبگان گمنام</h4>
+        <p>تمایل به شناخت چهره‌های شاخص و بی‌اعتمادی به بوروکراسی گمنام می‌تواند مقاومت در برابر
+        سپردن مقدرات به افراد قرعه‌کشی‌شده ایجاد کند. ریسک جانبی: واگذاری عملی تصمیم به کارشناسان
+        پشت‌پرده — الیگارشی تکنوکراتیک پنهان.</p>
       </div>
       <div class="card">
-        <span class="status s-open">۳.۴.۳</span>
-        <h3>قطبی‌شدگی و زوال همکاری‌گرایی</h3>
-        <p>مدل‌های موفق توزیع‌شده (سوئیس) به توافق نخبگان پشت درهای بسته تکیه دارند. در فضای دوقطبی، سازش کارشناسی ممکن است «خیانت» تلقی شود و سجل عمومی آرا به سوخت دوقطبی‌سازی تبدیل شود.</p>
+        <h4>۳.۴.۳ · قطبی‌شدگی و زوال همکاری‌گرایی</h4>
+        <p>مدل‌های موفق توزیع‌شده (سوئیس) بر توافق نخبگان پشت درهای بسته تکیه دارند. در فضای به‌شدت
+        دوقطبی، سازش کارشناسی ممکن است «خیانت» تلقی شود، و سجل عمومی آرا (بند ۳.۳) به‌جای بهبود
+        پاسخگویی، سوخت دوقطبی‌سازی در شبکه‌های اجتماعی شود.</p>
       </div>
       <div class="card">
-        <span class="status s-open">۳.۴.۴</span>
-        <h3>مرزهای جغرافیایی و قومیت‌ها</h3>
-        <p>قرعه‌کشی ملی بدون سهمیه‌بندی می‌تواند مناطق مرزی/اتنیکی را مکرراً بی‌نماینده بگذارد؛ سهمیه‌بندی هم تنش هویتی به گیت‌ها می‌کشد. ادبیات <strong style="color:var(--ink);">حاکمیت چندکانونی</strong> (اوستروم) و <strong style="color:var(--ink);">مصالحه‌گرایی</strong> این مسئله را با دهه‌ها تجربه بررسی کرده.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="section" id="coalition">
-  <div class="container">
-    <div class="section-head">
-      <div class="eyebrow">بخش ۳.۵–۳.۶ · اصلاح مفهومی و راهکار مادی</div>
-      <h2>ائتلاف پنهان — راه‌حل، اگر باشد، بیرون از معماری است</h2>
-      <p>سه بن‌بست ساختاری از یک جنس‌اند: هیچ‌کدام با طراحی نهادی داخلی حل نمی‌شوند.</p>
-    </div>
-
-    <div class="note warn">
-      <strong>اصلاح مفهومی مهم:</strong> چرخش P_t/A_t فقط نقش تشریفاتی «هماهنگ‌کننده/ناظر» را می‌چرخاند — قدرت واقعی هر گیت (منابع، اختیار اجرایی) را تغییر نمی‌دهد. گیت امنیت همیشه کنترل امنیت را دارد؛ چرخش ریاست هیچ مانعی برای ائتلاف پایدار بین گیت‌های با منافع مکمل (امنیت-انرژی-اقتصاد) ایجاد نمی‌کند. <strong style="color:var(--ink);">چرخش هماهنگی با توزیع قدرت اشتباه گرفته نشود.</strong>
-    </div>
-
-    <div class="grid3" style="margin-top:22px;">
-      <div class="card">
-        <h3>۱ · کارتل قدرت مادی</h3>
-        <p><strong style="color:var(--ink);">راهکار مادی:</strong> تفکیک بودجه‌ای اجباری هر گیت از صندوق مستقل؛ ممنوعیت هم‌پوشانی پرسنلی بین گیت‌های هم‌راستا؛ جدایی کنترل عملیاتی نیروی امنیتی از کنترل بودجه‌اش.</p>
-        <div class="note" style="margin-top:12px;">اذعان نهایی: اگر نهادهای قدرتمند واقعاً بخواهند، هیچ ساختار کاغذی به‌تنهایی مانعشان نمی‌شود. تنها چیز مؤثر تاریخاً: جامعه‌ی مدنی مستقل با پایگاه اجتماعی خودش.</div>
-      </div>
-      <div class="card">
-        <h3>۲ · تسلسل Gate Zero</h3>
-        <p><strong style="color:var(--ink);">راهکار مادی:</strong> نسخه‌ی اول Gate Zero باید مشروعیتش را از یک فرآیند مشارکتی بیرون از سیستم بگیرد — مثل یک مجمع مؤسسان با نمایندگی گسترده، نه از خودِ معماری.</p>
-        <div class="note" style="margin-top:12px;">اذعان نهایی: این باطل‌کننده‌ی ادعای «سیستم پایدار و خودبسته‌ی ریاضیاتی» است. سیستم می‌تواند بعد از یک مشروعیت‌بخشی بیرونی خودپایدار <em>بماند</em>، اما نمی‌تواند آن نقطه را خودش بسازد.</div>
-      </div>
-      <div class="card">
-        <h3>۳ · نهادینه‌شدن اضطرار</h3>
-        <p><strong style="color:var(--ink);">راهکار مادی:</strong> محدودیت تمدید بر اساس یک مرجع قضایی کاملاً مستقل از ۱۲ گیت، با اعضایی منصوب پیش از بحران؛ برای فروپاشی هم‌زمان، پراکندگی جغرافیایی اجباری زیرساخت حیاتی در ≥۳ شهر از روز اول.</p>
-        <div class="note" style="margin-top:12px;">اذعان نهایی: فیوز زمانی فقط سرعت نهادینه‌شدن را کم می‌کند، مانع نمی‌شود — تاریخ نشان می‌دهد وضعیت اضطراری موقت اغلب دائمی می‌شود.</div>
+        <h4>۳.۴.۴ · مرزهای جغرافیایی و قومیت‌ها</h4>
+        <p>قرعه‌کشی ملی بدون سهمیه‌بندی می‌تواند مناطق مرزی/اتنیکی را مکرراً بی‌نماینده بگذارد و به
+        «تداوم مرکزگرایی» تعبیر شود؛ سهمیه‌بندی هم تنش‌های هویتی را به درون گیت‌ها می‌کشد. ادبیات
+        <b>حاکمیت چندکانونی</b> (اوستروم) و <b>مصالحه‌گرایی</b> (consociationalism) این تعادل را با دهه‌ها تجربه بررسی کرده‌اند.</p>
       </div>
     </div>
   </div>
 </section>
 
-<section class="section section-soft" id="simulation">
+<!-- بن‌بست‌ها -->
+<section id="deadlocks">
   <div class="container">
-    <div class="section-head">
-      <div class="eyebrow">پیوست فنی · سه آزمون سخت‌گیرانه</div>
-      <h2>شبیه‌سازی مونت‌کارلو</h2>
-      <p>هر شبیه‌سازی یک سؤال و معیار شکست پیش‌ثبت‌شده دارد. پارامترها فرض‌های مدل‌سازی‌اند برای آزمون جهت اثر — نه پیش‌بینی دقیق رفتار سیاسی واقعی.</p>
-    </div>
-
-    <div class="card" style="margin-bottom:20px;">
-      <span class="status s-open">فرضیه رد شد</span>
-      <h3>سناریوی ۱ — ائتلاف مادی (امنیت-انرژی-اقتصاد)</h3>
-      <p>آیا سه گیت با منافع مکمل می‌توانند حتی با مکانیزم‌های کاهش‌دهنده، تصمیمات کلیدی را تصاحب کنند؟ (۳۰۰ اجرا × ۲۰۰۰ دوره)</p>
-      <div class="barchart">
-        <div class="bar-row"><span class="bar-label">بدون مکانیزم</span><div class="bar-track"><div class="bar-fill cartel" style="width:94%"></div></div><span class="bar-val">۲۸.۲٪</span></div>
-        <div class="bar-row"><span class="bar-label">با مکانیزم بند ۳.۶</span><div class="bar-track"><div class="bar-fill cartel" style="width:80%"></div></div><span class="bar-val">۲۳.۹٪</span></div>
-        <div class="bar-row"><span class="bar-label">سطح شانس (کنترل)</span><div class="bar-track"><div class="bar-fill control" style="width:33%"></div></div><span class="bar-val">۹.۹٪</span></div>
+    <div class="kicker">بخش ۳.۵–۳.۶ · سه اعتراف صریح و راهکارهای مادی (نه ریاضی)</div>
+    <h2>بن‌بست‌های ساختاری — راه‌حل، اگر باشد، بیرون از معماری است</h2>
+    <p class="desc">
+      <b>اصلاح مفهومی مهم:</b> چرخش P_t/A_t فقط نقش تشریفاتی را می‌چرخاند — قدرت واقعی هر گیت
+      (منابع، اختیار اجرایی) را تغییر نمی‌دهد. چرخش هماهنگی نباید با توزیع قدرت اشتباه گرفته شود.
+      این بخش با قصد بستن بحث نوشته نشده — با قصد ثبت صادقانه‌ی اینکه هر سه بن‌بست به چیزی
+      بیرون از خودِ سیستم نیاز دارند.
+    </p>
+    <div class="grid">
+      <div class="card dead">
+        <h4>۱ · کارتل قدرت مادی (امنیت-انرژی-اقتصاد)</h4>
+        <p>هیچ فرمول ترکیبیاتی ائتلاف مادی بین گیت‌های با منافع مکمل را حل نمی‌کند.</p>
+        <div class="fix"><b>راهکار مادی (کاهش‌دهنده، نه مانع):</b> تفکیک بودجه‌ای اجباری هر گیت از
+        صندوق مستقل قفل‌شده در قانون اساسی سیستم؛ ممنوعیت هم‌پوشانی پرسنلی بین گیت‌های هم‌راستا؛
+        جدایی کنترل عملیاتی نیروی امنیتی از کنترل بودجه‌اش؛ شفافیت اجباری هر تبادل بودجه/داده/پرسنل.</div>
+        <p class="admit">اذعان نهایی: اگر نهادهای قدرتمند واقعاً بخواهند، هیچ ساختار کاغذی به‌تنهایی مانعشان نمی‌شود. تنها چیز مؤثر تاریخاً: جامعه‌ی مدنی مستقل با پایگاه اجتماعی خودش.</p>
       </div>
-      <p style="font-size:.85rem;">نتیجه: کاهش ۱۵٪ در نرخ تصاحب، اما کارتل همچنان تقریباً ۲.۴ برابر بیشتر از یک ائتلاف تصادفی موفق می‌شود. مکانیزم‌ها <strong style="color:var(--ink);">کاهش‌دهنده‌اند، نه مانع.</strong></p>
-    </div>
-
-    <div class="card" style="margin-bottom:20px;">
-      <span class="status s-open">نگرانی جدی تأیید شد</span>
-      <h3>سناریوی ۲ — نهادینه‌شدن اضطرار در جنگ فرسایشی</h3>
-      <p>در جنگی طولانی‌مدت، آیا فیوز ۱۴روزه + مرجع قضایی مستقل از تبدیل‌شدن به «وضعیت استثنایی دائمی» جلوگیری می‌کند؟ (۵۰۰ اجرا × تا ۶۰ چرخه)</p>
-      <div class="barchart">
-        <div class="bar-row"><span class="bar-label">فقط فیوز ۱۴روزه</span><div class="bar-track"><div class="bar-fill judicial-no" style="width:100%"></div></div><span class="bar-val">۷۶.۰٪</span></div>
-        <div class="bar-row"><span class="bar-label">+ مرجع قضایی مستقل</span><div class="bar-track"><div class="bar-fill judicial-yes" style="width:92%"></div></div><span class="bar-val">۶۹.۸٪</span></div>
+      <div class="card dead">
+        <h4>۲ · تسلسل Gate Zero</h4>
+        <p>یک بن‌بست منطقی است، نه یک سؤال باز که با نسخه‌ی بعدی حل شود. هیچ سیستم بسته‌ی الگوریتمی مشروعیت لایه‌ی اولش را از خودش تولید نمی‌کند.</p>
+        <div class="fix"><b>راهکار مادی:</b> نسخه‌ی اول Gate Zero باید مشروعیتش را از یک فرآیند
+        مشارکتی و توافق سیاسی <b>بیرون از سیستم</b> بگیرد — مثل یک مجمع مؤسسان با نمایندگی گسترده.</div>
+        <p class="admit">اذعان نهایی: این باطل‌کننده‌ی ادعای «سیستم پایدار و خودبسته‌ی ریاضیاتی» است. سیستم می‌تواند بعد از مشروعیت‌بخشی بیرونی خودپایدار بماند، اما نمی‌تواند آن نقطه را خودش بسازد.</p>
       </div>
-      <p style="font-size:.85rem;">نتیجه: حتی در بهترین حالت، سیستم <strong style="color:var(--ink);">۶۹.۸٪ از کل زمان جنگ</strong> در حالت اضطراری می‌ماند. هیچ راه‌حل مؤثری یافت نشد.</p>
-    </div>
-
-    <div class="card">
-      <span class="status s-proved">راه‌حل مؤثر</span>
-      <h3>سناریوی ۳ — فروپاشی هم‌زمان (زلزله‌ی بزرگ تهران)</h3>
-      <p>آیا پراکندگی جغرافیایی زیرساخت حیاتی، زمان بازیابی را واقعاً کوتاه می‌کند؟ (۲۰۰۰ اجرا)</p>
-      <div class="barchart">
-        <div class="bar-row"><span class="bar-label">۱ شهر (بدون پراکندگی)</span><div class="bar-track"><div class="bar-fill city1" style="width:100%"></div></div><span class="bar-val">۳۹.۴ روز</span></div>
-        <div class="bar-row"><span class="bar-label">۲ شهر (جزئی)</span><div class="bar-track"><div class="bar-fill city2" style="width:82%"></div></div><span class="bar-val">۳۲.۲ روز</span></div>
-        <div class="bar-row"><span class="bar-label">۳ شهر (بند ۳.۶)</span><div class="bar-track"><div class="bar-fill city3" style="width:52%"></div></div><span class="bar-val">۲۰.۶ روز</span></div>
+      <div class="card dead">
+        <h4>۳ · نهادینه‌شدن اضطرار / فروپاشی هم‌زمان</h4>
+        <p>فیوز زمانی فقط سرعت نهادینه‌شدن را کم می‌کند، مانع آن نمی‌شود.</p>
+        <div class="fix"><b>راهکار مادی:</b> محدودیت تمدید توسط یک مرجع قضایی کاملاً مستقل از ۱۲ گیت،
+        با اعضایی منصوب <b>پیش از بحران</b> و دوره‌ی طولانی/غیرقابل‌عزل در بحران. برای فروپاشی هم‌زمان:
+        پراکندگی جغرافیایی اجباری زیرساخت حیاتی در ≥۳ شهر از روز اول.</div>
+        <p class="admit">اذعان نهایی: هیچ دکترین جانشینی از داخل معماری بیرون نمی‌آید؛ تاریخ نشان می‌دهد وضعیت اضطراری موقت اغلب دائمی می‌شود.</p>
       </div>
-      <p style="font-size:.85rem;">تنها سناریویی که مکانیزم پیشنهادی به‌طور قابل‌توجه و بدون قید مؤثر است — چون این مسئله ماهیتاً <strong style="color:var(--ink);">مهندسی/فیزیکی است، نه سیاسی/بازگشتی.</strong></p>
+    </div>
+    <div class="note">
+      <b>جمع‌بندی این بخش:</b> هر سه بن‌بست از یک جنس‌اند — هیچ‌کدام با طراحی نهادی داخلی حل نمی‌شوند؛
+      همه به چیزی بیرون از خودِ سیستم نیاز دارند (جامعه‌ی مدنی مستقل، مشروعیت‌بخشی تاریخی/مشارکتی،
+      نهاد بیرونی مستقل از بحران). این تشخیص صادقانه است، نه فرار از پاسخ.
     </div>
   </div>
 </section>
 
-<section class="section" id="gaps">
+<!-- شبیه‌سازی -->
+<section id="simulations">
   <div class="container">
-    <div class="section-head">
-      <div class="eyebrow">بخش ۶ · شناسایی‌شده در ممیزی گسترده</div>
-      <h2>شکاف‌های نهادی</h2>
-      <p>پنج شکاف که در دورهای بعدی ممیزی — با پرسش‌های مستقیم «چه چیزی را جا انداختیم؟» — شناسایی شدند.</p>
+    <div class="kicker">بخش ب · پیوست شبیه‌سازی — سه آزمون سخت‌گیرانه‌ی مونت‌کارلو</div>
+    <h2>شبیه‌سازی مونت‌کارلو</h2>
+    <p class="desc">
+      هر شبیه‌سازی یک سؤال و معیار شکست <b>پیش‌ثبت‌شده</b> دارد. پارامترها فرض‌های مدل‌سازی برای آزمون
+      جهت اثرند — نه داده‌ی تجربی مستند و نه پیش‌بینی دقیق رفتار سیاسی واقعی. چهار خطای طراحی در حین
+      ساخت مدل‌ها شناسایی و پیش از انتشار اصلاح شدند (مستند در پیوست فنی مخزن).
+    </p>
+
+    <div class="card sim-card">
+      <div class="sim-head">
+        <h3 style="margin:0">سناریوی ۱ — ائتلاف مادی (امنیت-انرژی-اقتصاد)</h3>
+        <span class="badge b-partial">کاهش‌دهنده، نه مانع</span>
+      </div>
+      <p style="font-size:.88rem;color:var(--ink2)">آیا سه گیت با منافع مکمل می‌توانند حتی با مکانیزم‌های بند ۳.۶ تصمیمات کلیدی را تصاحب کنند؟ (۳۰۰ اجرا × ۲۰۰۰ دوره)</p>
+      <div class="bar-row"><div class="bar-label">بدون مکانیزم کاهش‌دهنده</div><div class="bar-track"><div class="bar-fill f-red" data-w="94"><span>٪۲۸.۲</span></div></div></div>
+      <div class="bar-row"><div class="bar-label">با مکانیزم‌های بند ۳.۶</div><div class="bar-track"><div class="bar-fill f-amber" data-w="80"><span>٪۲۳.۹</span></div></div></div>
+      <div class="bar-row"><div class="bar-label">سطح شانس (ائتلاف تصادفی)</div><div class="bar-track"><div class="bar-fill f-gray" data-w="33"><span>٪۹.۹</span></div></div></div>
+      <p style="font-size:.85rem;margin-top:8px">نتیجه: کاهش فقط ٪۱۵؛ کارتل همچنان تقریباً <b>۲.۴ برابر</b> بیشتر از ائتلاف تصادفی موفق می‌شود — اذعان «کاهش‌دهنده، نه مانع» با عدد تأیید شد.</p>
     </div>
-    <div class="grid3">
-      <div class="card">
-        <span class="status s-open">۶.۱</span>
-        <h3>شکست اطلاعاتی بیزانسی</h3>
-        <p>اگر چند گیت عمداً اطلاعات نادرست به Mirror-13 بدهند، هماهنگی کل شبکه فاسد می‌شود — بدون نیاز به ائتلاف آشکار. راستی‌آزمایی متقاطع (شبیه آستانه‌ی ۲/۳ در PBFT) کاهش می‌دهد، حذف نمی‌کند؛ و هزینه‌ی مستقیم روی سرعت واکنش دارد.</p>
+
+    <div class="card sim-card">
+      <div class="sim-head">
+        <h3 style="margin:0">سناریوی ۲ — نهادینه‌شدن اضطرار در جنگ فرسایشی</h3>
+        <span class="badge b-open">نگرانی جدی تأیید شد</span>
       </div>
-      <div class="card">
-        <span class="status s-proved">۶.۲</span>
-        <h3>حافظه‌ی نهادی</h3>
-        <p>معماری فعلی به یک بوروکراسی دائمی و غیرسیاسی جدا از اعضای چرخشی نیاز دارد — وگرنه هر چرخش کامل، دانش نهادی را از صفر می‌سازد. تنها موردی که پاسخ روشن دارد: باید به‌عنوان لایه‌ی چهارم رسمی معماری اضافه شود.</p>
-      </div>
-      <div class="card">
-        <span class="status s-open">۶.۳</span>
-        <h3>تصاحب تدریجی خارجی</h3>
-        <p>سرمایه‌گذاری ۱۰ساله‌ی یک بازیگر خارجی روی Gate Zero (بورس، رسانه، NGO، جذب نخبگان) بدون هیچ اقدام نظامی. معماری دفاع ذاتی ندارد — و هیچ نظام حکمرانی شناخته‌شده‌ای هم ندارد. تنها ابزار: افشای الزامی منابع مالی، که خودش به نهاد راستی‌آزمایی نیاز دارد.</p>
-      </div>
+      <p style="font-size:.88rem;color:var(--ink2)">در جنگ طولانی‌مدت (~۲.۳ سال)، آیا فیوز ۱۴روزه + مرجع قضایی مستقل مانع «وضعیت استثنایی دائمی با ظاهر قانونی» می‌شود؟ (۵۰۰ اجرا × تا ۶۰ چرخه)</p>
+      <div class="bar-row"><div class="bar-label">فقط فیوز ۱۴روزه + رأی ۲/۳</div><div class="bar-track"><div class="bar-fill f-red" data-w="76"><span>٪۷۶.۰</span></div></div></div>
+      <div class="bar-row"><div class="bar-label">+ مرجع قضایی مستقل (۳.۶)</div><div class="bar-track"><div class="bar-fill f-amber" data-w="70"><span>٪۶۹.۸</span></div></div></div>
+      <p style="font-size:.85rem;margin-top:8px">نتیجه: حتی با خوش‌بینانه‌ترین فرض برای مرجع قضایی، سیستم به‌طور میانگین <b>~٪۷۰ از زمان جنگ</b> در حالت اضطراری می‌ماند. هیچ راه‌حل مؤثری یافت نشد.</p>
     </div>
-    <div class="grid2" style="margin-top:16px;">
-      <div class="card">
-        <span class="status s-open">۶.۴</span>
-        <h3>سناریوهای فاجعه‌بار مشخص برای ایران</h3>
-        <p><strong style="color:var(--ink);">زلزله‌ی بزرگ تهران:</strong> اگر Mirror-13، دبیرخانه، و زیرساخت سجل/انتروپی همه در یک کانون جغرافیایی متمرکز باشند، یک فاجعه چند لایه‌ی حیاتی را هم‌زمان از کار می‌اندازد — سیستم فعلاً دکترین «چند گیت هم‌زمان از کار بیفتند» ندارد.<br><br><strong style="color:var(--ink);">جنگ طولانی‌مدت:</strong> فیوز ۱۴روزه برای بحران کوتاه طراحی شد؛ در جنگ ماه‌ها-طولانی، چرخه‌ی تمدید هر ۱۴ روز می‌تواند وضعیت اضطراری دائمی با ظاهر قانونی بسازد (رجوع به سناریوی شبیه‌سازی ۲).</p>
+
+    <div class="card sim-card">
+      <div class="sim-head">
+        <h3 style="margin:0">سناریوی ۳ — فروپاشی هم‌زمان (زلزله‌ی بزرگ تهران)</h3>
+        <span class="badge b-good">راه‌حل مؤثر</span>
       </div>
-      <div class="card">
-        <span class="status s-partial">۶.۵</span>
-        <h3>هشدار روش‌شناختی — شبیه‌سازی چندعامله</h3>
-        <p>برای مدل‌سازی بازیگران سیاسی رقیب، چارچوب‌های واقعی وجود دارند (Mesa در پایتون، NetLogo). اما هیچ مدل عامل‌محور «بدون جانبداری ایدئولوژیک» واقعاً وجود ندارد — خودِ انتخاب پارامترها (تعریف «منفعت» یا «موفقیت») یک تصمیم ارزشی است. ادعای بی‌طرفی باید به «حداقل جانبداری آشکار و مستندشده» تعدیل شود.</p>
+      <p style="font-size:.88rem;color:var(--ink2)">اگر زیرساخت حیاتی (دبیرخانه‌ی Mirror-13، سجل عمومی، منبع انتروپی Gate Zero) در ۱، ۲ یا ۳ شهر پراکنده باشد، زمان بازیابی چقدر تغییر می‌کند؟ (۲۰۰۰ اجرا)</p>
+      <div class="bar-row"><div class="bar-label">۱ شهر (بدون پراکندگی)</div><div class="bar-track"><div class="bar-fill f-red" data-w="94"><span>۳۹.۴ روز</span></div></div></div>
+      <div class="bar-row"><div class="bar-label">۲ شهر (پراکندگی جزئی)</div><div class="bar-track"><div class="bar-fill f-amber" data-w="77"><span>۳۲.۲ روز</span></div></div></div>
+      <div class="bar-row"><div class="bar-label">۳ شهر (بند ۳.۶)</div><div class="bar-track"><div class="bar-fill f-green" data-w="49"><span>۲۰.۶ روز</span></div></div></div>
+      <p style="font-size:.85rem;margin-top:8px">نتیجه: پراکندگی کامل زمان بازیابی را تقریباً <b>نصف</b> می‌کند — تنها سناریویی که مکانیزم پیشنهادی بدون قید مؤثر است، چون مسئله ماهیتاً <b>مهندسی/فیزیکی</b> است، نه سیاسی/بازگشتی.</p>
+    </div>
+
+    <h3>جمع‌بندی مقایسه‌ای</h3>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>سناریو</th><th>مکانیزم پیشنهادی</th><th>اثر اندازه‌گیری‌شده</th><th>نتیجه</th></tr></thead>
+        <tbody>
+          <tr><td>۱ · ائتلاف مادی</td><td>تفکیک بودجه + ممنوعیت پرسنلی</td><td>کاهش فقط ٪۱۵؛ همچنان ×۲.۴ سطح شانس</td><td><span class="badge b-partial">کاهش‌دهنده، نه مانع</span></td></tr>
+          <tr><td>۲ · نهادینه‌شدن اضطرار</td><td>فیوز + مرجع قضایی مستقل</td><td>کاهش فقط ٪۸؛ ~٪۷۰ زمان جنگ در اضطرار</td><td><span class="badge b-open">نگرانی جدی تأیید شد</span></td></tr>
+          <tr><td>۳ · فروپاشی هم‌زمان</td><td>پراکندگی جغرافیایی ۳شهره</td><td>٪۴۸ کاهش زمان بازیابی</td><td><span class="badge b-good">راه‌حل مؤثر</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note green">
+      <b>الگوی کلی:</b> مسائل مهندسی/فیزیکی (سناریوی ۳) با راه‌حل مهندسی به‌طور معنادار حل می‌شوند؛
+      مسائل سیاسی/بازگشتی (سناریوهای ۱ و ۲) با راهکارهای داخل معماری فقط تا حدی کاهش می‌یابند و
+      راه‌حل واقعی‌شان بیرون از معماری است — دقیقاً همخوان با استدلال نظری بخش ۳.۶.
+      کد کامل و قابل‌اجرای هر سه شبیه‌سازی (پایتون) در پوشه‌ی <a href="https://github.com/Varzin-13/twelve-gates" style="color:var(--accent)" dir="ltr">simulations/</a> مخزن موجود است.
+    </div>
+  </div>
+</section>
+
+<!-- شکاف‌ها -->
+<section id="gaps">
+  <div class="container">
+    <div class="kicker">بخش ۶ · شناسایی‌شده در ممیزی گسترده</div>
+    <h2>شکاف‌های نهادی</h2>
+    <p class="desc">پنج شکاف که در دورهای بعدی ممیزی — با پرسش مستقیم «چه چیزی را جا انداختیم؟» — شناسایی شدند.</p>
+    <div class="acc" id="acc">
+      <div class="acc-item">
+        <button class="acc-btn">۶.۱ · شکست اطلاعاتی بیزانسی <span class="chev">▾</span></button>
+        <div class="acc-body"><div class="acc-body-inner">
+          اگر چند گیت عمداً اطلاعات نادرست به Mirror-13 بدهند، هماهنگی کل شبکه فاسد می‌شود — بدون نیاز
+          به ائتلاف آشکار. لایه‌ی راستی‌آزمایی مستقل لازم است، اما خودش به کانون قدرت جدید (و مسئله‌ی
+          بازگشتی مشابه Gate Zero) تبدیل می‌شود. کاهش (نه حذف): راستی‌آزمایی متقاطع اجباری هر گزارش
+          حیاتی توسط حداقل ۲ گیت مستقل دیگر — با هزینه‌ی مستقیم روی سرعت واکنش.
+        </div></div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-btn">۶.۲ · حافظه‌ی نهادی <span class="chev">▾</span></button>
+        <div class="acc-body"><div class="acc-body-inner">
+          معماری فعلی به یک بوروکراسی دائمی و غیرسیاسی جدا از اعضای چرخشی نیاز دارد — وگرنه هر چرخش
+          کامل، دانش نهادی را از صفر می‌سازد. تنها شکافی با پاسخ روشن: باید به‌عنوان <b>لایه‌ی چهارم صریح
+          معماری</b> اضافه شود، مشابه خدمات کشوری حرفه‌ای (civil service) در نظام‌های دموکراتیک واقعی.
+        </div></div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-btn">۶.۳ · تصاحب تدریجی خارجی (۱۰ ساله، غیرنظامی) <span class="chev">▾</span></button>
+        <div class="acc-body"><div class="acc-body-inner">
+          سرمایه‌گذاری بلندمدت یک بازیگر خارجی روی Gate Zero (بورس، رسانه، NGO، جذب نخبگان) بدون هیچ
+          اقدام نظامی. معماری دفاع ذاتی ندارد — و هیچ نظام حکمرانی شناخته‌شده‌ای هم ندارد. تنها ابزار
+          شناخته‌شده (نه راه‌حل): افشای الزامی منابع مالی و روابط نهادی هر کاندیدا — که خودش به نهاد
+          راستی‌آزمایی نیاز دارد.
+        </div></div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-btn">۶.۴ · سناریوهای فاجعه‌بار مشخص برای بستر ایران <span class="chev">▾</span></button>
+        <div class="acc-body"><div class="acc-body-inner">
+          <b>فروپاشی هم‌زمان چندلایه (زلزله‌ی بزرگ تهران):</b> تمرکز جغرافیایی Mirror-13، دبیرخانه و
+          زیرساخت سجل/انتروپی می‌تواند چند لایه‌ی حیاتی را هم‌زمان از کار بیندازد؛ سیستم‌های تک‌رهبر
+          حداقل زنجیره‌ی جانشینی صریح دارند (به سناریوی شبیه‌سازی ۳ رجوع شود).<br>
+          <b>جنگ طولانی‌مدت:</b> فیوز ۱۴روزه برای بحران کوتاه طراحی شد؛ چرخه‌ی تمدید می‌تواند عملاً
+          وضعیت اضطراری دائمی با ظاهر قانونی بسازد (به سناریوی شبیه‌سازی ۲ رجوع شود).
+        </div></div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-btn">۶.۵ · هشدار روش‌شناختی — شبیه‌سازی چندعامله <span class="chev">▾</span></button>
+        <div class="acc-body"><div class="acc-body-inner">
+          برای مدل‌سازی بازیگران سیاسی رقیب چارچوب‌های استاندارد وجود دارند (Mesa در پایتون، NetLogo)،
+          اما هیچ مدل عامل‌محورِ «بدون جانبداری ایدئولوژیک» واقعاً وجود ندارد — خودِ انتخاب پارامترها
+          (تعریف «منفعت» یا «موفقیت») یک تصمیم ارزشی است. ادعای بی‌طرفی باید به «حداقل جانبداری آشکار
+          و مستندشده» تعدیل شود.
+        </div></div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="section" id="limits">
+<!-- محدودیت‌ها -->
+<section id="limits">
   <div class="container">
-    <div class="section-head">
-      <div class="eyebrow">صداقت روش‌شناختی</div>
-      <h2>محدودیت‌های این سند</h2>
+    <div class="kicker">بخش ۷ · صداقت روش‌شناختی</div>
+    <h2>محدودیت‌های این سند</h2>
+    <div class="note red" style="margin-top:0">
+      این سند یک چارچوب نظری پژوهشی تحت ممیزی جدی است — <b>نه یک طرح آماده‌ی اجرا.</b> این تمایز باید همیشه صریح بماند.
     </div>
-    <div class="note warn">
-      این سند یک چارچوب نظری پژوهشی تحت ممیزی جدی است — <strong>نه یک طرح آماده‌ی اجرا.</strong> طراحی نهادی، حتی وقتی نظراً بی‌نقص باشد، فقط بخش کوچکی از یک گذار سیاسی واقعی است. تجربه‌ی تاریخی نشان می‌دهد بزرگ‌ترین شکست‌ها معمولاً از طراحی نهادی ضعیف نمی‌آیند، بلکه از فقدان یک فرآیند مشروع و مشارکتی برای رسیدن به توافق — چیزی که هیچ سند طراحی، هرقدر دقیق، جایگزینش نمی‌شود.
-      <br><br>
-      چند محدودیت بنیادین (بازگشت مشروعیت Gate Zero، تصاحب تدریجی خارجی، مشروعیت روانی) راه‌حل شناخته‌شده‌ای در ادبیات علوم سیاسی موجود ندارند — نه فقط در این سند. این‌ها همیشه به‌عنوان محدودیت باز ثبت می‌مانند، نه اینکه با نسخه‌ی بعدی «حل‌شده» اعلام شوند.
+    <div class="grid g2">
+      <div class="card"><p>طراحی نهادی، حتی وقتی از نظر نظری بی‌نقص باشد، فقط بخش کوچکی از یک گذار
+      سیاسی واقعی است. بزرگ‌ترین شکست‌های تاریخی معمولاً از طراحی نهادی ضعیف نمی‌آیند، بلکه از
+      <b>فقدان یک فرآیند مشروع و مشارکتی برای رسیدن به توافق</b> — چیزی که هیچ سند طراحی، هرقدر
+      دقیق، جایگزینش نمی‌شود.</p></div>
+      <div class="card"><p>چند محدودیت بنیادین (بازگشت مشروعیت Gate Zero، تصاحب تدریجی خارجی،
+      مشروعیت روانی) <b>راه‌حل شناخته‌شده‌ای در ادبیات علوم سیاسی موجود ندارند</b> — نه فقط در این
+      سند. این‌ها همیشه به‌عنوان محدودیت باز ثبت می‌مانند، نه اینکه با نسخه‌ی بعدی «حل‌شده» اعلام شوند.</p></div>
     </div>
+    <p class="desc" style="margin-top:18px">
+      ارزش واقعی این کار، در صورت تکمیل، <b>ورودی به بحث عمومی و پژوهش</b> است — نه جایگزین فرآیند
+      مشارکتی تدوین یک نظام حکمرانی.
+    </p>
   </div>
 </section>
 
-<section class="section section-soft" id="next">
+<!-- مراحل بعدی -->
+<section id="next">
   <div class="container">
-    <div class="section-head">
-      <div class="eyebrow">ادامه‌ی کار</div>
-      <h2>مراحل بعدی پیشنهادی</h2>
-    </div>
-    <ul class="roadmap">
-      <li>مرور ادبیات حاکمیت چندکانونی (اوستروم) و مصالحه‌گرایی (بلژیک، لبنان، بوسنی) — به‌ویژه برای بند ۳.۴.۴</li>
+    <div class="kicker">بخش ۸ · ادامه‌ی کار</div>
+    <h2>مراحل بعدی پیشنهادی</h2>
+    <ol class="steps">
+      <li>مرور ادبیات <b>حاکمیت چندکانونی</b> (اوستروم) و <b>مصالحه‌گرایی</b> (بلژیک، لبنان، بوسنی) — به‌ویژه برای بند ۳.۴.۴</li>
       <li>طراحی رسمی لایه‌ی راستی‌آزمایی اطلاعات بیزانسی (۶.۱) و لایه‌ی حافظه‌ی نهادی (۶.۲) به‌عنوان اجزای رسمی معماری</li>
       <li>طراحی دقیق‌تر «حالت اضطراری» برای جنگ طولانی‌مدت و فروپاشی هم‌زمان چندگیتی (۶.۴)</li>
       <li>بررسی نمونه‌های دیگر «اجرایی جمعی» (سان‌مارینو، بوسنی، آندورا) و مطالعات موردی مصالحه‌گرایی</li>
-      <li>ساخت مدل عامل‌محور واقعی (Mesa) برای جایگزینی شبیه‌سازی‌های ساده‌شده‌ی مونت‌کارلوی فعلی — با اذعان صریح به جانبداری پارامتری (۶.۵)</li>
-      <li>پژوهش میدانی (نظرسنجی/آزمایش کنترل‌شده) درباره‌ی مشروعیت روانی نهادهای انتزاعی — تنها راه واقعی برای پیشرفت روی بند ۳.۴</li>
-    </ul>
+      <li>ساخت مدل عامل‌محور واقعی (Mesa) برای جایگزینی شبیه‌سازی‌های ساده‌شده‌ی فعلی — با اذعان صریح به جانبداری پارامتری (۶.۵)</li>
+      <li>پژوهش میدانی (نظرسنجی/آزمایش کنترل‌شده) درباره‌ی مشروعیت روانی نهادهای انتزاعی — تنها راه واقعی پیشرفت روی بند ۳.۴</li>
+      <li>ثبت رسمی بن‌بست Gate Zero/Sortition (۳.۵) به‌عنوان محدودیت بنیادین بدون راه‌حل شناخته‌شده</li>
+    </ol>
   </div>
 </section>
 
 <footer>
   <div class="container">
-    <p>این یک پروژه‌ی طراحی سیستم حکمرانی است، بدون موضع‌گیری درباره‌ی هیچ کشور یا نظام سیاسی مشخص. ارزش واقعی این کار، در صورت تکمیل، ورودی به بحث عمومی و پژوهش است — نه جایگزین فرآیند مشارکتی تدوین یک نظام حکمرانی.</p>
-    <div class="note" style="max-width:520px;margin:0 auto 18px;text-align:right;">
-      این سند دعوتی‌ست به نقد، نه به تأیید. اگر گسل دیگری در این مدل می‌بینید — یا نقصی در همین شواهد و شبیه‌سازی‌ها — خوشحال می‌شویم بشنویم.
-      <br><br>
-      <a class="mono" style="color:var(--brass);font-weight:600;" href="mailto:rezanirouyar1323@gmail.com?subject=%D9%86%D9%82%D8%AF%20%D8%A8%D8%B1%20%D9%85%D8%AF%D9%84%20%D8%AF%D9%88%D8%A7%D8%B2%D8%AF%D9%87%20%DA%AF%DB%8C%D8%AA">rezanirouyar1323@gmail.com ↗</a>
+    <p><b>این سند دعوتی‌ست به نقد، نه به تأیید.</b><br>
+    اگر گسل دیگری در این مدل می‌بینید — یا نقصی در همین شواهد و شبیه‌سازی‌ها — خوشحال می‌شویم بشنویم.</p>
+    <div class="foot-links">
+      <a href="https://github.com/Varzin-13/twelve-gates" target="_rel">مخزن گیت‌هاب ↗</a>
+      <a href="mailto:rezanirouyar1323@gmail.com" dir="ltr">rezanirouyar1323@gmail.com</a>
     </div>
-    <p class="mono" style="font-size:.75rem;">نسخه ۰.۷ · تحت ممیزی مداوم · بازبینی بعدی: پس از دریافت اولین نقدهای بیرونی</p>
+    <p>نسخه ۰.۷ · تحت ممیزی مداوم · بازبینی بعدی: پس از دریافت اولین نقدهای بیرونی</p>
   </div>
 </footer>
 
 <script>
-(function(){
-  const svg = document.getElementById('gateNodes');
-  const names = ['اقتصاد','علم','امنیت','فرهنگ','انرژی','آموزش','دادگستری','سلامت','محیط‌زیست','زیرساخت','روابط خارجی','رفاه اجتماعی'];
-  const N = 12, R = 150, RL = 168;
-  const P0 = 0, A0 = 6; // نمونه دوره صفر
-  const ns = "http://www.w3.org/2000/svg";
-  for(let i=0;i<N;i++){
-    const angle = (i/N)*2*Math.PI - Math.PI/2;
-    const x = 180 + R*Math.cos(angle), y = 180 + R*Math.sin(angle);
-    const lx = 180 + RL*Math.cos(angle), ly = 180 + RL*Math.sin(angle);
-    const circle = document.createElementNS(ns,'circle');
-    circle.setAttribute('cx',x); circle.setAttribute('cy',y); circle.setAttribute('r', i===P0||i===A0 ? 9 : 6.5);
-    circle.setAttribute('class','gate-node' + (i===P0?' p':'') + (i===A0?' a':''));
-    svg.appendChild(circle);
-    const text = document.createElementNS(ns,'text');
-    text.setAttribute('x',lx); text.setAttribute('y',ly);
-    text.setAttribute('class','gate-label');
-    text.textContent = names[i];
-    svg.appendChild(text);
-  }
-})();
-</script>
+// ---------- data ----------
+const GATES=["اقتصاد","علم","امنیت","فرهنگ","انرژی","آموزش","دادگستری","سلامت","محیط‌زیست","زیرساخت","روابط خارجی","رفاه اجتماعی"];
+const fa=n=>String(n).replace(/\d/g,d=>"۰۱۲۳۴۵۶۷۸۹"[d]);
+const P=t=>(5*t)%12, A=t=>(P(t)+6)%12;
 
+// ---------- rotation table ----------
+const tbody=document.querySelector("#rotTable tbody");
+for(let t=0;t<12;t++){
+  const tr=document.createElement("tr");
+  tr.innerHTML=`<td>${fa(t)}</td><td><b>گیت ${fa(P(t))}</b> (${GATES[P(t)]})</td><td><b>گیت ${fa(A(t))}</b> (${GATES[A(t)]})</td>`;
+  tbody.appendChild(tr);
+}
+
+// ---------- rotation slider ----------
+const slider=document.getElementById("tSlider");
+function updateRot(){
+  const t=+slider.value;
+  document.getElementById("tVal").textContent=fa(t);
+  document.getElementById("pOut").textContent=`گیت ${fa(P(t))} — ${GATES[P(t)]}`;
+  document.getElementById("aOut").textContent=`گیت ${fa(A(t))} — ${GATES[A(t)]}`;
+  [...tbody.rows].forEach((r,i)=>r.classList.toggle("hl",i===t));
+}
+slider.addEventListener("input",updateRot);
+updateRot();
+
+// ---------- accordion ----------
+document.querySelectorAll(".acc-btn").forEach(btn=>{
+  btn.addEventListener("click",()=>{
+    const item=btn.parentElement, body=item.querySelector(".acc-body");
+    const open=item.classList.toggle("open");
+    body.style.maxHeight=open?body.scrollHeight+"px":"0";
+  });
+});
+
+// ---------- animated bars ----------
+const io=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.style.width=e.target.dataset.w+"%";
+      io.unobserve(e.target);
+    }
+  });
+},{threshold:.4});
+document.querySelectorAll(".bar-fill").forEach(b=>io.observe(b));
+
+// ---------- nav highlight ----------
+const secs=[...document.querySelectorAll("section[id]")];
+const links=[...document.querySelectorAll("#navLinks a")];
+const so=new IntersectionObserver(es=>{
+  es.forEach(e=>{
+    if(e.isIntersecting){
+      links.forEach(l=>l.classList.toggle("active",l.getAttribute("href")==="#"+e.target.id));
+    }
+  });
+},{rootMargin:"-40% 0px -55% 0px"});
+secs.forEach(s=>so.observe(s));
+
+// ---------- theme ----------
+const root=document.documentElement;
+document.getElementById("themeBtn").addEventListener("click",()=>{
+  root.dataset.theme=root.dataset.theme==="dark"?"":"dark";
+});
+</script>
 </body>
 </html>
