@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>دوازده گیت — مدل حکومت شورای مردمی غیرمتمرکز (v0.15)</title>
+<title>دوازده گیت — مدل حکومت شورای مردمی غیرمتمرکز (v0.17)</title>
 <meta name="description" content="طراحی و ممیزی یک مدل حکومت شورای مردمی غیرمتمرکز — چارچوب پژوهشی تحت ممیزی، نه طرح آماده‌ی اجرا.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -237,7 +237,7 @@ ol.steps li::marker{color:var(--accent);font-weight:900}
 
 <nav>
   <div class="nav-inner">
-    <a class="brand" href="#top">۱۲ گیت <span>v0.15</span></a>
+    <a class="brand" href="#top">۱۲ گیت <span>v0.17</span></a>
     <div class="nav-links" id="navLinks">
       <a href="#structure">ساختار</a>
       <a href="#rotation">چرخش</a>
@@ -276,7 +276,7 @@ ol.steps li::marker{color:var(--accent);font-weight:900}
     </p>
     <div class="cta">
       <a class="btn primary" href="#simulations">نتایج شبیه‌سازی‌ها</a>
-      <a class="btn ghost" href="دوازده_گیت_سند_کامل_ادغامی_v0_15.md" target="_rel">📄 سند کامل ادغامی (تک‌فایل، بخش ۱–۱۲) ↗</a>
+      <a class="btn ghost" href="دوازده_گیت_سند_کامل_ادغامی_v0_17.md" target="_rel">📄 سند کامل ادغامی (تک‌فایل، بخش ۱–۱۲) ↗</a>
       <a class="btn ghost" href="https://github.com/Varzin-13/twelve-gates" target="_rel">مخزن گیت‌هاب ↗</a>
     </div>
     <div class="note" style="max-width:720px;margin:18px auto 0;text-align:right">
@@ -284,7 +284,7 @@ ol.steps li::marker{color:var(--accent);font-weight:900}
       بخش‌های ۹، ۱۰، و ۱۱ تلخیص نیستند، و بخش ۱۲ (تاریخ تمدن‌ها، اکنون ۱۵ تمدن) که پیش از این اصلاً در
       وب‌سایت نبود، اکنون بخشی از صفحه است. فایل‌های تک‌بخشی همچنان برای دانلود/مطالعه‌ی آفلاین در مخزن
       موجودند. یک ناهم‌خوانی نسخه‌گذاری در وب‌سایت پیشین (نوار بالا نسخه‌ای متفاوت از بقیه‌ی صفحه نشان
-      می‌داد) در همین به‌روزرسانی رفع شد — اکنون همه‌جا v0.15.
+      می‌داد) در همین به‌روزرسانی رفع شد — اکنون همه‌جا v0.17.
     </div>
     <div class="stats">
       <div class="stat"><b>۱۲</b><span>گیت کارکردی مستقل</span></div>
@@ -2220,7 +2220,9 @@ ol.steps li::marker{color:var(--accent);font-weight:900}
       <div class="card"><h4>دولت موقت NCRI/مجاهدین</h4>
       <p>۲۵ کمیته، هرکدام یک رأی، ۶ ماه تا انتخابات.</p>
       <p class="q">⚠ طبق وزارت خارجه‌ی آمریکا، خودِ NCRI در دهه‌ی ۱۹۸۰ به‌دلیل «اعتراض به روش‌های
-      دیکتاتوری رجوی» فروپاشید؛ MEK از ۱۹۹۷-۲۰۱۲ در فهرست تروریستی آمریکا بود.</p></div>
+      دیکتاتوری رجوی» فروپاشید؛ MEK از ۱۹۹۷-۲۰۱۲ در فهرست تروریستی آمریکا بود؛ در سرکوب قیام کردهای عراق
+      (۱۹۹۱) در کنار بقایای ارتش صدام مشارکت نظامی داشت؛ عقیم‌سازی و جداسازی اجباری کودکان اعضا از والدین
+      (گزارش The Intercept، ۲۰۲۰).</p></div>
 
       <div class="card"><h4>برنامه‌ی پهلوی / NUFDI</h4>
       <p>«مهستان انتقالی» تحت رهبری پهلوی به‌عنوان «رهبر قیام ملی».</p>
@@ -2264,6 +2266,29 @@ ol.steps li::marker{color:var(--accent);font-weight:900}
       </table>
     </div>
 
+    <h3>پاسخ به سه نقد ساختاری جدی</h3>
+    <div class="acc" id="accStructResponse">
+      <div class="acc-item"><button class="acc-btn">«هر گذار موفقی فشار خارجی داشته» <span class="chev">▾</span></button>
+      <div class="acc-body"><div class="acc-body-inner">
+        فرق بین <b>فشار</b> و <b>تعیین‌کنندگی</b> باید روشن بماند. تحریم آفریقای جنوبی فشار بود؛ هیچ دولت
+        خارجی‌ای ترکیب کابینه را تعیین نکرد. بند ۱۰.۴ همین تفکیک را دارد. «۱۲ اصلاحیه» دقیقاً تعیین‌کنندگی
+        را پیشنهاد می‌دهد (پرداخت مستقیم به فرماندهان سپاه)، نه فقط فشار.
+      </div></div></div>
+      <div class="acc-item"><button class="acc-btn">«تسلسل مشروعیت در هر قانون‌نویسی‌ای هست» <span class="chev">▾</span></button>
+      <div class="acc-body"><div class="acc-body-inner">
+        درست است — و بند ۳.۱.۱ همین را اذعان کرده. فرق ما با «مدل نگهبان» این نیست که حل کرده‌ایم و
+        آن‌ها نه؛ فرق این است که ما این تسلسل را صریح اعتراف می‌کنیم، و آن‌ها با واژه‌ی «تغییرناپذیر»
+        وانمود می‌کنند حلش کرده‌اند. صداقت درباره‌ی یک مسئله‌ی حل‌نشدنی، امتیاز است، نه ضعف.
+      </div></div></div>
+      <div class="acc-item"><button class="acc-btn">«بخش ۱۴ می‌تواند تبلیغات وضع موجود شود» <span class="chev">▾</span></button>
+      <div class="acc-body"><div class="acc-body-inner">
+        جدی‌ترین نقد: <b>مستندکردن ضعف جایگزین‌ها، توجیه وضع موجود نیست.</b> بی‌ثباتی اپوزیسیون معلول
+        سرکوب مستمر و ترور رهبرانش در طول دهه‌هاست، نه دلیلی مستقل برای ادامه‌ی حکومت فعلی. مستندکردن این
+        ضعف‌ها برعکس تبلیغات عمل می‌کند: نشان می‌دهد چرا خودِ حکومت باید پاسخگوی نبود اپوزیسیونی قوی باشد
+        که خودش عمداً از شکل‌گیری‌اش جلوگیری کرده.
+      </div></div></div>
+    </div>
+
     <div class="note green">
       <b>نتیجه‌گیری صادقانه:</b> ارزش سند ما در قدرت اجرایی نیست — آخرین رتبه: صفر بودجه، صفر نیرو، صفر
       پایگاه رأی مستند. ارزش واقعی: تنها مدلی که با شبیه‌سازی واقعی (حالا برای دو رقیب دیگر هم) آزموده شده،
@@ -2299,9 +2324,9 @@ ol.steps li::marker{color:var(--accent);font-weight:900}
       <a href="https://github.com/Varzin-13/twelve-gates" target="_rel">مخزن گیت‌هاب ↗</a>
       <a href="mailto:rezanirouyar1323@gmail.com" dir="ltr">rezanirouyar1323@gmail.com</a>
     </div>
-    <p>نسخه ۰.۱۵ · تحت ممیزی مداوم · بازبینی بعدی: پس از دریافت اولین نقدهای بیرونی</p>
+    <p>نسخه ۰.۱۷ · تحت ممیزی مداوم · بازبینی بعدی: پس از دریافت اولین نقدهای بیرونی</p>
     <p style="margin-top:8px">سند کامل ادغامی (تک‌فایل، شامل بخش ۱۲):
-      <a href="دوازده_گیت_سند_کامل_ادغامی_v0_15.md" dir="ltr">دوازده_گیت_سند_کامل_ادغامی_v0_15.md</a></p>
+      <a href="دوازده_گیت_سند_کامل_ادغامی_v0_17.md" dir="ltr">دوازده_گیت_سند_کامل_ادغامی_v0_17.md</a></p>
   </div>
 </footer>
 
