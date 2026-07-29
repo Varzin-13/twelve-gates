@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>دوازده گیت — مدل حکومت شورای مردمی غیرمتمرکز (v0.14)</title>
+<title>دوازده گیت — مدل حکومت شورای مردمی غیرمتمرکز (v0.15)</title>
 <meta name="description" content="طراحی و ممیزی یک مدل حکومت شورای مردمی غیرمتمرکز — چارچوب پژوهشی تحت ممیزی، نه طرح آماده‌ی اجرا.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -237,7 +237,7 @@ ol.steps li::marker{color:var(--accent);font-weight:900}
 
 <nav>
   <div class="nav-inner">
-    <a class="brand" href="#top">۱۲ گیت <span>v0.14</span></a>
+    <a class="brand" href="#top">۱۲ گیت <span>v0.15</span></a>
     <div class="nav-links" id="navLinks">
       <a href="#structure">ساختار</a>
       <a href="#rotation">چرخش</a>
@@ -254,6 +254,7 @@ ol.steps li::marker{color:var(--accent);font-weight:900}
       <a href="#interventions">مداخلات خارجی</a>
       <a href="#civilizations">تاریخ تمدن‌ها</a>
       <a href="#iranhistory">تاریخ ایران</a>
+      <a href="#comparison">مقایسه‌ی مدل‌ها</a>
       <a href="#next">مراحل بعدی</a>
     </div>
     <button class="theme-btn" id="themeBtn" title="تغییر حالت روشن/تاریک">◐</button>
@@ -283,7 +284,7 @@ ol.steps li::marker{color:var(--accent);font-weight:900}
       بخش‌های ۹، ۱۰، و ۱۱ تلخیص نیستند، و بخش ۱۲ (تاریخ تمدن‌ها، اکنون ۱۵ تمدن) که پیش از این اصلاً در
       وب‌سایت نبود، اکنون بخشی از صفحه است. فایل‌های تک‌بخشی همچنان برای دانلود/مطالعه‌ی آفلاین در مخزن
       موجودند. یک ناهم‌خوانی نسخه‌گذاری در وب‌سایت پیشین (نوار بالا نسخه‌ای متفاوت از بقیه‌ی صفحه نشان
-      می‌داد) در همین به‌روزرسانی رفع شد — اکنون همه‌جا v0.14.
+      می‌داد) در همین به‌روزرسانی رفع شد — اکنون همه‌جا v0.15.
     </div>
     <div class="stats">
       <div class="stat"><b>۱۲</b><span>گیت کارکردی مستقل</span></div>
@@ -2192,6 +2193,85 @@ ol.steps li::marker{color:var(--accent);font-weight:900}
   </div>
 </section>
 
+<!-- مقایسه با مدل‌های مشابه -->
+<section id="comparison">
+  <div class="container">
+    <div class="kicker">بخش ۱۴ · تیر ۱۴۰۵ · استرس‌تست کامل</div>
+    <h2>مقایسه‌ی ساختاری با پیشنهادهای مشابه</h2>
+    <p class="desc">
+      همان انضباط پیوست ب (شبیه‌سازی مونت‌کارلو) روی پنج پیشنهاد مشابه دیگر اعمال شد — با تفکیک صادقانه‌ی
+      مدل‌های <b>قابل‌شبیه‌سازی</b> (سازوکار رویه‌ای مشخص دارند) از مدل‌های <b>مفهومی</b> (به اراده‌ی سیاسی
+      یا کاریزمای فردی متکی‌اند؛ شبیه‌سازی‌شان تزئین کمّی بی‌محتوا می‌بود).
+    </p>
+
+    <div class="grid g2">
+      <div class="card"><h4>«۱۲ اصلاحیه» — Princeton Policy Advisors</h4>
+      <p>رهبر تشریفاتی + فشار هدفمند آمریکا بر سپاه/شورای نگهبان.</p>
+      <p class="q">⚠ مکانیزم اصلی به «فشار مستمر آمریکا طی ماه‌ها» وابسته — دقیقاً همان تک‌نقطه‌شکستی که
+      بند ۱۰.۴ ما هشدار داده، اینجا نه ریسک بلکه پیش‌شرط طراحی.</p></div>
+
+      <div class="card"><h4>«مدل نگهبان» — IranOnline.com</h4>
+      <p>قانون متصل به بلاک‌چین «تغییرناپذیر»؛ سقف ۱۸ماهه‌ی غیرقابل‌تمدید.</p>
+      <p class="q">⚠ «تغییرناپذیری» مسئله‌ی مشروعیت را پنهان می‌کند، حل نمی‌کند (بازتاب رد ما بر RANDAO).
+      نتیجه‌ی شبیه‌سازی ۴ پایین.</p></div>
+
+      <div class="card"><h4>دولت موقت NCRI/مجاهدین</h4>
+      <p>۲۵ کمیته، هرکدام یک رأی، ۶ ماه تا انتخابات.</p>
+      <p class="q">⚠ طبق وزارت خارجه‌ی آمریکا، خودِ NCRI در دهه‌ی ۱۹۸۰ به‌دلیل «اعتراض به روش‌های
+      دیکتاتوری رجوی» فروپاشید؛ MEK از ۱۹۹۷-۲۰۱۲ در فهرست تروریستی آمریکا بود.</p></div>
+
+      <div class="card"><h4>برنامه‌ی پهلوی / NUFDI</h4>
+      <p>«مهستان انتقالی» تحت رهبری پهلوی به‌عنوان «رهبر قیام ملی».</p>
+      <p class="q">⚠ اهداکننده‌ای بیش از ۳ میلیون دلار کمک کرده (گزارش جروزالم پست)؛ این عملاً کارتل قدرت
+      مادیه (بند ۳.۶)، نه فرضی. «مهستان» بدون محدودیت واقعی قدرت — تزئین تاریخی بی‌محتوا.</p></div>
+    </div>
+
+    <h3>دو شبیه‌سازی واقعی جدید</h3>
+    <div class="card sim-card">
+      <h4>سناریوی ۴ — سقف ۱۸ماهه‌ی مدل نگهبان</h4>
+      <p style="font-size:.88rem;color:var(--ink2)">با توزیع واقعی زمان کامل‌شدن فرآیندهای گذار مشابه
+      (کالیبره با آفریقای جنوبی ~۴۸ ماه)، احتمال کامل‌شدن تا ماه ۱۸ام چقدر است؟</p>
+      <div class="bar-row"><div class="bar-label">کامل‌شدن تا ماه ۱۸ام</div><div class="bar-track"><div class="bar-fill f-green" data-w="15"><span>٪۱۵.۰</span></div></div></div>
+      <div class="bar-row"><div class="bar-label">عدم‌تکمیل (خلأ یا تمدید فراقانونی)</div><div class="bar-track"><div class="bar-fill f-red" data-w="85"><span>٪۸۵.۰</span></div></div></div>
+      <p style="font-size:.85rem;margin-top:8px">نتیجه: فرضیه‌ی «سقف کافی است» رد می‌شود — <b>۸۵٪</b> اجراها
+      به خلأ قدرت یا تمدید فراقانونی می‌رسند، دقیقاً مسیر نهادینه‌شدن اضطراری سناریوی ۲ خودمان.</p>
+    </div>
+
+    <div class="card sim-card">
+      <h4>سناریوی ۵ — دولت موقت ۲۵کمیته‌ای NCRI</h4>
+      <p style="font-size:.88rem;color:var(--ink2)">آیا ۶ ماه برای انتخابات واقع‌گرایانه است؟ و با سابقه‌ی
+      نابرابری مستند میان اعضا، عضو غالب چقدر کمیته‌ها را تصاحب می‌کند؟</p>
+      <div class="bar-row"><div class="bar-label">انتخابات تا ماه ۶ام</div><div class="bar-track"><div class="bar-fill f-red" data-w="3"><span>٪۳.۰</span></div></div></div>
+      <div class="bar-row"><div class="bar-label">سهم عضو غالب از کمیته‌ها</div><div class="bar-track"><div class="bar-fill f-amber" data-w="43"><span>٪۴۳.۰</span></div></div></div>
+      <div class="bar-row"><div class="bar-label">سطح شانس (توزیع متوازن)</div><div class="bar-track"><div class="bar-fill f-gray" data-w="20"><span>٪۲۰.۰</span></div></div></div>
+      <p style="font-size:.85rem;margin-top:8px">نتیجه: <b>۹۷٪</b> احتمال عدم‌برگزاری انتخابات تا موعد؛ سهم
+      عضو غالب بیش از دوبرابر سطح شانس — هم‌راستا با سابقه‌ی مستند فروپاشی داخلی NCRI.</p>
+    </div>
+
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>مدل</th><th>نقطه‌ی شکست ساختاری</th><th>آزموده؟</th><th>خودشان اذعان کرده‌اند؟</th></tr></thead>
+        <tbody>
+          <tr><td>۱۲ اصلاحیه</td><td>وابستگی به اراده‌ی سیاسی چندساله‌ی آمریکا</td><td>مفهومی</td><td>❌</td></tr>
+          <tr><td>مدل نگهبان</td><td>۸۵٪ احتمال عدم‌تحقق سقف ۱۸ماهه</td><td>✅ کمّی</td><td>❌</td></tr>
+          <tr><td>NCRI</td><td>۹۷٪ احتمال عدم‌انتخابات تا ۶ ماه؛ تصاحب ۴۳٪</td><td>✅ کمّی</td><td>❌</td></tr>
+          <tr><td>پهلوی/NUFDI</td><td>کارتل مالی مستند + وام تاریخی تزئینی</td><td>مفهومی</td><td>❌</td></tr>
+          <tr><td>فراخوان اصلاح‌طلبان</td><td>فاقد اهرم اجرایی در برابر امتناع</td><td>مفهومی</td><td>تا حدی</td></tr>
+          <tr class="hl"><td><b>مدل ما (۱۲گیت)</b></td><td>Gate Zero منطقاً حل‌نشدنی؛ وابسته به بن‌بست دوطرفه‌ی هنوز نیامده</td><td>✅ کمّی (۵ سناریو)</td><td><b>✅ صریح، چند بند</b></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="note green">
+      <b>نتیجه‌گیری صادقانه:</b> ارزش سند ما در قدرت اجرایی نیست — آخرین رتبه: صفر بودجه، صفر نیرو، صفر
+      پایگاه رأی مستند. ارزش واقعی: تنها مدلی که با شبیه‌سازی واقعی (حالا برای دو رقیب دیگر هم) آزموده شده،
+      و تنها مدلی که نقطه‌ضعف خودش را با همان شدت نقطه‌قوتش مستند می‌کند. تحلیل کامل، منابع (وزارت خارجه‌ی
+      آمریکا، CRS کنگره، CFR، RAND، رادیو زمانه) و کد شبیه‌سازی‌ها در فایل
+      <span class="mono" dir="ltr">بخش_۱۴_مقایسه_مدل_های_مشابه.md</span> مخزن.
+    </div>
+  </div>
+</section>
+
 <!-- مراحل بعدی -->
 <section id="next">
   <div class="container">
@@ -2217,7 +2297,7 @@ ol.steps li::marker{color:var(--accent);font-weight:900}
       <a href="https://github.com/Varzin-13/twelve-gates" target="_rel">مخزن گیت‌هاب ↗</a>
       <a href="mailto:rezanirouyar1323@gmail.com" dir="ltr">rezanirouyar1323@gmail.com</a>
     </div>
-    <p>نسخه ۰.۱۴ · تحت ممیزی مداوم · بازبینی بعدی: پس از دریافت اولین نقدهای بیرونی</p>
+    <p>نسخه ۰.۱۵ · تحت ممیزی مداوم · بازبینی بعدی: پس از دریافت اولین نقدهای بیرونی</p>
     <p style="margin-top:8px">سند کامل ادغامی (تک‌فایل، شامل بخش ۱۲):
       <a href="دوازده_گیت_سند_کامل_ادغامی_v0_11.md" dir="ltr">دوازده_گیت_سند_کامل_ادغامی_v0_11.md</a></p>
   </div>
