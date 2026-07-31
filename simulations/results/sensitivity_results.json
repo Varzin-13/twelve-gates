@@ -1,0 +1,63 @@
+{
+  "A_theta_pair": {
+    "0.45": {
+      "cartel_capture_rate": 1.0,
+      "emergency_time_share": 0.5594375,
+      "coalition_mean_duration": 11.216222864372758
+    },
+    "0.5": {
+      "cartel_capture_rate": 1.0,
+      "emergency_time_share": 0.5598750000000001,
+      "coalition_mean_duration": 10.190577886463737
+    },
+    "0.55": {
+      "cartel_capture_rate": 1.0,
+      "emergency_time_share": 0.5600625000000001,
+      "coalition_mean_duration": 32.42715100871351
+    },
+    "0.6": {
+      "cartel_capture_rate": 1.0,
+      "emergency_time_share": 0.5602500000000001,
+      "coalition_mean_duration": 62.17513086994704
+    },
+    "0.65": {
+      "cartel_capture_rate": 0.0,
+      "emergency_time_share": 0.559625,
+      "coalition_mean_duration": 0.0
+    }
+  },
+  "B_weight_ratio": {
+    "affinity-محور (w1=0.45)": {
+      "cartel_capture_rate": 0.925,
+      "emergency_time_share": 0.5595625,
+      "coalition_mean_duration": 75.62369680360489
+    },
+    "اصلی (متوازن)": {
+      "cartel_capture_rate": 1.0,
+      "emergency_time_share": 0.5600625000000001,
+      "coalition_mean_duration": 32.42715100871351
+    },
+    "trust-محور (w2=0.45)": {
+      "cartel_capture_rate": 1.0,
+      "emergency_time_share": 0.5595625,
+      "coalition_mean_duration": 10.458984622992045
+    }
+  },
+  "C_exec_power": {
+    "بدون برتری خوشه (0.55 برای همه)": {
+      "cartel_capture_rate": 0.0,
+      "emergency_time_share": 0.5600625000000001,
+      "coalition_mean_duration": 32.42715100871351
+    },
+    "اصلی (0.70-0.85)": {
+      "cartel_capture_rate": 1.0,
+      "emergency_time_share": 0.5600625000000001,
+      "coalition_mean_duration": 32.42715100871351
+    },
+    "برتری شدید (0.88-0.95)": {
+      "cartel_capture_rate": 1.0,
+      "emergency_time_share": 0.5600625000000001,
+      "coalition_mean_duration": 32.42715100871351
+    }
+  }
+}
