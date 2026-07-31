@@ -1,0 +1,10 @@
+{
+  "claim_label": "hypothesis",
+  "purpose": "functional_sanity_check",
+  "n_runs": 300,
+  "cartel_capture_rate": 1.0,
+  "emergency_time_share_mean": 0.6356153846153846,
+  "legitimacy_internal_mean": 0.6172247474747475,
+  "capture_pressure_mean": 0.5806665248898668,
+  "coalition_mean_duration": 43.33084557005029
+}

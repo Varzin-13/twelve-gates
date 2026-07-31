@@ -1,0 +1,15 @@
+{
+  "claim_label": "hypothesis",
+  "n_runs_requested": 300,
+  "n_runs_completed": 300,
+  "max_ticks": 520,
+  "master_seed": 42,
+  "cartel_capture_rate": 0.0,
+  "emergency_time_share_mean": 0.0,
+  "legitimacy_internal_mean": 0.5,
+  "capture_pressure_mean": 0.58,
+  "coalition_mean_duration": 0.0,
+  "bureaucracy_politicization_mean": 0.5639999999999957,
+  "public_legitimacy_signal_mean": 0.5,
+  "elapsed_seconds": 87.40700554847717
+}
