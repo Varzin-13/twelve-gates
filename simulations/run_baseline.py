@@ -8,6 +8,7 @@ seed=42 طبق spec؛ n_runs کاهش‌یافته از ۳۰۰۰ به ۳۰۰ ب�
 import numpy as np
 import json
 import time
+from pathlib import Path
 from twelve_gates_model import TwelveGatesModel, PreconditionError
 
 def make_gate_cfg(gate_id, domain, exec_power, is_material_cluster=False):
@@ -118,6 +119,8 @@ if __name__ == "__main__":
             "public_legitimacy_signal_mean": float(mean_pub_leg),
             "elapsed_seconds": elapsed,
         }
-        with open("/home/claude/mesa_baseline_results.json", "w", encoding="utf-8") as f:
+        output_dir = Path(__file__).resolve().parent / "results"
+        output_dir.mkdir(parents=True, exist_ok=True)
+        with (output_dir / "mesa_baseline_results.json").open("w", encoding="utf-8") as f:
             json.dump(out, f, ensure_ascii=False, indent=2)
         print("\nذخیره شد: mesa_baseline_results.json")
