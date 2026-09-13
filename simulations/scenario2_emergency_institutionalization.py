@@ -26,6 +26,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.font_manager as fm
 import json
+from pathlib import Path
 import os
 import sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -158,7 +159,9 @@ if __name__ == "__main__":
         "pct_trials_over_80pct_with_judicial": float((with_judicial > 0.8).mean()),
         "seed": RNG_SEED,
     }
-    with open("/home/claude/scenario2_results.json", "w", encoding="utf-8") as f:
+    output_dir = Path(__file__).resolve().parent / "results"
+    output_dir.mkdir(parents=True, exist_ok=True)
+    with (output_dir / "scenario2_results.json").open("w", encoding="utf-8") as f:
         json.dump(results, f, ensure_ascii=False, indent=2)
 
     # نمودار
