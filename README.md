@@ -30,9 +30,9 @@ The [parameter register](simulations/param_provenance.py) classifies **18 tracke
 
 The majority of tracked parameter groups are uncalibrated; consequential examples include coalition thresholds, initial executive power, trust matrices, and institutional-response assumptions. The model and stored baseline config retain `claim_label: hypothesis`. **فرضیه، نه پیش‌بینی:** source-document rules and runnable code do not turn scenario parameters into measured facts.
 
-## Three documented independent simulation questions | سه پرسش شبیه‌سازی مستقل
+## Three documented independent simulation questions | سه پرسش شبیه‌سازی مستقل مستندشده
 
-[simulations/README.md](simulations/README.md) identifies **three explicitly documented preregistered independent simulation questions/scripts**. The scripts state questions and failure criteria; an external, timestamped preregistration record has not been verified from this repository. Their outputs are simulation-only and depend on stipulated inputs.
+[simulations/README.md](simulations/README.md) identifies three independent simulation questions/scripts that the repository describes as preregistered. The scripts state questions and failure criteria, but an external timestamped preregistration record has not been verified in this audit. Their outputs are simulation-only and depend on stipulated inputs.
 
 | Script and question | Stored result under its assumptions | Essential limitation |
 |---|---|---|
