@@ -2,9 +2,12 @@
 
 ## فارسی
 
-این پروژه («دوازده گیت — مدل حکومت شورای مردمی غیرمتمرکز»، شامل تمام اسناد، کدهای شبیه‌سازی، و
-محتوای مرتبط در این مخزن) تحت مجوز **Creative Commons Attribution-ShareAlike 4.0 International
-(CC BY-SA 4.0)** منتشر شده است.
+اسناد پژوهشی، نثر، مستندات و دیگر محتوای نوشتاریِ غیرکُدی این مخزن تحت مجوز
+**Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)** منتشر می‌شوند.
+کد نرم‌افزار، از جمله اسکریپت‌های شبیه‌سازی و بخش‌های اجرایی فایل‌های وب، طبق
+`LICENSE` تحت مجوز **MIT** است. اگر فایلی اعلام مجوز صریحِ خود را دارد، همان اعلام
+برای آن فایل محفوظ است. این توضیح، اعلام‌های مجوز در نسخه‌های تاریخی را حذف یا
+به‌طور عطف‌به‌ماسبق لغو نمی‌کند.
 
 **نویسنده و پژوهشگر مستقل: رضا نیرویار (RAHTALĒN)**
 **تاریخ آغاز پروژه: تیر ۱۴۰۵ (۲۰۲۶)**
@@ -32,9 +35,13 @@ https://creativecommons.org/licenses/by-sa/4.0/legalcode (انگلیسی)
 
 ## English
 
-This project ("Twelve Gates — Decentralized People's Council Governance Model", including all
-documents, simulation code, and related content in this repository) is released under the
-**Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)** license.
+Research documents, prose, documentation, and other non-code written content
+in this repository are released under the **Creative Commons Attribution-ShareAlike
+4.0 International (CC BY-SA 4.0)** license. Software/code, including simulation
+scripts and executable portions of web files, is covered by the **MIT License**
+in `LICENSE`. An individual file with its own explicit license notice retains
+that notice. This clarification does not erase or retroactively revoke license
+notices in earlier revisions.
 
 **Author and independent researcher: Reza Nirouyar (RAHTALĒN)**
 **Project start date: July 2026**

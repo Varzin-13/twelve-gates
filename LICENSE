@@ -22,9 +22,10 @@ SOFTWARE.
 
 ---
 
-Note on scope: this license covers the code in this repository (simulation
-scripts, index.html). The written research document (design doc + audit
-notes) is offered under the same permissive terms — reuse and remixing with
-attribution is welcomed and encouraged. If you'd prefer a license that
-requires attribution more explicitly for the written content specifically
-(e.g. CC-BY-4.0), that's a reasonable alternative to switch to.
+Repository scope: this MIT grant applies to software/code in this repository,
+including simulation scripts and executable code portions of web files. It
+does not serve as the repository-wide license for research documents, prose,
+documentation, or other non-code written content; those materials are covered
+by CC BY-SA 4.0 as described in LICENSE.md. An individual file with its own
+explicit license notice retains that notice. This scope clarification does
+not erase or retroactively revoke license notices in earlier revisions.

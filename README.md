@@ -80,7 +80,7 @@ The committed [baseline configuration](simulations/results/baseline_config.json)
 
 No real-world parameter calibration, institutional pilot, legal adoption, or predictive accuracy is established by this repository. The model includes placeholders; simulation behavior may change materially with parameter choices. The written record preserves negative and corrective findings and open phases in [CHANGELOG.md](CHANGELOG.md). Claims of external audit completion, implementation readiness, or real-world success require evidence beyond runnable code and internal results.
 
-Licensing scope is **unreconciled**: [LICENSE](LICENSE) states MIT terms for code and written research material, while [LICENSE.md](LICENSE.md) states CC BY-SA 4.0 for documents, code, and related content. Neither file is silently selected as the repository-wide rule here.
+Licensing is split by content: software/code is under the [MIT License](LICENSE), while research documents, prose, documentation, and other non-code written content are under [CC BY-SA 4.0](LICENSE.md). An individual file's explicit license notice remains applicable to that file; this clarification does not erase historical notices or retroactively revoke earlier grants.
 
 ## Contribute and critique | مشارکت و نقد
 
