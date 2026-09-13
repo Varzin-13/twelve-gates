@@ -16,6 +16,7 @@ sensitivity_analysis.py
 """
 import numpy as np
 import json, time
+from pathlib import Path
 from twelve_gates_model import TwelveGatesModel, PreconditionError
 from run_baseline import BASELINE_CFG, make_gate_cfg, DOMAINS
 from run_stress import StressDriver
@@ -42,7 +43,9 @@ def run_batch(cfg, n_runs=N_RUNS, seed=MASTER_SEED):
 report = {}
 
 def save():
-    with open("/home/claude/sensitivity_results.json", "w", encoding="utf-8") as f:
+    output_dir = Path(__file__).resolve().parent / "results"
+    output_dir.mkdir(parents=True, exist_ok=True)
+    with (output_dir / "sensitivity_results.json").open("w", encoding="utf-8") as f:
         json.dump(report, f, ensure_ascii=False, indent=2)
 
 # ---------- A) theta_pair ----------
