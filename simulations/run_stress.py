@@ -8,6 +8,7 @@ claim_label همچنان: hypothesis — این فقط تست عملکردی ک�
 """
 import numpy as np
 import json, time
+from pathlib import Path
 from twelve_gates_model import TwelveGatesModel, PreconditionError, ExternalScenarioDriver
 from run_baseline import BASELINE_CFG
 
@@ -50,6 +51,8 @@ if __name__ == "__main__":
            "legitimacy_internal_mean": float(mean_leg),
            "capture_pressure_mean": float(mean_capture_pressure),
            "coalition_mean_duration": float(mean_coal_dur)}
-    with open("/home/claude/mesa_stress_results.json", "w", encoding="utf-8") as f:
+    output_dir = Path(__file__).resolve().parent / "results"
+    output_dir.mkdir(parents=True, exist_ok=True)
+    with (output_dir / "mesa_stress_results.json").open("w", encoding="utf-8") as f:
         json.dump(out, f, ensure_ascii=False, indent=2)
     print("\nذخیره شد: mesa_stress_results.json")
