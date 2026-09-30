@@ -9,6 +9,10 @@ import json, sys
 from twelve_gates_model import TwelveGatesModel, PreconditionError, N_GATES, ROTATION_STEP, OBSERVER_OFFSET
 from run_baseline import BASELINE_CFG
 from run_model import normalize_config, validate_config
+from run_stress import StressDriver
+from audit_schedule import (
+    cycle_with_offset, offset_supercycle, coverage_stats, all_affine_permutations
+)
 
 PASS, FAIL = [], []
 
@@ -85,6 +89,54 @@ def test_config_validation_accepts_valid():
     errors = validate_config(json.loads(json.dumps(BASELINE_CFG)))
     check("validate_config نباید روی baseline_v1 معتبر خطا بدهد", len(errors) == 0)
 
+def test_emergency_extension_validation():
+    missing = json.loads(json.dumps(BASELINE_CFG))
+    missing.pop("emergency_extension")
+    check("validate_config: نبود emergency_extension باید صریحاً رد شود",
+          any("emergency_extension" in e for e in validate_config(missing)))
+
+    bad_p = json.loads(json.dumps(BASELINE_CFG))
+    bad_p["emergency_extension"]["support_probability"] = 1.2
+    check("validate_config: support_probability خارج از [0,1] باید رد شود",
+          len(validate_config(bad_p)) > 0)
+
+    bad_f = json.loads(json.dumps(BASELINE_CFG))
+    bad_f["emergency_extension"]["required_fraction"] = 0
+    check("validate_config: required_fraction باید در (0,1] باشد",
+          len(validate_config(bad_f)) > 0)
+
+def test_stress_timing_gate():
+    driver = StressDriver([])
+    driver.apply(51)
+    check("stress: قبل از tick=52 نباید شوک اعمال شود",
+          driver.current_shock_for(0) == {})
+    driver.apply(52)
+    shock = driver.current_shock_for(0)
+    check("stress: در tick=52 باید شوک خوشه‌ی مادی فعال شود",
+          shock.get("crisis_delta") == 0.02)
+    check("stress: گیت خارج از خوشه حتی بعد از tick=52 شوک نگیرد",
+          driver.current_shock_for(1) == {})
+
+def test_budget_share_conservation():
+    model = TwelveGatesModel(BASELINE_CFG, seed=3)
+    model.gates[0].resource_share += 0.10
+    model._renormalize_resource_shares()
+    total = sum(g.resource_share for g in model.gates)
+    check("resource_share: نرمال‌سازی باید مجموع سهم‌ها را دقیقاً به ۱ برگرداند",
+          abs(total - 1.0) < 1e-12)
+
+def test_audit_schedule_combinatorics():
+    fixed = coverage_stats(cycle_with_offset(6))
+    complete = coverage_stats(offset_supercycle())
+    check("ممیزی +6: فقط ۱۲ جفت مرتب یکتا در یک چرخه دارد",
+          fixed["unique_ordered_pairs"] == 12)
+    check("ابرچرخه offsets=1..11: هر ۱۳۲ جفت غیرخودی را دقیقاً پوشش می‌دهد",
+          complete["unique_ordered_pairs"] == 12 * 11)
+    check("ابرچرخه offsets=1..11: خودممیزی ندارد",
+          complete["self_audits"] == 0)
+    check("Aff(Z12): دقیقاً ۴۸ جایگشت affine دارد",
+          len(all_affine_permutations()) == 48)
+
 if __name__ == "__main__":
     test_rotation_formula()
     test_precondition_refusal()
@@ -94,6 +146,10 @@ if __name__ == "__main__":
     test_baseline_resource_share()
     test_config_validation_catches_errors()
     test_config_validation_accepts_valid()
+    test_emergency_extension_validation()
+    test_stress_timing_gate()
+    test_budget_share_conservation()
+    test_audit_schedule_combinatorics()
 
     print(f"\n{'='*50}\n{len(PASS)} موفق، {len(FAIL)} ناموفق از {len(PASS)+len(FAIL)} تست")
     if FAIL:
