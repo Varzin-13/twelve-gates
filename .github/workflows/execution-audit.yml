@@ -18,6 +18,15 @@ jobs:
         run: python -m pip install --disable-pip-version-check numpy
       - name: Compile Python sources
         run: python -m compileall -q simulations formal
+      - name: Scenario 1 v2 analytical smoke
+        working-directory: simulations
+        run: python scenario1_coalition_capture_v2.py
+      - name: Scenario 2 v2 conditional smoke
+        working-directory: simulations
+        run: python scenario2_emergency_persistence_v2.py
+      - name: Scenario 3 v2 analytical smoke
+        working-directory: simulations
+        run: python scenario3_redundancy_analytic_v2.py
       - name: Scenario 4 conditional-sensitivity smoke
         working-directory: simulations
         run: python scenario4_guardian_model_deadline.py
