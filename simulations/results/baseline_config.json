@@ -701,7 +701,8 @@
   },
   "budget": {
     "annual_delta_cap": 0.15,
-    "reallocation_rule": "qualified_majority"
+    "reallocation_rule": "qualified_majority",
+    "reallocation_required_fraction": 0.6666666666666666
   },
   "mirror13": {
     "enabled": true,
