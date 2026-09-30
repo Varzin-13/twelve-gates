@@ -7,7 +7,7 @@ data = json.loads(path.read_text(encoding="utf-8"))
 
 assert data["schema"] == "twelve-gates/calibration-registry/v1"
 params = data["parameters"]
-assert len(params) == 19
+assert len(params) == 20
 ids = [p["id"] for p in params]
 assert len(ids) == len(set(ids))
 assert all(p["label"] in {"DOCUMENT","DESIGN","EMPIRICAL","ARBITRARY"} for p in params)
