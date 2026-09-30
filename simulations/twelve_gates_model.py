@@ -56,7 +56,9 @@ class Proposal:
 class Coalition:
     coalition_id: int; members: frozenset; formed_tick: int
     dissolved_tick: "int|None" = None
+    active_duration_ticks: int = 0
     passed_decisions_streak: int = 0
+    last_decision_tick: "int|None" = None
     covert_exchange_exposed: bool = False
 
 
@@ -159,9 +161,12 @@ class GateAgent:
                 continue
             support = self.rng.random() < (0.4 + 0.4 * self.trust.get(prop.proposer_id, 0.5))
             prop.votes[self.uid] = support
-            dissent = (not support) and self.rng.random() > self.audit_exposure  # اثر خاموش‌کننده ۳.۳
-            if not support and self.rng.random() < (1 - self.model.cfg["trust_dynamics"]["dissent_chilling_beta"] * self.audit_exposure):
-                self.model.trust_ledger.record_dissent(self.model.tick, self.uid, id(prop))
+            if not support:
+                dissent_p = 1 - (
+                    self.model.cfg["trust_dynamics"]["dissent_chilling_beta"] * self.audit_exposure
+                )
+                if self.rng.random() < dissent_p:
+                    self.model.trust_ledger.record_dissent(self.model.tick, self.uid, id(prop))
 
     def implementation_stage(self):
         my_props = [p for p in self.model.active_proposals if self.uid in p.resource_delta]
@@ -169,9 +174,15 @@ class GateAgent:
             if p.status == ProposalStatus.DRAFT and len(p.votes) >= N_GATES:
                 yes = sum(1 for v in p.votes.values() if v)
                 p.status = ProposalStatus.VOTED_PASS if yes >= 7 else ProposalStatus.VOTED_FAIL
+                if p.status == ProposalStatus.VOTED_FAIL:
+                    self.model.coalition_registry.record_proposal_outcome(
+                        p, passed=False, tick=self.model.tick)
             if p.status == ProposalStatus.VOTED_PASS:
-                self.resource_share = float(np.clip(self.resource_share + p.resource_delta.get(self.uid, 0), 0.02, 0.3))
+                self.resource_share = float(np.clip(
+                    self.resource_share + p.resource_delta.get(self.uid, 0), 0.02, 0.3))
                 p.status = ProposalStatus.IMPLEMENTED
+                self.model.coalition_registry.record_proposal_outcome(
+                    p, passed=True, tick=self.model.tick)
                 self.decision_backlog = max(0, self.decision_backlog - 1)
 
     def audit_and_record_stage(self):
@@ -297,38 +308,98 @@ class TrustLedger:
 
 class CoalitionRegistry:
     def __init__(self, cfg):
-        self.cfg = cfg; self.pair_scores = {}; self.active_coalitions = {}; self._next_id = 0
+        self.cfg = cfg
+        # pair_scores keeps BOTH directional assessments. The old implementation
+        # used a frozenset key with one scalar, so whichever gate ran second
+        # silently overwrote the other direction.
+        self.pair_scores = {}
+        self.active_coalitions = {}
+        self._next_id = 0
         self._history = []
 
-    def propose_pair(self, i, j, score):
-        self.pair_scores[frozenset((i, j))] = score
+    def begin_tick(self):
+        self.pair_scores = {}
 
-    def form_coalitions(self, tick):
+    def propose_pair(self, i, j, score):
+        key = frozenset((i, j))
+        directional = self.pair_scores.setdefault(key, {})
+        directional[(i, j)] = float(score)
+
+    def bilateral_pair_score(self, pair):
+        directional = self.pair_scores.get(pair, {})
+        if len(directional) < 2:
+            return None
+        return float(np.mean(list(directional.values())))
+
+    def coalition_by_id(self, coalition_id):
+        if coalition_id is None:
+            return None
+        for coal in self.active_coalitions.values():
+            if coal.coalition_id == coalition_id:
+                return coal
+        return None
+
+    def form_coalitions(self, tick, gates_by_id):
         theta = self.cfg["theta_pair"]
-        strong_pairs = [k for k, v in self.pair_scores.items() if v > theta]
-        # ادغام ساده‌ی جفت‌های هم‌پوشان به ائتلاف‌های بزرگ‌تر (union-find ساده)
+        strong_pairs = []
+        for pair in self.pair_scores:
+            score = self.bilateral_pair_score(pair)
+            if score is not None and score > theta:
+                strong_pairs.append(pair)
+
         parent = {}
         def find(x):
             parent.setdefault(x, x)
             while parent[x] != x:
+                parent[x] = parent[parent[x]]
                 x = parent[x]
             return x
         def union(a, b):
             ra, rb = find(a), find(b)
-            if ra != rb: parent[ra] = rb
+            if ra != rb:
+                parent[ra] = rb
+
         for pair in strong_pairs:
             a, b = tuple(pair)
             union(a, b)
+
         groups = {}
         for node in parent:
             groups.setdefault(find(node), set()).add(node)
+
+        occupied = {
+            member
+            for coal in self.active_coalitions.values()
+            for member in coal.members
+        }
+
         for members in groups.values():
             if len(members) < 2:
                 continue
             key = frozenset(members)
-            if key not in self.active_coalitions:
-                self.active_coalitions[key] = Coalition(self._next_id, key, tick)
-                self._next_id += 1
+            if key in self.active_coalitions:
+                continue
+            # GateAgent has a singular coalition_id. Until the model explicitly
+            # supports multi-membership, prevent silent overlapping coalitions.
+            if any(member in occupied for member in members):
+                continue
+            coal = Coalition(self._next_id, key, tick)
+            self.active_coalitions[key] = coal
+            for member in members:
+                gates_by_id[member].coalition_id = coal.coalition_id
+            occupied.update(members)
+            self._next_id += 1
+
+    def record_proposal_outcome(self, proposal, passed, tick):
+        coal = self.coalition_by_id(proposal.coalition_id)
+        if coal is None:
+            return
+        if passed:
+            coal.passed_decisions_streak += 1
+            coal.last_decision_tick = tick
+        else:
+            coal.passed_decisions_streak = 0
+            coal.last_decision_tick = tick
 
     def dissolve_check(self, tick, gates_by_id):
         floor = self.cfg["trust_dissolve_floor"]
@@ -340,14 +411,20 @@ class CoalitionRegistry:
                 coal.dissolved_tick = tick
                 to_drop.append(key)
             else:
-                coal.passed_decisions_streak += 1
+                coal.active_duration_ticks += 1
         for k in to_drop:
-            self._history.append(self.active_coalitions.pop(k))
+            coal = self.active_coalitions.pop(k)
+            for member in coal.members:
+                if gates_by_id[member].coalition_id == coal.coalition_id:
+                    gates_by_id[member].coalition_id = None
+            self._history.append(coal)
 
     def cartel_active(self, gates_by_id):
         cart = self.cfg["cartel"]
         for coal in self.active_coalitions.values():
-            if coal.passed_decisions_streak < cart["K_min_duration_ticks"]:
+            if coal.active_duration_ticks < cart["K_min_duration_ticks"]:
+                continue
+            if coal.passed_decisions_streak < cart["M_consecutive_decisions"]:
                 continue
             power_sum = sum(gates_by_id[i].exec_power for i in coal.members)
             has_cluster = any(i in cart["material_cluster"] for i in coal.members)
@@ -472,6 +549,7 @@ class TwelveGatesModel:
 
     def step(self):
         self.external.apply(self.tick)
+        self.coalition_registry.begin_tick()
         self.pending_critical_reports = []
         self.active_proposals = [p for p in self.active_proposals if p.status == ProposalStatus.DRAFT]
         for stage in STAGES:
@@ -489,7 +567,7 @@ class TwelveGatesModel:
         self.process_emergency()
         for rep in self.pending_critical_reports:
             rep.status = ReportStatus.VERIFIED if len(rep.verifiers) >= 2 else ReportStatus.CONTESTED
-        self.coalition_registry.form_coalitions(self.tick)
+        self.coalition_registry.form_coalitions(self.tick, self.gates_by_id)
         self.coalition_registry.dissolve_check(self.tick, self.gates_by_id)
         self.tick += 1
 
