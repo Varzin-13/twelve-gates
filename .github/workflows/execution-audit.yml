@@ -37,5 +37,7 @@ jobs:
         run: python simulations/validate_calibration_registry.py
       - name: Parameter usage registry
         run: python simulations/validate_parameter_usage_registry.py
+      - name: Frozen artifact manifest
+        run: python simulations/validate_frozen_artifacts.py
       - name: Finite-state invariant checks
         run: python formal/abstract_model_check.py
