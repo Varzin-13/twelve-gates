@@ -851,6 +851,12 @@ class TwelveGatesModel:
                     / (self.proposals_voted_pass + self.proposals_voted_fail)
                 )
             ),
+            "reports_total": int(len(self.trust_ledger.reports)),
+            "critical_reports_total": int(sum(
+                1 for rep in self.trust_ledger.reports
+                if rep.kind == ReportKind.CRITICAL
+            )),
+            "dissent_events_total": int(len(self.trust_ledger.dissents)),
             "mean_legitimacy_end": float(np.mean([g.legitimacy_internal for g in self.gates])),
             "mean_capture_pressure_end": float(np.mean([g.capture_pressure for g in self.gates])),
             "bureaucracy_politicization_end": self.bureaucracy.politicization_risk,
