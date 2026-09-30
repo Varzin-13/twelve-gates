@@ -98,6 +98,16 @@ The affine family is:
 
 There are 48 affine permutations.
 
+Additional finite-family audit results:
+- 36 affine auditor schedules have no self-audit;
+- 24 of those 36 also have no reciprocal dyad within a single cycle;
+- the documented fixed `+6` rule has six reciprocal dyads in one cycle;
+- exhaustive exact-cover search over the collision-free affine family finds
+  minimum total reciprocal dyads = 6 for an 11-cycle exact cover of all 132
+  non-self ordered pairs.
+
+These are search results over a finite design family, not normative criteria.
+
 Candidate schedules can be compared on explicit software objectives such as:
 - self-audit count;
 - repeated-pair count;
