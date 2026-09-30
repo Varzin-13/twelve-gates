@@ -1,0 +1,48 @@
+{
+  "schema": "twelve-gates/frozen-artifact-manifest/v1",
+  "rule": "Any content change to a frozen artifact must update this manifest explicitly in the same reviewed change.",
+  "artifacts": [
+    {
+      "path": "simulations/results/stress_v032_execution_audit_results.json",
+      "git_blob_sha": "56ab9e82a244c1ee8eb7c668fbeab5e85de3e160",
+      "class": "PRE_BUDGET_FIX",
+      "claim_label": "hypothesis"
+    },
+    {
+      "path": "simulations/results/sensitivity_v032_lhs_results.json",
+      "git_blob_sha": "95fd0b903dacf692650840363fef760c2de7e274",
+      "class": "PRE_BUDGET_FIX",
+      "claim_label": "exploratory_hypothesis"
+    },
+    {
+      "path": "simulations/results/phase_map_v032_results.json",
+      "git_blob_sha": "7d69570f6dc0e262c3a414c92748fcda12034cef",
+      "class": "PRE_BUDGET_FIX",
+      "claim_label": "exploratory_hypothesis"
+    },
+    {
+      "path": "simulations/results/structural_robustness_v032_results.json",
+      "git_blob_sha": "c61eaa65a51ff9228719d7a977eb3ea443ae6cb5",
+      "class": "PRE_BUDGET_FIX_RESTORED",
+      "claim_label": "exploratory_structural_uncertainty"
+    },
+    {
+      "path": "simulations/results/stress_v032_post_budget_majority_results.json",
+      "git_blob_sha": "0385e4ef43c2fa416f407bb405d0274b5b2b8af8",
+      "class": "POST_BUDGET_FIX",
+      "claim_label": "software_effect_hypothesis"
+    },
+    {
+      "path": "simulations/results/structural_robustness_v032_post_budget_results.json",
+      "git_blob_sha": "468b84f82c4d0d00d0b99525d5a852f720131e6a",
+      "class": "POST_BUDGET_FIX",
+      "claim_label": "exploratory_structural_uncertainty"
+    },
+    {
+      "path": "simulations/results/sensitivity_v032_lhs_post_budget_results.json",
+      "git_blob_sha": "d964aae7246a18f8a2c625801a400832dd9eb4ca",
+      "class": "POST_BUDGET_FIX",
+      "claim_label": "exploratory_hypothesis"
+    }
+  ]
+}
