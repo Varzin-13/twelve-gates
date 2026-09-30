@@ -75,7 +75,11 @@ BASELINE_CFG = {
         "cartel": {"K_min_duration_ticks": 12, "theta_power_sum": 1.8,
                     "M_consecutive_decisions": 5, "material_cluster": [2, 4, 0]},
     },
-    "budget": {"annual_delta_cap": 0.15, "reallocation_rule": "qualified_majority"},
+    "budget": {
+        "annual_delta_cap": 0.15,
+        "reallocation_rule": "qualified_majority",
+        "reallocation_required_fraction": 2/3,
+    },
     "mirror13": {"enabled": True, "coordination_gain": 0.3},
     "gate_zero": {"admission_threshold": 0.6, "measurement_noise_sd": 0.1,
                    "entropy_manipulability": 0.3, "appeal_board": "random_placeholder"},
