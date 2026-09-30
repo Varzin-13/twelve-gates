@@ -196,7 +196,10 @@ class GateAgent:
                     if yes >= required_yes
                     else ProposalStatus.VOTED_FAIL
                 )
-                if p.status == ProposalStatus.VOTED_FAIL:
+                if p.status == ProposalStatus.VOTED_PASS:
+                    self.model.proposals_voted_pass += 1
+                else:
+                    self.model.proposals_voted_fail += 1
                     self.model.coalition_registry.record_proposal_outcome(
                         p, passed=False, tick=self.model.tick)
             if p.status == ProposalStatus.VOTED_PASS:
@@ -650,6 +653,8 @@ class TwelveGatesModel:
         self.emergency_extension_count = 0
         self.active_proposals = []
         self.pending_critical_reports = []
+        self.proposals_voted_pass = 0
+        self.proposals_voted_fail = 0
         self._build_agents()
 
     def _validate_preconditions(self):
@@ -775,6 +780,18 @@ class TwelveGatesModel:
             "coalitions_total_observed": survival["n_total"],
             "coalitions_dissolved_n": survival["n_dissolved"],
             "coalitions_right_censored_n": survival["n_right_censored"],
+            "budget_required_yes_votes": int(np.ceil(
+                float(self.cfg["budget"]["reallocation_required_fraction"]) * N_GATES
+            )),
+            "proposals_voted_pass": int(self.proposals_voted_pass),
+            "proposals_voted_fail": int(self.proposals_voted_fail),
+            "proposal_pass_fraction": (
+                None if (self.proposals_voted_pass + self.proposals_voted_fail) == 0
+                else float(
+                    self.proposals_voted_pass
+                    / (self.proposals_voted_pass + self.proposals_voted_fail)
+                )
+            ),
             "mean_legitimacy_end": float(np.mean([g.legitimacy_internal for g in self.gates])),
             "mean_capture_pressure_end": float(np.mean([g.capture_pressure for g in self.gates])),
             "bureaucracy_politicization_end": self.bureaucracy.politicization_risk,
