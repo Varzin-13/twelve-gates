@@ -6,7 +6,10 @@ test_model.py — مجموعه تست خودکار
 """
 import numpy as np
 import json, sys
-from twelve_gates_model import TwelveGatesModel, PreconditionError, N_GATES, ROTATION_STEP, OBSERVER_OFFSET
+from twelve_gates_model import (
+    TwelveGatesModel, PreconditionError, N_GATES, ROTATION_STEP, OBSERVER_OFFSET,
+    CoalitionRegistry, Coalition, Proposal
+)
 from run_baseline import BASELINE_CFG
 from run_model import normalize_config, validate_config
 from run_stress import StressDriver
@@ -137,6 +140,85 @@ def test_audit_schedule_combinatorics():
     check("Aff(Z12): دقیقاً ۴۸ جایگشت affine دارد",
           len(all_affine_permutations()) == 48)
 
+def test_coalition_pair_order_invariance():
+    cfg = json.loads(json.dumps(BASELINE_CFG["coalitions"]))
+    r1 = CoalitionRegistry(cfg)
+    r1.propose_pair(0, 1, 0.20)
+    r1.propose_pair(1, 0, 0.80)
+    score1 = r1.bilateral_pair_score(frozenset((0, 1)))
+
+    r2 = CoalitionRegistry(cfg)
+    r2.propose_pair(1, 0, 0.80)
+    r2.propose_pair(0, 1, 0.20)
+    score2 = r2.bilateral_pair_score(frozenset((0, 1)))
+
+    check("coalition score: ترتیب اجرای دو جهت نباید نتیجه را تغییر دهد",
+          abs(score1 - 0.50) < 1e-12 and abs(score2 - 0.50) < 1e-12)
+    r3 = CoalitionRegistry(cfg)
+    r3.propose_pair(0, 1, 0.90)
+    check("coalition score: یک ارزیابی یک‌طرفه برای تشکیل جفت کافی نیست",
+          r3.bilateral_pair_score(frozenset((0, 1))) is None)
+
+def test_cartel_requires_decisions_not_age_only():
+    model = TwelveGatesModel(BASELINE_CFG, seed=11)
+    reg = model.coalition_registry
+    members = frozenset((0, 2, 4))
+    coal = Coalition(0, members, formed_tick=0)
+    reg.active_coalitions[members] = coal
+    for member in members:
+        model.gates_by_id[member].coalition_id = 0
+
+    for tick in range(20):
+        reg.dissolve_check(tick, model.gates_by_id)
+
+    check("cartel: گذشت زمان به‌تنهایی نباید passed_decisions_streak بسازد",
+          coal.active_duration_ticks == 20 and coal.passed_decisions_streak == 0)
+    check("cartel: ائتلاف قدرتمندِ قدیمی بدون تصمیم‌های تصویب‌شده نباید active شود",
+          not reg.cartel_active(model.gates_by_id))
+
+    for i in range(BASELINE_CFG["coalitions"]["cartel"]["M_consecutive_decisions"]):
+        p = Proposal(tick=i, proposer_id=0, coalition_id=0,
+                     domain_targets=[0], resource_delta={0: 0.0})
+        reg.record_proposal_outcome(p, passed=True, tick=i)
+
+    check("cartel: پس از مدت کافی و تعداد تصمیم‌های لازم، شرط تصمیم می‌تواند برقرار شود",
+          reg.cartel_active(model.gates_by_id))
+
+def test_failed_coalition_decision_resets_streak():
+    model = TwelveGatesModel(BASELINE_CFG, seed=12)
+    reg = model.coalition_registry
+    members = frozenset((0, 2, 4))
+    coal = Coalition(0, members, formed_tick=0, active_duration_ticks=20,
+                     passed_decisions_streak=4)
+    reg.active_coalitions[members] = coal
+    p = Proposal(tick=20, proposer_id=0, coalition_id=0,
+                 domain_targets=[0], resource_delta={0: 0.0})
+    reg.record_proposal_outcome(p, passed=False, tick=20)
+    check("coalition streak: شکست یک تصمیم باید streak متوالی را صفر کند",
+          coal.passed_decisions_streak == 0 and coal.last_decision_tick == 20)
+
+def test_dissent_uses_single_decision_draw():
+    class FixedRng:
+        def __init__(self, values):
+            self.values = iter(values)
+            self.calls = 0
+        def random(self):
+            self.calls += 1
+            return next(self.values)
+
+    model = TwelveGatesModel(BASELINE_CFG, seed=13)
+    gate = model.gates_by_id[0]
+    prop = Proposal(tick=0, proposer_id=1, coalition_id=None,
+                    domain_targets=[1], resource_delta={1: 0.0})
+    model.active_proposals = [prop]
+    fake = FixedRng([0.99, 0.0])  # vote no; then record dissent
+    gate.rng = fake
+    before = len(model.trust_ledger.dissents)
+    gate.voting_stage()
+    after = len(model.trust_ledger.dissents)
+    check("dissent: رأی منفی باید فقط یک draw جدا برای ثبت dissent مصرف کند",
+          fake.calls == 2 and after == before + 1)
+
 if __name__ == "__main__":
     test_rotation_formula()
     test_precondition_refusal()
@@ -150,6 +232,10 @@ if __name__ == "__main__":
     test_stress_timing_gate()
     test_budget_share_conservation()
     test_audit_schedule_combinatorics()
+    test_coalition_pair_order_invariance()
+    test_cartel_requires_decisions_not_age_only()
+    test_failed_coalition_decision_resets_streak()
+    test_dissent_uses_single_decision_draw()
 
     print(f"\n{'='*50}\n{len(PASS)} موفق، {len(FAIL)} ناموفق از {len(PASS)+len(FAIL)} تست")
     if FAIL:
