@@ -3,9 +3,9 @@
   "claim_label": "exploratory_refined_phase_map",
   "not_calibration": true,
   "not_empirical_validation": true,
-  "git_head": "5e0b450a3c050528016d86983d8e2ccc8deba3d9",
+  "git_head": "e2c8a92faf61967fc8e8d32a7ed868f66b914c16",
   "script_sha256": "74aa021cd917f79fa6eba4059c77bcd51285d4197ad9c619e05d3bbf86cc3bc5",
-  "model_sha256": "0ae291e9d986664d4916669d23bc5415e7f889b5883e463650a4658696bb60ab",
+  "model_sha256": "a720f0e3db4f59b3da62938f0ba607405cfe9502c25dabf54391f9b3a7522bfe",
   "baseline_script_sha256": "3562a544a8cf4363f0340bf70ba799ce765afdb545b7fb54ae4e1e5b72bb8694",
   "theta_values": [
     0.56,
@@ -921,6 +921,6 @@
     "0.79": 0,
     "0.8": 0
   },
-  "elapsed_seconds": 251.746,
+  "elapsed_seconds": 482.811,
   "interpretation_boundary": "Refined finite behavior map around coded thresholds under arbitrary assumptions. Cell frequencies are not real-world probabilities."
 }
