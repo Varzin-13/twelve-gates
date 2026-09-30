@@ -19,6 +19,8 @@
 - حذف شد: عدد ثابت 0.95 برای `TrustLedger.integrity()`؛ تا زمان پیاده‌سازی اندازه‌گیری واقعی، متد صریحاً NotImplemented است.
 - شفاف شد: `public_legitimacy_signal` خروجی نظرسنجی نیست و به‌عنوان internal/civil-society proxy برچسب می‌خورد.
 - اصلاح شد: قانون بودجه‌ی ۲/۳ قبلاً به‌اشتباه با `yes >= 7` اجرا می‌شد؛ اکنون ۷/۱۲ رد و ۸/۱۲ قبول می‌شود و threshold از config خوانده می‌شود.
+- بازاجرای paired پس از اصلاح ۲/۳: با همان ۳۰۰ seed، نرخ مدل‌شده‌ی capture از 0.973333 به 0.976667 رفت؛ ۴ run از false→true و ۳ run از true→false تغییر کردند. این تغییر کوچک اما غیرتک‌جهتی نشان می‌دهد اثر باگ از مسیر stochastic/coalition dynamics عبور می‌کند.
+- در ۲۹۳ run capture‌شده‌ی corrected stress، اولین trigger در همه‌ی موارد ائتلاف [0,2,4] بود؛ این نتیجه‌ی مدل، توضیح مکانیکی threshold قدرت triad را تقویت می‌کند ولی ادعای جهان واقعی نیست.
 - اصلاح شد: lifetime ائتلاف‌ها اکنون right-censoring را صریح نگه می‌دارد؛ فیلد legacy حفظ شده و active age، تعداد censored و Kaplan-Meier RMST اضافه شده است.
 - افزوده شد: diagnostic اولین trigger معیار cartel شامل tick، اعضا، power sum، duration و decision streak بدون تغییر dynamics.
 - افزوده شد: structural choice برای bilateral pair aggregation؛ baseline همچنان `mean` است و `minimum/maximum` فقط برای robustness analysis استفاده می‌شوند.
