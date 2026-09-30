@@ -1,0 +1,35 @@
+name: stress-v032-once
+
+on:
+  push:
+    branches:
+      - research/v0.32-execution-audit
+    paths:
+      - simulations/run_stress_v032_audit.py
+
+permissions:
+  contents: write
+
+jobs:
+  rerun:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: research/v0.32-execution-audit
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install numerical dependency
+        run: python -m pip install --disable-pip-version-check numpy
+      - name: Run 300x520 stress audit
+        working-directory: simulations
+        run: python run_stress_v032_audit.py
+      - name: Commit provenance-complete results to audit branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add simulations/results/stress_v032_execution_audit_results.json docs/STRESS_V032_EXECUTION_AUDIT_2026-09-30.md
+          git diff --cached --quiet && exit 0
+          git commit -m "results: record v0.32 stress execution audit"
+          git push origin HEAD:research/v0.32-execution-audit
