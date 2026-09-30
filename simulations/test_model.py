@@ -151,6 +151,28 @@ def test_audit_schedule_combinatorics():
           cover["minimum_total_reciprocal_dyads"] == 6
           and len(cover["solution"]) == 11)
 
+def test_coalition_pair_aggregation_structural_modes():
+    base_cfg = json.loads(json.dumps(BASELINE_CFG["coalitions"]))
+    expected = {
+        "minimum": 0.20,
+        "mean": 0.50,
+        "maximum": 0.80,
+    }
+    for mode, target in expected.items():
+        cfg = json.loads(json.dumps(base_cfg))
+        cfg["pair_aggregation"] = mode
+        reg = CoalitionRegistry(cfg)
+        reg.propose_pair(0, 1, 0.20)
+        reg.propose_pair(1, 0, 0.80)
+        score = reg.bilateral_pair_score(frozenset((0, 1)))
+        check(f"pair aggregation {mode}: structural rule باید مقدار مشخص خود را بدهد",
+              abs(score - target) < 1e-12)
+
+    invalid = json.loads(json.dumps(BASELINE_CFG))
+    invalid["coalitions"]["pair_aggregation"] = "invented"
+    check("pair aggregation: mode نامعتبر باید در config validation رد شود",
+          any("pair_aggregation" in e for e in validate_config(invalid)))
+
 def test_coalition_pair_order_invariance():
     cfg = json.loads(json.dumps(BASELINE_CFG["coalitions"]))
     r1 = CoalitionRegistry(cfg)
@@ -343,6 +365,7 @@ if __name__ == "__main__":
     test_stress_timing_gate()
     test_budget_share_conservation()
     test_audit_schedule_combinatorics()
+    test_coalition_pair_aggregation_structural_modes()
     test_coalition_pair_order_invariance()
     test_cartel_requires_decisions_not_age_only()
     test_failed_coalition_decision_resets_streak()
