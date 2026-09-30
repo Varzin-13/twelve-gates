@@ -47,6 +47,8 @@ PARAM_PROVENANCE = {
         "label": "ARBITRARY", "source": "سند مدت واقعی دوره‌ی چرخش را مشخص نکرده — dependency حل‌نشده"},
     "coordination_capacity precondition threshold": {
         "label": "DESIGN", "source": "بند ۱۰.۶.۷ — اصل مفهومی مستند، آستانه‌ی عددی‌اش دلبخواه"},
+    "active behavioral constants bundle": {
+        "label": "ARBITRARY", "source": "۱۷ مقدار رفتاری که قبلاً داخل فرمول‌های کد hard-coded بودند؛ اکنون در model_assumptions صریح و قابل حساسیت‌سنجی‌اند"},
 }
 
 def print_provenance_table():
