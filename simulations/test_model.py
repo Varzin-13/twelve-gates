@@ -8,7 +8,8 @@ import numpy as np
 import json, sys
 from twelve_gates_model import (
     TwelveGatesModel, PreconditionError, N_GATES, ROTATION_STEP, OBSERVER_OFFSET,
-    CoalitionRegistry, Coalition, Proposal, ExternalScenarioDriver
+    CoalitionRegistry, Coalition, Proposal, ExternalScenarioDriver,
+    strictly_above_numeric
 )
 from run_baseline import BASELINE_CFG
 from run_model import normalize_config, validate_config
@@ -503,6 +504,41 @@ def test_run_cartel_snapshot_fields_present():
           "cartel_first_detected_tick" in out
           and "cartel_first_snapshot" in out)
 
+def test_numeric_strict_threshold_guard():
+    x = 0.0
+    for _ in range(25):
+        x += 0.02
+    check("numeric threshold: repeated 25×0.02 near 0.5 must remain equality",
+          x > 0.5 and not strictly_above_numeric(x, 0.5))
+
+    x += 0.02
+    check("numeric threshold: next 0.02 step must genuinely cross 0.5",
+          strictly_above_numeric(x, 0.5))
+
+    y = 0.0
+    for _ in range(30):
+        y += 0.02
+    check("numeric threshold: repeated 30×0.02 near 0.6 must remain equality",
+          y > 0.6 and not strictly_above_numeric(y, 0.6))
+
+    y += 0.02
+    check("numeric threshold: next 0.02 step must genuinely cross 0.6",
+          strictly_above_numeric(y, 0.6))
+
+def test_stress_proposal_onset_respects_mathematical_threshold():
+    model = TwelveGatesModel(BASELINE_CFG, seed=91)
+    model.external = StressDriver([])
+    # Through tick 76 inclusive there are exactly 25 shock additions from tick 52.
+    for _ in range(77):
+        model.step()
+    check("stress onset: 25 shocks should not create proposals at mathematical crisis=0.5",
+          model.gates_by_id[0].crisis_load > 0.5
+          and model.proposals_voted_pass + model.proposals_voted_fail == 0)
+
+    model.step()
+    check("stress onset: the 26th shock should move crisis to 0.52 and allow proposals",
+          model.proposals_voted_pass + model.proposals_voted_fail > 0)
+
 if __name__ == "__main__":
     test_rotation_formula()
     test_precondition_refusal()
@@ -515,6 +551,8 @@ if __name__ == "__main__":
     test_config_validation_strict_probabilities_and_matrices()
     test_emergency_extension_validation()
     test_stress_timing_gate()
+    test_numeric_strict_threshold_guard()
+    test_stress_proposal_onset_respects_mathematical_threshold()
     test_budget_cap_period_and_multitarget_guard()
     test_budget_two_thirds_majority()
     test_budget_share_conservation()
