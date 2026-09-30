@@ -364,10 +364,12 @@ class CoalitionRegistry:
 class ExternalScenarioDriver:
     def __init__(self, timeline):
         self.timeline = {ev["tick"]: ev for ev in timeline}
+        self.current_tick = -1
     def current_shock_for(self, gate_id):
         return {}  # baseline: بدون شوک (طبق کانفیگ داده‌شده)
     def apply(self, tick):
-        pass
+        # Drivers must be time-aware. Subclasses may gate shocks on current_tick.
+        self.current_tick = tick
 
 
 # ---------------- مدل اصلی ----------------
@@ -397,6 +399,7 @@ class TwelveGatesModel:
         self.emergency_state = EmergencyState.INACTIVE
         self.emergency_ticks_remaining = 0
         self.emergency_total_ticks = 0
+        self.emergency_extension_count = 0
         self.active_proposals = []
         self.pending_critical_reports = []
         self._build_agents()
@@ -427,20 +430,40 @@ class TwelveGatesModel:
     def current_A(self):
         return (self.current_P() + OBSERVER_OFFSET) % N_GATES
 
+    def _renormalize_resource_shares(self):
+        """Keep resource_share a true compositional share: sum(gates)=1.
+
+        This is a software invariant, not an empirical or political claim.
+        """
+        total = float(sum(g.resource_share for g in self.gates))
+        if not np.isfinite(total) or total <= 0:
+            raise RuntimeError("resource_share invariant violated: non-positive/non-finite total")
+        for g in self.gates:
+            g.resource_share = float(g.resource_share / total)
+
     def process_emergency(self):
         requesters = [g for g in self.gates if g.crisis_load > 0.75]
         if self.emergency_state == EmergencyState.INACTIVE and requesters:
             self.emergency_state = EmergencyState.ACTIVE
             self.emergency_ticks_remaining = self.cfg["time"]["emergency_fuse_ticks"]
+            self.emergency_extension_count = 0
         elif self.emergency_state == EmergencyState.ACTIVE:
             self.emergency_ticks_remaining -= 1
             self.emergency_total_ticks += 1
             if self.emergency_ticks_remaining <= 0:
                 still_crisis = any(g.crisis_load > 0.6 for g in self.gates)
                 if still_crisis:
-                    non_involved_yes = self.rng.random() < 0.55  # سناریویی: نرخ رأی موافق تمدید
-                    court_ok = self.emergency_court.approve_extension(1, self.rng)
-                    if non_involved_yes and court_ok:
+                    ecfg = self.cfg["emergency_extension"]
+                    non_involved = [g for g in self.gates if g.crisis_load <= 0.75]
+                    support_p = float(ecfg["support_probability"])
+                    required_fraction = float(ecfg["required_fraction"])
+                    yes_count = sum(self.rng.random() < support_p for _ in non_involved)
+                    required_yes = int(np.ceil(required_fraction * len(non_involved)))
+                    vote_ok = bool(non_involved) and yes_count >= required_yes
+                    court_ok = self.emergency_court.approve_extension(
+                        self.emergency_extension_count + 1, self.rng)
+                    if vote_ok and court_ok:
+                        self.emergency_extension_count += 1
                         self.emergency_ticks_remaining = self.cfg["time"]["emergency_fuse_ticks"]
                     else:
                         self.emergency_state = EmergencyState.INACTIVE
@@ -461,6 +484,8 @@ class TwelveGatesModel:
             for ab in self.armed_blocs:
                 if hasattr(ab, stage):
                     getattr(ab, stage)()
+            if stage == "implementation_stage":
+                self._renormalize_resource_shares()
         self.process_emergency()
         for rep in self.pending_critical_reports:
             rep.status = ReportStatus.VERIFIED if len(rep.verifiers) >= 2 else ReportStatus.CONTESTED
