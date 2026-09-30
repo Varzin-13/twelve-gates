@@ -29,7 +29,6 @@ These labels describe code usage only. ACTIVE does not mean calibrated or valid.
 ### Inert in the main ABM
 Examples currently include:
 
-- `time.budget_review_period_ticks`;
 - `budget.reallocation_rule`;
 - `coalitions.theta_audit`;
 - `coalitions.crisis_divergence_max`;
@@ -47,6 +46,10 @@ These must not be described as if the current ABM tests their effects.
 
 ### Partial
 Important partial mechanisms include:
+
+- `time.budget_review_period_ticks`: now controls the denominator used to
+  translate the configured annual delta cap into a per-tick cap, but the main
+  ABM still does not implement a discrete periodic budget-review event;
 
 - `gate.external_exposure`: shocks update it, but it currently has no downstream
   causal use;
