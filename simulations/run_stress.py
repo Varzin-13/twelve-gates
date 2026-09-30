@@ -13,9 +13,11 @@ from twelve_gates_model import TwelveGatesModel, PreconditionError, ExternalScen
 from run_baseline import BASELINE_CFG
 
 class StressDriver(ExternalScenarioDriver):
-    """تزریق بحران پیوسته روی گیت‌های خوشه‌ی مادی (امنیت=2، انرژی=4، اقتصاد=0) از tick=52."""
+    """تزریق بحران پیوسته روی گیت‌های خوشه‌ی مادی از tick=52، مطابق توضیح سناریو."""
+    START_TICK = 52
+
     def current_shock_for(self, gate_id):
-        if gate_id in (0, 2, 4):
+        if self.current_tick >= self.START_TICK and gate_id in (0, 2, 4):
             return {"crisis_delta": 0.02, "exposure_delta": 0.01}
         return {}
 
