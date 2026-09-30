@@ -197,6 +197,16 @@
       "empirical_source": null,
       "mapping_method": null,
       "uncertainty": null
+    },
+    {
+      "id": "active_behavioral_constants_bundle",
+      "label": "ARBITRARY",
+      "value": "17 values under model_assumptions",
+      "source": "Previously hard-coded active-model constants; exposed in v0.32 for provenance and sensitivity analysis",
+      "empirical_accepted": false,
+      "empirical_source": null,
+      "mapping_method": null,
+      "uncertainty": null
     }
   ]
 }
