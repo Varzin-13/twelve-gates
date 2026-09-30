@@ -18,6 +18,8 @@ import subprocess
 import time
 from pathlib import Path
 
+RUN_LABEL = "refined-post-budget-phase-map"
+
 import numpy as np
 
 from run_baseline import BASELINE_CFG
