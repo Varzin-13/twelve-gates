@@ -1,9 +1,7 @@
 name: phase-map-v032-post-budget-refined-once
 
 on:
-  pull_request:
-    paths:
-      - simulations/phase_map_v032_post_budget_refined.py
+  workflow_dispatch:
 
 permissions:
   contents: write
