@@ -22,8 +22,8 @@
     },
     {
       "path": "time.budget_review_period_ticks",
-      "status": "INERT_MAIN_ABM",
-      "evidence": "Configured but no main-model transition gates on budget review period."
+      "status": "PARTIAL",
+      "evidence": "Used as the denominator for per-tick annual-delta cap; a discrete periodic review event is still not implemented."
     },
     {
       "path": "emergency_extension.support_probability",
