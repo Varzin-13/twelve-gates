@@ -42,6 +42,10 @@ BASELINE_CFG = {
     "preconditions": {"coordination_capacity": 0.6, "min_coordination_capacity": 0.3},
     "time": {"tick_days": 7, "rotation_period_ticks": 26, "budget_review_period_ticks": 52,
               "emergency_fuse_ticks": 2},
+    "emergency_extension": {
+        "support_probability": 0.55,
+        "required_fraction": 2/3,
+    },
     "gates": GATES_CFG,
     "coalitions": {
         "weights": {"w1_affinity": 0.30, "w2_trust": 0.25, "w3_complementarity": 0.25,
