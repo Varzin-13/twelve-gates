@@ -1,9 +1,7 @@
 name: phase-map-v032-post-budget-refined-once
 
 on:
-  push:
-    branches:
-      - research/v0.32-execution-audit
+  pull_request:
     paths:
       - simulations/phase_map_v032_post_budget_refined.py
 
