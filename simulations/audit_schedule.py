@@ -83,6 +83,100 @@ def collision_free_affine_auditors():
     return out
 
 
+def reciprocal_dyads(rows):
+    pairs = {(r["coordinator"], r["auditor"]) for r in rows}
+    return len({
+        frozenset((i, j))
+        for i, j in pairs
+        if (j, i) in pairs
+    })
+
+
+def collision_free_affine_catalog():
+    catalog = []
+    for a, b in collision_free_affine_auditors():
+        rows = affine_cycle(a, b)
+        catalog.append({
+            "a": a,
+            "b": b,
+            "pairs": frozenset((r["coordinator"], r["auditor"]) for r in rows),
+            "reciprocal_dyads": reciprocal_dyads(rows),
+        })
+    return catalog
+
+
+def minimum_reciprocal_exact_cover():
+    """Exhaustively search the collision-free affine family.
+
+    Finds an exact cover of all 132 non-self ordered pairs using 11 affine
+    schedules while minimizing the total number of within-cycle reciprocal
+    dyads. The result is explicitly limited to this finite affine family.
+    """
+    universe = frozenset(
+        (i, j) for i in range(N) for j in range(N) if i != j
+    )
+    catalog = collision_free_affine_catalog()
+    pair_to_candidates = {p: [] for p in universe}
+    for idx, item in enumerate(catalog):
+        for pair in item["pairs"]:
+            pair_to_candidates[pair].append(idx)
+
+    best_cost = float("inf")
+    best = None
+
+    def search(covered, chosen, cost):
+        nonlocal best_cost, best
+        if cost >= best_cost:
+            return
+        if covered == universe:
+            if len(chosen) == N - 1:
+                best_cost = cost
+                best = list(chosen)
+            return
+        if len(chosen) >= N - 1:
+            return
+        remaining = len(universe - covered)
+        if remaining > (N - 1 - len(chosen)) * N:
+            return
+
+        uncovered = universe - covered
+        target = min(
+            uncovered,
+            key=lambda p: sum(
+                1 for idx in pair_to_candidates[p]
+                if catalog[idx]["pairs"].isdisjoint(covered)
+            ),
+        )
+        options = [
+            idx for idx in pair_to_candidates[target]
+            if catalog[idx]["pairs"].isdisjoint(covered)
+        ]
+        options.sort(key=lambda idx: catalog[idx]["reciprocal_dyads"])
+        for idx in options:
+            item = catalog[idx]
+            search(
+                covered | item["pairs"],
+                chosen + [idx],
+                cost + item["reciprocal_dyads"],
+            )
+
+    search(frozenset(), [], 0)
+    solution = [] if best is None else [
+        {
+            "a": catalog[idx]["a"],
+            "b": catalog[idx]["b"],
+            "reciprocal_dyads": catalog[idx]["reciprocal_dyads"],
+        }
+        for idx in best
+    ]
+    return {
+        "family": "collision-free Aff(Z12)",
+        "exact_cover_cycles": N - 1,
+        "minimum_total_reciprocal_dyads": None if best is None else int(best_cost),
+        "solution": solution,
+    }
+
+
 def coverage_stats(rows):
     ordered_pairs = [(r["coordinator"], r["auditor"]) for r in rows]
     unique_pairs = set(ordered_pairs)
@@ -99,6 +193,7 @@ def coverage_stats(rows):
         "coverage_fraction": len(unique_pairs) / (N * (N - 1)),
         "self_audits": self_audits,
         "duplicate_pairs": len(ordered_pairs) - len(unique_pairs),
+        "reciprocal_dyads": reciprocal_dyads(rows),
         "coordinator_counts": coordinator_counts,
         "auditor_counts": auditor_counts,
     }
@@ -111,8 +206,13 @@ def main():
     print(current)
     print("\nComplete non-self offset benchmark (offsets 1..11):")
     print(complete)
+    catalog = collision_free_affine_catalog()
+    reciprocal_free = sum(1 for item in catalog if item["reciprocal_dyads"] == 0)
     print(f"\nUnits mod 12: {UNITS_MOD_12}; affine permutations: {len(all_affine_permutations())}")
-    print(f"Collision-free affine auditor schedules: {len(collision_free_affine_auditors())}")
+    print(f"Collision-free affine auditor schedules: {len(catalog)}")
+    print(f"Collision-free AND reciprocal-free affine schedules: {reciprocal_free}")
+    print("Affine exact-cover reciprocal lower bound:")
+    print(minimum_reciprocal_exact_cover())
 
 
 if __name__ == "__main__":
