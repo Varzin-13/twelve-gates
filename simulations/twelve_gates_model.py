@@ -447,18 +447,34 @@ class CoalitionRegistry:
                     gates_by_id[member].coalition_id = None
             self._history.append(coal)
 
-    def cartel_active(self, gates_by_id):
+    def cartel_snapshots(self, gates_by_id):
+        """Return current coalitions satisfying the coded cartel criterion.
+
+        Diagnostic only: this exposes why the boolean endpoint fired; it does
+        not change coalition formation, voting, auditing, or dissolution.
+        """
         cart = self.cfg["cartel"]
+        snapshots = []
         for coal in self.active_coalitions.values():
             if coal.active_duration_ticks < cart["K_min_duration_ticks"]:
                 continue
             if coal.passed_decisions_streak < cart["M_consecutive_decisions"]:
                 continue
-            power_sum = sum(gates_by_id[i].exec_power for i in coal.members)
+            power_sum = float(sum(gates_by_id[i].exec_power for i in coal.members))
             has_cluster = any(i in cart["material_cluster"] for i in coal.members)
             if power_sum > cart["theta_power_sum"] and has_cluster and not coal.covert_exchange_exposed:
-                return True
-        return False
+                snapshots.append({
+                    "coalition_id": coal.coalition_id,
+                    "members": sorted(int(i) for i in coal.members),
+                    "power_sum": power_sum,
+                    "active_duration_ticks": int(coal.active_duration_ticks),
+                    "passed_decisions_streak": int(coal.passed_decisions_streak),
+                    "contains_material_gate": bool(has_cluster),
+                })
+        return snapshots
+
+    def cartel_active(self, gates_by_id):
+        return bool(self.cartel_snapshots(gates_by_id))
 
     def n_active(self): return len(self.active_coalitions)
 
@@ -719,13 +735,21 @@ class TwelveGatesModel:
 
     def run(self, max_ticks):
         cartel_ever = False
+        first_cartel_tick = None
+        first_cartel_snapshot = None
         for _ in range(max_ticks):
             self.step()
-            if self.cartel_capture_active():
+            snapshots = self.coalition_registry.cartel_snapshots(self.gates_by_id)
+            if snapshots:
                 cartel_ever = True
+                if first_cartel_snapshot is None:
+                    first_cartel_tick = max(0, self.tick - 1)
+                    first_cartel_snapshot = snapshots[0]
         survival = self.coalition_registry.survival_summary(self.tick)
         return {
             "cartel_capture_ever": cartel_ever,
+            "cartel_first_detected_tick": first_cartel_tick,
+            "cartel_first_snapshot": first_cartel_snapshot,
             "emergency_time_share": self.emergency_total_ticks / max(self.tick, 1),
             "n_active_coalitions_end": self.coalition_registry.n_active(),
             # Legacy field: dissolved coalitions only. Retained for historical comparability.
