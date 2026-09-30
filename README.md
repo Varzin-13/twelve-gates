@@ -20,7 +20,7 @@ The design documents ask how a decentralized council might distribute authority 
 
 ## Parameter provenance | منشأ پارامترها
 
-The [parameter register](simulations/param_provenance.py) classifies **18 tracked parameter groups: 6 `DOCUMENT`, 3 `DESIGN`, and 9 `ARBITRARY`/uncalibrated**.
+The [parameter register](simulations/param_provenance.py) classifies **19 tracked parameter groups: 6 `DOCUMENT`, 3 `DESIGN`, and 10 `ARBITRARY`/uncalibrated**. The machine-readable [calibration registry](simulations/calibration_registry.json) currently accepts **0 empirical mappings**, intentionally; a parameter is not promoted to empirical merely because an external dataset exists.
 
 | Label | Meaning | Evidential boundary |
 |---|---|---|
@@ -46,7 +46,7 @@ These figures are **committed results, not independently rerun results in this R
 
 The repository also contains [scenario 4](simulations/scenario4_guardian_model_deadline.py) and [scenario 5](simulations/scenario5_ncri_coalition.py), which model other transition proposals. Their headers use preregistration language, but they are **additional scripts**, not part of the three-script set explicitly identified by `simulations/README.md`; their external registration status and empirical calibration are not established here. Other diagnostic artifacts include [baseline](simulations/run_baseline.py), [stress](simulations/run_stress.py), and [sensitivity](simulations/sensitivity_analysis.py) runners. Do not pool their outputs or treat a comparison of hypothetical designs as evidence about a real organization.
 
-The [stored baseline](simulations/results/mesa_baseline_results.json) and [stored stress output](simulations/results/mesa_stress_results.json) both carry `claim_label: hypothesis`. `run_baseline.py` is configured for **300 runs**, reduced from a **3,000-run specification** for computational-time reasons; a 3,000-run baseline is not claimed. `run_stress.py` describes its run as a **functional sanity check**, not empirical validation. Its header says the shock begins at tick 52, while the current driver code does not visibly gate the shock by tick; treat the timing as unresolved.
+The [stored baseline](simulations/results/mesa_baseline_results.json) and [stored stress output](simulations/results/mesa_stress_results.json) both carry `claim_label: hypothesis`. `run_baseline.py` is configured for **300 runs**, reduced from a **3,000-run specification** for computational-time reasons; a 3,000-run baseline is not claimed. `run_stress.py` describes its run as a **functional sanity check**, not empirical validation. The v0.32 execution-audit code now gates the documented stress shock at tick 52. The historical committed stress JSON is **not** silently relabeled as a result of the corrected implementation and should be treated as a historical artifact until a provenance-complete rerun is committed.
 
 The [stored sensitivity output](simulations/results/sensitivity_results.json) changes sharply with some assumed inputs: modeled cartel capture is `1.0` at coalition threshold `0.60` and `0.0` at `0.65` in its recorded runs. This demonstrates parameter dependence within the model, **not** empirical validity. The sensitivity script's header describes 150 runs per variant, but its current executable setting is `N_RUNS = 40` and `MAX_TICKS = 400`; use the executable settings when describing that artifact.
 
@@ -62,7 +62,7 @@ python3 run_model.py --list-params
 python3 run_model.py --config results/baseline_config.json --n-runs 1 --max-ticks 10 --seed 42 --out /tmp/twelve-gates-demo.json
 ```
 
-The committed [baseline configuration](simulations/results/baseline_config.json) has twelve gates, passes the CLI's current validator, and declares `claim_label: hypothesis`. The [model guide](README_mesa.md) gives further context; its example config path should be read as `results/baseline_config.json` when run from `simulations/`. The existing [test script](simulations/test_model.py) has **22 checks in eight test functions**; it checks selected software properties, not the political model's empirical validity. The baseline, stress, sensitivity, and scenario 1–3 JSON runners write to `simulations/results/` relative to their scripts. Scenarios 4 and 5 still use hard-coded `/home/claude/` JSON output paths. Stored JSON results and charts remain available under `simulations/results/` and `simulations/`.
+The committed [baseline configuration](simulations/results/baseline_config.json) has twelve gates, passes the CLI's current validator, and declares `claim_label: hypothesis`. The [model guide](README_mesa.md) gives further context; its example config path should be read as `results/baseline_config.json` when run from `simulations/`. The v0.32 [test script](simulations/test_model.py) adds regression checks for emergency-extension configuration, stress timing, resource conservation, and Z12 audit coverage; it checks software properties, not political empirical validity. The baseline, stress, sensitivity, and scenario 1–3 JSON runners write to `simulations/results/` relative to their scripts. Scenarios 4 and 5 still use hard-coded `/home/claude/` JSON output paths. Stored JSON results and charts remain available under `simulations/results/` and `simulations/`.
 
 **Reproducibility means that computational procedures and assumptions are exposed for inspection and rerunning; it does not establish empirical validity of the underlying institutional assumptions.**
 
@@ -75,6 +75,21 @@ The committed [baseline configuration](simulations/results/baseline_config.json)
 - `simulations/twelve_gates_model.py`, `run_model.py`, and `param_provenance.py`: model, CLI, and parameter register.
 - `simulations/scenario*.py`, `run_baseline.py`, `run_stress.py`, and `sensitivity_analysis.py`: distinct scenarios and diagnostics.
 - `simulations/results/`: committed configuration and reported output JSON; inspect each result with its own script and assumptions.
+
+## v0.32 execution-audit layer | لایهٔ ممیزی اجرایی v0.32
+
+This branch adds a separate execution-audit layer without declaring the governance design implementation-ready:
+
+- [Scientific & Execution Audit](docs/SCIENTIFIC_EXECUTION_AUDIT_2026-09-30.md)
+- [Formal Execution Specification v0.1](docs/FORMAL_EXECUTION_SPEC_v0_1.md)
+- [ABM v2 preregistration scaffold](docs/ABM_V2_ODD_TRACE_PREREG_2026-09-30.md)
+- [Z12 / affine audit-schedule utility](simulations/audit_schedule.py)
+- [Calibration registry](simulations/calibration_registry.json)
+- [Finite-state checker](formal/abstract_model_check.py)
+- [TLA+ research skeleton](formal/TwelveGates.tla)
+- [GitHub Actions execution-audit workflow](.github/workflows/execution-audit.yml)
+
+The fixed `+6` auditor rule is retained as the documented rule. The affine and full-offset schedules are analytical benchmarks, not adopted constitutional replacements.
 
 ## Limits and claim discipline | محدودیت‌ها و مرز ادعا
 
