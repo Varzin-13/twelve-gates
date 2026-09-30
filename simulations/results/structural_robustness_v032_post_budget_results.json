@@ -3,9 +3,9 @@
   "claim_label": "exploratory_structural_uncertainty",
   "not_calibration": true,
   "not_empirical_validation": true,
-  "git_head": "baad89d34828e632f8ecf1938eba3dc9ad1cd7e5",
-  "script_sha256": "2454d3ffadf75abfb93f6e196ded2a9cd3063ba4c3ba4be950e84c7e617a5fb6",
-  "pre_budget_artifact_sha256": "9ccc228611c5cdc9bc09b7fb73425997a1f601d4034a5ce76b5878bb64b99f84",
+  "git_head": "094d8c001c99dc4c004d2d4c6b37cf9230f3b25a",
+  "script_sha256": "372cb5e2f043a68343ae46a725a5b03c0bbb3fb0f6bc47200946d036ff9157bc",
+  "pre_budget_artifact_sha256": "2106991334f264cb5cc3cad649985297bb4cc02e5619ff9f6859948f188e4b63",
   "pair_aggregation_modes": [
     "minimum",
     "mean",
@@ -189,37 +189,37 @@
   "pre_budget_cartel_capture_rate_matrix": {
     "minimum": {
       "0.575": 0.8333333333333334,
-      "0.6": 0.6666666666666666,
+      "0.6": 0.5833333333333334,
       "0.625": 0.0
     },
     "mean": {
       "0.575": 0.8333333333333334,
-      "0.6": 0.5,
+      "0.6": 0.4166666666666667,
       "0.625": 0.0
     },
     "maximum": {
-      "0.575": 1.0,
-      "0.6": 0.6666666666666666,
+      "0.575": 0.9166666666666666,
+      "0.6": 0.5833333333333334,
       "0.625": 0.0
     }
   },
   "paired_rate_differences": {
     "minimum": {
       "0.575": 0.0,
-      "0.6": 0.0,
+      "0.6": 0.08333333333333326,
       "0.625": 0.0
     },
     "mean": {
       "0.575": 0.0,
-      "0.6": 0.0,
+      "0.6": 0.08333333333333331,
       "0.625": 0.0
     },
     "maximum": {
-      "0.575": 0.0,
-      "0.6": 0.0,
+      "0.575": 0.08333333333333337,
+      "0.6": 0.08333333333333326,
       "0.625": 0.0
     }
   },
-  "elapsed_seconds": 64.236,
+  "elapsed_seconds": 29.676,
   "interpretation_boundary": "Paired structural uncertainty comparison inside an uncalibrated simulation. No mode is selected or ranked as a political design."
 }

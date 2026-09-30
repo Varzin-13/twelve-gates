@@ -18,9 +18,9 @@ This is a paired rerun of the previous structural experiment after correcting th
 
 | aggregation | θ=0.575 | θ=0.600 | θ=0.625 |
 |---|---|---|---|
-| minimum | +0.000 | +0.000 | +0.000 |
-| mean | +0.000 | +0.000 | +0.000 |
-| maximum | +0.000 | +0.000 | +0.000 |
+| minimum | +0.000 | +0.083 | +0.000 |
+| mean | +0.000 | +0.083 | +0.000 |
+| maximum | +0.083 | +0.083 | +0.000 |
 
 ## Interpretation boundary
 
