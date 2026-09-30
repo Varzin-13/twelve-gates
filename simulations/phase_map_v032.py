@@ -133,8 +133,17 @@ def main():
             row[f"theta_{theta:.3f}"] = cell["cartel_capture_rate"]
         matrix.append(row)
 
+    cluster = set(BASELINE_CFG["coalitions"]["cartel"]["material_cluster"])
+    baseline_material_power_sum = float(sum(
+        g["exec_power"] for g in BASELINE_CFG["gates"] if g["gate_id"] in cluster
+    ))
+    theta_power_sum = float(BASELINE_CFG["coalitions"]["cartel"]["theta_power_sum"])
+    material_triad_multiplier_threshold = (
+        theta_power_sum / baseline_material_power_sum
+    )
+
     payload = {
-        "schema": "twelve-gates/phase-map-v032/v1",
+        "schema": "twelve-gates/phase-map-v032/v2",
         "claim_label": CLAIM_LABEL,
         "not_calibration": True,
         "not_empirical_validation": True,
@@ -147,6 +156,17 @@ def main():
         "seeds_per_cell": SEEDS_PER_CELL,
         "common_seeds": seeds,
         "max_ticks": MAX_TICKS,
+        "mechanical_material_triad_power_diagnostic": {
+            "baseline_material_exec_power_sum": baseline_material_power_sum,
+            "cartel_theta_power_sum": theta_power_sum,
+            "strict_multiplier_threshold_for_material_triad": material_triad_multiplier_threshold,
+            "note": (
+                "For the three material gates considered alone, the cartel power "
+                "condition cannot pass unless multiplier > theta_power_sum / "
+                "baseline_material_exec_power_sum. This is a coded threshold, "
+                "not an emergent empirical finding."
+            ),
+        },
         "cells": cells,
         "cartel_rate_matrix": matrix,
         "first_theta_with_rate_at_or_below_0_5_by_multiplier": boundaries,
@@ -170,6 +190,14 @@ def main():
         "",
         "Each cell is the fraction of the eight seeded model runs in which the current coded cartel criterion was ever reached.",
         "These cell rates are not real-world probabilities.",
+        "",
+        "## Mechanical material-triad power threshold",
+        "",
+        f"Baseline material-gate executive-power sum: {baseline_material_power_sum:.6f}",
+        f"Coded cartel power threshold: {theta_power_sum:.6f}",
+        f"Strict multiplier threshold for the material triad alone: > {material_triad_multiplier_threshold:.6f}",
+        "",
+        "This discontinuity is partly built into the operational definition; it is not, by itself, an emergent empirical discovery.",
         "",
         "## Cartel-capture-rate matrix",
         "",
