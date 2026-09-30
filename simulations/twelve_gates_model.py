@@ -453,8 +453,99 @@ class CoalitionRegistry:
         return False
 
     def n_active(self): return len(self.active_coalitions)
+
+    def duration_records(self):
+        """Return coalition lifetime observations with explicit censoring.
+
+        Dissolved coalitions are observed events. Coalitions still active at the
+        end of a run are right-censored observations and must not be silently
+        dropped from lifetime summaries.
+        """
+        records = [
+            {
+                "duration_ticks": max(0, int(c.dissolved_tick - c.formed_tick)),
+                "event_observed": True,
+            }
+            for c in self._history
+            if c.dissolved_tick is not None
+        ]
+        records.extend(
+            {
+                "duration_ticks": max(0, int(c.active_duration_ticks)),
+                "event_observed": False,
+            }
+            for c in self.active_coalitions.values()
+        )
+        return records
+
+    @staticmethod
+    def _kaplan_meier_rmst(records, horizon):
+        """Restricted mean survival time up to horizon from right-censored data."""
+        if not records:
+            return None
+        horizon = max(0, int(horizon))
+        by_time = {}
+        for rec in records:
+            t = min(max(0, int(rec["duration_ticks"])), horizon)
+            slot = by_time.setdefault(t, {"events": 0, "censors": 0})
+            if rec["event_observed"] and rec["duration_ticks"] <= horizon:
+                slot["events"] += 1
+            else:
+                slot["censors"] += 1
+
+        n_at_risk = len(records)
+        survival = 1.0
+        prev_t = 0
+        rmst = 0.0
+
+        for t in sorted(by_time):
+            rmst += survival * (t - prev_t)
+            counts = by_time[t]
+            d = counts["events"]
+            c = counts["censors"]
+            if n_at_risk > 0 and d:
+                survival *= (1.0 - d / n_at_risk)
+            n_at_risk -= d + c
+            prev_t = t
+
+        if prev_t < horizon:
+            rmst += survival * (horizon - prev_t)
+        return float(rmst)
+
+    def survival_summary(self, horizon):
+        records = self.duration_records()
+        if not records:
+            return {
+                "n_total": 0,
+                "n_dissolved": 0,
+                "n_right_censored": 0,
+                "dissolved_duration_mean": None,
+                "active_age_mean": None,
+                "observed_age_or_duration_mean": None,
+                "rmst_ticks": None,
+                "rmst_horizon_ticks": int(horizon),
+            }
+
+        dissolved = [r["duration_ticks"] for r in records if r["event_observed"]]
+        censored = [r["duration_ticks"] for r in records if not r["event_observed"]]
+        all_durations = [r["duration_ticks"] for r in records]
+        return {
+            "n_total": len(records),
+            "n_dissolved": len(dissolved),
+            "n_right_censored": len(censored),
+            "dissolved_duration_mean": float(np.mean(dissolved)) if dissolved else None,
+            "active_age_mean": float(np.mean(censored)) if censored else None,
+            "observed_age_or_duration_mean": float(np.mean(all_durations)),
+            "rmst_ticks": self._kaplan_meier_rmst(records, horizon),
+            "rmst_horizon_ticks": int(horizon),
+        }
+
     def mean_duration(self):
-        durs = [ (c.dissolved_tick or 0) - c.formed_tick for c in self._history ]
+        """Legacy dissolved-only mean retained for backward compatibility."""
+        durs = [
+            (c.dissolved_tick or 0) - c.formed_tick
+            for c in self._history
+        ]
         return float(np.mean(durs)) if durs else 0.0
 
 
@@ -624,11 +715,22 @@ class TwelveGatesModel:
             self.step()
             if self.cartel_capture_active():
                 cartel_ever = True
+        survival = self.coalition_registry.survival_summary(self.tick)
         return {
             "cartel_capture_ever": cartel_ever,
             "emergency_time_share": self.emergency_total_ticks / max(self.tick, 1),
             "n_active_coalitions_end": self.coalition_registry.n_active(),
+            # Legacy field: dissolved coalitions only. Retained for historical comparability.
             "coalition_mean_duration": self.coalition_registry.mean_duration(),
+            "coalition_duration_legacy_dissolved_mean": self.coalition_registry.mean_duration(),
+            "coalition_duration_dissolved_mean": survival["dissolved_duration_mean"],
+            "coalition_active_age_mean": survival["active_age_mean"],
+            "coalition_observed_age_or_duration_mean": survival["observed_age_or_duration_mean"],
+            "coalition_rmst_ticks": survival["rmst_ticks"],
+            "coalition_rmst_horizon_ticks": survival["rmst_horizon_ticks"],
+            "coalitions_total_observed": survival["n_total"],
+            "coalitions_dissolved_n": survival["n_dissolved"],
+            "coalitions_right_censored_n": survival["n_right_censored"],
             "mean_legitimacy_end": float(np.mean([g.legitimacy_internal for g in self.gates])),
             "mean_capture_pressure_end": float(np.mean([g.capture_pressure for g in self.gates])),
             "bureaucracy_politicization_end": self.bureaucracy.politicization_risk,
