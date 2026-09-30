@@ -25,6 +25,8 @@
 | Internal legitimacy | 0.617225 | 0.617157 | -0.000068 |
 | Mean capture pressure | 0.580667 | 0.579971 | -0.000696 |
 
+> **Metric note:** the legacy `Mean coalition duration` field currently summarizes dissolved coalitions only; active coalitions at the end of a run are right-censored and are not counted as completed durations. Treat this metric as a dissolved-coalition-duration diagnostic, not the lifetime distribution of all coalitions.
+
 ## Interpretation boundary
 
 This rerun measures behavior of the current code under the current uncalibrated
