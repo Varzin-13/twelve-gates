@@ -93,6 +93,8 @@ These are Spearman rank correlations across the 64 LHS point means. They are scr
 - material_exec_multiplier: +0.048
 - theta_pair: -0.012
 
+> **Metric note:** `coalition_mean_duration_mean` is based on the legacy dissolved-coalition duration field. Active coalitions at run end are right-censored; see `SENSITIVITY_V032_INTERPRETATION_AUDIT.md`.
+
 ## Interpretation boundary
 
 Rank correlations and output ranges describe this finite exploratory design only. They are not causal effects, calibrated estimates, or real-world political probabilities.
