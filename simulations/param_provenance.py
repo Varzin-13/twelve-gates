@@ -27,6 +27,8 @@ PARAM_PROVENANCE = {
         "label": "ARBITRARY", "source": "بدون داده؛ تحلیل حساسیت نشان داد نتیجه در ۰.۶۰-۰.۶۵ کاملاً معکوس می‌شود"},
     "coalition weights (w1..w5)": {
         "label": "ARBITRARY", "source": "بدون داده؛ فقط نسبتاً کم‌حساس در تحلیل حساسیت"},
+    "coalition pair_aggregation structural rule": {
+        "label": "ARBITRARY", "source": "انتخاب ساختاری مدل؛ baseline=mean و minimum/maximum فقط برای robustness bounds"},
     "exec_power اولیه‌ی هر گیت": {
         "label": "ARBITRARY", "source": "بدون داده؛ تحلیل حساسیت نشان داد این مهم‌ترین محرک نتیجه‌ی کارتل است"},
     "trust_row / affinity_row / overlap_row اولیه": {
