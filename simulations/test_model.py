@@ -266,6 +266,8 @@ if __name__ == "__main__":
     test_cartel_requires_decisions_not_age_only()
     test_failed_coalition_decision_resets_streak()
     test_dissent_uses_single_decision_draw()
+    test_external_timeline_preserves_multiple_events()
+    test_external_timeline_validation()
 
     print(f"\n{'='*50}\n{len(PASS)} موفق، {len(FAIL)} ناموفق از {len(PASS)+len(FAIL)} تست")
     if FAIL:
