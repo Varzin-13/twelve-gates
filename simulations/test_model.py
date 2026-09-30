@@ -260,6 +260,20 @@ def test_external_timeline_validation():
     check("timeline validation: tick منفی/gate نامعتبر/delta غیرعددی باید رد شود",
           len([e for e in errs if "external_timeline" in e]) >= 3)
 
+def test_claim_boundary_outputs():
+    model = TwelveGatesModel(BASELINE_CFG, seed=21)
+    out = model.run(1)
+    check("claim boundary: civil-society legitimacy باید صریحاً proxy برچسب بخورد",
+          out.get("public_legitimacy_signal_is_internal_proxy") is True
+          and "civil_society_legitimacy_proxy_end" in out)
+
+    raised = False
+    try:
+        model.trust_ledger.integrity()
+    except NotImplementedError:
+        raised = True
+    check("claim boundary: ledger integrity نباید عدد ثابتِ ساختگی برگرداند", raised)
+
 def test_model_assumptions_validation():
     missing = json.loads(json.dumps(BASELINE_CFG))
     missing.pop("model_assumptions")
@@ -296,6 +310,7 @@ if __name__ == "__main__":
     test_dissent_uses_single_decision_draw()
     test_external_timeline_preserves_multiple_events()
     test_external_timeline_validation()
+    test_claim_boundary_outputs()
     test_model_assumptions_validation()
 
     print(f"\n{'='*50}\n{len(PASS)} موفق، {len(FAIL)} ناموفق از {len(PASS)+len(FAIL)} تست")
