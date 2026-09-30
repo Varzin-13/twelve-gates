@@ -320,7 +320,10 @@ class TrustLedger:
         self.reports = []; self.dissents = []
     def record_report(self, rep): self.reports.append(rep)
     def record_dissent(self, tick, agent_id, proposal_ref): self.dissents.append((tick, agent_id))
-    def integrity(self): return 0.95  # اثرپذیر از bureaucracy.archive_integrity در نسخه‌ی کامل‌تر
+    def integrity(self):
+        raise NotImplementedError(
+            "TrustLedger integrity is not empirically or cryptographically measured in this model"
+        )
 
 
 class CoalitionRegistry:
@@ -629,5 +632,8 @@ class TwelveGatesModel:
             "mean_legitimacy_end": float(np.mean([g.legitimacy_internal for g in self.gates])),
             "mean_capture_pressure_end": float(np.mean([g.capture_pressure for g in self.gates])),
             "bureaucracy_politicization_end": self.bureaucracy.politicization_risk,
+            "civil_society_legitimacy_proxy_end": self.civil_society.public_legitimacy_signal,
+            # Backward-compatible alias. This is NOT measured public opinion.
             "public_legitimacy_signal_end": self.civil_society.public_legitimacy_signal,
+            "public_legitimacy_signal_is_internal_proxy": True,
         }
