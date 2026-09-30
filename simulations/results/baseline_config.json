@@ -18,6 +18,25 @@
     "support_probability": 0.55,
     "required_fraction": 0.6666666666666666
   },
+  "model_assumptions": {
+    "audit_accuracy_bonus": 0.15,
+    "coalition_propensity_resource_weight": 0.5,
+    "coalition_propensity_trust_weight": 0.5,
+    "capture_pressure_resource_weight": 0.4,
+    "capture_pressure_cluster_affinity_weight": 0.4,
+    "capture_pressure_overlap_weight": 0.2,
+    "vote_support_intercept": 0.4,
+    "vote_support_trust_weight": 0.4,
+    "bureaucracy_politicization_drift_rate": 0.001,
+    "public_legitimacy_memory_weight": 0.7,
+    "public_legitimacy_internal_weight": 0.3,
+    "armed_bloc_split_threshold": 0.35,
+    "armed_bloc_split_probability": 0.3,
+    "armed_bloc_confrontation_threshold": 0.65,
+    "armed_bloc_confrontation_probability": 0.3,
+    "armed_bloc_bargain_threshold": 0.55,
+    "armed_bloc_bargain_probability": 0.25
+  },
   "gates": [
     {
       "gate_id": 0,
