@@ -96,10 +96,13 @@ This branch adds a separate execution-audit layer without declaring the governan
 - [v0.32 LHS behavior-space artifact](simulations/results/sensitivity_v032_lhs_results.json)
 - [v0.32 LHS interpretation audit](docs/SENSITIVITY_V032_INTERPRETATION_AUDIT.md)
 - [Finite-state checker](formal/abstract_model_check.py)
+- [Parameter usage audit](docs/PARAMETER_USAGE_AUDIT_2026-09-30.md) + machine-readable registry distinguishing active/partial/inert mechanisms
 - [TLA+ research skeleton](formal/TwelveGates.tla)
 - [GitHub Actions execution-audit workflow](.github/workflows/execution-audit.yml)
 
 The fixed `+6` auditor rule is retained as the documented rule. The affine and full-offset schedules are analytical benchmarks, not adopted constitutional replacements.
+
+Coalition lifetime outputs now preserve the historical dissolved-only field while also reporting right-censoring-aware quantities, including active ages and Kaplan-Meier RMST. Historical sensitivity artifacts are not retroactively rewritten.
 
 ## Limits and claim discipline | محدودیت‌ها و مرز ادعا
 
