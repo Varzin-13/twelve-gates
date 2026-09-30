@@ -103,22 +103,25 @@ A nearly constant output is not useful for distinguishing most mechanisms in
 this explored region. Its formula or target role should be reconsidered before
 giving it interpretive weight.
 
-### 6. Coalition-duration field needs a censoring warning
-The current legacy field `coalition_mean_duration` summarizes durations of
-coalitions that have dissolved. Coalitions still active at the end of a run are
-not included as completed durations.
+### 6. Coalition-duration field was right-censored
+The frozen LHS field `coalition_mean_duration` summarizes durations of
+coalitions that had dissolved. Coalitions still active at run end were omitted
+from completed-duration summaries.
 
 The LHS range (`0 -> 157` ticks) therefore combines parameter sensitivity with
-right-censoring/empty-history behavior. It must not be read as an unbiased
-estimate of the lifetime of all coalitions.
+right-censoring/empty-history behavior and must not be interpreted as an
+unbiased lifetime estimate.
 
-A future output schema should distinguish:
-- dissolved-coalition duration;
+The current v0.32 engine now exposes, separately:
+- legacy dissolved-only mean for provenance;
+- dissolved-coalition duration mean;
 - active-coalition age at censoring;
-- survival/censoring-aware summaries.
+- observed age/duration mean;
+- number of right-censored observations;
+- Kaplan-Meier restricted mean survival time (RMST) to the run horizon.
 
-This observation does not require changing the already-frozen v0.32 LHS
-artifact.
+The already-frozen LHS artifact is intentionally **not** rewritten. New
+experiments should use the censoring-aware fields.
 
 ## Consequence for the research program
 
