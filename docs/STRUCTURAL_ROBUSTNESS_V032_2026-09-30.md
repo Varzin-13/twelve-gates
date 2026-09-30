@@ -16,22 +16,22 @@ The modes are mathematical alternatives/bounds, not institutional recommendation
 
 | aggregation | θ=0.575 | θ=0.600 | θ=0.625 |
 |---|---|---|---|
-| minimum | 0.833 | 0.667 | 0.000 |
-| mean | 0.833 | 0.500 | 0.000 |
-| maximum | 1.000 | 0.667 | 0.000 |
+| minimum | 0.833 | 0.583 | 0.000 |
+| mean | 0.833 | 0.417 | 0.000 |
+| maximum | 0.917 | 0.583 | 0.000 |
 
 ## Censoring-aware coalition summaries
 
 | aggregation | theta | RMST ticks (mean valid runs) | right-censored fraction |
 |---|---:|---:|---:|
-| minimum | 0.575 | 95.844 | 0.115 |
-| minimum | 0.600 | 127.886 | 0.148 |
+| minimum | 0.575 | 92.965 | 0.119 |
+| minimum | 0.600 | 128.271 | 0.150 |
 | minimum | 0.625 | n/a | n/a |
-| mean | 0.575 | 94.612 | 0.112 |
-| mean | 0.600 | 122.122 | 0.145 |
+| mean | 0.575 | 96.649 | 0.119 |
+| mean | 0.600 | 114.107 | 0.148 |
 | mean | 0.625 | n/a | n/a |
-| maximum | 0.575 | 77.055 | 0.094 |
-| maximum | 0.600 | 106.875 | 0.128 |
+| maximum | 0.575 | 87.634 | 0.110 |
+| maximum | 0.600 | 101.280 | 0.135 |
 | maximum | 0.625 | n/a | n/a |
 
 ## Interpretation boundary
