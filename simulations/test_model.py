@@ -352,6 +352,30 @@ def test_run_exposes_censoring_boundary():
     check("run output: censoring-aware coalition fields باید صریح باشند",
           required.issubset(out))
 
+def test_cartel_snapshot_explains_boolean_endpoint():
+    model = TwelveGatesModel(BASELINE_CFG, seed=41)
+    reg = model.coalition_registry
+    members = frozenset((0, 2, 4))
+    coal = Coalition(
+        0, members, formed_tick=0,
+        active_duration_ticks=12,
+        passed_decisions_streak=5,
+    )
+    reg.active_coalitions[members] = coal
+    snaps = reg.cartel_snapshots(model.gates_by_id)
+    check("cartel diagnostic: snapshot باید boolean endpoint را توضیح دهد",
+          bool(snaps) == reg.cartel_active(model.gates_by_id))
+    check("cartel diagnostic: اعضا و power sum باید صریح ثبت شوند",
+          snaps and snaps[0]["members"] == [0, 2, 4]
+          and abs(snaps[0]["power_sum"] - 2.30) < 1e-12)
+
+def test_run_cartel_snapshot_fields_present():
+    model = TwelveGatesModel(BASELINE_CFG, seed=42)
+    out = model.run(2)
+    check("run output: first-cartel diagnostic fields باید همیشه schema داشته باشند",
+          "cartel_first_detected_tick" in out
+          and "cartel_first_snapshot" in out)
+
 if __name__ == "__main__":
     test_rotation_formula()
     test_precondition_refusal()
@@ -376,6 +400,8 @@ if __name__ == "__main__":
     test_model_assumptions_validation()
     test_coalition_survival_summary_right_censoring()
     test_run_exposes_censoring_boundary()
+    test_cartel_snapshot_explains_boolean_endpoint()
+    test_run_cartel_snapshot_fields_present()
 
     print(f"\n{'='*50}\n{len(PASS)} موفق، {len(FAIL)} ناموفق از {len(PASS)+len(FAIL)} تست")
     if FAIL:
