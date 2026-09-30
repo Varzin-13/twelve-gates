@@ -1,9 +1,7 @@
 name: sensitivity-v032-lhs-once
 
 on:
-  pull_request:
-    paths:
-      - simulations/sensitivity_v032_lhs.py
+  workflow_dispatch:
 
 permissions:
   contents: write
