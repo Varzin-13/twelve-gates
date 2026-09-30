@@ -31,6 +31,11 @@ If `resource[g]` is a share:
 
 within numerical tolerance after each completed implementation stage.
 
+The TLA+ research skeleton now includes an explicit unit `BudgetTransfer`
+transition so this invariant is exercised under state change rather than holding
+only because resources never move. The repository still does not claim TLC
+verification until an actual TLC run is recorded.
+
 ### F4 — Nonnegative resources
 `resource[g] >= 0` for every gate.
 
