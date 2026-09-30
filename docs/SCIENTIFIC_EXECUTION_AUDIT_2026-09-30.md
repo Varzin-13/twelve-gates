@@ -82,6 +82,24 @@ ordered audit pairs has a minimum total of six within-cycle reciprocal dyads.
 This is a finite computational result **within the affine family**, not a
 theorem about every possible institutional schedule.
 
+### 2.9 Budget qualified-majority implementation mismatch
+A later line-by-line audit found that the documented/configured budget
+reallocation rule was `qualified_majority = 2/3`, while the implementation
+used `yes >= 7`.
+
+For 12 gates, two thirds is exactly 8 votes. Therefore the old code admitted
+7/12 (58.3%) as a pass even though it did not satisfy the stated rule.
+
+v0.32 now:
+- exposes `budget.reallocation_required_fraction = 2/3`;
+- computes `ceil(fraction * N_GATES)`;
+- tests explicitly that 7/12 fails and 8/12 passes;
+- rejects unsupported budget voting rules in config validation.
+
+All simulation artifacts generated before this correction remain historical
+outputs of their exact code revision. They must not be treated as outputs of
+the corrected budget-majority implementation.
+
 ## 3. Components that remain model gaps
 
 The following are not yet adequate empirical behavioral models:
