@@ -391,6 +391,17 @@ def test_external_timeline_validation():
     check("timeline validation: tick منفی/gate نامعتبر/delta غیرعددی باید رد شود",
           len([e for e in errs if "external_timeline" in e]) >= 3)
 
+def test_run_event_count_diagnostics():
+    model = TwelveGatesModel(BASELINE_CFG, seed=92)
+    out = model.run(2)
+    check("event diagnostics: each gate should submit one report per tick",
+          out["reports_total"] == N_GATES * 2)
+    check("event diagnostics: critical/dissent counts must be explicit nonnegative integers",
+          isinstance(out["critical_reports_total"], int)
+          and out["critical_reports_total"] >= 0
+          and isinstance(out["dissent_events_total"], int)
+          and out["dissent_events_total"] >= 0)
+
 def test_claim_boundary_outputs():
     model = TwelveGatesModel(BASELINE_CFG, seed=21)
     out = model.run(1)
@@ -566,6 +577,7 @@ if __name__ == "__main__":
     test_dissent_uses_single_decision_draw()
     test_external_timeline_preserves_multiple_events()
     test_external_timeline_validation()
+    test_run_event_count_diagnostics()
     test_claim_boundary_outputs()
     test_model_assumptions_validation()
     test_coalition_survival_summary_right_censoring()
