@@ -46,6 +46,16 @@ The new `simulations/audit_schedule.py` exposes:
 
 That benchmark covers all `12 × 11 = 132` non-self ordered pairs exactly once across 132 periods. This is a combinatorial benchmark, not a recommendation about institutional cadence.
 
+### 2.5 Hidden behavioral constants made explicit
+A second-pass audit found active behavioral constants embedded directly in code:
+audit bonus, coalition-propensity weights, capture-pressure weights, voting
+intercept/slope, bureaucracy drift, public-legitimacy smoothing, and armed-bloc
+threshold/probability values.
+
+v0.32 moves these values into `model_assumptions` without changing their
+numerical values. The bundle is tagged **ARBITRARY**. This is a provenance
+improvement, not a calibration result.
+
 ## 3. Components that remain model gaps
 
 The following are not yet adequate empirical behavioral models:
