@@ -56,6 +56,32 @@ v0.32 moves these values into `model_assumptions` without changing their
 numerical values. The bundle is tagged **ARBITRARY**. This is a provenance
 improvement, not a calibration result.
 
+### 2.6 Coalition and event-engine corrections
+Second-pass execution audit closed four additional software-semantic defects:
+
+- unordered coalition-pair keys no longer overwrite one directional assessment;
+- coalition active duration is distinct from consecutive passed decisions;
+- a failed coalition-linked decision resets the consecutive-decision streak;
+- external timeline events are typed, time-scoped, and preserve multiple events at one tick.
+
+The original stored simulation artifacts remain historical outputs of their
+original code. They are not retroactively reinterpreted as outputs of these fixes.
+
+### 2.7 Claim-boundary hardening
+The model no longer returns a fixed numeric `TrustLedger.integrity()` value
+without a real integrity mechanism. The civil-society legitimacy output is also
+explicitly labeled as an internal proxy rather than measured public opinion.
+
+### 2.8 Affine reciprocal-audit result
+The fixed `+6` schedule contains six reciprocal audit dyads within each
+12-period cycle. Among the 36 collision-free affine auditor schedules over
+`Z_12`, 24 are reciprocal-free within one cycle. An exhaustive finite search
+within this affine family found that an exact 11-cycle cover of all 132 non-self
+ordered audit pairs has a minimum total of six within-cycle reciprocal dyads.
+
+This is a finite computational result **within the affine family**, not a
+theorem about every possible institutional schedule.
+
 ## 3. Components that remain model gaps
 
 The following are not yet adequate empirical behavioral models:
