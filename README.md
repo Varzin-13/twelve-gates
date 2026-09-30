@@ -20,7 +20,7 @@ The design documents ask how a decentralized council might distribute authority 
 
 ## Parameter provenance | منشأ پارامترها
 
-The [parameter register](simulations/param_provenance.py) classifies **19 tracked parameter groups: 6 `DOCUMENT`, 3 `DESIGN`, and 10 `ARBITRARY`/uncalibrated**. The machine-readable [calibration registry](simulations/calibration_registry.json) currently accepts **0 empirical mappings**, intentionally; a parameter is not promoted to empirical merely because an external dataset exists.
+The [parameter register](simulations/param_provenance.py) classifies **20 tracked parameter groups: 6 `DOCUMENT`, 3 `DESIGN`, and 11 `ARBITRARY`/uncalibrated**. The machine-readable [calibration registry](simulations/calibration_registry.json) currently accepts **0 empirical mappings**, intentionally; a parameter is not promoted to empirical merely because an external dataset exists.
 
 | Label | Meaning | Evidential boundary |
 |---|---|---|
@@ -28,7 +28,7 @@ The [parameter register](simulations/param_provenance.py) classifies **19 tracke
 | `DESIGN` | An engineered project choice | Documented choice, not a measured constant |
 | `ARBITRARY` | A scenario assumption without supporting calibration data | Its numerical effect must be tested and reported conditionally |
 
-The majority of tracked parameter groups are uncalibrated; consequential examples include coalition thresholds, initial executive power, trust matrices, and institutional-response assumptions. The model and stored baseline config retain `claim_label: hypothesis`. **فرضیه، نه پیش‌بینی:** source-document rules and runnable code do not turn scenario parameters into measured facts.
+The majority of tracked parameter groups are uncalibrated; consequential examples include coalition thresholds, initial executive power, trust matrices, institutional-response assumptions, and a 17-value behavioral-constants bundle that v0.32 moved out of hard-coded formulas into explicit configuration. The model and stored baseline config retain `claim_label: hypothesis`. **فرضیه، نه پیش‌بینی:** source-document rules and runnable code do not turn scenario parameters into measured facts.
 
 ## Three documented independent simulation questions | سه پرسش شبیه‌سازی مستقل مستندشده
 
