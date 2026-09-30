@@ -3,9 +3,9 @@
   "claim_label": "exploratory_structural_uncertainty",
   "not_calibration": true,
   "not_empirical_validation": true,
-  "git_head": "539de46b3914908d98d815c6eee7c73c49000d5d",
+  "git_head": "4a9bf5c39462b4936e308186408c065b59e9aae5",
   "script_sha256": "d8c2507a1970890f46514c22d43885b92633463477fcb4df18699f00101c00e0",
-  "model_sha256": "b4472c87a9cf8d39e6f2d33b6158547bb8470fbfa9451e4ce9215ad910c6c16c",
+  "model_sha256": "32f82fa46402d3dc2b7fbcf0acc0be34834419f30513328924603c2de05dc7da",
   "baseline_script_sha256": "8ff7abb2b0dd39db87380ae2efde96f8e8c20b7e3834f5691651b587085e0d83",
   "pair_aggregation_modes": [
     "minimum",
@@ -187,6 +187,6 @@
       "0.625": 0.0
     }
   },
-  "elapsed_seconds": 42.026,
+  "elapsed_seconds": 63.502,
   "interpretation_boundary": "Differences across modes quantify structural model uncertainty under the current uncalibrated assumptions. They do not identify which institutional rule is correct or preferable."
 }
