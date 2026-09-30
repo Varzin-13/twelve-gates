@@ -1,9 +1,7 @@
 name: phase-map-v032-once
 
 on:
-  pull_request:
-    paths:
-      - simulations/phase_map_v032.py
+  workflow_dispatch:
 
 permissions:
   contents: write
