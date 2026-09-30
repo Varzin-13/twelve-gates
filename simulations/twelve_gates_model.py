@@ -16,6 +16,21 @@ import json
 N_GATES = 12
 ROTATION_STEP = 5          # gcd(5,12)=1 — بند ۴.۲ سند
 OBSERVER_OFFSET = 6
+NUMERIC_ATOL = 1e-12
+
+
+def strictly_above_numeric(value, threshold, atol=NUMERIC_ATOL):
+    """Mathematical strict '>' with a tiny numerical-equality guard.
+
+    This is numerical hygiene, not a behavioral parameter. It prevents repeated
+    binary floating-point additions such as 25 × 0.02 from turning an intended
+    equality at 0.5 into a false positive strict-threshold crossing.
+    """
+    value = float(value)
+    threshold = float(threshold)
+    return value > threshold and not np.isclose(
+        value, threshold, rtol=0.0, atol=atol
+    )
 
 # ---------------- common.py معادل ----------------
 
@@ -114,7 +129,9 @@ class GateAgent:
             + a["capture_pressure_overlap_weight"] * overlap, 0, 1))
 
     def report_submission_stage(self):
-        is_critical = self.crisis_load > self.critical_report_threshold
+        is_critical = strictly_above_numeric(
+            self.crisis_load, self.critical_report_threshold
+        )
         truthful = self.rng.random() < self.info_reliability
         rep = Report(self.model.tick, self.uid,
                      ReportKind.CRITICAL if is_critical else ReportKind.ROUTINE, truthful)
@@ -142,7 +159,8 @@ class GateAgent:
             self._own_calls[id(rep)] = believes_truthful  # قضاوت خودِ این گیت، برای رفع باگ اعتماد
 
     def proposal_generation_stage(self):
-        if self.decision_backlog > 0 or self.crisis_load > 0.5:
+        if self.decision_backlog > 0 or strictly_above_numeric(
+                self.crisis_load, 0.5):
             cap_period_ticks = int(
                 self.model.cfg["time"]["budget_review_period_ticks"]
             )
@@ -727,7 +745,10 @@ class TwelveGatesModel:
             g.resource_share = float(g.resource_share / total)
 
     def process_emergency(self):
-        requesters = [g for g in self.gates if g.crisis_load > 0.75]
+        requesters = [
+            g for g in self.gates
+            if strictly_above_numeric(g.crisis_load, 0.75)
+        ]
         if self.emergency_state == EmergencyState.INACTIVE and requesters:
             self.emergency_state = EmergencyState.ACTIVE
             self.emergency_ticks_remaining = self.cfg["time"]["emergency_fuse_ticks"]
@@ -736,10 +757,16 @@ class TwelveGatesModel:
             self.emergency_ticks_remaining -= 1
             self.emergency_total_ticks += 1
             if self.emergency_ticks_remaining <= 0:
-                still_crisis = any(g.crisis_load > 0.6 for g in self.gates)
+                still_crisis = any(
+                    strictly_above_numeric(g.crisis_load, 0.6)
+                    for g in self.gates
+                )
                 if still_crisis:
                     ecfg = self.cfg["emergency_extension"]
-                    non_involved = [g for g in self.gates if g.crisis_load <= 0.75]
+                    non_involved = [
+                        g for g in self.gates
+                        if not strictly_above_numeric(g.crisis_load, 0.75)
+                    ]
                     support_p = float(ecfg["support_probability"])
                     required_fraction = float(ecfg["required_fraction"])
                     yes_count = sum(self.rng.random() < support_p for _ in non_involved)
