@@ -3,8 +3,8 @@
   "claim_label": "hypothesis",
   "purpose": "execution_audit_rerun_after_timing_resource_emergency_coalition_fixes",
   "not_empirical_validation": true,
-  "git_head": "05f1ed155fa49a571fb07ea83a2ef19818e9d389",
-  "runner_sha256": "cd673733f63f8600597c1a0ea932e54cd6514ad47474c16f838f24ec66b2d981",
+  "git_head": "603af2313f89da43b9552bbab2a9a2ac467770f3",
+  "runner_sha256": "955fa0898beb14486713da24c90e4e6111921abcff201fc73a09ecfb2a9e9f60",
   "model_sha256": "538ec17f277d949b17e382c5af350574891fce804c3723a167b70b0ce814d020",
   "baseline_config_canonical_sha256": "c83c03fe5953c312df2bd5c2de49356aec52a775dae5bc7565344d3e42507181",
   "stress_start_tick": 52,
@@ -337,7 +337,7 @@
     "legitimacy_internal_mean": 0.6172247474747475,
     "capture_pressure_mean": 0.5806665248898668
   },
-  "elapsed_seconds": 152.826,
+  "elapsed_seconds": 142.461,
   "run_results": [
     {
       "cartel_capture_ever": true,

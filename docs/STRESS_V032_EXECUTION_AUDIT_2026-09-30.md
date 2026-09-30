@@ -5,11 +5,11 @@
 **Runs:** 300  
 **Ticks per run:** 520  
 **Master seed:** 43  
-**Git HEAD:** `05f1ed155fa49a571fb07ea83a2ef19818e9d389`
+**Git HEAD:** `603af2313f89da43b9552bbab2a9a2ac467770f3`
 
 ## Provenance
 
-- runner SHA256: `cd673733f63f8600597c1a0ea932e54cd6514ad47474c16f838f24ec66b2d981`
+- runner SHA256: `955fa0898beb14486713da24c90e4e6111921abcff201fc73a09ecfb2a9e9f60`
 - model SHA256: `538ec17f277d949b17e382c5af350574891fce804c3723a167b70b0ce814d020`
 - canonical baseline-config SHA256: `c83c03fe5953c312df2bd5c2de49356aec52a775dae5bc7565344d3e42507181`
 - stress start tick: `52`
