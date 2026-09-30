@@ -38,7 +38,7 @@ def normalize_config(cfg: dict) -> dict:
 def validate_config(cfg: dict) -> list:
     """اعتبارسنجی صریح — خطای مبهم بهتر از کرش خاموش است."""
     errors = []
-    required_top = ["preconditions", "time", "gates", "coalitions", "budget",
+    required_top = ["preconditions", "time", "emergency_extension", "gates", "coalitions", "budget",
                      "mirror13", "gate_zero", "emergency_court", "bureaucracy",
                      "civil_society", "trust_dynamics"]
     for key in required_top:
@@ -55,6 +55,15 @@ def validate_config(cfg: dict) -> list:
                 v = g.get(field)
                 if v is None or not (0 <= v <= 1):
                     errors.append(f"گیت {g.get('gate_id')}: '{field}'={v} باید در [0,1] باشد")
+    if "emergency_extension" in cfg:
+        support_p = cfg["emergency_extension"].get("support_probability")
+        required_fraction = cfg["emergency_extension"].get("required_fraction")
+        if support_p is None or not (0 <= support_p <= 1):
+            errors.append(
+                f"emergency_extension.support_probability={support_p} باید در [0,1] باشد")
+        if required_fraction is None or not (0 < required_fraction <= 1):
+            errors.append(
+                f"emergency_extension.required_fraction={required_fraction} باید در (0,1] باشد")
     if "preconditions" in cfg:
         cap = cfg["preconditions"].get("coordination_capacity")
         mn = cfg["preconditions"].get("min_coordination_capacity")
