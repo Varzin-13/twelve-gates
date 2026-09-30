@@ -42,8 +42,13 @@
     },
     {
       "path": "budget.reallocation_rule",
-      "status": "INERT_MAIN_ABM",
-      "evidence": "Stored in config; implementation currently uses hard-coded vote pass criterion."
+      "status": "ACTIVE",
+      "evidence": "Implementation supports and enforces the qualified_majority rule explicitly."
+    },
+    {
+      "path": "budget.reallocation_required_fraction",
+      "status": "ACTIVE",
+      "evidence": "Used to compute ceil(fraction * 12); baseline 2/3 requires 8 yes votes."
     },
     {
       "path": "coalitions.weights",
