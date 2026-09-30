@@ -22,5 +22,7 @@ jobs:
       - name: Z12 schedule audit
         working-directory: simulations
         run: python audit_schedule.py
+      - name: Calibration registry
+        run: python simulations/validate_calibration_registry.py
       - name: Finite-state invariant checks
         run: python formal/abstract_model_check.py
