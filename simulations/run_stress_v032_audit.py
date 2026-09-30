@@ -22,6 +22,7 @@ from twelve_gates_model import TwelveGatesModel
 N_RUNS = 300
 MAX_TICKS = 520
 MASTER_SEED = 43
+RUN_LABEL = "v0.32-current-coalition-semantics"
 
 
 HERE = Path(__file__).resolve().parent
