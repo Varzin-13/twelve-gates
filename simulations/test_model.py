@@ -90,8 +90,30 @@ def test_config_validation_catches_errors():
     check("validate_config باید resource_share=2.0 (خارج از [0,1]) را رد کند", len(errors) > 0)
 
 def test_config_validation_accepts_valid():
-    errors = validate_config(json.loads(json.dumps(BASELINE_CFG)))
+    cfg = normalize_config(json.loads(json.dumps(BASELINE_CFG)))
+    errors = validate_config(cfg)
     check("validate_config نباید روی baseline_v1 معتبر خطا بدهد", len(errors) == 0)
+
+def test_config_validation_strict_probabilities_and_matrices():
+    bad_prob = normalize_config(json.loads(json.dumps(BASELINE_CFG)))
+    bad_prob["gates"][0]["audit_exposure"] = 1.2
+    check("validate_config: audit_exposure خارج از [0,1] باید رد شود",
+          any("audit_exposure" in e for e in validate_config(bad_prob)))
+
+    bad_matrix = normalize_config(json.loads(json.dumps(BASELINE_CFG)))
+    bad_matrix["gates"][0]["trust_row"].pop(1)
+    check("validate_config: trust_row ناقص باید رد شود",
+          any("trust_row" in e for e in validate_config(bad_matrix)))
+
+    bad_chill = normalize_config(json.loads(json.dumps(BASELINE_CFG)))
+    bad_chill["trust_dynamics"]["dissent_chilling_beta"] = 1.5
+    check("validate_config: dissent_chilling_beta خارج از [0,1] باید رد شود",
+          any("dissent_chilling_beta" in e for e in validate_config(bad_chill)))
+
+    bad_weights = normalize_config(json.loads(json.dumps(BASELINE_CFG)))
+    bad_weights["coalitions"]["weights"]["w1_affinity"] = 0.9
+    check("validate_config: coalition weights با مجموع نامعتبر باید رد شود",
+          any("weights" in e for e in validate_config(bad_weights)))
 
 def test_emergency_extension_validation():
     missing = json.loads(json.dumps(BASELINE_CFG))
@@ -490,6 +512,7 @@ if __name__ == "__main__":
     test_baseline_resource_share()
     test_config_validation_catches_errors()
     test_config_validation_accepts_valid()
+    test_config_validation_strict_probabilities_and_matrices()
     test_emergency_extension_validation()
     test_stress_timing_gate()
     test_budget_cap_period_and_multitarget_guard()
