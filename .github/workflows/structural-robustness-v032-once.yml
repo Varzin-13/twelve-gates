@@ -1,9 +1,7 @@
 name: structural-robustness-v032-once
 
 on:
-  pull_request:
-    paths:
-      - simulations/structural_robustness_v032.py
+  workflow_dispatch:
 
 permissions:
   contents: write
