@@ -21,7 +21,10 @@ TypeOK ==
                     "approved","rejected","appeal_pending","upheld","reversed"}
 
 NoSelfAudit == Coordinator # Auditor
-ResourceConservation == Sum({resources[g] : g \in Gates}) = 120
+ResourceConservation ==
+  resources[0] + resources[1] + resources[2] + resources[3] +
+  resources[4] + resources[5] + resources[6] + resources[7] +
+  resources[8] + resources[9] + resources[10] + resources[11] = 120
 EmergencyHasExpiry == emergency => expiry > 0
 
 Init ==
