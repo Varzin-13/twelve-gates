@@ -121,6 +121,36 @@ def test_stress_timing_gate():
     check("stress: گیت خارج از خوشه حتی بعد از tick=52 شوک نگیرد",
           driver.current_shock_for(1) == {})
 
+def test_budget_two_thirds_majority():
+    # 7/12 = 58.3% must FAIL under a documented 2/3 rule.
+    model7 = TwelveGatesModel(BASELINE_CFG, seed=51)
+    p7 = Proposal(
+        tick=0, proposer_id=0, coalition_id=None,
+        domain_targets=[0], resource_delta={0: 0.0}
+    )
+    p7.votes = {i: (i < 7) for i in range(N_GATES)}
+    model7.active_proposals = [p7]
+    model7.gates_by_id[0].implementation_stage()
+    check("budget majority: 7 از 12 باید زیر آستانه 2/3 رد شود",
+          p7.status.name == "VOTED_FAIL")
+
+    # 8/12 = exactly 2/3 must PASS.
+    model8 = TwelveGatesModel(BASELINE_CFG, seed=52)
+    p8 = Proposal(
+        tick=0, proposer_id=0, coalition_id=None,
+        domain_targets=[0], resource_delta={0: 0.0}
+    )
+    p8.votes = {i: (i < 8) for i in range(N_GATES)}
+    model8.active_proposals = [p8]
+    model8.gates_by_id[0].implementation_stage()
+    check("budget majority: 8 از 12 باید دقیقاً آستانه 2/3 را پاس کند",
+          p8.status.name == "IMPLEMENTED")
+
+    bad = json.loads(json.dumps(BASELINE_CFG))
+    bad["budget"].pop("reallocation_required_fraction")
+    check("budget majority: نبود fraction صریح باید در validation رد شود",
+          any("reallocation_required_fraction" in e for e in validate_config(bad)))
+
 def test_budget_share_conservation():
     model = TwelveGatesModel(BASELINE_CFG, seed=3)
     model.gates[0].resource_share += 0.10
@@ -387,6 +417,7 @@ if __name__ == "__main__":
     test_config_validation_accepts_valid()
     test_emergency_extension_validation()
     test_stress_timing_gate()
+    test_budget_two_thirds_majority()
     test_budget_share_conservation()
     test_audit_schedule_combinatorics()
     test_coalition_pair_aggregation_structural_modes()
