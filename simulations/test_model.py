@@ -260,6 +260,26 @@ def test_failed_coalition_decision_resets_streak():
     check("coalition streak: شکست یک تصمیم باید streak متوالی را صفر کند",
           coal.passed_decisions_streak == 0 and coal.last_decision_tick == 20)
 
+def test_proposal_ids_are_deterministic_and_auditable():
+    m1 = TwelveGatesModel(BASELINE_CFG, seed=71)
+    m2 = TwelveGatesModel(BASELINE_CFG, seed=71)
+
+    ids1 = [m1.next_proposal_id(), m1.next_proposal_id(), m1.next_proposal_id()]
+    ids2 = [m2.next_proposal_id(), m2.next_proposal_id(), m2.next_proposal_id()]
+    check("proposal id: sequence باید deterministic و rerun-stable باشد",
+          ids1 == ids2 == ["p00000000", "p00000001", "p00000002"])
+
+    p = Proposal(
+        tick=0, proposer_id=1, coalition_id=None,
+        domain_targets=[1], resource_delta={1: 0.0}
+    )
+    ref = m1.ensure_proposal_id(p)
+    m1.trust_ledger.record_dissent(0, 0, ref)
+    event = m1.trust_ledger.dissents[-1]
+    check("dissent ledger: proposal_ref باید شناسه پایدار را حفظ کند",
+          event["proposal_ref"] == p.proposal_id
+          and event["proposal_ref"].startswith("p"))
+
 def test_dissent_uses_single_decision_draw():
     class FixedRng:
         def __init__(self, values):
@@ -444,6 +464,7 @@ if __name__ == "__main__":
     test_coalition_pair_order_invariance()
     test_cartel_requires_decisions_not_age_only()
     test_failed_coalition_decision_resets_streak()
+    test_proposal_ids_are_deterministic_and_auditable()
     test_dissent_uses_single_decision_draw()
     test_external_timeline_preserves_multiple_events()
     test_external_timeline_validation()
