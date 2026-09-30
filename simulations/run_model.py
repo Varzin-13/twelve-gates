@@ -12,7 +12,7 @@ run_model.py — رابط خط‌فرمان مدل دوازده‌گیت
 """
 import argparse, json, sys, time
 import numpy as np
-from twelve_gates_model import TwelveGatesModel, PreconditionError, ExternalScenarioDriver
+from twelve_gates_model import TwelveGatesModel, PreconditionError, ExternalScenarioDriver, N_GATES
 from param_provenance import PARAM_PROVENANCE, print_provenance_table
 
 GATE_NAME_TO_ID = {"economy":0,"science":1,"security":2,"culture":3,"energy":4,"education":5,
@@ -64,6 +64,27 @@ def validate_config(cfg: dict) -> list:
         if required_fraction is None or not (0 < required_fraction <= 1):
             errors.append(
                 f"emergency_extension.required_fraction={required_fraction} باید در (0,1] باشد")
+    if "external_timeline" in cfg:
+        timeline = cfg["external_timeline"]
+        if not isinstance(timeline, list):
+            errors.append("external_timeline باید یک list باشد")
+        else:
+            for idx, ev in enumerate(timeline):
+                if not isinstance(ev, dict):
+                    errors.append(f"external_timeline[{idx}] باید object باشد")
+                    continue
+                tick = ev.get("tick")
+                gate_ids = ev.get("gate_ids")
+                if not isinstance(tick, int) or tick < 0:
+                    errors.append(f"external_timeline[{idx}].tick باید integer نامنفی باشد")
+                if not isinstance(gate_ids, list) or not gate_ids:
+                    errors.append(f"external_timeline[{idx}].gate_ids باید list غیرخالی باشد")
+                elif any((not isinstance(g, int)) or g < -1 or g >= N_GATES for g in gate_ids):
+                    errors.append(f"external_timeline[{idx}].gate_ids فقط -1 یا 0..11 مجاز است")
+                for field in ("crisis_delta", "exposure_delta"):
+                    value = ev.get(field, 0.0)
+                    if not isinstance(value, (int, float)):
+                        errors.append(f"external_timeline[{idx}].{field} باید عدد باشد")
     if "preconditions" in cfg:
         cap = cfg["preconditions"].get("coordination_capacity")
         mn = cfg["preconditions"].get("min_coordination_capacity")
