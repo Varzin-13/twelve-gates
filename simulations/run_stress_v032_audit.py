@@ -22,7 +22,7 @@ from twelve_gates_model import TwelveGatesModel
 N_RUNS = 300
 MAX_TICKS = 520
 MASTER_SEED = 43
-RUN_LABEL = "v0.32-final-execution-audit"
+RUN_LABEL = "v0.32-final-execution-audit-rerun"
 
 
 HERE = Path(__file__).resolve().parent
