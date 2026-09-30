@@ -183,7 +183,19 @@ class GateAgent:
         for p in my_props:
             if p.status == ProposalStatus.DRAFT and len(p.votes) >= N_GATES:
                 yes = sum(1 for v in p.votes.values() if v)
-                p.status = ProposalStatus.VOTED_PASS if yes >= 7 else ProposalStatus.VOTED_FAIL
+                budget_cfg = self.model.cfg["budget"]
+                if budget_cfg["reallocation_rule"] != "qualified_majority":
+                    raise RuntimeError(
+                        f"unsupported budget reallocation_rule: {budget_cfg['reallocation_rule']}"
+                    )
+                required_yes = int(np.ceil(
+                    float(budget_cfg["reallocation_required_fraction"]) * N_GATES
+                ))
+                p.status = (
+                    ProposalStatus.VOTED_PASS
+                    if yes >= required_yes
+                    else ProposalStatus.VOTED_FAIL
+                )
                 if p.status == ProposalStatus.VOTED_FAIL:
                     self.model.coalition_registry.record_proposal_outcome(
                         p, passed=False, tick=self.model.tick)
