@@ -439,14 +439,38 @@ class CoalitionRegistry:
 
 
 class ExternalScenarioDriver:
+    """Typed, deterministic external-event driver.
+
+    Event schema:
+      {"tick": int, "gate_ids": [int, ...],
+       "crisis_delta": float, "exposure_delta": float, "disaster": bool}
+
+    Multiple events at the same tick are preserved and aggregated. gate_id=-1
+    is reserved for the bureaucracy/system target. Empty timelines remain inert.
+    """
     def __init__(self, timeline):
-        self.timeline = {ev["tick"]: ev for ev in timeline}
+        self.events_by_tick = {}
+        for ev in timeline:
+            self.events_by_tick.setdefault(int(ev["tick"]), []).append(dict(ev))
         self.current_tick = -1
+        self._active_events = []
+
     def current_shock_for(self, gate_id):
-        return {}  # baseline: بدون شوک (طبق کانفیگ داده‌شده)
+        matched = [
+            ev for ev in self._active_events
+            if gate_id in ev.get("gate_ids", [])
+        ]
+        if not matched:
+            return {}
+        return {
+            "crisis_delta": float(sum(ev.get("crisis_delta", 0.0) for ev in matched)),
+            "exposure_delta": float(sum(ev.get("exposure_delta", 0.0) for ev in matched)),
+            "disaster": any(bool(ev.get("disaster", False)) for ev in matched),
+        }
+
     def apply(self, tick):
-        # Drivers must be time-aware. Subclasses may gate shocks on current_tick.
         self.current_tick = tick
+        self._active_events = list(self.events_by_tick.get(tick, []))
 
 
 # ---------------- مدل اصلی ----------------
