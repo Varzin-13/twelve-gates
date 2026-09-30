@@ -349,7 +349,15 @@ class CoalitionRegistry:
         directional = self.pair_scores.get(pair, {})
         if len(directional) < 2:
             return None
-        return float(np.mean(list(directional.values())))
+        values = list(directional.values())
+        mode = self.cfg.get("pair_aggregation", "mean")
+        if mode == "mean":
+            return float(np.mean(values))
+        if mode == "minimum":
+            return float(min(values))
+        if mode == "maximum":
+            return float(max(values))
+        raise ValueError(f"unknown coalition pair_aggregation: {mode}")
 
     def coalition_by_id(self, coalition_id):
         if coalition_id is None:
