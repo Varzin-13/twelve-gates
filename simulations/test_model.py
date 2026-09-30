@@ -291,6 +291,45 @@ def test_model_assumptions_validation():
     check("model assumptions: احتمال رأی نباید از ۱ عبور کند",
           any("vote_support" in e for e in validate_config(bad_vote)))
 
+def test_coalition_survival_summary_right_censoring():
+    model = TwelveGatesModel(BASELINE_CFG, seed=31)
+    reg = model.coalition_registry
+
+    dissolved = Coalition(10, frozenset((0, 1)), formed_tick=0, dissolved_tick=10)
+    reg._history.append(dissolved)
+
+    active = Coalition(
+        11, frozenset((2, 3)), formed_tick=5, active_duration_ticks=15
+    )
+    reg.active_coalitions[active.members] = active
+
+    summary = reg.survival_summary(horizon=20)
+    check("coalition survival: تعداد dissolved و right-censored باید جدا باشد",
+          summary["n_total"] == 2
+          and summary["n_dissolved"] == 1
+          and summary["n_right_censored"] == 1)
+    check("coalition survival: dissolved mean و active age نباید با هم مخلوط شوند",
+          summary["dissolved_duration_mean"] == 10.0
+          and summary["active_age_mean"] == 15.0)
+    check("coalition survival: observed age/duration mean باید هر دو observation را ببیند",
+          summary["observed_age_or_duration_mean"] == 12.5)
+    check("coalition survival: RMST باید censoring را نگه دارد، نه active را حذف کند",
+          abs(summary["rmst_ticks"] - 15.0) < 1e-12)
+
+def test_run_exposes_censoring_boundary():
+    model = TwelveGatesModel(BASELINE_CFG, seed=32)
+    out = model.run(3)
+    required = {
+        "coalition_duration_legacy_dissolved_mean",
+        "coalition_duration_dissolved_mean",
+        "coalition_active_age_mean",
+        "coalition_observed_age_or_duration_mean",
+        "coalition_rmst_ticks",
+        "coalitions_right_censored_n",
+    }
+    check("run output: censoring-aware coalition fields باید صریح باشند",
+          required.issubset(out))
+
 if __name__ == "__main__":
     test_rotation_formula()
     test_precondition_refusal()
@@ -312,6 +351,8 @@ if __name__ == "__main__":
     test_external_timeline_validation()
     test_claim_boundary_outputs()
     test_model_assumptions_validation()
+    test_coalition_survival_summary_right_censoring()
+    test_run_exposes_censoring_boundary()
 
     print(f"\n{'='*50}\n{len(PASS)} موفق، {len(FAIL)} ناموفق از {len(PASS)+len(FAIL)} تست")
     if FAIL:
