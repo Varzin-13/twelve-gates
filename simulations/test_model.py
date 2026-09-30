@@ -121,6 +121,42 @@ def test_stress_timing_gate():
     check("stress: گیت خارج از خوشه حتی بعد از tick=52 شوک نگیرد",
           driver.current_shock_for(1) == {})
 
+def test_budget_cap_period_and_multitarget_guard():
+    class FixedNormal:
+        def normal(self, mean, sd):
+            return 999.0
+
+    cfg = json.loads(json.dumps(BASELINE_CFG))
+    cfg["budget"]["annual_delta_cap"] = 0.26
+    cfg["time"]["budget_review_period_ticks"] = 26
+    model = TwelveGatesModel(cfg, seed=80)
+    gate = model.gates_by_id[0]
+    gate.crisis_load = 0.7
+    gate.rng = FixedNormal()
+    gate.proposal_generation_stage()
+    delta = model.active_proposals[-1].resource_delta[0]
+    check("budget cap: per-tick cap باید از budget_review_period_ticks مشتق شود",
+          abs(delta - 0.01) < 1e-12)
+
+    bad_cfg = json.loads(json.dumps(BASELINE_CFG))
+    bad_cfg["time"]["budget_review_period_ticks"] = 0
+    check("budget cap: review-period صفر باید در validation رد شود",
+          any("budget_review_period_ticks" in e for e in validate_config(bad_cfg)))
+
+    model2 = TwelveGatesModel(BASELINE_CFG, seed=81)
+    p = Proposal(
+        tick=0, proposer_id=0, coalition_id=None,
+        domain_targets=[0, 1], resource_delta={0: 0.0, 1: 0.0}
+    )
+    p.votes = {i: True for i in range(N_GATES)}
+    model2.active_proposals = [p]
+    refused = False
+    try:
+        model2.gates_by_id[0].implementation_stage()
+    except RuntimeError as exc:
+        refused = "multi-target" in str(exc)
+    check("budget proposal: multi-target مبهم باید صریحاً reject شود", refused)
+
 def test_budget_two_thirds_majority():
     # 7/12 = 58.3% must FAIL under a documented 2/3 rule.
     model7 = TwelveGatesModel(BASELINE_CFG, seed=51)
@@ -456,6 +492,7 @@ if __name__ == "__main__":
     test_config_validation_accepts_valid()
     test_emergency_extension_validation()
     test_stress_timing_gate()
+    test_budget_cap_period_and_multitarget_guard()
     test_budget_two_thirds_majority()
     test_budget_share_conservation()
     test_budget_vote_counters_and_required_yes_output()
