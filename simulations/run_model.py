@@ -60,6 +60,15 @@ def validate_config(cfg: dict) -> list:
         if aggregation not in {"mean", "minimum", "maximum"}:
             errors.append(
                 f"coalitions.pair_aggregation={aggregation!r} باید یکی از mean/minimum/maximum باشد")
+    if "budget" in cfg:
+        rule = cfg["budget"].get("reallocation_rule")
+        fraction = cfg["budget"].get("reallocation_required_fraction")
+        if rule != "qualified_majority":
+            errors.append(
+                f"budget.reallocation_rule={rule!r} فعلاً فقط qualified_majority پشتیبانی می‌شود")
+        if fraction is None or not isinstance(fraction, (int, float)) or not (0 < fraction <= 1):
+            errors.append(
+                f"budget.reallocation_required_fraction={fraction} باید در (0,1] باشد")
     if "emergency_extension" in cfg:
         support_p = cfg["emergency_extension"].get("support_probability")
         required_fraction = cfg["emergency_extension"].get("required_fraction")
