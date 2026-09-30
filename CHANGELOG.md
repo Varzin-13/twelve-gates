@@ -18,6 +18,9 @@
 - افزوده شد: ۱۷ ثابت رفتاری hard-coded به `model_assumptions` منتقل و کل bundle به‌عنوان `ARBITRARY` ثبت شد.
 - حذف شد: عدد ثابت 0.95 برای `TrustLedger.integrity()`؛ تا زمان پیاده‌سازی اندازه‌گیری واقعی، متد صریحاً NotImplemented است.
 - شفاف شد: `public_legitimacy_signal` خروجی نظرسنجی نیست و به‌عنوان internal/civil-society proxy برچسب می‌خورد.
+- اصلاح شد: lifetime ائتلاف‌ها اکنون right-censoring را صریح نگه می‌دارد؛ فیلد legacy حفظ شده و active age، تعداد censored و Kaplan-Meier RMST اضافه شده است.
+- افزوده شد: diagnostic اولین trigger معیار cartel شامل tick، اعضا، power sum، duration و decision streak بدون تغییر dynamics.
+- افزوده شد: structural choice برای bilateral pair aggregation؛ baseline همچنان `mean` است و `minimum/maximum` فقط برای robustness analysis استفاده می‌شوند.
 - افزوده شد: ODD specification و برنامه‌ی مستقل calibration/sensitivity/validation.
 - ممیزی شد: سناریوهای ۴ و ۵؛ خطای نام‌گذاری پارامتر لوگ‌نرمال (median در برابر mean)، تعبیر بیش‌ازحد نتایج شرطی، و مسیرهای hard-coded اصلاح شدند. این دو اسکریپت اکنون صریحاً sensitivityهای مصنوعی/غیرکالیبره‌اند و برای رتبه‌بندی یا برآورد احتمال واقعی بازیگران سیاسی به‌کار نمی‌روند.
 - افزوده شد: metric ممیزی متقابل؛ قاعده‌ی +6 در هر چرخه ۶ dyad متقابل دارد. exhaustive search در خانواده‌ی collision-free affine نشان داد exact cover یازده‌چرخه‌ای این خانواده حداقل ۶ reciprocal dyad دارد.
