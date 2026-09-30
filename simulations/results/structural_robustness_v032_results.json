@@ -3,10 +3,10 @@
   "claim_label": "exploratory_structural_uncertainty",
   "not_calibration": true,
   "not_empirical_validation": true,
-  "git_head": "4b536bb4501f32278301ab5cb7efbae2a7bccb4f",
+  "git_head": "4a9bf5c39462b4936e308186408c065b59e9aae5",
   "script_sha256": "d8c2507a1970890f46514c22d43885b92633463477fcb4df18699f00101c00e0",
-  "model_sha256": "48f1c55d64df5b910c6c9b0f8b6cf6ccbb3944cf6ca55ab30acdee1c5d3759fe",
-  "baseline_script_sha256": "3562a544a8cf4363f0340bf70ba799ce765afdb545b7fb54ae4e1e5b72bb8694",
+  "model_sha256": "32f82fa46402d3dc2b7fbcf0acc0be34834419f30513328924603c2de05dc7da",
+  "baseline_script_sha256": "8ff7abb2b0dd39db87380ae2efde96f8e8c20b7e3834f5691651b587085e0d83",
   "pair_aggregation_modes": [
     "minimum",
     "mean",
@@ -40,29 +40,29 @@
       "n_runs": 12,
       "cartel_capture_rate": 0.8333333333333334,
       "cartel_capture_sd_across_seeds": 0.38924947208076144,
-      "emergency_time_share_mean": 0.5626602564102564,
-      "coalition_rmst_ticks_mean_valid_runs": 95.84438431938433,
+      "emergency_time_share_mean": 0.5625000000000001,
+      "coalition_rmst_ticks_mean_valid_runs": 92.96475468975471,
       "runs_with_defined_coalition_rmst": 12,
-      "coalitions_total_observed": 104,
+      "coalitions_total_observed": 101,
       "coalitions_right_censored_n": 12,
-      "coalition_right_censored_fraction": 0.11538461538461539,
+      "coalition_right_censored_fraction": 0.1188118811881188,
       "active_coalitions_end_mean": 1.0,
-      "internal_legitimacy_mean": 0.6172348484848486
+      "internal_legitimacy_mean": 0.6169823232323233
     },
     {
       "pair_aggregation": "minimum",
       "theta_pair": 0.6,
       "n_runs": 12,
-      "cartel_capture_rate": 0.6666666666666666,
-      "cartel_capture_sd_across_seeds": 0.49236596391733095,
-      "emergency_time_share_mean": 0.5621794871794872,
-      "coalition_rmst_ticks_mean_valid_runs": 127.88566341066341,
+      "cartel_capture_rate": 0.5833333333333334,
+      "cartel_capture_sd_across_seeds": 0.5149286505444373,
+      "emergency_time_share_mean": 0.5629807692307692,
+      "coalition_rmst_ticks_mean_valid_runs": 128.27104700854701,
       "runs_with_defined_coalition_rmst": 12,
-      "coalitions_total_observed": 81,
+      "coalitions_total_observed": 80,
       "coalitions_right_censored_n": 12,
-      "coalition_right_censored_fraction": 0.14814814814814814,
+      "coalition_right_censored_fraction": 0.15,
       "active_coalitions_end_mean": 1.0,
-      "internal_legitimacy_mean": 0.6172979797979798
+      "internal_legitimacy_mean": 0.6171085858585859
     },
     {
       "pair_aggregation": "minimum",
@@ -85,29 +85,29 @@
       "n_runs": 12,
       "cartel_capture_rate": 0.8333333333333334,
       "cartel_capture_sd_across_seeds": 0.38924947208076144,
-      "emergency_time_share_mean": 0.5625,
-      "coalition_rmst_ticks_mean_valid_runs": 94.6120166870167,
+      "emergency_time_share_mean": 0.5626602564102564,
+      "coalition_rmst_ticks_mean_valid_runs": 96.6485486735487,
       "runs_with_defined_coalition_rmst": 12,
-      "coalitions_total_observed": 107,
+      "coalitions_total_observed": 101,
       "coalitions_right_censored_n": 12,
-      "coalition_right_censored_fraction": 0.11214953271028037,
+      "coalition_right_censored_fraction": 0.1188118811881188,
       "active_coalitions_end_mean": 1.0,
-      "internal_legitimacy_mean": 0.6180555555555556
+      "internal_legitimacy_mean": 0.6178030303030303
     },
     {
       "pair_aggregation": "mean",
       "theta_pair": 0.6,
       "n_runs": 12,
-      "cartel_capture_rate": 0.5,
-      "cartel_capture_sd_across_seeds": 0.5222329678670935,
-      "emergency_time_share_mean": 0.5634615384615386,
-      "coalition_rmst_ticks_mean_valid_runs": 122.12217643467646,
+      "cartel_capture_rate": 0.4166666666666667,
+      "cartel_capture_sd_across_seeds": 0.5149286505444373,
+      "emergency_time_share_mean": 0.5634615384615385,
+      "coalition_rmst_ticks_mean_valid_runs": 114.10736832611832,
       "runs_with_defined_coalition_rmst": 12,
-      "coalitions_total_observed": 83,
+      "coalitions_total_observed": 81,
       "coalitions_right_censored_n": 12,
-      "coalition_right_censored_fraction": 0.14457831325301204,
+      "coalition_right_censored_fraction": 0.14814814814814814,
       "active_coalitions_end_mean": 1.0,
-      "internal_legitimacy_mean": 0.6180555555555556
+      "internal_legitimacy_mean": 0.6178661616161616
     },
     {
       "pair_aggregation": "mean",
@@ -128,31 +128,31 @@
       "pair_aggregation": "maximum",
       "theta_pair": 0.575,
       "n_runs": 12,
-      "cartel_capture_rate": 1.0,
-      "cartel_capture_sd_across_seeds": 0.0,
-      "emergency_time_share_mean": 0.5613782051282051,
-      "coalition_rmst_ticks_mean_valid_runs": 77.05537425537428,
+      "cartel_capture_rate": 0.9166666666666666,
+      "cartel_capture_sd_across_seeds": 0.28867513459481287,
+      "emergency_time_share_mean": 0.5621794871794872,
+      "coalition_rmst_ticks_mean_valid_runs": 87.63351833351835,
       "runs_with_defined_coalition_rmst": 12,
-      "coalitions_total_observed": 127,
+      "coalitions_total_observed": 109,
       "coalitions_right_censored_n": 12,
-      "coalition_right_censored_fraction": 0.09448818897637795,
+      "coalition_right_censored_fraction": 0.11009174311926606,
       "active_coalitions_end_mean": 1.0,
-      "internal_legitimacy_mean": 0.6177398989898989
+      "internal_legitimacy_mean": 0.617739898989899
     },
     {
       "pair_aggregation": "maximum",
       "theta_pair": 0.6,
       "n_runs": 12,
-      "cartel_capture_rate": 0.6666666666666666,
-      "cartel_capture_sd_across_seeds": 0.49236596391733095,
-      "emergency_time_share_mean": 0.5631410256410257,
-      "coalition_rmst_ticks_mean_valid_runs": 106.87483164983165,
+      "cartel_capture_rate": 0.5833333333333334,
+      "cartel_capture_sd_across_seeds": 0.5149286505444373,
+      "emergency_time_share_mean": 0.5626602564102564,
+      "coalition_rmst_ticks_mean_valid_runs": 101.28035714285717,
       "runs_with_defined_coalition_rmst": 12,
-      "coalitions_total_observed": 94,
+      "coalitions_total_observed": 89,
       "coalitions_right_censored_n": 12,
-      "coalition_right_censored_fraction": 0.1276595744680851,
+      "coalition_right_censored_fraction": 0.1348314606741573,
       "active_coalitions_end_mean": 1.0,
-      "internal_legitimacy_mean": 0.6176767676767677
+      "internal_legitimacy_mean": 0.6178661616161616
     },
     {
       "pair_aggregation": "maximum",
@@ -173,20 +173,20 @@
   "cartel_capture_rate_matrix": {
     "minimum": {
       "0.575": 0.8333333333333334,
-      "0.6": 0.6666666666666666,
+      "0.6": 0.5833333333333334,
       "0.625": 0.0
     },
     "mean": {
       "0.575": 0.8333333333333334,
-      "0.6": 0.5,
+      "0.6": 0.4166666666666667,
       "0.625": 0.0
     },
     "maximum": {
-      "0.575": 1.0,
-      "0.6": 0.6666666666666666,
+      "0.575": 0.9166666666666666,
+      "0.6": 0.5833333333333334,
       "0.625": 0.0
     }
   },
-  "elapsed_seconds": 42.063,
+  "elapsed_seconds": 63.502,
   "interpretation_boundary": "Differences across modes quantify structural model uncertainty under the current uncalibrated assumptions. They do not identify which institutional rule is correct or preferable."
 }
