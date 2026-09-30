@@ -143,7 +143,10 @@ class GateAgent:
 
     def proposal_generation_stage(self):
         if self.decision_backlog > 0 or self.crisis_load > 0.5:
-            cap = self.model.cfg["budget"]["annual_delta_cap"] / 52
+            cap_period_ticks = int(
+                self.model.cfg["time"]["budget_review_period_ticks"]
+            )
+            cap = self.model.cfg["budget"]["annual_delta_cap"] / cap_period_ticks
             delta = float(np.clip(self.rng.normal(0, cap / 2), -cap, cap))
             prop = Proposal(
                 self.model.tick, self.uid, self.coalition_id,
@@ -189,6 +192,11 @@ class GateAgent:
     def implementation_stage(self):
         my_props = [p for p in self.model.active_proposals if self.uid in p.resource_delta]
         for p in my_props:
+            if len(p.resource_delta) != 1:
+                raise RuntimeError(
+                    "multi-target resource proposals are not yet supported; "
+                    "explicit transfer semantics must be defined first"
+                )
             if p.status == ProposalStatus.DRAFT and len(p.votes) >= N_GATES:
                 yes = sum(1 for v in p.votes.values() if v)
                 budget_cfg = self.model.cfg["budget"]
