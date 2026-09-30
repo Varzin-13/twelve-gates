@@ -8,7 +8,7 @@ import numpy as np
 import json, sys
 from twelve_gates_model import (
     TwelveGatesModel, PreconditionError, N_GATES, ROTATION_STEP, OBSERVER_OFFSET,
-    CoalitionRegistry, Coalition, Proposal
+    CoalitionRegistry, Coalition, Proposal, ExternalScenarioDriver
 )
 from run_baseline import BASELINE_CFG
 from run_model import normalize_config, validate_config
@@ -218,6 +218,36 @@ def test_dissent_uses_single_decision_draw():
     after = len(model.trust_ledger.dissents)
     check("dissent: رأی منفی باید فقط یک draw جدا برای ثبت dissent مصرف کند",
           fake.calls == 2 and after == before + 1)
+
+def test_external_timeline_preserves_multiple_events():
+    driver = ExternalScenarioDriver([
+        {"tick": 5, "gate_ids": [2], "crisis_delta": 0.10, "exposure_delta": 0.02},
+        {"tick": 5, "gate_ids": [2], "crisis_delta": 0.05, "exposure_delta": 0.03},
+        {"tick": 5, "gate_ids": [-1], "disaster": True},
+        {"tick": 6, "gate_ids": [2], "crisis_delta": 0.90},
+    ])
+    driver.apply(5)
+    shock = driver.current_shock_for(2)
+    check("timeline: چند رویداد هم‌زمان باید جمع شوند، نه overwrite",
+          abs(shock["crisis_delta"] - 0.15) < 1e-12
+          and abs(shock["exposure_delta"] - 0.05) < 1e-12)
+    check("timeline: رویداد tick آینده نباید زودتر اعمال شود",
+          shock["crisis_delta"] < 0.90)
+    system_shock = driver.current_shock_for(-1)
+    check("timeline: target=-1 باید رویداد سیستمی/بوروکراسی را دریافت کند",
+          system_shock.get("disaster") is True)
+    driver.apply(4)
+    check("timeline: tick بدون رویداد باید inert باشد",
+          driver.current_shock_for(2) == {})
+
+def test_external_timeline_validation():
+    cfg = json.loads(json.dumps(BASELINE_CFG))
+    cfg["external_timeline"] = [
+        {"tick": -1, "gate_ids": [12], "crisis_delta": "bad"}
+    ]
+    errs = validate_config(cfg)
+    check("timeline validation: tick منفی/gate نامعتبر/delta غیرعددی باید رد شود",
+          len([e for e in errs if "external_timeline" in e]) >= 3)
 
 if __name__ == "__main__":
     test_rotation_formula()
