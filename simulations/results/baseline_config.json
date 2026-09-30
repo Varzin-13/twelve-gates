@@ -676,6 +676,7 @@
     }
   ],
   "coalitions": {
+    "pair_aggregation": "mean",
     "weights": {
       "w1_affinity": 0.3,
       "w2_trust": 0.25,
