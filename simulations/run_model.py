@@ -38,9 +38,9 @@ def normalize_config(cfg: dict) -> dict:
 def validate_config(cfg: dict) -> list:
     """اعتبارسنجی صریح — خطای مبهم بهتر از کرش خاموش است."""
     errors = []
-    required_top = ["preconditions", "time", "emergency_extension", "gates", "coalitions", "budget",
-                     "mirror13", "gate_zero", "emergency_court", "bureaucracy",
-                     "civil_society", "trust_dynamics"]
+    required_top = ["preconditions", "time", "emergency_extension", "model_assumptions",
+                     "gates", "coalitions", "budget", "mirror13", "gate_zero",
+                     "emergency_court", "bureaucracy", "civil_society", "trust_dynamics"]
     for key in required_top:
         if key not in cfg:
             errors.append(f"کلید اجباری غایب: '{key}'")
@@ -85,6 +85,58 @@ def validate_config(cfg: dict) -> list:
                     value = ev.get(field, 0.0)
                     if not isinstance(value, (int, float)):
                         errors.append(f"external_timeline[{idx}].{field} باید عدد باشد")
+    if "model_assumptions" in cfg:
+        a = cfg["model_assumptions"]
+        bounded = [
+            "audit_accuracy_bonus",
+            "coalition_propensity_resource_weight",
+            "coalition_propensity_trust_weight",
+            "capture_pressure_resource_weight",
+            "capture_pressure_cluster_affinity_weight",
+            "capture_pressure_overlap_weight",
+            "vote_support_intercept",
+            "vote_support_trust_weight",
+            "public_legitimacy_memory_weight",
+            "public_legitimacy_internal_weight",
+            "armed_bloc_split_threshold",
+            "armed_bloc_split_probability",
+            "armed_bloc_confrontation_threshold",
+            "armed_bloc_confrontation_probability",
+            "armed_bloc_bargain_threshold",
+            "armed_bloc_bargain_probability",
+        ]
+        for name in bounded:
+            value = a.get(name)
+            if value is None or not isinstance(value, (int, float)) or not (0 <= value <= 1):
+                errors.append(f"model_assumptions.{name}={value} باید عددی در [0,1] باشد")
+        drift = a.get("bureaucracy_politicization_drift_rate")
+        if drift is None or not isinstance(drift, (int, float)) or drift < 0:
+            errors.append(
+                f"model_assumptions.bureaucracy_politicization_drift_rate={drift} باید نامنفی باشد")
+        weight_groups = [
+            ("coalition propensity", [
+                "coalition_propensity_resource_weight",
+                "coalition_propensity_trust_weight",
+            ]),
+            ("capture pressure", [
+                "capture_pressure_resource_weight",
+                "capture_pressure_cluster_affinity_weight",
+                "capture_pressure_overlap_weight",
+            ]),
+            ("public legitimacy proxy", [
+                "public_legitimacy_memory_weight",
+                "public_legitimacy_internal_weight",
+            ]),
+        ]
+        for label, names in weight_groups:
+            vals = [a.get(name) for name in names]
+            if all(isinstance(v, (int, float)) for v in vals):
+                if abs(sum(vals) - 1.0) > 1e-9:
+                    errors.append(f"model_assumptions weights for {label} باید مجموعاً 1 باشند")
+        vi = a.get("vote_support_intercept")
+        vw = a.get("vote_support_trust_weight")
+        if isinstance(vi, (int, float)) and isinstance(vw, (int, float)) and vi + vw > 1:
+            errors.append("vote_support_intercept + vote_support_trust_weight نباید از 1 بیشتر شود")
     if "preconditions" in cfg:
         cap = cfg["preconditions"].get("coordination_capacity")
         mn = cfg["preconditions"].get("min_coordination_capacity")
