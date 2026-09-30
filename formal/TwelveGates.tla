@@ -67,6 +67,17 @@ ExtendEmergency ==
   /\ extensionCount' = extensionCount + 1
   /\ UNCHANGED <<t, resources, gzState>>
 
+BudgetTransfer ==
+  \E from, to \in Gates:
+    /\ from # to
+    /\ resources[from] > 0
+    /\ resources' = [
+         resources EXCEPT
+           ![from] = @ - 1,
+           ![to] = @ + 1
+       ]
+    /\ UNCHANGED <<t, emergency, expiry, extensionCount, gzState>>
+
 GateZeroStep ==
   \/ /\ gzState = "submitted"
      /\ gzState' = "scope_checked"
@@ -84,7 +95,7 @@ GateZeroStep ==
      /\ gzState' \in {"upheld","reversed"}
      /\ UNCHANGED <<t, emergency, expiry, extensionCount, resources>>
 
-Next == Tick \/ ActivateEmergency \/ EmergencyStep \/ ExpireEmergency \/ ExtendEmergency \/ GateZeroStep
+Next == Tick \/ ActivateEmergency \/ EmergencyStep \/ ExpireEmergency \/ ExtendEmergency \/ BudgetTransfer \/ GateZeroStep
 
 Spec == Init /\ [][Next]_vars
 
