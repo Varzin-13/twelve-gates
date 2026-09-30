@@ -207,6 +207,16 @@
       "empirical_source": null,
       "mapping_method": null,
       "uncertainty": null
+    },
+    {
+      "id": "coalition_pair_aggregation",
+      "label": "ARBITRARY",
+      "value": "mean baseline; minimum/maximum structural bounds",
+      "source": "Structural model choice introduced for robustness analysis; no empirical mapping accepted",
+      "empirical_accepted": false,
+      "empirical_source": null,
+      "mapping_method": null,
+      "uncertainty": null
     }
   ]
 }
