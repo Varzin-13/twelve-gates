@@ -19,6 +19,9 @@ jobs:
       - name: Regression tests
         working-directory: simulations
         run: PYTHONDONTWRITEBYTECODE=1 python test_model.py
+      - name: Institutional interface tests
+        working-directory: simulations
+        run: python test_institutional_interfaces.py
       - name: Z12 schedule audit
         working-directory: simulations
         run: python audit_schedule.py
