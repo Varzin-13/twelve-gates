@@ -36,6 +36,25 @@ Therefore the single corrected-stress value `0.973333` must be interpreted as
 the output of one uncalibrated parameter point. It is not robust across the
 explored assumption space and is not a real-world probability.
 
+### 1b. Material-power phase boundary is partly mechanical
+The baseline executive-power values of the three material-cluster gates sum to:
+
+`0.75 + 0.85 + 0.70 = 2.30`.
+
+The coded cartel criterion requires a coalition power sum strictly greater than:
+
+`theta_power_sum = 1.8`.
+
+For the material triad alone, this implies an exact multiplier boundary:
+
+`1.8 / 2.30 = 0.7826086957...`.
+
+Therefore the phase-map change between multipliers 0.767 and 0.833 is not
+purely emergent behavior. A substantial part of that discontinuity follows
+directly from the operationalized threshold. The exploratory simulation is still
+useful for the interaction with coalition formation and `theta_pair`, but the
+power breakpoint itself must not be presented as an empirical discovery.
+
 ### 2. Emergency time share is structurally dominated by its support assumption
 The exploratory rank association between
 `emergency_support_probability` and modeled emergency-time share is:
