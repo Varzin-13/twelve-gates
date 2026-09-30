@@ -87,6 +87,7 @@ This branch adds a separate execution-audit layer without declaring the governan
 - [ABM v2 preregistration scaffold](docs/ABM_V2_ODD_TRACE_PREREG_2026-09-30.md)
 - [ABM v2 ODD specification](docs/ABM_V2_ODD_SPEC.md)
 - [ABM v2 calibration/validation plan](docs/ABM_V2_CALIBRATION_VALIDATION_PLAN.md)
+- [Post-budget-majority paired stress audit](docs/STRESS_V032_POST_BUDGET_MAJORITY_2026-10-01.md) — same 300 seeds, corrected 8/12 threshold; modeled capture 0.973333 → 0.976667 with 7/300 runs changing capture state.
 - [Gate Zero / Mirror-13 executable interfaces](simulations/institutional_interfaces.py)
 - [Z12 / affine audit-schedule utility](simulations/audit_schedule.py)
 - [Calibration registry](simulations/calibration_registry.json)
