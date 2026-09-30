@@ -1,0 +1,654 @@
+{
+  "schema": "twelve-gates/phase-map-v032/v1",
+  "claim_label": "exploratory_hypothesis",
+  "not_calibration": true,
+  "not_empirical_validation": true,
+  "git_head": "fd79ed11da451a49affd9fe93131e140c6d7101a",
+  "script_sha256": "c2eb14f62104f6ead5889dcfdec6c4c5e8ea1b3b90fc61b6f65f012c177e7a2d",
+  "model_sha256": "538ec17f277d949b17e382c5af350574891fce804c3723a167b70b0ce814d020",
+  "baseline_script_sha256": "ee7be0dd1106fa2537a95932fece26823ca815c49a6e823238d8f84321768f45",
+  "theta_values": [
+    0.5,
+    0.525,
+    0.55,
+    0.575,
+    0.6,
+    0.625,
+    0.65,
+    0.675,
+    0.7
+  ],
+  "material_exec_multipliers": [
+    0.7,
+    0.7666666667,
+    0.8333333333,
+    0.9,
+    0.9666666667,
+    1.0333333333,
+    1.1
+  ],
+  "seeds_per_cell": 8,
+  "common_seeds": [
+    936397625,
+    2030807439,
+    306720308,
+    1473447065,
+    1408544667,
+    1814551700,
+    1040910837,
+    1123203404
+  ],
+  "max_ticks": 520,
+  "cells": [
+    {
+      "theta_pair": 0.5,
+      "material_exec_multiplier": 0.7,
+      "cartel_capture_rate": 0.0,
+      "cartel_capture_sd_across_seeds": 0.0,
+      "emergency_time_share_mean": 0.5620192307692308,
+      "legacy_dissolved_coalition_duration_mean": 30.632242063492065
+    },
+    {
+      "theta_pair": 0.525,
+      "material_exec_multiplier": 0.7,
+      "cartel_capture_rate": 0.0,
+      "cartel_capture_sd_across_seeds": 0.0,
+      "emergency_time_share_mean": 0.5634615384615385,
+      "legacy_dissolved_coalition_duration_mean": 32.87217261904762
+    },
+    {
+      "theta_pair": 0.55,
+      "material_exec_multiplier": 0.7,
+      "cartel_capture_rate": 0.0,
+      "cartel_capture_sd_across_seeds": 0.0,
+      "emergency_time_share_mean": 0.5620192307692308,
+      "legacy_dissolved_coalition_duration_mean": 30.619642857142857
+    },
+    {
+      "theta_pair": 0.575,
+      "material_exec_multiplier": 0.7,
+      "cartel_capture_rate": 0.0,
+      "cartel_capture_sd_across_seeds": 0.0,
+      "emergency_time_share_mean": 0.5622596153846153,
+      "legacy_dissolved_coalition_duration_mean": 38.393055555555556
+    },
+    {
+      "theta_pair": 0.6,
+      "material_exec_multiplier": 0.7,
+      "cartel_capture_rate": 0.0,
+      "cartel_capture_sd_across_seeds": 0.0,
+      "emergency_time_share_mean": 0.5617788461538462,
+      "legacy_dissolved_coalition_duration_mean": 58.11354166666667
+    },
+    {
+      "theta_pair": 0.625,
+      "material_exec_multiplier": 0.7,
+      "cartel_capture_rate": 0.0,
+      "cartel_capture_sd_across_seeds": 0.0,
+      "emergency_time_share_mean": 0.5612980769230769,
+      "legacy_dissolved_coalition_duration_mean": 0.0
+    },
+    {
+      "theta_pair": 0.65,
+      "material_exec_multiplier": 0.7,
+      "cartel_capture_rate": 0.0,
+      "cartel_capture_sd_across_seeds": 0.0,
+      "emergency_time_share_mean": 0.5612980769230769,
+      "legacy_dissolved_coalition_duration_mean": 0.0
+    },
+    {
+      "theta_pair": 0.675,
+      "material_exec_multiplier": 0.7,
+      "cartel_capture_rate": 0.0,
+      "cartel_capture_sd_across_seeds": 0.0,
+      "emergency_time_share_mean": 0.5612980769230769,
+      "legacy_dissolved_coalition_duration_mean": 0.0
+    },
+    {
+      "theta_pair": 0.7,
+      "material_exec_multiplier": 0.7,
+      "cartel_capture_rate": 0.0,
+      "cartel_capture_sd_across_seeds": 0.0,
+      "emergency_time_share_mean": 0.5612980769230769,
+      "legacy_dissolved_coalition_duration_mean": 0.0
+    },
+    {
+      "theta_pair": 0.5,
+      "material_exec_multiplier": 0.7666666667,
+      "cartel_capture_rate": 0.0,
+      "cartel_capture_sd_across_seeds": 0.0,
+      "emergency_time_share_mean": 0.5620192307692308,
+      "legacy_dissolved_coalition_duration_mean": 30.632242063492065
+    },
+    {
+      "theta_pair": 0.525,
+      "material_exec_multiplier": 0.7666666667,
+      "cartel_capture_rate": 0.0,
+      "cartel_capture_sd_across_seeds": 0.0,
+      "emergency_time_share_mean": 0.5634615384615385,
+      "legacy_dissolved_coalition_duration_mean": 32.87217261904762
+    },
+    {
+      "theta_pair": 0.55,
+      "material_exec_multiplier": 0.7666666667,
+      "cartel_capture_rate": 0.0,
+      "cartel_capture_sd_across_seeds": 0.0,
+      "emergency_time_share_mean": 0.5620192307692308,
+      "legacy_dissolved_coalition_duration_mean": 30.619642857142857
+    },
+    {
+      "theta_pair": 0.575,
+      "material_exec_multiplier": 0.7666666667,
+      "cartel_capture_rate": 0.0,
+      "cartel_capture_sd_across_seeds": 0.0,
+      "emergency_time_share_mean": 0.5622596153846153,
+      "legacy_dissolved_coalition_duration_mean": 38.393055555555556
+    },
+    {
+      "theta_pair": 0.6,
+      "material_exec_multiplier": 0.7666666667,
+      "cartel_capture_rate": 0.0,
+      "cartel_capture_sd_across_seeds": 0.0,
+      "emergency_time_share_mean": 0.5617788461538462,
+      "legacy_dissolved_coalition_duration_mean": 58.11354166666667
+    },
+    {
+      "theta_pair": 0.625,
+      "material_exec_multiplier": 0.7666666667,
+      "cartel_capture_rate": 0.0,
+      "cartel_capture_sd_across_seeds": 0.0,
+      "emergency_time_share_mean": 0.5612980769230769,
+      "legacy_dissolved_coalition_duration_mean": 0.0
+    },
+    {
+      "theta_pair": 0.65,
+      "material_exec_multiplier": 0.7666666667,
+      "cartel_capture_rate": 0.0,
+      "cartel_capture_sd_across_seeds": 0.0,
+      "emergency_time_share_mean": 0.5612980769230769,
+      "legacy_dissolved_coalition_duration_mean": 0.0
+    },
+    {
+      "theta_pair": 0.675,
+      "material_exec_multiplier": 0.7666666667,
+      "cartel_capture_rate": 0.0,
+      "cartel_capture_sd_across_seeds": 0.0,
+      "emergency_time_share_mean": 0.5612980769230769,
+      "legacy_dissolved_coalition_duration_mean": 0.0
+    },
+    {
+      "theta_pair": 0.7,
+      "material_exec_multiplier": 0.7666666667,
+      "cartel_capture_rate": 0.0,
+      "cartel_capture_sd_across_seeds": 0.0,
+      "emergency_time_share_mean": 0.5612980769230769,
+      "legacy_dissolved_coalition_duration_mean": 0.0
+    },
+    {
+      "theta_pair": 0.5,
+      "material_exec_multiplier": 0.8333333333,
+      "cartel_capture_rate": 1.0,
+      "cartel_capture_sd_across_seeds": 0.0,
+      "emergency_time_share_mean": 0.5620192307692308,
+      "legacy_dissolved_coalition_duration_mean": 30.632242063492065
+    },
+    {
+      "theta_pair": 0.525,
+      "material_exec_multiplier": 0.8333333333,
+      "cartel_capture_rate": 1.0,
+      "cartel_capture_sd_across_seeds": 0.0,
+      "emergency_time_share_mean": 0.5634615384615385,
+      "legacy_dissolved_coalition_duration_mean": 32.87217261904762
+    },
+    {
+      "theta_pair": 0.55,
+      "material_exec_multiplier": 0.8333333333,
+      "cartel_capture_rate": 1.0,
+      "cartel_capture_sd_across_seeds": 0.0,
+      "emergency_time_share_mean": 0.5620192307692308,
+      "legacy_dissolved_coalition_duration_mean": 30.619642857142857
+    },
+    {
+      "theta_pair": 0.575,
+      "material_exec_multiplier": 0.8333333333,
+      "cartel_capture_rate": 0.75,
+      "cartel_capture_sd_across_seeds": 0.4629100498862757,
+      "emergency_time_share_mean": 0.5622596153846153,
+      "legacy_dissolved_coalition_duration_mean": 38.393055555555556
+    },
+    {
+      "theta_pair": 0.6,
+      "material_exec_multiplier": 0.8333333333,
+      "cartel_capture_rate": 0.25,
+      "cartel_capture_sd_across_seeds": 0.4629100498862757,
+      "emergency_time_share_mean": 0.5617788461538462,
+      "legacy_dissolved_coalition_duration_mean": 58.11354166666667
+    },
+    {
+      "theta_pair": 0.625,
+      "material_exec_multiplier": 0.8333333333,
+      "cartel_capture_rate": 0.0,
+      "cartel_capture_sd_across_seeds": 0.0,
+      "emergency_time_share_mean": 0.5612980769230769,
+      "legacy_dissolved_coalition_duration_mean": 0.0
+    },
+    {
+      "theta_pair": 0.65,
+      "material_exec_multiplier": 0.8333333333,
+      "cartel_capture_rate": 0.0,
+      "cartel_capture_sd_across_seeds": 0.0,
+      "emergency_time_share_mean": 0.5612980769230769,
+      "legacy_dissolved_coalition_duration_mean": 0.0
+    },
+    {
+      "theta_pair": 0.675,
+      "material_exec_multiplier": 0.8333333333,
+      "cartel_capture_rate": 0.0,
+      "cartel_capture_sd_across_seeds": 0.0,
+      "emergency_time_share_mean": 0.5612980769230769,
+      "legacy_dissolved_coalition_duration_mean": 0.0
+    },
+    {
+      "theta_pair": 0.7,
+      "material_exec_multiplier": 0.8333333333,
+      "cartel_capture_rate": 0.0,
+      "cartel_capture_sd_across_seeds": 0.0,
+      "emergency_time_share_mean": 0.5612980769230769,
+      "legacy_dissolved_coalition_duration_mean": 0.0
+    },
+    {
+      "theta_pair": 0.5,
+      "material_exec_multiplier": 0.9,
+      "cartel_capture_rate": 1.0,
+      "cartel_capture_sd_across_seeds": 0.0,
+      "emergency_time_share_mean": 0.5620192307692308,
+      "legacy_dissolved_coalition_duration_mean": 30.632242063492065
+    },
+    {
+      "theta_pair": 0.525,
+      "material_exec_multiplier": 0.9,
+      "cartel_capture_rate": 1.0,
+      "cartel_capture_sd_across_seeds": 0.0,
+      "emergency_time_share_mean": 0.5634615384615385,
+      "legacy_dissolved_coalition_duration_mean": 32.87217261904762
+    },
+    {
+      "theta_pair": 0.55,
+      "material_exec_multiplier": 0.9,
+      "cartel_capture_rate": 1.0,
+      "cartel_capture_sd_across_seeds": 0.0,
+      "emergency_time_share_mean": 0.5620192307692308,
+      "legacy_dissolved_coalition_duration_mean": 30.619642857142857
+    },
+    {
+      "theta_pair": 0.575,
+      "material_exec_multiplier": 0.9,
+      "cartel_capture_rate": 0.75,
+      "cartel_capture_sd_across_seeds": 0.4629100498862757,
+      "emergency_time_share_mean": 0.5622596153846153,
+      "legacy_dissolved_coalition_duration_mean": 38.393055555555556
+    },
+    {
+      "theta_pair": 0.6,
+      "material_exec_multiplier": 0.9,
+      "cartel_capture_rate": 0.25,
+      "cartel_capture_sd_across_seeds": 0.4629100498862757,
+      "emergency_time_share_mean": 0.5617788461538462,
+      "legacy_dissolved_coalition_duration_mean": 58.11354166666667
+    },
+    {
+      "theta_pair": 0.625,
+      "material_exec_multiplier": 0.9,
+      "cartel_capture_rate": 0.0,
+      "cartel_capture_sd_across_seeds": 0.0,
+      "emergency_time_share_mean": 0.5612980769230769,
+      "legacy_dissolved_coalition_duration_mean": 0.0
+    },
+    {
+      "theta_pair": 0.65,
+      "material_exec_multiplier": 0.9,
+      "cartel_capture_rate": 0.0,
+      "cartel_capture_sd_across_seeds": 0.0,
+      "emergency_time_share_mean": 0.5612980769230769,
+      "legacy_dissolved_coalition_duration_mean": 0.0
+    },
+    {
+      "theta_pair": 0.675,
+      "material_exec_multiplier": 0.9,
+      "cartel_capture_rate": 0.0,
+      "cartel_capture_sd_across_seeds": 0.0,
+      "emergency_time_share_mean": 0.5612980769230769,
+      "legacy_dissolved_coalition_duration_mean": 0.0
+    },
+    {
+      "theta_pair": 0.7,
+      "material_exec_multiplier": 0.9,
+      "cartel_capture_rate": 0.0,
+      "cartel_capture_sd_across_seeds": 0.0,
+      "emergency_time_share_mean": 0.5612980769230769,
+      "legacy_dissolved_coalition_duration_mean": 0.0
+    },
+    {
+      "theta_pair": 0.5,
+      "material_exec_multiplier": 0.9666666667,
+      "cartel_capture_rate": 1.0,
+      "cartel_capture_sd_across_seeds": 0.0,
+      "emergency_time_share_mean": 0.5620192307692308,
+      "legacy_dissolved_coalition_duration_mean": 30.632242063492065
+    },
+    {
+      "theta_pair": 0.525,
+      "material_exec_multiplier": 0.9666666667,
+      "cartel_capture_rate": 1.0,
+      "cartel_capture_sd_across_seeds": 0.0,
+      "emergency_time_share_mean": 0.5634615384615385,
+      "legacy_dissolved_coalition_duration_mean": 32.87217261904762
+    },
+    {
+      "theta_pair": 0.55,
+      "material_exec_multiplier": 0.9666666667,
+      "cartel_capture_rate": 1.0,
+      "cartel_capture_sd_across_seeds": 0.0,
+      "emergency_time_share_mean": 0.5620192307692308,
+      "legacy_dissolved_coalition_duration_mean": 30.619642857142857
+    },
+    {
+      "theta_pair": 0.575,
+      "material_exec_multiplier": 0.9666666667,
+      "cartel_capture_rate": 0.75,
+      "cartel_capture_sd_across_seeds": 0.4629100498862757,
+      "emergency_time_share_mean": 0.5622596153846153,
+      "legacy_dissolved_coalition_duration_mean": 38.393055555555556
+    },
+    {
+      "theta_pair": 0.6,
+      "material_exec_multiplier": 0.9666666667,
+      "cartel_capture_rate": 0.25,
+      "cartel_capture_sd_across_seeds": 0.4629100498862757,
+      "emergency_time_share_mean": 0.5617788461538462,
+      "legacy_dissolved_coalition_duration_mean": 58.11354166666667
+    },
+    {
+      "theta_pair": 0.625,
+      "material_exec_multiplier": 0.9666666667,
+      "cartel_capture_rate": 0.0,
+      "cartel_capture_sd_across_seeds": 0.0,
+      "emergency_time_share_mean": 0.5612980769230769,
+      "legacy_dissolved_coalition_duration_mean": 0.0
+    },
+    {
+      "theta_pair": 0.65,
+      "material_exec_multiplier": 0.9666666667,
+      "cartel_capture_rate": 0.0,
+      "cartel_capture_sd_across_seeds": 0.0,
+      "emergency_time_share_mean": 0.5612980769230769,
+      "legacy_dissolved_coalition_duration_mean": 0.0
+    },
+    {
+      "theta_pair": 0.675,
+      "material_exec_multiplier": 0.9666666667,
+      "cartel_capture_rate": 0.0,
+      "cartel_capture_sd_across_seeds": 0.0,
+      "emergency_time_share_mean": 0.5612980769230769,
+      "legacy_dissolved_coalition_duration_mean": 0.0
+    },
+    {
+      "theta_pair": 0.7,
+      "material_exec_multiplier": 0.9666666667,
+      "cartel_capture_rate": 0.0,
+      "cartel_capture_sd_across_seeds": 0.0,
+      "emergency_time_share_mean": 0.5612980769230769,
+      "legacy_dissolved_coalition_duration_mean": 0.0
+    },
+    {
+      "theta_pair": 0.5,
+      "material_exec_multiplier": 1.0333333333,
+      "cartel_capture_rate": 1.0,
+      "cartel_capture_sd_across_seeds": 0.0,
+      "emergency_time_share_mean": 0.5620192307692308,
+      "legacy_dissolved_coalition_duration_mean": 30.632242063492065
+    },
+    {
+      "theta_pair": 0.525,
+      "material_exec_multiplier": 1.0333333333,
+      "cartel_capture_rate": 1.0,
+      "cartel_capture_sd_across_seeds": 0.0,
+      "emergency_time_share_mean": 0.5634615384615385,
+      "legacy_dissolved_coalition_duration_mean": 32.87217261904762
+    },
+    {
+      "theta_pair": 0.55,
+      "material_exec_multiplier": 1.0333333333,
+      "cartel_capture_rate": 1.0,
+      "cartel_capture_sd_across_seeds": 0.0,
+      "emergency_time_share_mean": 0.5620192307692308,
+      "legacy_dissolved_coalition_duration_mean": 30.619642857142857
+    },
+    {
+      "theta_pair": 0.575,
+      "material_exec_multiplier": 1.0333333333,
+      "cartel_capture_rate": 0.75,
+      "cartel_capture_sd_across_seeds": 0.4629100498862757,
+      "emergency_time_share_mean": 0.5622596153846153,
+      "legacy_dissolved_coalition_duration_mean": 38.393055555555556
+    },
+    {
+      "theta_pair": 0.6,
+      "material_exec_multiplier": 1.0333333333,
+      "cartel_capture_rate": 0.25,
+      "cartel_capture_sd_across_seeds": 0.4629100498862757,
+      "emergency_time_share_mean": 0.5617788461538462,
+      "legacy_dissolved_coalition_duration_mean": 58.11354166666667
+    },
+    {
+      "theta_pair": 0.625,
+      "material_exec_multiplier": 1.0333333333,
+      "cartel_capture_rate": 0.0,
+      "cartel_capture_sd_across_seeds": 0.0,
+      "emergency_time_share_mean": 0.5612980769230769,
+      "legacy_dissolved_coalition_duration_mean": 0.0
+    },
+    {
+      "theta_pair": 0.65,
+      "material_exec_multiplier": 1.0333333333,
+      "cartel_capture_rate": 0.0,
+      "cartel_capture_sd_across_seeds": 0.0,
+      "emergency_time_share_mean": 0.5612980769230769,
+      "legacy_dissolved_coalition_duration_mean": 0.0
+    },
+    {
+      "theta_pair": 0.675,
+      "material_exec_multiplier": 1.0333333333,
+      "cartel_capture_rate": 0.0,
+      "cartel_capture_sd_across_seeds": 0.0,
+      "emergency_time_share_mean": 0.5612980769230769,
+      "legacy_dissolved_coalition_duration_mean": 0.0
+    },
+    {
+      "theta_pair": 0.7,
+      "material_exec_multiplier": 1.0333333333,
+      "cartel_capture_rate": 0.0,
+      "cartel_capture_sd_across_seeds": 0.0,
+      "emergency_time_share_mean": 0.5612980769230769,
+      "legacy_dissolved_coalition_duration_mean": 0.0
+    },
+    {
+      "theta_pair": 0.5,
+      "material_exec_multiplier": 1.1,
+      "cartel_capture_rate": 1.0,
+      "cartel_capture_sd_across_seeds": 0.0,
+      "emergency_time_share_mean": 0.5620192307692308,
+      "legacy_dissolved_coalition_duration_mean": 30.632242063492065
+    },
+    {
+      "theta_pair": 0.525,
+      "material_exec_multiplier": 1.1,
+      "cartel_capture_rate": 1.0,
+      "cartel_capture_sd_across_seeds": 0.0,
+      "emergency_time_share_mean": 0.5634615384615385,
+      "legacy_dissolved_coalition_duration_mean": 32.87217261904762
+    },
+    {
+      "theta_pair": 0.55,
+      "material_exec_multiplier": 1.1,
+      "cartel_capture_rate": 1.0,
+      "cartel_capture_sd_across_seeds": 0.0,
+      "emergency_time_share_mean": 0.5620192307692308,
+      "legacy_dissolved_coalition_duration_mean": 30.619642857142857
+    },
+    {
+      "theta_pair": 0.575,
+      "material_exec_multiplier": 1.1,
+      "cartel_capture_rate": 0.75,
+      "cartel_capture_sd_across_seeds": 0.4629100498862757,
+      "emergency_time_share_mean": 0.5622596153846153,
+      "legacy_dissolved_coalition_duration_mean": 38.393055555555556
+    },
+    {
+      "theta_pair": 0.6,
+      "material_exec_multiplier": 1.1,
+      "cartel_capture_rate": 0.25,
+      "cartel_capture_sd_across_seeds": 0.4629100498862757,
+      "emergency_time_share_mean": 0.5617788461538462,
+      "legacy_dissolved_coalition_duration_mean": 58.11354166666667
+    },
+    {
+      "theta_pair": 0.625,
+      "material_exec_multiplier": 1.1,
+      "cartel_capture_rate": 0.0,
+      "cartel_capture_sd_across_seeds": 0.0,
+      "emergency_time_share_mean": 0.5612980769230769,
+      "legacy_dissolved_coalition_duration_mean": 0.0
+    },
+    {
+      "theta_pair": 0.65,
+      "material_exec_multiplier": 1.1,
+      "cartel_capture_rate": 0.0,
+      "cartel_capture_sd_across_seeds": 0.0,
+      "emergency_time_share_mean": 0.5612980769230769,
+      "legacy_dissolved_coalition_duration_mean": 0.0
+    },
+    {
+      "theta_pair": 0.675,
+      "material_exec_multiplier": 1.1,
+      "cartel_capture_rate": 0.0,
+      "cartel_capture_sd_across_seeds": 0.0,
+      "emergency_time_share_mean": 0.5612980769230769,
+      "legacy_dissolved_coalition_duration_mean": 0.0
+    },
+    {
+      "theta_pair": 0.7,
+      "material_exec_multiplier": 1.1,
+      "cartel_capture_rate": 0.0,
+      "cartel_capture_sd_across_seeds": 0.0,
+      "emergency_time_share_mean": 0.5612980769230769,
+      "legacy_dissolved_coalition_duration_mean": 0.0
+    }
+  ],
+  "cartel_rate_matrix": [
+    {
+      "material_exec_multiplier": 0.7,
+      "theta_0.500": 0.0,
+      "theta_0.525": 0.0,
+      "theta_0.550": 0.0,
+      "theta_0.575": 0.0,
+      "theta_0.600": 0.0,
+      "theta_0.625": 0.0,
+      "theta_0.650": 0.0,
+      "theta_0.675": 0.0,
+      "theta_0.700": 0.0
+    },
+    {
+      "material_exec_multiplier": 0.7666666667,
+      "theta_0.500": 0.0,
+      "theta_0.525": 0.0,
+      "theta_0.550": 0.0,
+      "theta_0.575": 0.0,
+      "theta_0.600": 0.0,
+      "theta_0.625": 0.0,
+      "theta_0.650": 0.0,
+      "theta_0.675": 0.0,
+      "theta_0.700": 0.0
+    },
+    {
+      "material_exec_multiplier": 0.8333333333,
+      "theta_0.500": 1.0,
+      "theta_0.525": 1.0,
+      "theta_0.550": 1.0,
+      "theta_0.575": 0.75,
+      "theta_0.600": 0.25,
+      "theta_0.625": 0.0,
+      "theta_0.650": 0.0,
+      "theta_0.675": 0.0,
+      "theta_0.700": 0.0
+    },
+    {
+      "material_exec_multiplier": 0.9,
+      "theta_0.500": 1.0,
+      "theta_0.525": 1.0,
+      "theta_0.550": 1.0,
+      "theta_0.575": 0.75,
+      "theta_0.600": 0.25,
+      "theta_0.625": 0.0,
+      "theta_0.650": 0.0,
+      "theta_0.675": 0.0,
+      "theta_0.700": 0.0
+    },
+    {
+      "material_exec_multiplier": 0.9666666667,
+      "theta_0.500": 1.0,
+      "theta_0.525": 1.0,
+      "theta_0.550": 1.0,
+      "theta_0.575": 0.75,
+      "theta_0.600": 0.25,
+      "theta_0.625": 0.0,
+      "theta_0.650": 0.0,
+      "theta_0.675": 0.0,
+      "theta_0.700": 0.0
+    },
+    {
+      "material_exec_multiplier": 1.0333333333,
+      "theta_0.500": 1.0,
+      "theta_0.525": 1.0,
+      "theta_0.550": 1.0,
+      "theta_0.575": 0.75,
+      "theta_0.600": 0.25,
+      "theta_0.625": 0.0,
+      "theta_0.650": 0.0,
+      "theta_0.675": 0.0,
+      "theta_0.700": 0.0
+    },
+    {
+      "material_exec_multiplier": 1.1,
+      "theta_0.500": 1.0,
+      "theta_0.525": 1.0,
+      "theta_0.550": 1.0,
+      "theta_0.575": 0.75,
+      "theta_0.600": 0.25,
+      "theta_0.625": 0.0,
+      "theta_0.650": 0.0,
+      "theta_0.675": 0.0,
+      "theta_0.700": 0.0
+    }
+  ],
+  "first_theta_with_rate_at_or_below_0_5_by_multiplier": {
+    "0.7": 0.5,
+    "0.7666666667": 0.5,
+    "0.8333333333": 0.6,
+    "0.9": 0.6,
+    "0.9666666667": 0.6,
+    "1.0333333333": 0.6,
+    "1.1": 0.6
+  },
+  "nonincreasing_theta_monotonicity_violations_by_multiplier": {
+    "0.7": 0,
+    "0.7666666667": 0,
+    "0.8333333333": 0,
+    "0.9": 0,
+    "0.9666666667": 0,
+    "1.0333333333": 0,
+    "1.1": 0
+  },
+  "elapsed_seconds": 304.901,
+  "interpretation_boundary": "Finite two-parameter behavior map under arbitrary scenario assumptions. Cell rates are Monte Carlo frequencies inside the model, not real-world political probabilities."
+}
