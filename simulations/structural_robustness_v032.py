@@ -28,7 +28,7 @@ PAIR_AGGREGATIONS = ["minimum", "mean", "maximum"]
 THETA_VALUES = [0.575, 0.600, 0.625]
 SEEDS_PER_CELL = 12
 MAX_TICKS = 520
-SEED_MASTER = 52032
+SEED_MASTER = 52032  # frozen exploratory seed
 
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parent
