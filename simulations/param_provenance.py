@@ -39,6 +39,8 @@ PARAM_PROVENANCE = {
         "label": "DESIGN", "source": "عملیاتی‌سازی مستقیم بند ۳.۵/۳.۶، ولی آستانه‌های عددی‌اش دلبخواه"},
     "emergency_court.independence_mode": {
         "label": "ARBITRARY", "source": "بند ۳.۶ فقط 'مرجع مستقل' می‌گوید؛ ترکیب/رفتار حل‌نشده — PLACEHOLDER صریح"},
+    "emergency_extension.support_probability = 0.55": {
+        "label": "ARBITRARY", "source": "احتمال سناریویی حمایت هر گیت غیردرگیر؛ داده‌ی تجربی ندارد و باید حساسیت‌سنجی شود"},
     "gate_zero.appeal_board = random_placeholder": {
         "label": "ARBITRARY", "source": "بند ۱.۴/۳.۱ — بازگشتی حل‌نشده، PLACEHOLDER صریح در کد"},
     "rotation_period_ticks = 26": {
