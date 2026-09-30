@@ -50,6 +50,8 @@ The [stored baseline](simulations/results/mesa_baseline_results.json) and [store
 
 The [stored sensitivity output](simulations/results/sensitivity_results.json) changes sharply with some assumed inputs: modeled cartel capture is `1.0` at coalition threshold `0.60` and `0.0` at `0.65` in its recorded runs. This demonstrates parameter dependence within the model, **not** empirical validity. The sensitivity script's header describes 150 runs per variant, but its current executable setting is `N_RUNS = 40` and `MAX_TICKS = 400`; use the executable settings when describing that artifact.
 
+The v0.32 [Latin-hypercube behavior-space exploration](simulations/results/sensitivity_v032_lhs_results.json) broadens that audit: across 64 exploratory points, modeled cartel capture spans `0.0–1.0` and is most strongly associated with `theta_pair` (rank correlation about `-0.708`) and the material-cluster executive-power multiplier (about `+0.540`). Modeled emergency-time share is strongly associated with the explicitly arbitrary extension-support probability (about `+0.982`). These are exploratory screening statistics over arbitrary ranges, not causal estimates or political forecasts.
+
 ## Reproduce and inspect | بازتولید و بررسی
 
 From the repository root, use a Python environment with NumPy for the model and Matplotlib for chart-producing scenario scripts. This repository does not currently provide a pinned dependency manifest. FreeSerif improves Persian chart rendering but is not required for numerical execution.
@@ -88,6 +90,11 @@ This branch adds a separate execution-audit layer without declaring the governan
 - [Gate Zero / Mirror-13 executable interfaces](simulations/institutional_interfaces.py)
 - [Z12 / affine audit-schedule utility](simulations/audit_schedule.py)
 - [Calibration registry](simulations/calibration_registry.json)
+- [Parameter usage registry](simulations/parameter_usage_registry.json)
+- [Parameter usage audit](docs/PARAMETER_USAGE_AUDIT_2026-09-30.md)
+- [Calibration source matrix](docs/CALIBRATION_SOURCE_MATRIX_2026-09-30.md)
+- [v0.32 LHS behavior-space artifact](simulations/results/sensitivity_v032_lhs_results.json)
+- [v0.32 LHS interpretation audit](docs/SENSITIVITY_V032_INTERPRETATION_AUDIT.md)
 - [Finite-state checker](formal/abstract_model_check.py)
 - [TLA+ research skeleton](formal/TwelveGates.tla)
 - [GitHub Actions execution-audit workflow](.github/workflows/execution-audit.yml)
