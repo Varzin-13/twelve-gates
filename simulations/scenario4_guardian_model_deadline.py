@@ -1,83 +1,85 @@
 """
-سناریوی ۴: آزمون سقف ۱۸ماهه‌ی غیرقابل‌تمدید «مدل نگهبان»
-==========================================================
-سؤال پیش‌ثبت‌شده:
-«مدل نگهبان» (پروژه‌ی دیگری، منتشرشده در IranOnline.com) به‌جای فیوز چرخشی
-۱۴روزه‌ی خودمان (سناریوی ۲)، یک سقف زمانی *یک‌باره و غیرقابل‌تمدید* ۱۸ماهه
-پیشنهاد می‌دهد که در پایانش «تمام دسترسی حقوقی/مالی مقامات انتقالی به‌طور
-خودکار لغو می‌شود». سؤال: با توجه به توزیع واقعی زمانِ کامل‌شدن فرآیندهای
-گذار مشابه (تشکیل شورا + نگارش قانون اساسی + برگزاری انتخابات)، احتمال
-اینکه فرآیند واقعاً تا ماه ۱۸ام تمام شود چقدر است؟ و اگر تمام نشود، سیستم
-به کدام دو مسیر می‌رود: خلأ قدرت، یا تمدید غیررسمیِ فراقانونی (که خودش
-دقیقاً همان مسیر نهادینه‌شدن اضطراری است که سناریوی ۲ ما آزموده بود)؟
+Scenario 4 — 18-month deadline sensitivity scenario
+====================================================
+CLAIM BOUNDARY:
+This is a synthetic timing scenario, not an empirical estimate of the success
+or failure probability of any named political proposal.
 
-معیار شکست (پیش‌ثبت‌شده):
-اگر احتمال عدم‌تکمیل فرآیند تا ماه ۱۸ام به‌طور معنادار بالا باشد (مثلاً
-بیش از ۳۰٪)، ادعای «سقف ۱۸ماهه» یک فرض خوش‌بینانه‌ی آزمون‌نشده است، نه
-یک تضمین ساختاری.
+Question:
+Given an explicitly assumed lognormal completion-time distribution, what
+fraction of draws fall before/after an 18-month deadline?
 
-روش: زمان کامل‌شدن فرآیند گذار (فاز صفر تا فاز سه، طبق تعریف بخش ۱۰ ما)
-به‌عنوان توزیع لوگ‌نرمال مدل شده — کالیبره‌شده با میانگین‌های تاریخی مستند:
-آفریقای جنوبی (~۴ سال از CODESA ۱۹۹۱ تا قانون اساسی نهایی ۱۹۹۶)، و با فرض
-اینکه بهترین سناریوها (تفاهم سریع‌تر از میانگین تاریخی) هم ممکن‌اند.
-این پارامترها فرض مدل‌سازی‌اند، نه پیش‌بینی دقیق برای ایران به‌طور خاص.
+The distribution parameters are scenario assumptions. They are NOT calibrated
+from a representative sample of political transitions. A historical example
+may motivate a range, but one example cannot identify a population
+distribution.
+
+Important statistical note:
+For numpy's lognormal distribution, exp(mu) is the MEDIAN, not the arithmetic
+mean. The old variable name MEAN_MONTHS was therefore misleading.
 """
-import numpy as np
 import json
+from pathlib import Path
 
+import numpy as np
+
+CLAIM_LABEL = "hypothesis"
 RNG_SEED = 44
 rng = np.random.default_rng(RNG_SEED)
 
 N_TRIALS = 3000
 HARD_DEADLINE_MONTHS = 18
 
-# میانگین تاریخی مستند: آفریقای جنوبی ~۴۸ ماه (CODESA تا قانون اساسی نهایی)
-# انحراف معیار به‌گونه‌ای انتخاب شده که بازه‌ی معقولی از سناریوهای سریع/کند را پوشش دهد
-MEAN_MONTHS = 30  # میانه‌ی فرض محافظه‌کارانه‌تر از آفریقای جنوبی (که خودش یکی از موفق‌ترین‌ها بود)
-SIGMA = 0.5  # پارامتر لوگ‌نرمال برای پراکندگی واقع‌گرایانه
+# ARBITRARY scenario assumptions — not empirical calibration.
+LOGNORMAL_MEDIAN_MONTHS = 30
+LOGNORMAL_SIGMA = 0.5
+
 
 def simulate_trial():
-    """یک اجرا: زمان کامل‌شدن کل فرآیند گذار (فاز صفر تا تصویب قانون اساسی)."""
-    completion_time = rng.lognormal(mean=np.log(MEAN_MONTHS), sigma=SIGMA)
-    return completion_time
+    return rng.lognormal(
+        mean=np.log(LOGNORMAL_MEDIAN_MONTHS),
+        sigma=LOGNORMAL_SIGMA,
+    )
+
 
 if __name__ == "__main__":
-    print("=" * 70)
-    print("سناریوی ۴: سقف ۱۸ماهه‌ی مدل نگهبان در برابر توزیع واقعی زمان گذار")
-    print("=" * 70)
-
     times = np.array([simulate_trial() for _ in range(N_TRIALS)])
-    prob_incomplete = (times > HARD_DEADLINE_MONTHS).mean()
-    prob_complete = 1 - prob_incomplete
+    prob_incomplete = float((times > HARD_DEADLINE_MONTHS).mean())
+    prob_complete = 1.0 - prob_incomplete
 
-    print(f"\nمیانگین زمان کامل‌شدن فرآیند: {times.mean():.1f} ماه")
-    print(f"میانه: {np.median(times):.1f} ماه")
-    print(f"احتمال کامل‌شدن فرآیند تا ماه ۱۸ام: {prob_complete*100:.1f}٪")
-    print(f"احتمال عدم‌تکمیل تا ماه ۱۸ام (یعنی خلأ یا تمدید فراقانونی): {prob_incomplete*100:.1f}٪")
-
-    print("\n" + "=" * 70)
-    print("نتیجه‌گیری:")
-    if prob_incomplete > 0.30:
-        print(f"=> فرضیه‌ی «سقف ۱۸ماهه کافی است» رد می‌شود: در {prob_incomplete*100:.1f}٪")
-        print("   از اجراها، فرآیند تا ضرب‌الاجل تمام نشده — یعنی سیستم")
-        print("   مجبور به انتخاب بین خلأ قدرت یا تمدید غیررسمی می‌شود؛")
-        print("   دومی دقیقاً همان مسیر نهادینه‌شدن اضطراری سناریوی ۲ ماست،")
-        print("   فقط بدون سازوکار رسمی برای آن (چون مدل نگهبان تمدید را")
-        print("   اصلاً پیش‌بینی نکرده).")
-    else:
-        print(f"=> سقف ۱۸ماهه در اکثر موارد ({prob_complete*100:.1f}٪) کافی به‌نظر می‌رسد.")
-    print("=" * 70)
+    print("Scenario 4 — synthetic 18-month deadline sensitivity")
+    print(f"claim_label: {CLAIM_LABEL}")
+    print(f"assumed lognormal median: {LOGNORMAL_MEDIAN_MONTHS:.1f} months")
+    print(f"assumed lognormal sigma: {LOGNORMAL_SIGMA:.3f}")
+    print(f"simulated arithmetic mean: {times.mean():.1f} months")
+    print(f"simulated median: {np.median(times):.1f} months")
+    print(f"fraction <= 18 months: {prob_complete:.3f}")
+    print(f"fraction > 18 months: {prob_incomplete:.3f}")
+    print(
+        "Interpretation: these fractions are consequences of the assumed "
+        "distribution, not real-world probabilities."
+    )
 
     results = {
+        "schema": "twelve-gates/scenario4-deadline-sensitivity/v2",
+        "claim_label": CLAIM_LABEL,
+        "not_empirical_validation": True,
         "n_trials": N_TRIALS,
         "hard_deadline_months": HARD_DEADLINE_MONTHS,
-        "mean_completion_months": float(times.mean()),
-        "median_completion_months": float(np.median(times)),
-        "prob_complete_by_deadline": float(prob_complete),
-        "prob_incomplete_by_deadline": float(prob_incomplete),
+        "lognormal_median_months_assumed": LOGNORMAL_MEDIAN_MONTHS,
+        "lognormal_sigma_assumed": LOGNORMAL_SIGMA,
+        "simulated_mean_completion_months": float(times.mean()),
+        "simulated_median_completion_months": float(np.median(times)),
+        "fraction_complete_by_deadline": prob_complete,
+        "fraction_incomplete_by_deadline": prob_incomplete,
         "seed": RNG_SEED,
-        "calibration_note": "میانگین ۳۰ ماه بر پایه‌ی محافظه‌کارانه‌تر از تجربه‌ی آفریقای جنوبی (~۴۸ ماه)؛ این یک فرض مدل‌سازی است."
+        "interpretation_boundary": (
+            "Conditional synthetic sensitivity output. The assumed timing "
+            "distribution is not calibrated to a representative transition dataset."
+        ),
     }
-    with open("/home/claude/scenario4_results.json", "w", encoding="utf-8") as f:
-        json.dump(results, f, ensure_ascii=False, indent=2)
-    print("\nنتایج ذخیره شد: scenario4_results.json")
+    output_dir = Path(__file__).resolve().parent / "results"
+    output_dir.mkdir(parents=True, exist_ok=True)
+    out = output_dir / "scenario4_results_v2.json"
+    out.write_text(json.dumps(results, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    print(f"saved: {out}")
