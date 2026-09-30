@@ -151,6 +151,11 @@ def validate_config(cfg: dict) -> list:
         vw = a.get("vote_support_trust_weight")
         if isinstance(vi, (int, float)) and isinstance(vw, (int, float)) and vi + vw > 1:
             errors.append("vote_support_intercept + vote_support_trust_weight نباید از 1 بیشتر شود")
+    if "time" in cfg:
+        review_ticks = cfg["time"].get("budget_review_period_ticks")
+        if not isinstance(review_ticks, int) or review_ticks <= 0:
+            errors.append(
+                f"time.budget_review_period_ticks={review_ticks} باید integer مثبت باشد")
     if "preconditions" in cfg:
         cap = cfg["preconditions"].get("coordination_capacity")
         mn = cfg["preconditions"].get("min_coordination_capacity")
