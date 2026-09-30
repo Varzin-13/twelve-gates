@@ -51,6 +51,7 @@ class Proposal:
     status: ProposalStatus = ProposalStatus.DRAFT
     votes: dict = field(default_factory=dict)
     dissent_statements: list = field(default_factory=list)
+    proposal_id: "str|None" = None
 
 @dataclass
 class Coalition:
@@ -144,8 +145,11 @@ class GateAgent:
         if self.decision_backlog > 0 or self.crisis_load > 0.5:
             cap = self.model.cfg["budget"]["annual_delta_cap"] / 52
             delta = float(np.clip(self.rng.normal(0, cap / 2), -cap, cap))
-            prop = Proposal(self.model.tick, self.uid, self.coalition_id,
-                             [self.uid], {self.uid: delta})
+            prop = Proposal(
+                self.model.tick, self.uid, self.coalition_id,
+                [self.uid], {self.uid: delta},
+                proposal_id=self.model.next_proposal_id(),
+            )
             self.model.active_proposals.append(prop)
 
     def coalition_negotiation_stage(self):
@@ -176,7 +180,11 @@ class GateAgent:
                     self.model.cfg["trust_dynamics"]["dissent_chilling_beta"] * self.audit_exposure
                 )
                 if self.rng.random() < dissent_p:
-                    self.model.trust_ledger.record_dissent(self.model.tick, self.uid, id(prop))
+                    self.model.trust_ledger.record_dissent(
+                        self.model.tick,
+                        self.uid,
+                        self.model.ensure_proposal_id(prop),
+                    )
 
     def implementation_stage(self):
         my_props = [p for p in self.model.active_proposals if self.uid in p.resource_delta]
@@ -334,7 +342,12 @@ class TrustLedger:
     def __init__(self):
         self.reports = []; self.dissents = []
     def record_report(self, rep): self.reports.append(rep)
-    def record_dissent(self, tick, agent_id, proposal_ref): self.dissents.append((tick, agent_id))
+    def record_dissent(self, tick, agent_id, proposal_ref):
+        self.dissents.append({
+            "tick": int(tick),
+            "agent_id": int(agent_id),
+            "proposal_ref": str(proposal_ref),
+        })
     def integrity(self):
         raise NotImplementedError(
             "TrustLedger integrity is not empirically or cryptographically measured in this model"
@@ -655,6 +668,7 @@ class TwelveGatesModel:
         self.pending_critical_reports = []
         self.proposals_voted_pass = 0
         self.proposals_voted_fail = 0
+        self._proposal_counter = 0
         self._build_agents()
 
     def _validate_preconditions(self):
@@ -664,6 +678,16 @@ class TwelveGatesModel:
             raise PreconditionError(
                 f"مدل برای پس از توافق اولیه معتبر است (بند ۱۰.۶.۷)؛ "
                 f"coordination_capacity={cap} < min={mn}")
+
+    def next_proposal_id(self):
+        proposal_id = f"p{self._proposal_counter:08d}"
+        self._proposal_counter += 1
+        return proposal_id
+
+    def ensure_proposal_id(self, proposal):
+        if proposal.proposal_id is None:
+            proposal.proposal_id = self.next_proposal_id()
+        return proposal.proposal_id
 
     def _build_agents(self):
         self.gates = []
