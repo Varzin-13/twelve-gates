@@ -16,6 +16,14 @@ jobs:
           python-version: '3.11'
       - name: Install numerical dependency
         run: python -m pip install --disable-pip-version-check numpy
+      - name: Compile Python sources
+        run: python -m compileall -q simulations formal
+      - name: Scenario 4 conditional-sensitivity smoke
+        working-directory: simulations
+        run: python scenario4_guardian_model_deadline.py
+      - name: Scenario 5 conditional-sensitivity smoke
+        working-directory: simulations
+        run: python scenario5_ncri_coalition.py
       - name: Regression tests
         working-directory: simulations
         run: PYTHONDONTWRITEBYTECODE=1 python test_model.py
