@@ -14,7 +14,8 @@ from run_baseline import BASELINE_CFG
 from run_model import normalize_config, validate_config
 from run_stress import StressDriver
 from audit_schedule import (
-    cycle_with_offset, offset_supercycle, coverage_stats, all_affine_permutations
+    cycle_with_offset, offset_supercycle, coverage_stats, all_affine_permutations,
+    collision_free_affine_catalog, minimum_reciprocal_exact_cover
 )
 
 PASS, FAIL = [], []
@@ -139,6 +140,16 @@ def test_audit_schedule_combinatorics():
           complete["self_audits"] == 0)
     check("Aff(Z12): دقیقاً ۴۸ جایگشت affine دارد",
           len(all_affine_permutations()) == 48)
+    check("ممیزی +6: در یک چرخه دقیقاً ۶ dyad متقابل می‌سازد",
+          fixed["reciprocal_dyads"] == 6)
+    catalog = collision_free_affine_catalog()
+    check("Aff(Z12): از ۳۶ schedule بدون self-audit، ۲۴ تا reciprocal-free هستند",
+          len(catalog) == 36
+          and sum(1 for x in catalog if x["reciprocal_dyads"] == 0) == 24)
+    cover = minimum_reciprocal_exact_cover()
+    check("Aff(Z12): exact cover یازده‌چرخه‌ای حداقل ۶ reciprocal dyad دارد",
+          cover["minimum_total_reciprocal_dyads"] == 6
+          and len(cover["solution"]) == 11)
 
 def test_coalition_pair_order_invariance():
     cfg = json.loads(json.dumps(BASELINE_CFG["coalitions"]))
