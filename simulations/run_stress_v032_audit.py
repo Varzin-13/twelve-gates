@@ -22,7 +22,7 @@ from twelve_gates_model import TwelveGatesModel
 N_RUNS = 300
 MAX_TICKS = 520
 MASTER_SEED = 43
-RUN_LABEL = "v0.32-current-coalition-semantics"
+RUN_LABEL = "v0.32-final-execution-audit"
 
 
 HERE = Path(__file__).resolve().parent
@@ -63,7 +63,8 @@ def summarize(results: list[dict]) -> dict:
         "legitimacy_internal_mean": float(np.mean([r["mean_legitimacy_end"] for r in results])),
         "capture_pressure_mean": float(np.mean([r["mean_capture_pressure_end"] for r in results])),
         "bureaucracy_politicization_mean": float(np.mean([r["bureaucracy_politicization_end"] for r in results])),
-        "public_legitimacy_signal_mean": float(np.mean([r["public_legitimacy_signal_end"] for r in results])),
+        "civil_society_legitimacy_proxy_mean": float(np.mean([r["civil_society_legitimacy_proxy_end"] for r in results])),
+        "public_legitimacy_signal_mean_legacy_alias": float(np.mean([r["public_legitimacy_signal_end"] for r in results])),
     }
 
 
@@ -164,7 +165,7 @@ def main():
     summary = summarize(results)
 
     payload = {
-        "schema": "twelve-gates/stress-v032-execution-audit/v2",
+        "schema": "twelve-gates/stress-v032-execution-audit/v3",
         "claim_label": "hypothesis",
         "purpose": "execution_audit_rerun_after_timing_resource_emergency_coalition_fixes",
         "not_empirical_validation": True,
