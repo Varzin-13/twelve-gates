@@ -368,6 +368,25 @@ def test_coalition_survival_summary_right_censoring():
     check("coalition survival: RMST باید censoring را نگه دارد، نه active را حذف کند",
           abs(summary["rmst_ticks"] - 15.0) < 1e-12)
 
+def test_budget_vote_counters_and_required_yes_output():
+    model = TwelveGatesModel(BASELINE_CFG, seed=61)
+    p = Proposal(
+        tick=0, proposer_id=0, coalition_id=None,
+        domain_targets=[0], resource_delta={0: 0.0}
+    )
+    p.votes = {i: (i < 8) for i in range(N_GATES)}
+    model.active_proposals = [p]
+    model.gates_by_id[0].implementation_stage()
+    check("proposal counters: pass باید دقیقاً یک بار شمرده شود",
+          model.proposals_voted_pass == 1 and model.proposals_voted_fail == 0)
+
+    out = TwelveGatesModel(BASELINE_CFG, seed=62).run(1)
+    check("run output: آستانه بودجه باید 8 رأی گزارش شود",
+          out["budget_required_yes_votes"] == 8)
+    check("run output: proposal pass/fail counters باید schema صریح داشته باشند",
+          "proposals_voted_pass" in out and "proposals_voted_fail" in out
+          and "proposal_pass_fraction" in out)
+
 def test_run_exposes_censoring_boundary():
     model = TwelveGatesModel(BASELINE_CFG, seed=32)
     out = model.run(3)
@@ -419,6 +438,7 @@ if __name__ == "__main__":
     test_stress_timing_gate()
     test_budget_two_thirds_majority()
     test_budget_share_conservation()
+    test_budget_vote_counters_and_required_yes_output()
     test_audit_schedule_combinatorics()
     test_coalition_pair_aggregation_structural_modes()
     test_coalition_pair_order_invariance()
