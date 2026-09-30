@@ -55,6 +55,11 @@ def validate_config(cfg: dict) -> list:
                 v = g.get(field)
                 if v is None or not (0 <= v <= 1):
                     errors.append(f"گیت {g.get('gate_id')}: '{field}'={v} باید در [0,1] باشد")
+    if "coalitions" in cfg:
+        aggregation = cfg["coalitions"].get("pair_aggregation", "mean")
+        if aggregation not in {"mean", "minimum", "maximum"}:
+            errors.append(
+                f"coalitions.pair_aggregation={aggregation!r} باید یکی از mean/minimum/maximum باشد")
     if "emergency_extension" in cfg:
         support_p = cfg["emergency_extension"].get("support_probability")
         required_fraction = cfg["emergency_extension"].get("required_fraction")
