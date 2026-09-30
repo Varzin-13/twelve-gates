@@ -67,6 +67,7 @@ BASELINE_CFG = {
     },
     "gates": GATES_CFG,
     "coalitions": {
+        "pair_aggregation": "mean",
         "weights": {"w1_affinity": 0.30, "w2_trust": 0.25, "w3_complementarity": 0.25,
                      "w4_audit_exposure": 0.10, "w5_overlap_penalty": 0.10},
         "theta_pair": 0.55, "theta_audit": 0.60,
