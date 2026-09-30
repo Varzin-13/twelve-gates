@@ -260,6 +260,23 @@ def test_external_timeline_validation():
     check("timeline validation: tick منفی/gate نامعتبر/delta غیرعددی باید رد شود",
           len([e for e in errs if "external_timeline" in e]) >= 3)
 
+def test_model_assumptions_validation():
+    missing = json.loads(json.dumps(BASELINE_CFG))
+    missing.pop("model_assumptions")
+    check("model assumptions: نبود bundle باید صریحاً رد شود",
+          any("model_assumptions" in e for e in validate_config(missing)))
+
+    bad = json.loads(json.dumps(BASELINE_CFG))
+    bad["model_assumptions"]["capture_pressure_overlap_weight"] = 0.9
+    check("model assumptions: weightهای compositional با مجموع نادرست باید رد شوند",
+          any("capture pressure" in e for e in validate_config(bad)))
+
+    bad_vote = json.loads(json.dumps(BASELINE_CFG))
+    bad_vote["model_assumptions"]["vote_support_intercept"] = 0.8
+    bad_vote["model_assumptions"]["vote_support_trust_weight"] = 0.5
+    check("model assumptions: احتمال رأی نباید از ۱ عبور کند",
+          any("vote_support" in e for e in validate_config(bad_vote)))
+
 if __name__ == "__main__":
     test_rotation_formula()
     test_precondition_refusal()
@@ -279,6 +296,7 @@ if __name__ == "__main__":
     test_dissent_uses_single_decision_draw()
     test_external_timeline_preserves_multiple_events()
     test_external_timeline_validation()
+    test_model_assumptions_validation()
 
     print(f"\n{'='*50}\n{len(PASS)} موفق، {len(FAIL)} ناموفق از {len(PASS)+len(FAIL)} تست")
     if FAIL:
