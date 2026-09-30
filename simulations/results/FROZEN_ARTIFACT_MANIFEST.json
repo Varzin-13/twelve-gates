@@ -43,6 +43,12 @@
       "git_blob_sha": "d964aae7246a18f8a2c625801a400832dd9eb4ca",
       "class": "POST_BUDGET_FIX",
       "claim_label": "exploratory_hypothesis"
+    },
+    {
+      "path": "simulations/results/phase_map_v032_post_budget_refined_results.json",
+      "git_blob_sha": "91b661e5a4bd7df3c62882f8c2b237291693e0fb",
+      "class": "POST_BUDGET_FIX_REFINED_PHASE",
+      "claim_label": "exploratory_refined_phase_map"
     }
   ]
 }
