@@ -100,14 +100,17 @@ class GateAgent:
 
     def local_assessment_stage(self):
         mean_trust = np.mean(list(self.trust.values())) if self.trust else 0.5
-        w = self.model.cfg["coalitions"]["weights"]
+        a = self.model.cfg["model_assumptions"]
         self.coalition_propensity = float(np.clip(
-            0.5 * (1 - self.resource_share * 12) + 0.5 * mean_trust, 0, 1))
+            a["coalition_propensity_resource_weight"] * (1 - self.resource_share * 12)
+            + a["coalition_propensity_trust_weight"] * mean_trust, 0, 1))
         cluster = self.model.cfg["coalitions"]["cartel"]["material_cluster"]
         cluster_affinity = np.mean([self.policy_affinity.get(j, 0.3) for j in cluster if j != self.uid]) if cluster else 0.3
         overlap = np.mean(list(self.personnel_overlap_risk.values())) if self.personnel_overlap_risk else 0.2
         self.capture_pressure = float(np.clip(
-            0.4 * self.resource_share * 12 + 0.4 * cluster_affinity + 0.2 * overlap, 0, 1))
+            a["capture_pressure_resource_weight"] * self.resource_share * 12
+            + a["capture_pressure_cluster_affinity_weight"] * cluster_affinity
+            + a["capture_pressure_overlap_weight"] * overlap, 0, 1))
 
     def report_submission_stage(self):
         is_critical = self.crisis_load > self.critical_report_threshold
@@ -124,7 +127,10 @@ class GateAgent:
                 continue
             acc = self.verification_accuracy
             if self.model.current_A() == self.uid:
-                acc = min(1.0, acc + 0.15)  # audit_bonus بند ۴.۱
+                acc = min(
+                    1.0,
+                    acc + self.model.cfg["model_assumptions"]["audit_accuracy_bonus"],
+                )
             correct_call = self.rng.random() < acc
             believes_truthful = rep.truthful if correct_call else (not rep.truthful)
             if believes_truthful:
@@ -159,7 +165,11 @@ class GateAgent:
         for prop in self.model.active_proposals:
             if prop.status != ProposalStatus.DRAFT:
                 continue
-            support = self.rng.random() < (0.4 + 0.4 * self.trust.get(prop.proposer_id, 0.5))
+            a = self.model.cfg["model_assumptions"]
+            support = self.rng.random() < (
+                a["vote_support_intercept"]
+                + a["vote_support_trust_weight"] * self.trust.get(prop.proposer_id, 0.5)
+            )
             prop.votes[self.uid] = support
             if not support:
                 dissent_p = 1 - (
@@ -229,8 +239,9 @@ class BureaucracyAgent:
         pass  # ضریب تداوم در محاسبات latency مدل استفاده می‌شود
 
     def trust_legitimacy_update_stage(self):
+        drift = self.model.cfg["model_assumptions"]["bureaucracy_politicization_drift_rate"]
         self.politicization_risk = float(np.clip(
-            self.politicization_risk + 0.001 * self.institutional_memory_stock, 0, 1))
+            self.politicization_risk + drift * self.institutional_memory_stock, 0, 1))
 
 
 class ArmedBlocAgent:
@@ -246,11 +257,15 @@ class ArmedBlocAgent:
     def local_assessment_stage(self):
         if self.path != ArmedBlocPath.UNDECIDED:
             return
-        if self.organizational_cohesion < 0.35 and self.rng.random() < 0.3:
+        a = self.model.cfg["model_assumptions"]
+        if (self.organizational_cohesion < a["armed_bloc_split_threshold"]
+                and self.rng.random() < a["armed_bloc_split_probability"]):
             self.path = ArmedBlocPath.INTERNAL_SPLIT
-        elif self.conflict_risk > 0.65 and self.rng.random() < 0.3:
+        elif (self.conflict_risk > a["armed_bloc_confrontation_threshold"]
+              and self.rng.random() < a["armed_bloc_confrontation_probability"]):
             self.path = ArmedBlocPath.DIRECT_CONFRONTATION
-        elif self.negotiation_readiness > 0.55 and self.rng.random() < 0.25:
+        elif (self.negotiation_readiness > a["armed_bloc_bargain_threshold"]
+              and self.rng.random() < a["armed_bloc_bargain_probability"]):
             self.path = ArmedBlocPath.SECURITY_BARGAIN
 
 
@@ -265,8 +280,10 @@ class CivilSocietyAgent:
 
     def trust_legitimacy_update_stage(self):
         mean_leg = np.mean([g.legitimacy_internal for g in self.model.gates])
+        a = self.model.cfg["model_assumptions"]
         self.public_legitimacy_signal = float(np.clip(
-            0.7 * self.public_legitimacy_signal + 0.3 * mean_leg, 0, 1))
+            a["public_legitimacy_memory_weight"] * self.public_legitimacy_signal
+            + a["public_legitimacy_internal_weight"] * mean_leg, 0, 1))
 
 
 # ---------------- Subsystems ----------------
