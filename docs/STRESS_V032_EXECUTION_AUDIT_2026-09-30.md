@@ -5,13 +5,13 @@
 **Runs:** 300  
 **Ticks per run:** 520  
 **Master seed:** 43  
-**Git HEAD:** `a63f83f4efce5a0721047a3edc619339b436700f`
+**Git HEAD:** `05f1ed155fa49a571fb07ea83a2ef19818e9d389`
 
 ## Provenance
 
-- runner SHA256: `df758a33bb6f79978929ae92cc13cb0b8b4a05fa8abfae7c0bb9bf3dc1b37bd3`
-- model SHA256: `89728d8b1614e9c9577ed9421e81ced17e27cb88c345f825ae431a676fad6588`
-- canonical baseline-config SHA256: `43723b4bbdebd21c46138230dee299adae7c4695a34209afa8ba4e901b604d4e`
+- runner SHA256: `cd673733f63f8600597c1a0ea932e54cd6514ad47474c16f838f24ec66b2d981`
+- model SHA256: `538ec17f277d949b17e382c5af350574891fce804c3723a167b70b0ce814d020`
+- canonical baseline-config SHA256: `c83c03fe5953c312df2bd5c2de49356aec52a775dae5bc7565344d3e42507181`
 - stress start tick: `52`
 - stressed gates: `[0, 2, 4]`
 

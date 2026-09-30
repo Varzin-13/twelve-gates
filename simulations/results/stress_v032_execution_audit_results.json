@@ -1,12 +1,12 @@
 {
-  "schema": "twelve-gates/stress-v032-execution-audit/v2",
+  "schema": "twelve-gates/stress-v032-execution-audit/v3",
   "claim_label": "hypothesis",
   "purpose": "execution_audit_rerun_after_timing_resource_emergency_coalition_fixes",
   "not_empirical_validation": true,
-  "git_head": "a63f83f4efce5a0721047a3edc619339b436700f",
-  "runner_sha256": "df758a33bb6f79978929ae92cc13cb0b8b4a05fa8abfae7c0bb9bf3dc1b37bd3",
-  "model_sha256": "89728d8b1614e9c9577ed9421e81ced17e27cb88c345f825ae431a676fad6588",
-  "baseline_config_canonical_sha256": "43723b4bbdebd21c46138230dee299adae7c4695a34209afa8ba4e901b604d4e",
+  "git_head": "05f1ed155fa49a571fb07ea83a2ef19818e9d389",
+  "runner_sha256": "cd673733f63f8600597c1a0ea932e54cd6514ad47474c16f838f24ec66b2d981",
+  "model_sha256": "538ec17f277d949b17e382c5af350574891fce804c3723a167b70b0ce814d020",
+  "baseline_config_canonical_sha256": "c83c03fe5953c312df2bd5c2de49356aec52a775dae5bc7565344d3e42507181",
   "stress_start_tick": 52,
   "stress_gate_ids": [
     0,
@@ -327,7 +327,8 @@
     "legitimacy_internal_mean": 0.6171565656565656,
     "capture_pressure_mean": 0.5799709325002703,
     "bureaucracy_politicization_mean": 0.5639999999999957,
-    "public_legitimacy_signal_mean": 0.6172751253319964
+    "civil_society_legitimacy_proxy_mean": 0.6172751253319964,
+    "public_legitimacy_signal_mean_legacy_alias": 0.6172751253319964
   },
   "historical_summary": {
     "cartel_capture_rate": 1.0,
@@ -336,7 +337,7 @@
     "legitimacy_internal_mean": 0.6172247474747475,
     "capture_pressure_mean": 0.5806665248898668
   },
-  "elapsed_seconds": 181.461,
+  "elapsed_seconds": 152.826,
   "run_results": [
     {
       "cartel_capture_ever": true,
@@ -346,7 +347,9 @@
       "mean_legitimacy_end": 0.6151515151515151,
       "mean_capture_pressure_end": 0.5800000000000002,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6155729896282806
+      "civil_society_legitimacy_proxy_end": 0.6155729896282806,
+      "public_legitimacy_signal_end": 0.6155729896282806,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -356,7 +359,9 @@
       "mean_legitimacy_end": 0.6174242424242423,
       "mean_capture_pressure_end": 0.5800000000000001,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6165724191598954
+      "civil_society_legitimacy_proxy_end": 0.6165724191598954,
+      "public_legitimacy_signal_end": 0.6165724191598954,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -366,7 +371,9 @@
       "mean_legitimacy_end": 0.6166666666666668,
       "mean_capture_pressure_end": 0.5800000000000001,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6166025275719971
+      "civil_society_legitimacy_proxy_end": 0.6166025275719971,
+      "public_legitimacy_signal_end": 0.6166025275719971,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -376,7 +383,9 @@
       "mean_legitimacy_end": 0.6242424242424244,
       "mean_capture_pressure_end": 0.58,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.62075368823623
+      "civil_society_legitimacy_proxy_end": 0.62075368823623,
+      "public_legitimacy_signal_end": 0.62075368823623,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -386,7 +395,9 @@
       "mean_legitimacy_end": 0.6196969696969697,
       "mean_capture_pressure_end": 0.58,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6185238054682949
+      "civil_society_legitimacy_proxy_end": 0.6185238054682949,
+      "public_legitimacy_signal_end": 0.6185238054682949,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -396,7 +407,9 @@
       "mean_legitimacy_end": 0.6143939393939395,
       "mean_capture_pressure_end": 0.5800000000000001,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6144875487345475
+      "civil_society_legitimacy_proxy_end": 0.6144875487345475,
+      "public_legitimacy_signal_end": 0.6144875487345475,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -406,7 +419,9 @@
       "mean_legitimacy_end": 0.6212121212121212,
       "mean_capture_pressure_end": 0.58,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.618743026146728
+      "civil_society_legitimacy_proxy_end": 0.618743026146728,
+      "public_legitimacy_signal_end": 0.618743026146728,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -416,7 +431,9 @@
       "mean_legitimacy_end": 0.6166666666666667,
       "mean_capture_pressure_end": 0.58,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6165639865341033
+      "civil_society_legitimacy_proxy_end": 0.6165639865341033,
+      "public_legitimacy_signal_end": 0.6165639865341033,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -426,7 +443,9 @@
       "mean_legitimacy_end": 0.6196969696969697,
       "mean_capture_pressure_end": 0.5800000000000001,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6187431301959505
+      "civil_society_legitimacy_proxy_end": 0.6187431301959505,
+      "public_legitimacy_signal_end": 0.6187431301959505,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -436,7 +455,9 @@
       "mean_legitimacy_end": 0.6159090909090909,
       "mean_capture_pressure_end": 0.5799999999999998,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6170998196910511
+      "civil_society_legitimacy_proxy_end": 0.6170998196910511,
+      "public_legitimacy_signal_end": 0.6170998196910511,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -446,7 +467,9 @@
       "mean_legitimacy_end": 0.6204545454545455,
       "mean_capture_pressure_end": 0.5800000000000002,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6185531626246068
+      "civil_society_legitimacy_proxy_end": 0.6185531626246068,
+      "public_legitimacy_signal_end": 0.6185531626246068,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": false,
@@ -456,7 +479,9 @@
       "mean_legitimacy_end": 0.618939393939394,
       "mean_capture_pressure_end": 0.5800000000000001,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6195625373191862
+      "civil_society_legitimacy_proxy_end": 0.6195625373191862,
+      "public_legitimacy_signal_end": 0.6195625373191862,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -466,7 +491,9 @@
       "mean_legitimacy_end": 0.618939393939394,
       "mean_capture_pressure_end": 0.5800000000000001,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6182693219601062
+      "civil_society_legitimacy_proxy_end": 0.6182693219601062,
+      "public_legitimacy_signal_end": 0.6182693219601062,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -476,7 +503,9 @@
       "mean_legitimacy_end": 0.618181818181818,
       "mean_capture_pressure_end": 0.5799999999999997,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6165781526170664
+      "civil_society_legitimacy_proxy_end": 0.6165781526170664,
+      "public_legitimacy_signal_end": 0.6165781526170664,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -486,7 +515,9 @@
       "mean_legitimacy_end": 0.6136363636363636,
       "mean_capture_pressure_end": 0.5800000000000002,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6166834014864243
+      "civil_society_legitimacy_proxy_end": 0.6166834014864243,
+      "public_legitimacy_signal_end": 0.6166834014864243,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -496,7 +527,9 @@
       "mean_legitimacy_end": 0.6151515151515151,
       "mean_capture_pressure_end": 0.58,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6149521245080585
+      "civil_society_legitimacy_proxy_end": 0.6149521245080585,
+      "public_legitimacy_signal_end": 0.6149521245080585,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -506,7 +539,9 @@
       "mean_legitimacy_end": 0.6174242424242424,
       "mean_capture_pressure_end": 0.5800000000000002,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6172108987490241
+      "civil_society_legitimacy_proxy_end": 0.6172108987490241,
+      "public_legitimacy_signal_end": 0.6172108987490241,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -516,7 +551,9 @@
       "mean_legitimacy_end": 0.618939393939394,
       "mean_capture_pressure_end": 0.5800000000000001,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.616035825253996
+      "civil_society_legitimacy_proxy_end": 0.616035825253996,
+      "public_legitimacy_signal_end": 0.616035825253996,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -526,7 +563,9 @@
       "mean_legitimacy_end": 0.6174242424242425,
       "mean_capture_pressure_end": 0.58,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6183086601498191
+      "civil_society_legitimacy_proxy_end": 0.6183086601498191,
+      "public_legitimacy_signal_end": 0.6183086601498191,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -536,7 +575,9 @@
       "mean_legitimacy_end": 0.6121212121212122,
       "mean_capture_pressure_end": 0.5800000000000001,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6143672278858994
+      "civil_society_legitimacy_proxy_end": 0.6143672278858994,
+      "public_legitimacy_signal_end": 0.6143672278858994,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -546,7 +587,9 @@
       "mean_legitimacy_end": 0.6219696969696971,
       "mean_capture_pressure_end": 0.58,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6199825337962787
+      "civil_society_legitimacy_proxy_end": 0.6199825337962787,
+      "public_legitimacy_signal_end": 0.6199825337962787,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -556,7 +599,9 @@
       "mean_legitimacy_end": 0.6121212121212121,
       "mean_capture_pressure_end": 0.5800000000000001,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6147358260088526
+      "civil_society_legitimacy_proxy_end": 0.6147358260088526,
+      "public_legitimacy_signal_end": 0.6147358260088526,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -566,7 +611,9 @@
       "mean_legitimacy_end": 0.6181818181818183,
       "mean_capture_pressure_end": 0.5800000000000002,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6186097068737783
+      "civil_society_legitimacy_proxy_end": 0.6186097068737783,
+      "public_legitimacy_signal_end": 0.6186097068737783,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -576,7 +623,9 @@
       "mean_legitimacy_end": 0.6174242424242425,
       "mean_capture_pressure_end": 0.5799999999999997,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6172937027774397
+      "civil_society_legitimacy_proxy_end": 0.6172937027774397,
+      "public_legitimacy_signal_end": 0.6172937027774397,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -586,7 +635,9 @@
       "mean_legitimacy_end": 0.6227272727272729,
       "mean_capture_pressure_end": 0.58,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6180686404509785
+      "civil_society_legitimacy_proxy_end": 0.6180686404509785,
+      "public_legitimacy_signal_end": 0.6180686404509785,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -596,7 +647,9 @@
       "mean_legitimacy_end": 0.6174242424242425,
       "mean_capture_pressure_end": 0.58,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6172645863457293
+      "civil_society_legitimacy_proxy_end": 0.6172645863457293,
+      "public_legitimacy_signal_end": 0.6172645863457293,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -606,7 +659,9 @@
       "mean_legitimacy_end": 0.6181818181818183,
       "mean_capture_pressure_end": 0.5800000000000001,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6184922527600425
+      "civil_society_legitimacy_proxy_end": 0.6184922527600425,
+      "public_legitimacy_signal_end": 0.6184922527600425,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -616,7 +671,9 @@
       "mean_legitimacy_end": 0.6189393939393939,
       "mean_capture_pressure_end": 0.5800000000000001,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6187417601415625
+      "civil_society_legitimacy_proxy_end": 0.6187417601415625,
+      "public_legitimacy_signal_end": 0.6187417601415625,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -626,7 +683,9 @@
       "mean_legitimacy_end": 0.6151515151515151,
       "mean_capture_pressure_end": 0.5800000000000002,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6175380793851953
+      "civil_society_legitimacy_proxy_end": 0.6175380793851953,
+      "public_legitimacy_signal_end": 0.6175380793851953,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -636,7 +695,9 @@
       "mean_legitimacy_end": 0.6204545454545455,
       "mean_capture_pressure_end": 0.5799999999999997,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6196465039391751
+      "civil_society_legitimacy_proxy_end": 0.6196465039391751,
+      "public_legitimacy_signal_end": 0.6196465039391751,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -646,7 +707,9 @@
       "mean_legitimacy_end": 0.618939393939394,
       "mean_capture_pressure_end": 0.5799999999999997,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6191293339248007
+      "civil_society_legitimacy_proxy_end": 0.6191293339248007,
+      "public_legitimacy_signal_end": 0.6191293339248007,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -656,7 +719,9 @@
       "mean_legitimacy_end": 0.6166666666666667,
       "mean_capture_pressure_end": 0.5800000000000002,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6142024164488686
+      "civil_society_legitimacy_proxy_end": 0.6142024164488686,
+      "public_legitimacy_signal_end": 0.6142024164488686,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -666,7 +731,9 @@
       "mean_legitimacy_end": 0.6121212121212121,
       "mean_capture_pressure_end": 0.58,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6146709013003018
+      "civil_society_legitimacy_proxy_end": 0.6146709013003018,
+      "public_legitimacy_signal_end": 0.6146709013003018,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -676,7 +743,9 @@
       "mean_legitimacy_end": 0.618939393939394,
       "mean_capture_pressure_end": 0.58,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6190883834949352
+      "civil_society_legitimacy_proxy_end": 0.6190883834949352,
+      "public_legitimacy_signal_end": 0.6190883834949352,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -686,7 +755,9 @@
       "mean_legitimacy_end": 0.6219696969696971,
       "mean_capture_pressure_end": 0.58,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6205404448580123
+      "civil_society_legitimacy_proxy_end": 0.6205404448580123,
+      "public_legitimacy_signal_end": 0.6205404448580123,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -696,7 +767,9 @@
       "mean_legitimacy_end": 0.6143939393939394,
       "mean_capture_pressure_end": 0.58,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6165271345856247
+      "civil_society_legitimacy_proxy_end": 0.6165271345856247,
+      "public_legitimacy_signal_end": 0.6165271345856247,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -706,7 +779,9 @@
       "mean_legitimacy_end": 0.6181818181818183,
       "mean_capture_pressure_end": 0.5800000000000001,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6153577824156569
+      "civil_society_legitimacy_proxy_end": 0.6153577824156569,
+      "public_legitimacy_signal_end": 0.6153577824156569,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -716,7 +791,9 @@
       "mean_legitimacy_end": 0.6151515151515153,
       "mean_capture_pressure_end": 0.5800000000000001,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6168082426414554
+      "civil_society_legitimacy_proxy_end": 0.6168082426414554,
+      "public_legitimacy_signal_end": 0.6168082426414554,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -726,7 +803,9 @@
       "mean_legitimacy_end": 0.6181818181818182,
       "mean_capture_pressure_end": 0.58,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6185510634108343
+      "civil_society_legitimacy_proxy_end": 0.6185510634108343,
+      "public_legitimacy_signal_end": 0.6185510634108343,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -736,7 +815,9 @@
       "mean_legitimacy_end": 0.6174242424242424,
       "mean_capture_pressure_end": 0.5800000000000001,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6167063264944919
+      "civil_society_legitimacy_proxy_end": 0.6167063264944919,
+      "public_legitimacy_signal_end": 0.6167063264944919,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -746,7 +827,9 @@
       "mean_legitimacy_end": 0.6166666666666666,
       "mean_capture_pressure_end": 0.5800000000000001,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6167511220045171
+      "civil_society_legitimacy_proxy_end": 0.6167511220045171,
+      "public_legitimacy_signal_end": 0.6167511220045171,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -756,7 +839,9 @@
       "mean_legitimacy_end": 0.6121212121212122,
       "mean_capture_pressure_end": 0.5800000000000001,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6152894825480791
+      "civil_society_legitimacy_proxy_end": 0.6152894825480791,
+      "public_legitimacy_signal_end": 0.6152894825480791,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -766,7 +851,9 @@
       "mean_legitimacy_end": 0.6204545454545456,
       "mean_capture_pressure_end": 0.5800000000000001,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.617619308631464
+      "civil_society_legitimacy_proxy_end": 0.617619308631464,
+      "public_legitimacy_signal_end": 0.617619308631464,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -776,7 +863,9 @@
       "mean_legitimacy_end": 0.6181818181818183,
       "mean_capture_pressure_end": 0.5800000000000002,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6175661211964294
+      "civil_society_legitimacy_proxy_end": 0.6175661211964294,
+      "public_legitimacy_signal_end": 0.6175661211964294,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -786,7 +875,9 @@
       "mean_legitimacy_end": 0.6196969696969697,
       "mean_capture_pressure_end": 0.5800000000000002,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.618861826719554
+      "civil_society_legitimacy_proxy_end": 0.618861826719554,
+      "public_legitimacy_signal_end": 0.618861826719554,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -796,7 +887,9 @@
       "mean_legitimacy_end": 0.618939393939394,
       "mean_capture_pressure_end": 0.5800000000000001,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6178636765769832
+      "civil_society_legitimacy_proxy_end": 0.6178636765769832,
+      "public_legitimacy_signal_end": 0.6178636765769832,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -806,7 +899,9 @@
       "mean_legitimacy_end": 0.6159090909090909,
       "mean_capture_pressure_end": 0.5800000000000002,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6146910896530179
+      "civil_society_legitimacy_proxy_end": 0.6146910896530179,
+      "public_legitimacy_signal_end": 0.6146910896530179,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -816,7 +911,9 @@
       "mean_legitimacy_end": 0.6204545454545455,
       "mean_capture_pressure_end": 0.5800000000000002,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.619347749150823
+      "civil_society_legitimacy_proxy_end": 0.619347749150823,
+      "public_legitimacy_signal_end": 0.619347749150823,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -826,7 +923,9 @@
       "mean_legitimacy_end": 0.6151515151515152,
       "mean_capture_pressure_end": 0.5800000000000001,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6156837869871592
+      "civil_society_legitimacy_proxy_end": 0.6156837869871592,
+      "public_legitimacy_signal_end": 0.6156837869871592,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -836,7 +935,9 @@
       "mean_legitimacy_end": 0.615909090909091,
       "mean_capture_pressure_end": 0.58,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6179690644179175
+      "civil_society_legitimacy_proxy_end": 0.6179690644179175,
+      "public_legitimacy_signal_end": 0.6179690644179175,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -846,7 +947,9 @@
       "mean_legitimacy_end": 0.618181818181818,
       "mean_capture_pressure_end": 0.58,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6193419933296304
+      "civil_society_legitimacy_proxy_end": 0.6193419933296304,
+      "public_legitimacy_signal_end": 0.6193419933296304,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -856,7 +959,9 @@
       "mean_legitimacy_end": 0.6181818181818183,
       "mean_capture_pressure_end": 0.58,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6189303859138016
+      "civil_society_legitimacy_proxy_end": 0.6189303859138016,
+      "public_legitimacy_signal_end": 0.6189303859138016,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -866,7 +971,9 @@
       "mean_legitimacy_end": 0.6143939393939394,
       "mean_capture_pressure_end": 0.5800000000000001,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6171682011515246
+      "civil_society_legitimacy_proxy_end": 0.6171682011515246,
+      "public_legitimacy_signal_end": 0.6171682011515246,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -876,7 +983,9 @@
       "mean_legitimacy_end": 0.6166666666666667,
       "mean_capture_pressure_end": 0.58,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6179897703841903
+      "civil_society_legitimacy_proxy_end": 0.6179897703841903,
+      "public_legitimacy_signal_end": 0.6179897703841903,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -886,7 +995,9 @@
       "mean_legitimacy_end": 0.6106060606060606,
       "mean_capture_pressure_end": 0.5800000000000002,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6135856294456306
+      "civil_society_legitimacy_proxy_end": 0.6135856294456306,
+      "public_legitimacy_signal_end": 0.6135856294456306,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -896,7 +1007,9 @@
       "mean_legitimacy_end": 0.6143939393939395,
       "mean_capture_pressure_end": 0.58,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6152225167733176
+      "civil_society_legitimacy_proxy_end": 0.6152225167733176,
+      "public_legitimacy_signal_end": 0.6152225167733176,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -906,7 +1019,9 @@
       "mean_legitimacy_end": 0.6121212121212122,
       "mean_capture_pressure_end": 0.58,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6167895962158999
+      "civil_society_legitimacy_proxy_end": 0.6167895962158999,
+      "public_legitimacy_signal_end": 0.6167895962158999,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -916,7 +1031,9 @@
       "mean_legitimacy_end": 0.6204545454545455,
       "mean_capture_pressure_end": 0.5800000000000001,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6205012900063536
+      "civil_society_legitimacy_proxy_end": 0.6205012900063536,
+      "public_legitimacy_signal_end": 0.6205012900063536,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -926,7 +1043,9 @@
       "mean_legitimacy_end": 0.6159090909090909,
       "mean_capture_pressure_end": 0.58,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.616544968340281
+      "civil_society_legitimacy_proxy_end": 0.616544968340281,
+      "public_legitimacy_signal_end": 0.616544968340281,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -936,7 +1055,9 @@
       "mean_legitimacy_end": 0.6196969696969697,
       "mean_capture_pressure_end": 0.5800000000000001,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6163466690131154
+      "civil_society_legitimacy_proxy_end": 0.6163466690131154,
+      "public_legitimacy_signal_end": 0.6163466690131154,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -946,7 +1067,9 @@
       "mean_legitimacy_end": 0.6166666666666667,
       "mean_capture_pressure_end": 0.5800000000000002,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6166852813315015
+      "civil_society_legitimacy_proxy_end": 0.6166852813315015,
+      "public_legitimacy_signal_end": 0.6166852813315015,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -956,7 +1079,9 @@
       "mean_legitimacy_end": 0.6113636363636363,
       "mean_capture_pressure_end": 0.58,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.615518234389445
+      "civil_society_legitimacy_proxy_end": 0.615518234389445,
+      "public_legitimacy_signal_end": 0.615518234389445,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -966,7 +1091,9 @@
       "mean_legitimacy_end": 0.6174242424242425,
       "mean_capture_pressure_end": 0.5800000000000001,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6152819318089294
+      "civil_society_legitimacy_proxy_end": 0.6152819318089294,
+      "public_legitimacy_signal_end": 0.6152819318089294,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -976,7 +1103,9 @@
       "mean_legitimacy_end": 0.6166666666666668,
       "mean_capture_pressure_end": 0.58,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6187140381095568
+      "civil_society_legitimacy_proxy_end": 0.6187140381095568,
+      "public_legitimacy_signal_end": 0.6187140381095568,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -986,7 +1115,9 @@
       "mean_legitimacy_end": 0.618939393939394,
       "mean_capture_pressure_end": 0.5800000000000001,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.617660948433305
+      "civil_society_legitimacy_proxy_end": 0.617660948433305,
+      "public_legitimacy_signal_end": 0.617660948433305,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -996,7 +1127,9 @@
       "mean_legitimacy_end": 0.6196969696969697,
       "mean_capture_pressure_end": 0.58,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6191677655964318
+      "civil_society_legitimacy_proxy_end": 0.6191677655964318,
+      "public_legitimacy_signal_end": 0.6191677655964318,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -1006,7 +1139,9 @@
       "mean_legitimacy_end": 0.618939393939394,
       "mean_capture_pressure_end": 0.5799999999999998,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6166914104928034
+      "civil_society_legitimacy_proxy_end": 0.6166914104928034,
+      "public_legitimacy_signal_end": 0.6166914104928034,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -1016,7 +1151,9 @@
       "mean_legitimacy_end": 0.6151515151515151,
       "mean_capture_pressure_end": 0.5800000000000001,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6172781501896005
+      "civil_society_legitimacy_proxy_end": 0.6172781501896005,
+      "public_legitimacy_signal_end": 0.6172781501896005,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -1026,7 +1163,9 @@
       "mean_legitimacy_end": 0.618181818181818,
       "mean_capture_pressure_end": 0.5800000000000002,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6181001999790233
+      "civil_society_legitimacy_proxy_end": 0.6181001999790233,
+      "public_legitimacy_signal_end": 0.6181001999790233,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -1036,7 +1175,9 @@
       "mean_legitimacy_end": 0.6196969696969697,
       "mean_capture_pressure_end": 0.5800000000000001,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6181890048769216
+      "civil_society_legitimacy_proxy_end": 0.6181890048769216,
+      "public_legitimacy_signal_end": 0.6181890048769216,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -1046,7 +1187,9 @@
       "mean_legitimacy_end": 0.6121212121212122,
       "mean_capture_pressure_end": 0.58,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6142063451228958
+      "civil_society_legitimacy_proxy_end": 0.6142063451228958,
+      "public_legitimacy_signal_end": 0.6142063451228958,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -1056,7 +1199,9 @@
       "mean_legitimacy_end": 0.6121212121212121,
       "mean_capture_pressure_end": 0.5800000000000001,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.613393425121181
+      "civil_society_legitimacy_proxy_end": 0.613393425121181,
+      "public_legitimacy_signal_end": 0.613393425121181,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -1066,7 +1211,9 @@
       "mean_legitimacy_end": 0.6196969696969696,
       "mean_capture_pressure_end": 0.58,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6188640987316121
+      "civil_society_legitimacy_proxy_end": 0.6188640987316121,
+      "public_legitimacy_signal_end": 0.6188640987316121,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -1076,7 +1223,9 @@
       "mean_legitimacy_end": 0.615909090909091,
       "mean_capture_pressure_end": 0.58,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6171013444636433
+      "civil_society_legitimacy_proxy_end": 0.6171013444636433,
+      "public_legitimacy_signal_end": 0.6171013444636433,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -1086,7 +1235,9 @@
       "mean_legitimacy_end": 0.6204545454545455,
       "mean_capture_pressure_end": 0.5800000000000001,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.616673869792624
+      "civil_society_legitimacy_proxy_end": 0.616673869792624,
+      "public_legitimacy_signal_end": 0.616673869792624,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -1096,7 +1247,9 @@
       "mean_legitimacy_end": 0.6174242424242425,
       "mean_capture_pressure_end": 0.5800000000000001,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6183019448068678
+      "civil_society_legitimacy_proxy_end": 0.6183019448068678,
+      "public_legitimacy_signal_end": 0.6183019448068678,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -1106,7 +1259,9 @@
       "mean_legitimacy_end": 0.6151515151515151,
       "mean_capture_pressure_end": 0.5800000000000001,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6178315024956957
+      "civil_society_legitimacy_proxy_end": 0.6178315024956957,
+      "public_legitimacy_signal_end": 0.6178315024956957,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -1116,7 +1271,9 @@
       "mean_legitimacy_end": 0.6166666666666666,
       "mean_capture_pressure_end": 0.5800000000000001,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6183911893387083
+      "civil_society_legitimacy_proxy_end": 0.6183911893387083,
+      "public_legitimacy_signal_end": 0.6183911893387083,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -1126,7 +1283,9 @@
       "mean_legitimacy_end": 0.6143939393939394,
       "mean_capture_pressure_end": 0.58,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6168072584845716
+      "civil_society_legitimacy_proxy_end": 0.6168072584845716,
+      "public_legitimacy_signal_end": 0.6168072584845716,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -1136,7 +1295,9 @@
       "mean_legitimacy_end": 0.6181818181818182,
       "mean_capture_pressure_end": 0.58,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6183958999476397
+      "civil_society_legitimacy_proxy_end": 0.6183958999476397,
+      "public_legitimacy_signal_end": 0.6183958999476397,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": false,
@@ -1146,7 +1307,9 @@
       "mean_legitimacy_end": 0.6166666666666667,
       "mean_capture_pressure_end": 0.5800000000000001,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6168249724154378
+      "civil_society_legitimacy_proxy_end": 0.6168249724154378,
+      "public_legitimacy_signal_end": 0.6168249724154378,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -1156,7 +1319,9 @@
       "mean_legitimacy_end": 0.6128787878787879,
       "mean_capture_pressure_end": 0.5800000000000002,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6160034896887677
+      "civil_society_legitimacy_proxy_end": 0.6160034896887677,
+      "public_legitimacy_signal_end": 0.6160034896887677,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -1166,7 +1331,9 @@
       "mean_legitimacy_end": 0.6181818181818182,
       "mean_capture_pressure_end": 0.58,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6194666912778941
+      "civil_society_legitimacy_proxy_end": 0.6194666912778941,
+      "public_legitimacy_signal_end": 0.6194666912778941,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -1176,7 +1343,9 @@
       "mean_legitimacy_end": 0.6174242424242424,
       "mean_capture_pressure_end": 0.5799999999999998,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6177064347942605
+      "civil_society_legitimacy_proxy_end": 0.6177064347942605,
+      "public_legitimacy_signal_end": 0.6177064347942605,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -1186,7 +1355,9 @@
       "mean_legitimacy_end": 0.6196969696969696,
       "mean_capture_pressure_end": 0.5800000000000001,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6183329336840648
+      "civil_society_legitimacy_proxy_end": 0.6183329336840648,
+      "public_legitimacy_signal_end": 0.6183329336840648,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -1196,7 +1367,9 @@
       "mean_legitimacy_end": 0.6151515151515151,
       "mean_capture_pressure_end": 0.5800000000000002,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6157379681386606
+      "civil_society_legitimacy_proxy_end": 0.6157379681386606,
+      "public_legitimacy_signal_end": 0.6157379681386606,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -1206,7 +1379,9 @@
       "mean_legitimacy_end": 0.6227272727272728,
       "mean_capture_pressure_end": 0.5800000000000002,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6198278606377658
+      "civil_society_legitimacy_proxy_end": 0.6198278606377658,
+      "public_legitimacy_signal_end": 0.6198278606377658,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -1216,7 +1391,9 @@
       "mean_legitimacy_end": 0.6204545454545455,
       "mean_capture_pressure_end": 0.58,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6195968941713813
+      "civil_society_legitimacy_proxy_end": 0.6195968941713813,
+      "public_legitimacy_signal_end": 0.6195968941713813,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -1226,7 +1403,9 @@
       "mean_legitimacy_end": 0.6151515151515151,
       "mean_capture_pressure_end": 0.5800000000000002,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6150926325252906
+      "civil_society_legitimacy_proxy_end": 0.6150926325252906,
+      "public_legitimacy_signal_end": 0.6150926325252906,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -1236,7 +1415,9 @@
       "mean_legitimacy_end": 0.6196969696969697,
       "mean_capture_pressure_end": 0.5800000000000001,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6183760768229252
+      "civil_society_legitimacy_proxy_end": 0.6183760768229252,
+      "public_legitimacy_signal_end": 0.6183760768229252,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -1246,7 +1427,9 @@
       "mean_legitimacy_end": 0.6181818181818183,
       "mean_capture_pressure_end": 0.5800000000000001,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6190249748188326
+      "civil_society_legitimacy_proxy_end": 0.6190249748188326,
+      "public_legitimacy_signal_end": 0.6190249748188326,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -1256,7 +1439,9 @@
       "mean_legitimacy_end": 0.6174242424242424,
       "mean_capture_pressure_end": 0.58,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6175240083367795
+      "civil_society_legitimacy_proxy_end": 0.6175240083367795,
+      "public_legitimacy_signal_end": 0.6175240083367795,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -1266,7 +1451,9 @@
       "mean_legitimacy_end": 0.6196969696969697,
       "mean_capture_pressure_end": 0.58,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6187854979677422
+      "civil_society_legitimacy_proxy_end": 0.6187854979677422,
+      "public_legitimacy_signal_end": 0.6187854979677422,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -1276,7 +1463,9 @@
       "mean_legitimacy_end": 0.6151515151515152,
       "mean_capture_pressure_end": 0.58,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6151294279507442
+      "civil_society_legitimacy_proxy_end": 0.6151294279507442,
+      "public_legitimacy_signal_end": 0.6151294279507442,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -1286,7 +1475,9 @@
       "mean_legitimacy_end": 0.6166666666666667,
       "mean_capture_pressure_end": 0.58,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6177463352065349
+      "civil_society_legitimacy_proxy_end": 0.6177463352065349,
+      "public_legitimacy_signal_end": 0.6177463352065349,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -1296,7 +1487,9 @@
       "mean_legitimacy_end": 0.6212121212121213,
       "mean_capture_pressure_end": 0.58,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.618317028143353
+      "civil_society_legitimacy_proxy_end": 0.618317028143353,
+      "public_legitimacy_signal_end": 0.618317028143353,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -1306,7 +1499,9 @@
       "mean_legitimacy_end": 0.618939393939394,
       "mean_capture_pressure_end": 0.5800000000000001,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6181268095648859
+      "civil_society_legitimacy_proxy_end": 0.6181268095648859,
+      "public_legitimacy_signal_end": 0.6181268095648859,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -1316,7 +1511,9 @@
       "mean_legitimacy_end": 0.6196969696969697,
       "mean_capture_pressure_end": 0.5800000000000002,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6190692824625534
+      "civil_society_legitimacy_proxy_end": 0.6190692824625534,
+      "public_legitimacy_signal_end": 0.6190692824625534,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -1326,7 +1523,9 @@
       "mean_legitimacy_end": 0.615909090909091,
       "mean_capture_pressure_end": 0.5800000000000002,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6157109885567701
+      "civil_society_legitimacy_proxy_end": 0.6157109885567701,
+      "public_legitimacy_signal_end": 0.6157109885567701,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -1336,7 +1535,9 @@
       "mean_legitimacy_end": 0.6136363636363636,
       "mean_capture_pressure_end": 0.5800000000000001,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6160103981460396
+      "civil_society_legitimacy_proxy_end": 0.6160103981460396,
+      "public_legitimacy_signal_end": 0.6160103981460396,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -1346,7 +1547,9 @@
       "mean_legitimacy_end": 0.6166666666666667,
       "mean_capture_pressure_end": 0.5799999999999997,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6167248364983929
+      "civil_society_legitimacy_proxy_end": 0.6167248364983929,
+      "public_legitimacy_signal_end": 0.6167248364983929,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -1356,7 +1559,9 @@
       "mean_legitimacy_end": 0.6143939393939393,
       "mean_capture_pressure_end": 0.5800000000000001,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6173406532597085
+      "civil_society_legitimacy_proxy_end": 0.6173406532597085,
+      "public_legitimacy_signal_end": 0.6173406532597085,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -1366,7 +1571,9 @@
       "mean_legitimacy_end": 0.6136363636363638,
       "mean_capture_pressure_end": 0.5800000000000002,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6169163950443918
+      "civil_society_legitimacy_proxy_end": 0.6169163950443918,
+      "public_legitimacy_signal_end": 0.6169163950443918,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -1376,7 +1583,9 @@
       "mean_legitimacy_end": 0.6219696969696971,
       "mean_capture_pressure_end": 0.58,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6191423743250802
+      "civil_society_legitimacy_proxy_end": 0.6191423743250802,
+      "public_legitimacy_signal_end": 0.6191423743250802,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -1386,7 +1595,9 @@
       "mean_legitimacy_end": 0.6166666666666668,
       "mean_capture_pressure_end": 0.5800000000000001,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.618199987142147
+      "civil_society_legitimacy_proxy_end": 0.618199987142147,
+      "public_legitimacy_signal_end": 0.618199987142147,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -1396,7 +1607,9 @@
       "mean_legitimacy_end": 0.6204545454545456,
       "mean_capture_pressure_end": 0.5799999999999997,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6191244957589316
+      "civil_society_legitimacy_proxy_end": 0.6191244957589316,
+      "public_legitimacy_signal_end": 0.6191244957589316,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -1406,7 +1619,9 @@
       "mean_legitimacy_end": 0.6136363636363636,
       "mean_capture_pressure_end": 0.5800000000000002,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6158481303052901
+      "civil_society_legitimacy_proxy_end": 0.6158481303052901,
+      "public_legitimacy_signal_end": 0.6158481303052901,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -1416,7 +1631,9 @@
       "mean_legitimacy_end": 0.6181818181818183,
       "mean_capture_pressure_end": 0.5799999999999997,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6158208201847037
+      "civil_society_legitimacy_proxy_end": 0.6158208201847037,
+      "public_legitimacy_signal_end": 0.6158208201847037,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -1426,7 +1643,9 @@
       "mean_legitimacy_end": 0.6181818181818182,
       "mean_capture_pressure_end": 0.58,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.619653777579032
+      "civil_society_legitimacy_proxy_end": 0.619653777579032,
+      "public_legitimacy_signal_end": 0.619653777579032,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -1436,7 +1655,9 @@
       "mean_legitimacy_end": 0.6136363636363636,
       "mean_capture_pressure_end": 0.5800000000000002,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6130284269045069
+      "civil_society_legitimacy_proxy_end": 0.6130284269045069,
+      "public_legitimacy_signal_end": 0.6130284269045069,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -1446,7 +1667,9 @@
       "mean_legitimacy_end": 0.6166666666666667,
       "mean_capture_pressure_end": 0.5800000000000002,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6176183390170611
+      "civil_society_legitimacy_proxy_end": 0.6176183390170611,
+      "public_legitimacy_signal_end": 0.6176183390170611,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -1456,7 +1679,9 @@
       "mean_legitimacy_end": 0.615909090909091,
       "mean_capture_pressure_end": 0.5800000000000001,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6164881821369305
+      "civil_society_legitimacy_proxy_end": 0.6164881821369305,
+      "public_legitimacy_signal_end": 0.6164881821369305,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -1466,7 +1691,9 @@
       "mean_legitimacy_end": 0.6174242424242424,
       "mean_capture_pressure_end": 0.5800000000000002,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6149018529781248
+      "civil_society_legitimacy_proxy_end": 0.6149018529781248,
+      "public_legitimacy_signal_end": 0.6149018529781248,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -1476,7 +1703,9 @@
       "mean_legitimacy_end": 0.6136363636363636,
       "mean_capture_pressure_end": 0.5800000000000001,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6141638106101377
+      "civil_society_legitimacy_proxy_end": 0.6141638106101377,
+      "public_legitimacy_signal_end": 0.6141638106101377,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -1486,7 +1715,9 @@
       "mean_legitimacy_end": 0.6196969696969697,
       "mean_capture_pressure_end": 0.58,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6182330831229053
+      "civil_society_legitimacy_proxy_end": 0.6182330831229053,
+      "public_legitimacy_signal_end": 0.6182330831229053,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -1496,7 +1727,9 @@
       "mean_legitimacy_end": 0.6166666666666667,
       "mean_capture_pressure_end": 0.5799999999999998,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6162946661108634
+      "civil_society_legitimacy_proxy_end": 0.6162946661108634,
+      "public_legitimacy_signal_end": 0.6162946661108634,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -1506,7 +1739,9 @@
       "mean_legitimacy_end": 0.6204545454545455,
       "mean_capture_pressure_end": 0.58,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6202521977556809
+      "civil_society_legitimacy_proxy_end": 0.6202521977556809,
+      "public_legitimacy_signal_end": 0.6202521977556809,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": false,
@@ -1516,7 +1751,9 @@
       "mean_legitimacy_end": 0.6166666666666667,
       "mean_capture_pressure_end": 0.5800000000000001,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6162478889293461
+      "civil_society_legitimacy_proxy_end": 0.6162478889293461,
+      "public_legitimacy_signal_end": 0.6162478889293461,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -1526,7 +1763,9 @@
       "mean_legitimacy_end": 0.6174242424242424,
       "mean_capture_pressure_end": 0.58,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6144304062500076
+      "civil_society_legitimacy_proxy_end": 0.6144304062500076,
+      "public_legitimacy_signal_end": 0.6144304062500076,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -1536,7 +1775,9 @@
       "mean_legitimacy_end": 0.6196969696969697,
       "mean_capture_pressure_end": 0.58,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6165384734074195
+      "civil_society_legitimacy_proxy_end": 0.6165384734074195,
+      "public_legitimacy_signal_end": 0.6165384734074195,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -1546,7 +1787,9 @@
       "mean_legitimacy_end": 0.6204545454545455,
       "mean_capture_pressure_end": 0.5800000000000001,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6187828456362816
+      "civil_society_legitimacy_proxy_end": 0.6187828456362816,
+      "public_legitimacy_signal_end": 0.6187828456362816,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -1556,7 +1799,9 @@
       "mean_legitimacy_end": 0.6196969696969697,
       "mean_capture_pressure_end": 0.58,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6187039900344994
+      "civil_society_legitimacy_proxy_end": 0.6187039900344994,
+      "public_legitimacy_signal_end": 0.6187039900344994,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": false,
@@ -1566,7 +1811,9 @@
       "mean_legitimacy_end": 0.6128787878787879,
       "mean_capture_pressure_end": 0.5800000000000001,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6138989666679598
+      "civil_society_legitimacy_proxy_end": 0.6138989666679598,
+      "public_legitimacy_signal_end": 0.6138989666679598,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -1576,7 +1823,9 @@
       "mean_legitimacy_end": 0.6136363636363636,
       "mean_capture_pressure_end": 0.5800000000000001,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6150423781791341
+      "civil_society_legitimacy_proxy_end": 0.6150423781791341,
+      "public_legitimacy_signal_end": 0.6150423781791341,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -1586,7 +1835,9 @@
       "mean_legitimacy_end": 0.6083333333333333,
       "mean_capture_pressure_end": 0.58,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6113885085904636
+      "civil_society_legitimacy_proxy_end": 0.6113885085904636,
+      "public_legitimacy_signal_end": 0.6113885085904636,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -1596,7 +1847,9 @@
       "mean_legitimacy_end": 0.618939393939394,
       "mean_capture_pressure_end": 0.58,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6177977041503178
+      "civil_society_legitimacy_proxy_end": 0.6177977041503178,
+      "public_legitimacy_signal_end": 0.6177977041503178,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -1606,7 +1859,9 @@
       "mean_legitimacy_end": 0.6136363636363638,
       "mean_capture_pressure_end": 0.5800000000000002,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6135173474900896
+      "civil_society_legitimacy_proxy_end": 0.6135173474900896,
+      "public_legitimacy_signal_end": 0.6135173474900896,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -1616,7 +1871,9 @@
       "mean_legitimacy_end": 0.6166666666666666,
       "mean_capture_pressure_end": 0.58,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6186537458294386
+      "civil_society_legitimacy_proxy_end": 0.6186537458294386,
+      "public_legitimacy_signal_end": 0.6186537458294386,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -1626,7 +1883,9 @@
       "mean_legitimacy_end": 0.6174242424242425,
       "mean_capture_pressure_end": 0.58,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6189872897936942
+      "civil_society_legitimacy_proxy_end": 0.6189872897936942,
+      "public_legitimacy_signal_end": 0.6189872897936942,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -1636,7 +1895,9 @@
       "mean_legitimacy_end": 0.6143939393939394,
       "mean_capture_pressure_end": 0.58,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.615372422556334
+      "civil_society_legitimacy_proxy_end": 0.615372422556334,
+      "public_legitimacy_signal_end": 0.615372422556334,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -1646,7 +1907,9 @@
       "mean_legitimacy_end": 0.6174242424242425,
       "mean_capture_pressure_end": 0.5800000000000001,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6163744318132419
+      "civil_society_legitimacy_proxy_end": 0.6163744318132419,
+      "public_legitimacy_signal_end": 0.6163744318132419,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -1656,7 +1919,9 @@
       "mean_legitimacy_end": 0.6143939393939394,
       "mean_capture_pressure_end": 0.5799999999999997,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.616331127869479
+      "civil_society_legitimacy_proxy_end": 0.616331127869479,
+      "public_legitimacy_signal_end": 0.616331127869479,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -1666,7 +1931,9 @@
       "mean_legitimacy_end": 0.6166666666666668,
       "mean_capture_pressure_end": 0.5800000000000002,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6152681455290058
+      "civil_society_legitimacy_proxy_end": 0.6152681455290058,
+      "public_legitimacy_signal_end": 0.6152681455290058,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -1676,7 +1943,9 @@
       "mean_legitimacy_end": 0.6174242424242425,
       "mean_capture_pressure_end": 0.58,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6188727507926951
+      "civil_society_legitimacy_proxy_end": 0.6188727507926951,
+      "public_legitimacy_signal_end": 0.6188727507926951,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -1686,7 +1955,9 @@
       "mean_legitimacy_end": 0.6143939393939394,
       "mean_capture_pressure_end": 0.5800000000000002,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6140846096962328
+      "civil_society_legitimacy_proxy_end": 0.6140846096962328,
+      "public_legitimacy_signal_end": 0.6140846096962328,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -1696,7 +1967,9 @@
       "mean_legitimacy_end": 0.6166666666666667,
       "mean_capture_pressure_end": 0.5800000000000001,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6167743703645342
+      "civil_society_legitimacy_proxy_end": 0.6167743703645342,
+      "public_legitimacy_signal_end": 0.6167743703645342,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -1706,7 +1979,9 @@
       "mean_legitimacy_end": 0.6196969696969696,
       "mean_capture_pressure_end": 0.58,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6186497882072286
+      "civil_society_legitimacy_proxy_end": 0.6186497882072286,
+      "public_legitimacy_signal_end": 0.6186497882072286,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -1716,7 +1991,9 @@
       "mean_legitimacy_end": 0.6204545454545455,
       "mean_capture_pressure_end": 0.5799999999999997,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6183450879656631
+      "civil_society_legitimacy_proxy_end": 0.6183450879656631,
+      "public_legitimacy_signal_end": 0.6183450879656631,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -1726,7 +2003,9 @@
       "mean_legitimacy_end": 0.6212121212121212,
       "mean_capture_pressure_end": 0.5800000000000002,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6176294608005531
+      "civil_society_legitimacy_proxy_end": 0.6176294608005531,
+      "public_legitimacy_signal_end": 0.6176294608005531,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -1736,7 +2015,9 @@
       "mean_legitimacy_end": 0.615909090909091,
       "mean_capture_pressure_end": 0.5799999999999998,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6176543258745512
+      "civil_society_legitimacy_proxy_end": 0.6176543258745512,
+      "public_legitimacy_signal_end": 0.6176543258745512,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -1746,7 +2027,9 @@
       "mean_legitimacy_end": 0.6196969696969697,
       "mean_capture_pressure_end": 0.58,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6198526893334237
+      "civil_society_legitimacy_proxy_end": 0.6198526893334237,
+      "public_legitimacy_signal_end": 0.6198526893334237,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -1756,7 +2039,9 @@
       "mean_legitimacy_end": 0.6166666666666667,
       "mean_capture_pressure_end": 0.5800000000000002,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6163912567840102
+      "civil_society_legitimacy_proxy_end": 0.6163912567840102,
+      "public_legitimacy_signal_end": 0.6163912567840102,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -1766,7 +2051,9 @@
       "mean_legitimacy_end": 0.6181818181818183,
       "mean_capture_pressure_end": 0.5800000000000002,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6190024744805598
+      "civil_society_legitimacy_proxy_end": 0.6190024744805598,
+      "public_legitimacy_signal_end": 0.6190024744805598,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -1776,7 +2063,9 @@
       "mean_legitimacy_end": 0.6204545454545456,
       "mean_capture_pressure_end": 0.58,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6198578167509514
+      "civil_society_legitimacy_proxy_end": 0.6198578167509514,
+      "public_legitimacy_signal_end": 0.6198578167509514,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -1786,7 +2075,9 @@
       "mean_legitimacy_end": 0.6159090909090909,
       "mean_capture_pressure_end": 0.5800000000000001,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6166324345083419
+      "civil_society_legitimacy_proxy_end": 0.6166324345083419,
+      "public_legitimacy_signal_end": 0.6166324345083419,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -1796,7 +2087,9 @@
       "mean_legitimacy_end": 0.6166666666666666,
       "mean_capture_pressure_end": 0.5800000000000002,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6178856060905535
+      "civil_society_legitimacy_proxy_end": 0.6178856060905535,
+      "public_legitimacy_signal_end": 0.6178856060905535,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -1806,7 +2099,9 @@
       "mean_legitimacy_end": 0.6212121212121212,
       "mean_capture_pressure_end": 0.5800000000000002,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6199109223661394
+      "civil_society_legitimacy_proxy_end": 0.6199109223661394,
+      "public_legitimacy_signal_end": 0.6199109223661394,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -1816,7 +2111,9 @@
       "mean_legitimacy_end": 0.6181818181818182,
       "mean_capture_pressure_end": 0.58,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.618260093820642
+      "civil_society_legitimacy_proxy_end": 0.618260093820642,
+      "public_legitimacy_signal_end": 0.618260093820642,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -1826,7 +2123,9 @@
       "mean_legitimacy_end": 0.618939393939394,
       "mean_capture_pressure_end": 0.5800000000000002,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6181138682193563
+      "civil_society_legitimacy_proxy_end": 0.6181138682193563,
+      "public_legitimacy_signal_end": 0.6181138682193563,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -1836,7 +2135,9 @@
       "mean_legitimacy_end": 0.6136363636363638,
       "mean_capture_pressure_end": 0.58,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6154951505222079
+      "civil_society_legitimacy_proxy_end": 0.6154951505222079,
+      "public_legitimacy_signal_end": 0.6154951505222079,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -1846,7 +2147,9 @@
       "mean_legitimacy_end": 0.6174242424242425,
       "mean_capture_pressure_end": 0.5800000000000001,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6154313129300081
+      "civil_society_legitimacy_proxy_end": 0.6154313129300081,
+      "public_legitimacy_signal_end": 0.6154313129300081,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -1856,7 +2159,9 @@
       "mean_legitimacy_end": 0.6151515151515151,
       "mean_capture_pressure_end": 0.5800000000000001,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6161722229984714
+      "civil_society_legitimacy_proxy_end": 0.6161722229984714,
+      "public_legitimacy_signal_end": 0.6161722229984714,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -1866,7 +2171,9 @@
       "mean_legitimacy_end": 0.6181818181818183,
       "mean_capture_pressure_end": 0.58,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6181626961094377
+      "civil_society_legitimacy_proxy_end": 0.6181626961094377,
+      "public_legitimacy_signal_end": 0.6181626961094377,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -1876,7 +2183,9 @@
       "mean_legitimacy_end": 0.6151515151515152,
       "mean_capture_pressure_end": 0.5799999999999997,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6140962182633237
+      "civil_society_legitimacy_proxy_end": 0.6140962182633237,
+      "public_legitimacy_signal_end": 0.6140962182633237,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -1886,7 +2195,9 @@
       "mean_legitimacy_end": 0.6196969696969697,
       "mean_capture_pressure_end": 0.5800000000000002,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6189624845478043
+      "civil_society_legitimacy_proxy_end": 0.6189624845478043,
+      "public_legitimacy_signal_end": 0.6189624845478043,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -1896,7 +2207,9 @@
       "mean_legitimacy_end": 0.6204545454545456,
       "mean_capture_pressure_end": 0.58,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6206686628781045
+      "civil_society_legitimacy_proxy_end": 0.6206686628781045,
+      "public_legitimacy_signal_end": 0.6206686628781045,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -1906,7 +2219,9 @@
       "mean_legitimacy_end": 0.6166666666666666,
       "mean_capture_pressure_end": 0.5800000000000002,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6171295222911917
+      "civil_society_legitimacy_proxy_end": 0.6171295222911917,
+      "public_legitimacy_signal_end": 0.6171295222911917,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -1916,7 +2231,9 @@
       "mean_legitimacy_end": 0.6136363636363636,
       "mean_capture_pressure_end": 0.58,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6153309290198594
+      "civil_society_legitimacy_proxy_end": 0.6153309290198594,
+      "public_legitimacy_signal_end": 0.6153309290198594,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -1926,7 +2243,9 @@
       "mean_legitimacy_end": 0.6121212121212121,
       "mean_capture_pressure_end": 0.58,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6143054502227365
+      "civil_society_legitimacy_proxy_end": 0.6143054502227365,
+      "public_legitimacy_signal_end": 0.6143054502227365,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -1936,7 +2255,9 @@
       "mean_legitimacy_end": 0.6166666666666667,
       "mean_capture_pressure_end": 0.5800000000000001,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6182680862461335
+      "civil_society_legitimacy_proxy_end": 0.6182680862461335,
+      "public_legitimacy_signal_end": 0.6182680862461335,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -1946,7 +2267,9 @@
       "mean_legitimacy_end": 0.6204545454545455,
       "mean_capture_pressure_end": 0.5800000000000001,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.619429040526294
+      "civil_society_legitimacy_proxy_end": 0.619429040526294,
+      "public_legitimacy_signal_end": 0.619429040526294,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -1956,7 +2279,9 @@
       "mean_legitimacy_end": 0.6204545454545455,
       "mean_capture_pressure_end": 0.58,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6192150904267936
+      "civil_society_legitimacy_proxy_end": 0.6192150904267936,
+      "public_legitimacy_signal_end": 0.6192150904267936,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -1966,7 +2291,9 @@
       "mean_legitimacy_end": 0.6151515151515151,
       "mean_capture_pressure_end": 0.5800000000000001,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6161448730771797
+      "civil_society_legitimacy_proxy_end": 0.6161448730771797,
+      "public_legitimacy_signal_end": 0.6161448730771797,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -1976,7 +2303,9 @@
       "mean_legitimacy_end": 0.6189393939393939,
       "mean_capture_pressure_end": 0.58,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6174937208583671
+      "civil_society_legitimacy_proxy_end": 0.6174937208583671,
+      "public_legitimacy_signal_end": 0.6174937208583671,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -1986,7 +2315,9 @@
       "mean_legitimacy_end": 0.618939393939394,
       "mean_capture_pressure_end": 0.5800000000000001,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6177829262488828
+      "civil_society_legitimacy_proxy_end": 0.6177829262488828,
+      "public_legitimacy_signal_end": 0.6177829262488828,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -1996,7 +2327,9 @@
       "mean_legitimacy_end": 0.6166666666666667,
       "mean_capture_pressure_end": 0.5800000000000002,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6189445352777804
+      "civil_society_legitimacy_proxy_end": 0.6189445352777804,
+      "public_legitimacy_signal_end": 0.6189445352777804,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -2006,7 +2339,9 @@
       "mean_legitimacy_end": 0.6098484848484849,
       "mean_capture_pressure_end": 0.5799999999999997,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6142579849454562
+      "civil_society_legitimacy_proxy_end": 0.6142579849454562,
+      "public_legitimacy_signal_end": 0.6142579849454562,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -2016,7 +2351,9 @@
       "mean_legitimacy_end": 0.621969696969697,
       "mean_capture_pressure_end": 0.58,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6207788501078088
+      "civil_society_legitimacy_proxy_end": 0.6207788501078088,
+      "public_legitimacy_signal_end": 0.6207788501078088,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": false,
@@ -2026,7 +2363,9 @@
       "mean_legitimacy_end": 0.6189393939393939,
       "mean_capture_pressure_end": 0.5799999999999998,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6176411438221721
+      "civil_society_legitimacy_proxy_end": 0.6176411438221721,
+      "public_legitimacy_signal_end": 0.6176411438221721,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -2036,7 +2375,9 @@
       "mean_legitimacy_end": 0.6151515151515152,
       "mean_capture_pressure_end": 0.58,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6182911267989916
+      "civil_society_legitimacy_proxy_end": 0.6182911267989916,
+      "public_legitimacy_signal_end": 0.6182911267989916,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -2046,7 +2387,9 @@
       "mean_legitimacy_end": 0.6174242424242424,
       "mean_capture_pressure_end": 0.58,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6184882506020873
+      "civil_society_legitimacy_proxy_end": 0.6184882506020873,
+      "public_legitimacy_signal_end": 0.6184882506020873,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -2056,7 +2399,9 @@
       "mean_legitimacy_end": 0.6128787878787879,
       "mean_capture_pressure_end": 0.58,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.615125595511525
+      "civil_society_legitimacy_proxy_end": 0.615125595511525,
+      "public_legitimacy_signal_end": 0.615125595511525,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -2066,7 +2411,9 @@
       "mean_legitimacy_end": 0.615909090909091,
       "mean_capture_pressure_end": 0.58,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6162285620393336
+      "civil_society_legitimacy_proxy_end": 0.6162285620393336,
+      "public_legitimacy_signal_end": 0.6162285620393336,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -2076,7 +2423,9 @@
       "mean_legitimacy_end": 0.6181818181818183,
       "mean_capture_pressure_end": 0.58,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.618140203836736
+      "civil_society_legitimacy_proxy_end": 0.618140203836736,
+      "public_legitimacy_signal_end": 0.618140203836736,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -2086,7 +2435,9 @@
       "mean_legitimacy_end": 0.618939393939394,
       "mean_capture_pressure_end": 0.5800000000000001,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6182091958320929
+      "civil_society_legitimacy_proxy_end": 0.6182091958320929,
+      "public_legitimacy_signal_end": 0.6182091958320929,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -2096,7 +2447,9 @@
       "mean_legitimacy_end": 0.6174242424242423,
       "mean_capture_pressure_end": 0.5800000000000002,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6191648915865064
+      "civil_society_legitimacy_proxy_end": 0.6191648915865064,
+      "public_legitimacy_signal_end": 0.6191648915865064,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -2106,7 +2459,9 @@
       "mean_legitimacy_end": 0.6196969696969697,
       "mean_capture_pressure_end": 0.5800000000000002,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.619227732476564
+      "civil_society_legitimacy_proxy_end": 0.619227732476564,
+      "public_legitimacy_signal_end": 0.619227732476564,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -2116,7 +2471,9 @@
       "mean_legitimacy_end": 0.6166666666666667,
       "mean_capture_pressure_end": 0.5800000000000002,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6175404133501226
+      "civil_society_legitimacy_proxy_end": 0.6175404133501226,
+      "public_legitimacy_signal_end": 0.6175404133501226,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -2126,7 +2483,9 @@
       "mean_legitimacy_end": 0.6174242424242424,
       "mean_capture_pressure_end": 0.5800000000000001,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6168364244302352
+      "civil_society_legitimacy_proxy_end": 0.6168364244302352,
+      "public_legitimacy_signal_end": 0.6168364244302352,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -2136,7 +2495,9 @@
       "mean_legitimacy_end": 0.6136363636363636,
       "mean_capture_pressure_end": 0.575089999835915,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6149699522972892
+      "civil_society_legitimacy_proxy_end": 0.6149699522972892,
+      "public_legitimacy_signal_end": 0.6149699522972892,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -2146,7 +2507,9 @@
       "mean_legitimacy_end": 0.6166666666666668,
       "mean_capture_pressure_end": 0.5800000000000001,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.616972181250267
+      "civil_society_legitimacy_proxy_end": 0.616972181250267,
+      "public_legitimacy_signal_end": 0.616972181250267,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -2156,7 +2519,9 @@
       "mean_legitimacy_end": 0.6166666666666666,
       "mean_capture_pressure_end": 0.58,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6186693377367838
+      "civil_society_legitimacy_proxy_end": 0.6186693377367838,
+      "public_legitimacy_signal_end": 0.6186693377367838,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -2166,7 +2531,9 @@
       "mean_legitimacy_end": 0.6166666666666667,
       "mean_capture_pressure_end": 0.5800000000000002,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6182621279258838
+      "civil_society_legitimacy_proxy_end": 0.6182621279258838,
+      "public_legitimacy_signal_end": 0.6182621279258838,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -2176,7 +2543,9 @@
       "mean_legitimacy_end": 0.6166666666666667,
       "mean_capture_pressure_end": 0.5800000000000001,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6172905693041915
+      "civil_society_legitimacy_proxy_end": 0.6172905693041915,
+      "public_legitimacy_signal_end": 0.6172905693041915,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -2186,7 +2555,9 @@
       "mean_legitimacy_end": 0.6136363636363636,
       "mean_capture_pressure_end": 0.58,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6154946805369024
+      "civil_society_legitimacy_proxy_end": 0.6154946805369024,
+      "public_legitimacy_signal_end": 0.6154946805369024,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -2196,7 +2567,9 @@
       "mean_legitimacy_end": 0.6204545454545456,
       "mean_capture_pressure_end": 0.5777134511281129,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6191514332511815
+      "civil_society_legitimacy_proxy_end": 0.6191514332511815,
+      "public_legitimacy_signal_end": 0.6191514332511815,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -2206,7 +2579,9 @@
       "mean_legitimacy_end": 0.6181818181818182,
       "mean_capture_pressure_end": 0.5800000000000002,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6178700908278281
+      "civil_society_legitimacy_proxy_end": 0.6178700908278281,
+      "public_legitimacy_signal_end": 0.6178700908278281,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -2216,7 +2591,9 @@
       "mean_legitimacy_end": 0.6189393939393941,
       "mean_capture_pressure_end": 0.5800000000000001,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6168649077256321
+      "civil_society_legitimacy_proxy_end": 0.6168649077256321,
+      "public_legitimacy_signal_end": 0.6168649077256321,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -2226,7 +2603,9 @@
       "mean_legitimacy_end": 0.6212121212121212,
       "mean_capture_pressure_end": 0.5800000000000001,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6196631928967797
+      "civil_society_legitimacy_proxy_end": 0.6196631928967797,
+      "public_legitimacy_signal_end": 0.6196631928967797,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -2236,7 +2615,9 @@
       "mean_legitimacy_end": 0.6136363636363636,
       "mean_capture_pressure_end": 0.58,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6162523822661092
+      "civil_society_legitimacy_proxy_end": 0.6162523822661092,
+      "public_legitimacy_signal_end": 0.6162523822661092,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -2246,7 +2627,9 @@
       "mean_legitimacy_end": 0.6181818181818183,
       "mean_capture_pressure_end": 0.58,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6173571055277514
+      "civil_society_legitimacy_proxy_end": 0.6173571055277514,
+      "public_legitimacy_signal_end": 0.6173571055277514,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": false,
@@ -2256,7 +2639,9 @@
       "mean_legitimacy_end": 0.6174242424242425,
       "mean_capture_pressure_end": 0.58,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6183034571164634
+      "civil_society_legitimacy_proxy_end": 0.6183034571164634,
+      "public_legitimacy_signal_end": 0.6183034571164634,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -2266,7 +2651,9 @@
       "mean_legitimacy_end": 0.6151515151515151,
       "mean_capture_pressure_end": 0.5800000000000001,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6158659077759708
+      "civil_society_legitimacy_proxy_end": 0.6158659077759708,
+      "public_legitimacy_signal_end": 0.6158659077759708,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -2276,7 +2663,9 @@
       "mean_legitimacy_end": 0.6174242424242425,
       "mean_capture_pressure_end": 0.5800000000000001,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6178723761270662
+      "civil_society_legitimacy_proxy_end": 0.6178723761270662,
+      "public_legitimacy_signal_end": 0.6178723761270662,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -2286,7 +2675,9 @@
       "mean_legitimacy_end": 0.6106060606060607,
       "mean_capture_pressure_end": 0.5800000000000002,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6127543929831499
+      "civil_society_legitimacy_proxy_end": 0.6127543929831499,
+      "public_legitimacy_signal_end": 0.6127543929831499,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -2296,7 +2687,9 @@
       "mean_legitimacy_end": 0.6090909090909091,
       "mean_capture_pressure_end": 0.58,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6126043857715542
+      "civil_society_legitimacy_proxy_end": 0.6126043857715542,
+      "public_legitimacy_signal_end": 0.6126043857715542,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -2306,7 +2699,9 @@
       "mean_legitimacy_end": 0.6143939393939394,
       "mean_capture_pressure_end": 0.58,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6151258344513544
+      "civil_society_legitimacy_proxy_end": 0.6151258344513544,
+      "public_legitimacy_signal_end": 0.6151258344513544,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -2316,7 +2711,9 @@
       "mean_legitimacy_end": 0.6204545454545455,
       "mean_capture_pressure_end": 0.5800000000000002,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6205968231519773
+      "civil_society_legitimacy_proxy_end": 0.6205968231519773,
+      "public_legitimacy_signal_end": 0.6205968231519773,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -2326,7 +2723,9 @@
       "mean_legitimacy_end": 0.612878787878788,
       "mean_capture_pressure_end": 0.58,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6115599449837987
+      "civil_society_legitimacy_proxy_end": 0.6115599449837987,
+      "public_legitimacy_signal_end": 0.6115599449837987,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": false,
@@ -2336,7 +2735,9 @@
       "mean_legitimacy_end": 0.6196969696969697,
       "mean_capture_pressure_end": 0.5800000000000001,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.618921164315589
+      "civil_society_legitimacy_proxy_end": 0.618921164315589,
+      "public_legitimacy_signal_end": 0.618921164315589,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -2346,7 +2747,9 @@
       "mean_legitimacy_end": 0.6128787878787879,
       "mean_capture_pressure_end": 0.5800000000000001,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6151859712983038
+      "civil_society_legitimacy_proxy_end": 0.6151859712983038,
+      "public_legitimacy_signal_end": 0.6151859712983038,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -2356,7 +2759,9 @@
       "mean_legitimacy_end": 0.6166666666666667,
       "mean_capture_pressure_end": 0.5800000000000001,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6166500385070827
+      "civil_society_legitimacy_proxy_end": 0.6166500385070827,
+      "public_legitimacy_signal_end": 0.6166500385070827,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -2366,7 +2771,9 @@
       "mean_legitimacy_end": 0.6159090909090909,
       "mean_capture_pressure_end": 0.58,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6161127904888182
+      "civil_society_legitimacy_proxy_end": 0.6161127904888182,
+      "public_legitimacy_signal_end": 0.6161127904888182,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -2376,7 +2783,9 @@
       "mean_legitimacy_end": 0.618939393939394,
       "mean_capture_pressure_end": 0.5800000000000001,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6169514291548076
+      "civil_society_legitimacy_proxy_end": 0.6169514291548076,
+      "public_legitimacy_signal_end": 0.6169514291548076,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -2386,7 +2795,9 @@
       "mean_legitimacy_end": 0.6174242424242424,
       "mean_capture_pressure_end": 0.5800000000000001,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6170742640211141
+      "civil_society_legitimacy_proxy_end": 0.6170742640211141,
+      "public_legitimacy_signal_end": 0.6170742640211141,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -2396,7 +2807,9 @@
       "mean_legitimacy_end": 0.6204545454545455,
       "mean_capture_pressure_end": 0.58,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6186931604502163
+      "civil_society_legitimacy_proxy_end": 0.6186931604502163,
+      "public_legitimacy_signal_end": 0.6186931604502163,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -2406,7 +2819,9 @@
       "mean_legitimacy_end": 0.6181818181818182,
       "mean_capture_pressure_end": 0.58,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6165135292606537
+      "civil_society_legitimacy_proxy_end": 0.6165135292606537,
+      "public_legitimacy_signal_end": 0.6165135292606537,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -2416,7 +2831,9 @@
       "mean_legitimacy_end": 0.6212121212121212,
       "mean_capture_pressure_end": 0.5800000000000001,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6196892167616781
+      "civil_society_legitimacy_proxy_end": 0.6196892167616781,
+      "public_legitimacy_signal_end": 0.6196892167616781,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -2426,7 +2843,9 @@
       "mean_legitimacy_end": 0.6174242424242425,
       "mean_capture_pressure_end": 0.58,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6182333594261588
+      "civil_society_legitimacy_proxy_end": 0.6182333594261588,
+      "public_legitimacy_signal_end": 0.6182333594261588,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -2436,7 +2855,9 @@
       "mean_legitimacy_end": 0.6151515151515151,
       "mean_capture_pressure_end": 0.5800000000000001,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.617270662881033
+      "civil_society_legitimacy_proxy_end": 0.617270662881033,
+      "public_legitimacy_signal_end": 0.617270662881033,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -2446,7 +2867,9 @@
       "mean_legitimacy_end": 0.615909090909091,
       "mean_capture_pressure_end": 0.5800000000000001,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6168548381563436
+      "civil_society_legitimacy_proxy_end": 0.6168548381563436,
+      "public_legitimacy_signal_end": 0.6168548381563436,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -2456,7 +2879,9 @@
       "mean_legitimacy_end": 0.6151515151515151,
       "mean_capture_pressure_end": 0.5800000000000001,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6160511863951597
+      "civil_society_legitimacy_proxy_end": 0.6160511863951597,
+      "public_legitimacy_signal_end": 0.6160511863951597,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -2466,7 +2891,9 @@
       "mean_legitimacy_end": 0.6196969696969697,
       "mean_capture_pressure_end": 0.5800000000000002,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6183209291976851
+      "civil_society_legitimacy_proxy_end": 0.6183209291976851,
+      "public_legitimacy_signal_end": 0.6183209291976851,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -2476,7 +2903,9 @@
       "mean_legitimacy_end": 0.6098484848484849,
       "mean_capture_pressure_end": 0.5800000000000001,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6147016646888382
+      "civil_society_legitimacy_proxy_end": 0.6147016646888382,
+      "public_legitimacy_signal_end": 0.6147016646888382,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -2486,7 +2915,9 @@
       "mean_legitimacy_end": 0.6166666666666666,
       "mean_capture_pressure_end": 0.58,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6186909948223005
+      "civil_society_legitimacy_proxy_end": 0.6186909948223005,
+      "public_legitimacy_signal_end": 0.6186909948223005,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -2496,7 +2927,9 @@
       "mean_legitimacy_end": 0.6196969696969697,
       "mean_capture_pressure_end": 0.58,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6204065258171347
+      "civil_society_legitimacy_proxy_end": 0.6204065258171347,
+      "public_legitimacy_signal_end": 0.6204065258171347,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -2506,7 +2939,9 @@
       "mean_legitimacy_end": 0.6151515151515151,
       "mean_capture_pressure_end": 0.58,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.617379005284628
+      "civil_society_legitimacy_proxy_end": 0.617379005284628,
+      "public_legitimacy_signal_end": 0.617379005284628,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -2516,7 +2951,9 @@
       "mean_legitimacy_end": 0.6166666666666668,
       "mean_capture_pressure_end": 0.5800000000000001,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6180786168985039
+      "civil_society_legitimacy_proxy_end": 0.6180786168985039,
+      "public_legitimacy_signal_end": 0.6180786168985039,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -2526,7 +2963,9 @@
       "mean_legitimacy_end": 0.6196969696969696,
       "mean_capture_pressure_end": 0.58,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6185972855101494
+      "civil_society_legitimacy_proxy_end": 0.6185972855101494,
+      "public_legitimacy_signal_end": 0.6185972855101494,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -2536,7 +2975,9 @@
       "mean_legitimacy_end": 0.6204545454545455,
       "mean_capture_pressure_end": 0.5800000000000002,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6181876727711559
+      "civil_society_legitimacy_proxy_end": 0.6181876727711559,
+      "public_legitimacy_signal_end": 0.6181876727711559,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -2546,7 +2987,9 @@
       "mean_legitimacy_end": 0.6204545454545455,
       "mean_capture_pressure_end": 0.5800000000000001,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6185044431371617
+      "civil_society_legitimacy_proxy_end": 0.6185044431371617,
+      "public_legitimacy_signal_end": 0.6185044431371617,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -2556,7 +2999,9 @@
       "mean_legitimacy_end": 0.6189393939393939,
       "mean_capture_pressure_end": 0.5800000000000001,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6171678219323998
+      "civil_society_legitimacy_proxy_end": 0.6171678219323998,
+      "public_legitimacy_signal_end": 0.6171678219323998,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -2566,7 +3011,9 @@
       "mean_legitimacy_end": 0.6204545454545455,
       "mean_capture_pressure_end": 0.5800000000000001,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6199622918716607
+      "civil_society_legitimacy_proxy_end": 0.6199622918716607,
+      "public_legitimacy_signal_end": 0.6199622918716607,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -2576,7 +3023,9 @@
       "mean_legitimacy_end": 0.6181818181818182,
       "mean_capture_pressure_end": 0.5800000000000001,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6181008758699984
+      "civil_society_legitimacy_proxy_end": 0.6181008758699984,
+      "public_legitimacy_signal_end": 0.6181008758699984,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -2586,7 +3035,9 @@
       "mean_legitimacy_end": 0.6181818181818183,
       "mean_capture_pressure_end": 0.5800000000000001,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6180943495801366
+      "civil_society_legitimacy_proxy_end": 0.6180943495801366,
+      "public_legitimacy_signal_end": 0.6180943495801366,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -2596,7 +3047,9 @@
       "mean_legitimacy_end": 0.6151515151515151,
       "mean_capture_pressure_end": 0.5800000000000001,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6170596903381359
+      "civil_society_legitimacy_proxy_end": 0.6170596903381359,
+      "public_legitimacy_signal_end": 0.6170596903381359,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -2606,7 +3059,9 @@
       "mean_legitimacy_end": 0.6159090909090909,
       "mean_capture_pressure_end": 0.58,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6161171484503256
+      "civil_society_legitimacy_proxy_end": 0.6161171484503256,
+      "public_legitimacy_signal_end": 0.6161171484503256,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -2616,7 +3071,9 @@
       "mean_legitimacy_end": 0.6174242424242423,
       "mean_capture_pressure_end": 0.58,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6194811631208772
+      "civil_society_legitimacy_proxy_end": 0.6194811631208772,
+      "public_legitimacy_signal_end": 0.6194811631208772,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -2626,7 +3083,9 @@
       "mean_legitimacy_end": 0.6166666666666667,
       "mean_capture_pressure_end": 0.5800000000000002,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6183291402878575
+      "civil_society_legitimacy_proxy_end": 0.6183291402878575,
+      "public_legitimacy_signal_end": 0.6183291402878575,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -2636,7 +3095,9 @@
       "mean_legitimacy_end": 0.6151515151515151,
       "mean_capture_pressure_end": 0.58,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6168228011724279
+      "civil_society_legitimacy_proxy_end": 0.6168228011724279,
+      "public_legitimacy_signal_end": 0.6168228011724279,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -2646,7 +3107,9 @@
       "mean_legitimacy_end": 0.6189393939393939,
       "mean_capture_pressure_end": 0.58,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6188026647802167
+      "civil_society_legitimacy_proxy_end": 0.6188026647802167,
+      "public_legitimacy_signal_end": 0.6188026647802167,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -2656,7 +3119,9 @@
       "mean_legitimacy_end": 0.615909090909091,
       "mean_capture_pressure_end": 0.5799999999999998,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6168676720118059
+      "civil_society_legitimacy_proxy_end": 0.6168676720118059,
+      "public_legitimacy_signal_end": 0.6168676720118059,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -2666,7 +3131,9 @@
       "mean_legitimacy_end": 0.6181818181818183,
       "mean_capture_pressure_end": 0.5800000000000002,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6175049128388082
+      "civil_society_legitimacy_proxy_end": 0.6175049128388082,
+      "public_legitimacy_signal_end": 0.6175049128388082,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -2676,7 +3143,9 @@
       "mean_legitimacy_end": 0.6181818181818182,
       "mean_capture_pressure_end": 0.58,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6178723764073589
+      "civil_society_legitimacy_proxy_end": 0.6178723764073589,
+      "public_legitimacy_signal_end": 0.6178723764073589,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -2686,7 +3155,9 @@
       "mean_legitimacy_end": 0.6174242424242424,
       "mean_capture_pressure_end": 0.5800000000000001,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6168085049265186
+      "civil_society_legitimacy_proxy_end": 0.6168085049265186,
+      "public_legitimacy_signal_end": 0.6168085049265186,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -2696,7 +3167,9 @@
       "mean_legitimacy_end": 0.6143939393939395,
       "mean_capture_pressure_end": 0.58,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.615103430822571
+      "civil_society_legitimacy_proxy_end": 0.615103430822571,
+      "public_legitimacy_signal_end": 0.615103430822571,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -2706,7 +3179,9 @@
       "mean_legitimacy_end": 0.6166666666666667,
       "mean_capture_pressure_end": 0.5800000000000002,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6187014629883045
+      "civil_society_legitimacy_proxy_end": 0.6187014629883045,
+      "public_legitimacy_signal_end": 0.6187014629883045,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -2716,7 +3191,9 @@
       "mean_legitimacy_end": 0.6166666666666667,
       "mean_capture_pressure_end": 0.58,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6173874013236674
+      "civil_society_legitimacy_proxy_end": 0.6173874013236674,
+      "public_legitimacy_signal_end": 0.6173874013236674,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -2726,7 +3203,9 @@
       "mean_legitimacy_end": 0.6159090909090909,
       "mean_capture_pressure_end": 0.5800000000000002,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6174617339527347
+      "civil_society_legitimacy_proxy_end": 0.6174617339527347,
+      "public_legitimacy_signal_end": 0.6174617339527347,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -2736,7 +3215,9 @@
       "mean_legitimacy_end": 0.6128787878787879,
       "mean_capture_pressure_end": 0.58,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6158342451116187
+      "civil_society_legitimacy_proxy_end": 0.6158342451116187,
+      "public_legitimacy_signal_end": 0.6158342451116187,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -2746,7 +3227,9 @@
       "mean_legitimacy_end": 0.6196969696969696,
       "mean_capture_pressure_end": 0.58,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6187885066584734
+      "civil_society_legitimacy_proxy_end": 0.6187885066584734,
+      "public_legitimacy_signal_end": 0.6187885066584734,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -2756,7 +3239,9 @@
       "mean_legitimacy_end": 0.6113636363636364,
       "mean_capture_pressure_end": 0.5799999999999998,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6130150573821739
+      "civil_society_legitimacy_proxy_end": 0.6130150573821739,
+      "public_legitimacy_signal_end": 0.6130150573821739,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -2766,7 +3251,9 @@
       "mean_legitimacy_end": 0.6166666666666666,
       "mean_capture_pressure_end": 0.5800000000000002,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6165117530761041
+      "civil_society_legitimacy_proxy_end": 0.6165117530761041,
+      "public_legitimacy_signal_end": 0.6165117530761041,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -2776,7 +3263,9 @@
       "mean_legitimacy_end": 0.621969696969697,
       "mean_capture_pressure_end": 0.5800000000000002,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6182916556891636
+      "civil_society_legitimacy_proxy_end": 0.6182916556891636,
+      "public_legitimacy_signal_end": 0.6182916556891636,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -2786,7 +3275,9 @@
       "mean_legitimacy_end": 0.6196969696969697,
       "mean_capture_pressure_end": 0.5800000000000001,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6178997653512965
+      "civil_society_legitimacy_proxy_end": 0.6178997653512965,
+      "public_legitimacy_signal_end": 0.6178997653512965,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -2796,7 +3287,9 @@
       "mean_legitimacy_end": 0.6159090909090909,
       "mean_capture_pressure_end": 0.5800000000000001,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6148154165451738
+      "civil_society_legitimacy_proxy_end": 0.6148154165451738,
+      "public_legitimacy_signal_end": 0.6148154165451738,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -2806,7 +3299,9 @@
       "mean_legitimacy_end": 0.6181818181818183,
       "mean_capture_pressure_end": 0.58,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6195179655921725
+      "civil_society_legitimacy_proxy_end": 0.6195179655921725,
+      "public_legitimacy_signal_end": 0.6195179655921725,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -2816,7 +3311,9 @@
       "mean_legitimacy_end": 0.6166666666666666,
       "mean_capture_pressure_end": 0.58,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6175488826839188
+      "civil_society_legitimacy_proxy_end": 0.6175488826839188,
+      "public_legitimacy_signal_end": 0.6175488826839188,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -2826,7 +3323,9 @@
       "mean_legitimacy_end": 0.6143939393939394,
       "mean_capture_pressure_end": 0.58,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6154590199939898
+      "civil_society_legitimacy_proxy_end": 0.6154590199939898,
+      "public_legitimacy_signal_end": 0.6154590199939898,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -2836,7 +3335,9 @@
       "mean_legitimacy_end": 0.6174242424242424,
       "mean_capture_pressure_end": 0.5800000000000001,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6180211161600002
+      "civil_society_legitimacy_proxy_end": 0.6180211161600002,
+      "public_legitimacy_signal_end": 0.6180211161600002,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -2846,7 +3347,9 @@
       "mean_legitimacy_end": 0.6174242424242425,
       "mean_capture_pressure_end": 0.5799999999999997,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6185304966847661
+      "civil_society_legitimacy_proxy_end": 0.6185304966847661,
+      "public_legitimacy_signal_end": 0.6185304966847661,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -2856,7 +3359,9 @@
       "mean_legitimacy_end": 0.6204545454545455,
       "mean_capture_pressure_end": 0.5799999999999998,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.619719841493988
+      "civil_society_legitimacy_proxy_end": 0.619719841493988,
+      "public_legitimacy_signal_end": 0.619719841493988,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -2866,7 +3371,9 @@
       "mean_legitimacy_end": 0.6143939393939394,
       "mean_capture_pressure_end": 0.58,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6166381636966206
+      "civil_society_legitimacy_proxy_end": 0.6166381636966206,
+      "public_legitimacy_signal_end": 0.6166381636966206,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -2876,7 +3383,9 @@
       "mean_legitimacy_end": 0.6204545454545455,
       "mean_capture_pressure_end": 0.5800000000000002,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6193207836794817
+      "civil_society_legitimacy_proxy_end": 0.6193207836794817,
+      "public_legitimacy_signal_end": 0.6193207836794817,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -2886,7 +3395,9 @@
       "mean_legitimacy_end": 0.6143939393939394,
       "mean_capture_pressure_end": 0.5800000000000001,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6162800283951413
+      "civil_society_legitimacy_proxy_end": 0.6162800283951413,
+      "public_legitimacy_signal_end": 0.6162800283951413,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -2896,7 +3407,9 @@
       "mean_legitimacy_end": 0.6166666666666668,
       "mean_capture_pressure_end": 0.5800000000000001,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6154515608632294
+      "civil_society_legitimacy_proxy_end": 0.6154515608632294,
+      "public_legitimacy_signal_end": 0.6154515608632294,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -2906,7 +3419,9 @@
       "mean_legitimacy_end": 0.6234848484848485,
       "mean_capture_pressure_end": 0.58,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6193442708398701
+      "civil_society_legitimacy_proxy_end": 0.6193442708398701,
+      "public_legitimacy_signal_end": 0.6193442708398701,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -2916,7 +3431,9 @@
       "mean_legitimacy_end": 0.6181818181818183,
       "mean_capture_pressure_end": 0.58,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6176274773912946
+      "civil_society_legitimacy_proxy_end": 0.6176274773912946,
+      "public_legitimacy_signal_end": 0.6176274773912946,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -2926,7 +3443,9 @@
       "mean_legitimacy_end": 0.615909090909091,
       "mean_capture_pressure_end": 0.58,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6143610952811392
+      "civil_society_legitimacy_proxy_end": 0.6143610952811392,
+      "public_legitimacy_signal_end": 0.6143610952811392,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": false,
@@ -2936,7 +3455,9 @@
       "mean_legitimacy_end": 0.6143939393939394,
       "mean_capture_pressure_end": 0.5800000000000001,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6149909929253244
+      "civil_society_legitimacy_proxy_end": 0.6149909929253244,
+      "public_legitimacy_signal_end": 0.6149909929253244,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -2946,7 +3467,9 @@
       "mean_legitimacy_end": 0.6196969696969696,
       "mean_capture_pressure_end": 0.5800000000000002,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6164626587347432
+      "civil_society_legitimacy_proxy_end": 0.6164626587347432,
+      "public_legitimacy_signal_end": 0.6164626587347432,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -2956,7 +3479,9 @@
       "mean_legitimacy_end": 0.6181818181818182,
       "mean_capture_pressure_end": 0.5800000000000002,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6182921807723777
+      "civil_society_legitimacy_proxy_end": 0.6182921807723777,
+      "public_legitimacy_signal_end": 0.6182921807723777,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -2966,7 +3491,9 @@
       "mean_legitimacy_end": 0.6196969696969696,
       "mean_capture_pressure_end": 0.5800000000000002,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6202570008930236
+      "civil_society_legitimacy_proxy_end": 0.6202570008930236,
+      "public_legitimacy_signal_end": 0.6202570008930236,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -2976,7 +3503,9 @@
       "mean_legitimacy_end": 0.6159090909090909,
       "mean_capture_pressure_end": 0.5800000000000001,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6138328390179921
+      "civil_society_legitimacy_proxy_end": 0.6138328390179921,
+      "public_legitimacy_signal_end": 0.6138328390179921,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -2986,7 +3515,9 @@
       "mean_legitimacy_end": 0.6174242424242424,
       "mean_capture_pressure_end": 0.58,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6175109987292668
+      "civil_society_legitimacy_proxy_end": 0.6175109987292668,
+      "public_legitimacy_signal_end": 0.6175109987292668,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -2996,7 +3527,9 @@
       "mean_legitimacy_end": 0.6151515151515151,
       "mean_capture_pressure_end": 0.5800000000000001,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6164247310798769
+      "civil_society_legitimacy_proxy_end": 0.6164247310798769,
+      "public_legitimacy_signal_end": 0.6164247310798769,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -3006,7 +3539,9 @@
       "mean_legitimacy_end": 0.6128787878787878,
       "mean_capture_pressure_end": 0.5800000000000001,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6152697677357956
+      "civil_society_legitimacy_proxy_end": 0.6152697677357956,
+      "public_legitimacy_signal_end": 0.6152697677357956,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -3016,7 +3551,9 @@
       "mean_legitimacy_end": 0.6227272727272728,
       "mean_capture_pressure_end": 0.5800000000000001,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6214573167059423
+      "civil_society_legitimacy_proxy_end": 0.6214573167059423,
+      "public_legitimacy_signal_end": 0.6214573167059423,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -3026,7 +3563,9 @@
       "mean_legitimacy_end": 0.6174242424242425,
       "mean_capture_pressure_end": 0.5800000000000003,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6181311667571612
+      "civil_society_legitimacy_proxy_end": 0.6181311667571612,
+      "public_legitimacy_signal_end": 0.6181311667571612,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -3036,7 +3575,9 @@
       "mean_legitimacy_end": 0.6196969696969697,
       "mean_capture_pressure_end": 0.5800000000000002,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6173157789969066
+      "civil_society_legitimacy_proxy_end": 0.6173157789969066,
+      "public_legitimacy_signal_end": 0.6173157789969066,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -3046,7 +3587,9 @@
       "mean_legitimacy_end": 0.618939393939394,
       "mean_capture_pressure_end": 0.5800000000000001,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6196531251037145
+      "civil_society_legitimacy_proxy_end": 0.6196531251037145,
+      "public_legitimacy_signal_end": 0.6196531251037145,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -3056,7 +3599,9 @@
       "mean_legitimacy_end": 0.615909090909091,
       "mean_capture_pressure_end": 0.5800000000000001,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6167086385709738
+      "civil_society_legitimacy_proxy_end": 0.6167086385709738,
+      "public_legitimacy_signal_end": 0.6167086385709738,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -3066,7 +3611,9 @@
       "mean_legitimacy_end": 0.6136363636363636,
       "mean_capture_pressure_end": 0.5800000000000001,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6153024110797429
+      "civil_society_legitimacy_proxy_end": 0.6153024110797429,
+      "public_legitimacy_signal_end": 0.6153024110797429,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -3076,7 +3623,9 @@
       "mean_legitimacy_end": 0.6204545454545456,
       "mean_capture_pressure_end": 0.5800000000000001,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6187626467790924
+      "civil_society_legitimacy_proxy_end": 0.6187626467790924,
+      "public_legitimacy_signal_end": 0.6187626467790924,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -3086,7 +3635,9 @@
       "mean_legitimacy_end": 0.6136363636363636,
       "mean_capture_pressure_end": 0.58,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6142257676095024
+      "civil_society_legitimacy_proxy_end": 0.6142257676095024,
+      "public_legitimacy_signal_end": 0.6142257676095024,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -3096,7 +3647,9 @@
       "mean_legitimacy_end": 0.6212121212121212,
       "mean_capture_pressure_end": 0.58,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6193929770881709
+      "civil_society_legitimacy_proxy_end": 0.6193929770881709,
+      "public_legitimacy_signal_end": 0.6193929770881709,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -3106,7 +3659,9 @@
       "mean_legitimacy_end": 0.618939393939394,
       "mean_capture_pressure_end": 0.58,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.617204892563152
+      "civil_society_legitimacy_proxy_end": 0.617204892563152,
+      "public_legitimacy_signal_end": 0.617204892563152,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -3116,7 +3671,9 @@
       "mean_legitimacy_end": 0.6189393939393939,
       "mean_capture_pressure_end": 0.5800000000000001,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6189027522156157
+      "civil_society_legitimacy_proxy_end": 0.6189027522156157,
+      "public_legitimacy_signal_end": 0.6189027522156157,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -3126,7 +3683,9 @@
       "mean_legitimacy_end": 0.6174242424242424,
       "mean_capture_pressure_end": 0.58,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6187415319056475
+      "civil_society_legitimacy_proxy_end": 0.6187415319056475,
+      "public_legitimacy_signal_end": 0.6187415319056475,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -3136,7 +3695,9 @@
       "mean_legitimacy_end": 0.618939393939394,
       "mean_capture_pressure_end": 0.5800000000000002,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6186986540324854
+      "civil_society_legitimacy_proxy_end": 0.6186986540324854,
+      "public_legitimacy_signal_end": 0.6186986540324854,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -3146,7 +3707,9 @@
       "mean_legitimacy_end": 0.6212121212121212,
       "mean_capture_pressure_end": 0.5800000000000001,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6197808393576348
+      "civil_society_legitimacy_proxy_end": 0.6197808393576348,
+      "public_legitimacy_signal_end": 0.6197808393576348,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -3156,7 +3719,9 @@
       "mean_legitimacy_end": 0.6181818181818182,
       "mean_capture_pressure_end": 0.58,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6166860140415102
+      "civil_society_legitimacy_proxy_end": 0.6166860140415102,
+      "public_legitimacy_signal_end": 0.6166860140415102,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -3166,7 +3731,9 @@
       "mean_legitimacy_end": 0.6166666666666667,
       "mean_capture_pressure_end": 0.58,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6159139585522784
+      "civil_society_legitimacy_proxy_end": 0.6159139585522784,
+      "public_legitimacy_signal_end": 0.6159139585522784,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -3176,7 +3743,9 @@
       "mean_legitimacy_end": 0.6136363636363638,
       "mean_capture_pressure_end": 0.5800000000000002,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6160695558760791
+      "civil_society_legitimacy_proxy_end": 0.6160695558760791,
+      "public_legitimacy_signal_end": 0.6160695558760791,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -3186,7 +3755,9 @@
       "mean_legitimacy_end": 0.618939393939394,
       "mean_capture_pressure_end": 0.5800000000000001,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6174674203028397
+      "civil_society_legitimacy_proxy_end": 0.6174674203028397,
+      "public_legitimacy_signal_end": 0.6174674203028397,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -3196,7 +3767,9 @@
       "mean_legitimacy_end": 0.6174242424242425,
       "mean_capture_pressure_end": 0.58,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6159849743481758
+      "civil_society_legitimacy_proxy_end": 0.6159849743481758,
+      "public_legitimacy_signal_end": 0.6159849743481758,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -3206,7 +3779,9 @@
       "mean_legitimacy_end": 0.6060606060606061,
       "mean_capture_pressure_end": 0.5800000000000002,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6089942380473464
+      "civil_society_legitimacy_proxy_end": 0.6089942380473464,
+      "public_legitimacy_signal_end": 0.6089942380473464,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -3216,7 +3791,9 @@
       "mean_legitimacy_end": 0.6181818181818182,
       "mean_capture_pressure_end": 0.58,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6165851784453418
+      "civil_society_legitimacy_proxy_end": 0.6165851784453418,
+      "public_legitimacy_signal_end": 0.6165851784453418,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -3226,7 +3803,9 @@
       "mean_legitimacy_end": 0.6174242424242425,
       "mean_capture_pressure_end": 0.5798653890298859,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6190950482116344
+      "civil_society_legitimacy_proxy_end": 0.6190950482116344,
+      "public_legitimacy_signal_end": 0.6190950482116344,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -3236,7 +3815,9 @@
       "mean_legitimacy_end": 0.6181818181818182,
       "mean_capture_pressure_end": 0.58,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6189863866830901
+      "civil_society_legitimacy_proxy_end": 0.6189863866830901,
+      "public_legitimacy_signal_end": 0.6189863866830901,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -3246,7 +3827,9 @@
       "mean_legitimacy_end": 0.6174242424242424,
       "mean_capture_pressure_end": 0.5786109100871821,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6170487736675236
+      "civil_society_legitimacy_proxy_end": 0.6170487736675236,
+      "public_legitimacy_signal_end": 0.6170487736675236,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -3256,7 +3839,9 @@
       "mean_legitimacy_end": 0.618939393939394,
       "mean_capture_pressure_end": 0.5800000000000002,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6175137215444004
+      "civil_society_legitimacy_proxy_end": 0.6175137215444004,
+      "public_legitimacy_signal_end": 0.6175137215444004,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -3266,7 +3851,9 @@
       "mean_legitimacy_end": 0.6143939393939394,
       "mean_capture_pressure_end": 0.5800000000000001,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6151101843538499
+      "civil_society_legitimacy_proxy_end": 0.6151101843538499,
+      "public_legitimacy_signal_end": 0.6151101843538499,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -3276,7 +3863,9 @@
       "mean_legitimacy_end": 0.6166666666666667,
       "mean_capture_pressure_end": 0.5799999999999998,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6178732739962023
+      "civil_society_legitimacy_proxy_end": 0.6178732739962023,
+      "public_legitimacy_signal_end": 0.6178732739962023,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -3286,7 +3875,9 @@
       "mean_legitimacy_end": 0.6174242424242425,
       "mean_capture_pressure_end": 0.5800000000000001,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6177551144346287
+      "civil_society_legitimacy_proxy_end": 0.6177551144346287,
+      "public_legitimacy_signal_end": 0.6177551144346287,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -3296,7 +3887,9 @@
       "mean_legitimacy_end": 0.6174242424242424,
       "mean_capture_pressure_end": 0.5800000000000002,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6170266752336387
+      "civil_society_legitimacy_proxy_end": 0.6170266752336387,
+      "public_legitimacy_signal_end": 0.6170266752336387,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -3306,7 +3899,9 @@
       "mean_legitimacy_end": 0.6174242424242425,
       "mean_capture_pressure_end": 0.5799999999999998,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6186756289891695
+      "civil_society_legitimacy_proxy_end": 0.6186756289891695,
+      "public_legitimacy_signal_end": 0.6186756289891695,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -3316,7 +3911,9 @@
       "mean_legitimacy_end": 0.6136363636363635,
       "mean_capture_pressure_end": 0.58,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.616567815700554
+      "civil_society_legitimacy_proxy_end": 0.616567815700554,
+      "public_legitimacy_signal_end": 0.616567815700554,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -3326,7 +3923,9 @@
       "mean_legitimacy_end": 0.6181818181818183,
       "mean_capture_pressure_end": 0.58,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6161380960295333
+      "civil_society_legitimacy_proxy_end": 0.6161380960295333,
+      "public_legitimacy_signal_end": 0.6161380960295333,
+      "public_legitimacy_signal_is_internal_proxy": true
     },
     {
       "cartel_capture_ever": true,
@@ -3336,7 +3935,9 @@
       "mean_legitimacy_end": 0.6204545454545455,
       "mean_capture_pressure_end": 0.58,
       "bureaucracy_politicization_end": 0.5639999999999958,
-      "public_legitimacy_signal_end": 0.6206962655302531
+      "civil_society_legitimacy_proxy_end": 0.6206962655302531,
+      "public_legitimacy_signal_end": 0.6206962655302531,
+      "public_legitimacy_signal_is_internal_proxy": true
     }
   ],
   "interpretation_boundary": "Conditional on an uncalibrated hypothesis model; not a probability of real-world political outcomes."
