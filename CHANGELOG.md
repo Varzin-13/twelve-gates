@@ -1,5 +1,34 @@
 # تاریخچه‌ی تغییرات (Changelog)
 
+
+## v0.32 execution-audit (research branch)
+- اصلاح شد: mismatch زمان‌بندی `run_stress.py`؛ شوک مستندشده اکنون واقعاً از `tick=52` فعال می‌شود.
+- افزوده شد: invariant حفظ مجموع `resource_share = 1` پس از مرحله‌ی implementation.
+- بازنمایی شد: تمدید وضعیت اضطراری از یک Bernoulli جمعی به رأی‌های جداگانه‌ی گیت‌های غیردرگیر + نصاب صریح؛ احتمال حمایت `0.55` همچنان `ARBITRARY` و غیرکالیبره است.
+- افزوده شد: validation صریح برای تنظیمات `emergency_extension`.
+- افزوده شد: تحلیل `Z_12` و `Aff(Z_12)` برای سنجش coverage/collision؛ ۴۸ جایگشت affine و benchmark کامل ۱۳۲ جفت غیرخودی به‌عنوان واقعیت ترکیبیاتی ثبت شد، نه پیشنهاد سیاسی.
+- افزوده شد: formal execution spec، finite-state checker، و اسکلت TLA+ با مرز ادعای صریح.
+- افزوده شد: calibration registry ماشین‌خوان با ۱۹ گروه پارامتر؛ در این مرحله ۰ mapping تجربی پذیرفته شده است.
+- افزوده شد: regression tests و GitHub Actions برای اجرای ممیزی مستقل از HP.
+- اصلاح شد: pair-score ائتلاف دیگر به ترتیب اجرای گیت‌ها وابسته نیست؛ هر دو جهت ذخیره و به‌صورت bilateral mean تجمیع می‌شوند.
+- اصلاح شد: `passed_decisions_streak` دیگر با گذشت هر tick زیاد نمی‌شود؛ مدت فعالیت و تصمیم‌های تصویب‌شده دو متغیر جدا هستند و معیار cartel هر دو را می‌خواهد.
+- اصلاح شد: draw اضافه و بلااستفاده در منطق dissent حذف شد.
+- اجرایی شد: `external_timeline` با schema صریح و حفظ چند رویداد در یک tick.
+- افزوده شد: Gate Zero و Mirror-13 interface/state contracts بدون نسبت‌دادن احتمال‌های رفتاری ساختگی.
+- افزوده شد: ۱۷ ثابت رفتاری hard-coded به `model_assumptions` منتقل و کل bundle به‌عنوان `ARBITRARY` ثبت شد.
+- حذف شد: عدد ثابت 0.95 برای `TrustLedger.integrity()`؛ تا زمان پیاده‌سازی اندازه‌گیری واقعی، متد صریحاً NotImplemented است.
+- شفاف شد: `public_legitimacy_signal` خروجی نظرسنجی نیست و به‌عنوان internal/civil-society proxy برچسب می‌خورد.
+- اصلاح شد: قانون بودجه‌ی ۲/۳ قبلاً به‌اشتباه با `yes >= 7` اجرا می‌شد؛ اکنون ۷/۱۲ رد و ۸/۱۲ قبول می‌شود و threshold از config خوانده می‌شود.
+- بازاجرای paired پس از اصلاح ۲/۳: با همان ۳۰۰ seed، نرخ مدل‌شده‌ی capture از 0.973333 به 0.976667 رفت؛ ۴ run از false→true و ۳ run از true→false تغییر کردند. این تغییر کوچک اما غیرتک‌جهتی نشان می‌دهد اثر باگ از مسیر stochastic/coalition dynamics عبور می‌کند.
+- در ۲۹۳ run capture‌شده‌ی corrected stress، اولین trigger در همه‌ی موارد ائتلاف [0,2,4] بود؛ این نتیجه‌ی مدل، توضیح مکانیکی threshold قدرت triad را تقویت می‌کند ولی ادعای جهان واقعی نیست.
+- اصلاح شد: lifetime ائتلاف‌ها اکنون right-censoring را صریح نگه می‌دارد؛ فیلد legacy حفظ شده و active age، تعداد censored و Kaplan-Meier RMST اضافه شده است.
+- افزوده شد: diagnostic اولین trigger معیار cartel شامل tick، اعضا، power sum، duration و decision streak بدون تغییر dynamics.
+- افزوده شد: structural choice برای bilateral pair aggregation؛ baseline همچنان `mean` است و `minimum/maximum` فقط برای robustness analysis استفاده می‌شوند.
+- افزوده شد: ODD specification و برنامه‌ی مستقل calibration/sensitivity/validation.
+- ممیزی شد: سناریوهای ۴ و ۵؛ خطای نام‌گذاری پارامتر لوگ‌نرمال (median در برابر mean)، تعبیر بیش‌ازحد نتایج شرطی، و مسیرهای hard-coded اصلاح شدند. این دو اسکریپت اکنون صریحاً sensitivityهای مصنوعی/غیرکالیبره‌اند و برای رتبه‌بندی یا برآورد احتمال واقعی بازیگران سیاسی به‌کار نمی‌روند.
+- افزوده شد: metric ممیزی متقابل؛ قاعده‌ی +6 در هر چرخه ۶ dyad متقابل دارد. exhaustive search در خانواده‌ی collision-free affine نشان داد exact cover یازده‌چرخه‌ای این خانواده حداقل ۶ reciprocal dyad دارد.
+- **مرز ادعا:** این نسخه سازگاری نرم‌افزاری/منطقی را تقویت می‌کند؛ مشروعیت سیاسی، کارایی واقعی، پذیرش عمومی یا پیش‌بینی نتیجه‌ی سیاسی را اثبات نمی‌کند.
+
 این فایل تاریخچه‌ی صادقانه‌ی تحول سند طراحی را ثبت می‌کند — شامل مسیرهایی که رد شدند، نه فقط نسخه‌ی نهایی. این خودش بخشی از انضباط پروژه است: اگر ادعا می‌کنیم سند زیر ممیزی مداوم است، تاریخچه‌اش هم باید قابل‌بررسی باشد.
 
 ## v0.31 (md) / v0.29 (index.html) — تکمیل کامل چهار بند باقی‌مانده‌ی بازبینی

@@ -1,100 +1,120 @@
 """
-سناریوی ۵: آزمون «دولت موقت ۲۵کمیته‌ای، ۶ ماه» NCRI
-==========================================================
-دو سؤال پیش‌ثبت‌شده، مستقل از هم:
+Scenario 5 — six-month timing and committee-allocation sensitivity
+==================================================================
+CLAIM BOUNDARY:
+This script does not estimate a real-world probability for NCRI, MEK, or any
+other political organization. It evaluates consequences of explicit synthetic
+assumptions.
 
-سؤال ۱ (زمان‌بندی): آیا ۶ ماه برای برگزاری انتخابات واقعی پس از فروپاشی
-یک حکومت ۴۷ساله، با توجه به شکاف‌های قومی/سیاسی مستند در بخش ۹ این سند
-(چهار خانواده‌ی متخاصم، تنش‌های قومی-مذهبی)، یک بازه‌ی واقع‌گرایانه است؟
+Part A asks what fraction of an assumed lognormal election-timing distribution
+falls within six months.
 
-سؤال ۲ (پایداری ائتلاف): NCRI از ۵ سازمان تشکیل شده که MEK به‌گفته‌ی
-اسناد وزارت خارجه‌ی آمریکا «بزرگ‌ترین و متشکل‌ترین» عضو است. با توجه به
-سابقه‌ی مستند فروپاشی داخلی NCRI در دهه‌ی ۱۹۸۰ («شرکا به‌دلیل اعتراض به
-روش‌های دیکتاتوری رجوی جدا شدند» — گزارش وزارت خارجه)، احتمال اینکه
-عضو غالب (MEK) کنترل نامتناسبی بر ۲۵ کمیته به‌دست بگیرد چقدر است؟
+Part B asks what committee-share distribution follows IF one organization is
+assigned an arbitrary leverage parameter. Because leverage is inserted into
+the probability weights by construction, a resulting share above equal-weight
+20% is NOT independent evidence of dominance.
 
-معیار شکست: اگر احتمال تصاحب کمیته‌ها توسط عضو غالب به‌طور معنادار بالاتر
-از سطح شانس (۱ از ۵ = ۲۰٪) باشد، ادعای «ائتلاف دموکراتیک متوازن» با شواهد
-ساختاری همخوان نیست.
-
-روش سؤال ۱: مشابه سناریوی ۴، توزیع لوگ‌نرمال برای زمان برگزاری انتخابات
-واقعی (نه صرفاً اعلام دولت موقت)، این‌بار با میانگین کوتاه‌تر چون فقط
-انتخابات هدف است، نه کل فرآیند قانون اساسی.
-روش سؤال ۲: مشابه منطق سناریوی ۱ (کارتل قدرت مادی) — عضو غالب با «اهرم
-فشار» ناشی از بزرگی/تشکیلات نسبت به اعضای کوچک‌تر.
+Important statistical note:
+For numpy's lognormal distribution, exp(mu) is the MEDIAN, not the arithmetic
+mean. The old variable name MEAN_ELECTION_MONTHS was misleading.
 """
-import numpy as np
 import json
+from pathlib import Path
 
+import numpy as np
+
+CLAIM_LABEL = "hypothesis"
 RNG_SEED = 45
 rng = np.random.default_rng(RNG_SEED)
 
 N_TRIALS = 2000
 
-# --- سؤال ۱: زمان‌بندی انتخابات ---
-MEAN_ELECTION_MONTHS = 14  # فرض محافظه‌کارانه: کوتاه‌تر از کل فرآیند قانون اساسی، اما هنوز بیش از ۶ ماه
-SIGMA_ELECTION = 0.45
+# Part A — timing. ARBITRARY scenario assumptions.
+LOGNORMAL_ELECTION_MEDIAN_MONTHS = 14
+LOGNORMAL_ELECTION_SIGMA = 0.45
 DEADLINE_MONTHS = 6
 
-def simulate_election_timing():
-    return rng.lognormal(mean=np.log(MEAN_ELECTION_MONTHS), sigma=SIGMA_ELECTION)
-
-# --- سؤال ۲: تصاحب کمیته‌ها توسط عضو غالب ---
+# Part B — committee allocation. ARBITRARY scenario assumptions.
 N_COMMITTEES = 25
 N_MEMBER_ORGS = 5
-# احتمال پایه‌ی تخصیص هر کرسی به هر عضو اگر کاملاً تصادفی/متوازن بود: ۱/۵
-BASELINE_SHARE = 1 / N_MEMBER_ORGS
-# اهرم فشار عضو غالب: بر پایه‌ی سابقه‌ی مستند نابرابری تشکیلاتی (نه یک ادعای دلبخواه)
-DOMINANT_ORG_LEVERAGE = 0.35  # افزایش نسبی شانس کسب هر کرسی برای عضو غالب
+EQUAL_WEIGHT_SHARE = 1 / N_MEMBER_ORGS
+DOMINANT_ORG_LEVERAGE = 0.35
 
-def simulate_committee_capture():
-    """شبیه‌سازی تخصیص ۲۵ کرسی کمیته با اهرم فشار عضو غالب."""
-    weights = np.array([BASELINE_SHARE + DOMINANT_ORG_LEVERAGE] + [BASELINE_SHARE * (1 - DOMINANT_ORG_LEVERAGE/4)] * 4)
-    weights = weights / weights.sum()
-    assignments = rng.choice(N_MEMBER_ORGS, size=N_COMMITTEES, p=weights)
-    dominant_share = (assignments == 0).mean()
-    return dominant_share
+
+def simulate_election_timing():
+    return rng.lognormal(
+        mean=np.log(LOGNORMAL_ELECTION_MEDIAN_MONTHS),
+        sigma=LOGNORMAL_ELECTION_SIGMA,
+    )
+
+
+def allocation_weights():
+    raw = np.array(
+        [EQUAL_WEIGHT_SHARE + DOMINANT_ORG_LEVERAGE]
+        + [EQUAL_WEIGHT_SHARE * (1 - DOMINANT_ORG_LEVERAGE / 4)] * 4,
+        dtype=float,
+    )
+    return raw / raw.sum()
+
+
+def simulate_committee_allocation():
+    assignments = rng.choice(
+        N_MEMBER_ORGS,
+        size=N_COMMITTEES,
+        p=allocation_weights(),
+    )
+    return float((assignments == 0).mean())
+
 
 if __name__ == "__main__":
-    print("=" * 70)
-    print("سناریوی ۵: دولت موقت ۲۵کمیته‌ای NCRI — زمان‌بندی و پایداری ائتلاف")
-    print("=" * 70)
-
-    # سؤال ۱
     election_times = np.array([simulate_election_timing() for _ in range(N_TRIALS)])
-    prob_election_on_time = (election_times <= DEADLINE_MONTHS).mean()
-    print(f"\n[سؤال ۱: زمان‌بندی انتخابات]")
-    print(f"  میانگین زمان برگزاری انتخابات واقعی: {election_times.mean():.1f} ماه")
-    print(f"  احتمال برگزاری انتخابات تا ماه ۶ام: {prob_election_on_time*100:.1f}٪")
+    fraction_on_time = float((election_times <= DEADLINE_MONTHS).mean())
 
-    # سؤال ۲
-    dominant_shares = np.array([simulate_committee_capture() for _ in range(N_TRIALS)])
-    mean_dominant_share = dominant_shares.mean()
-    prob_majority_capture = (dominant_shares > 0.5).mean()
-    print(f"\n[سؤال ۲: پایداری ائتلاف ۲۵کمیته‌ای]")
-    print(f"  میانگین سهم عضو غالب از ۲۵ کمیته: {mean_dominant_share*100:.1f}٪ (سطح شانس: ۲۰.۰٪)")
-    print(f"  احتمال کسب اکثریت مطلق کمیته‌ها (>۵۰٪) توسط یک عضو: {prob_majority_capture*100:.1f}٪")
+    dominant_shares = np.array(
+        [simulate_committee_allocation() for _ in range(N_TRIALS)]
+    )
+    mean_dominant_share = float(dominant_shares.mean())
+    fraction_majority = float((dominant_shares > 0.5).mean())
 
-    print("\n" + "=" * 70)
-    print("نتیجه‌گیری:")
-    print(f"=> زمان‌بندی: در {(1-prob_election_on_time)*100:.1f}٪ اجراها، انتخابات تا ماه ۶ام برگزار نمی‌شود.")
-    print(f"=> ائتلاف: سهم میانگین عضو غالب ({mean_dominant_share*100:.1f}٪) به‌طور قابل‌توجهی")
-    print(f"   بالاتر از سطح شانس (۲۰٪) است — نتیجه‌ای هم‌راستا با سابقه‌ی مستند")
-    print("   فروپاشی داخلی NCRI به‌دلیل نابرابری قدرت میان اعضا.")
-    print("=" * 70)
+    print("Scenario 5 — synthetic timing/allocation sensitivity")
+    print(f"claim_label: {CLAIM_LABEL}")
+    print(f"timing median assumed: {LOGNORMAL_ELECTION_MEDIAN_MONTHS} months")
+    print(f"timing sigma assumed: {LOGNORMAL_ELECTION_SIGMA}")
+    print(f"fraction election <= 6 months: {fraction_on_time:.3f}")
+    print(f"arbitrary leverage parameter: {DOMINANT_ORG_LEVERAGE:.3f}")
+    print(f"resulting normalized allocation weights: {allocation_weights().tolist()}")
+    print(f"mean modeled share for indexed organization: {mean_dominant_share:.3f}")
+    print(f"fraction modeled majority share: {fraction_majority:.3f}")
+    print(
+        "Interpretation: these outputs are generated by the stipulated timing "
+        "and allocation assumptions; they are not measurements of a real organization."
+    )
 
     results = {
+        "schema": "twelve-gates/scenario5-timing-allocation-sensitivity/v2",
+        "claim_label": CLAIM_LABEL,
+        "not_empirical_validation": True,
         "n_trials": N_TRIALS,
         "election_deadline_months": DEADLINE_MONTHS,
-        "mean_election_months": float(election_times.mean()),
-        "prob_election_on_time": float(prob_election_on_time),
+        "lognormal_election_median_months_assumed": LOGNORMAL_ELECTION_MEDIAN_MONTHS,
+        "lognormal_election_sigma_assumed": LOGNORMAL_ELECTION_SIGMA,
+        "simulated_mean_election_months": float(election_times.mean()),
+        "fraction_election_on_time": fraction_on_time,
         "n_committees": N_COMMITTEES,
         "n_member_orgs": N_MEMBER_ORGS,
-        "baseline_share_if_balanced": BASELINE_SHARE,
-        "mean_dominant_org_share": float(mean_dominant_share),
-        "prob_majority_capture": float(prob_majority_capture),
+        "equal_weight_share": EQUAL_WEIGHT_SHARE,
+        "dominant_org_leverage_assumed": DOMINANT_ORG_LEVERAGE,
+        "normalized_allocation_weights": allocation_weights().tolist(),
+        "mean_modeled_indexed_org_share": mean_dominant_share,
+        "fraction_modeled_majority_share": fraction_majority,
         "seed": RNG_SEED,
+        "interpretation_boundary": (
+            "Conditional synthetic sensitivity output. The leverage and timing "
+            "parameters are arbitrary scenario assumptions, not empirical estimates."
+        ),
     }
-    with open("/home/claude/scenario5_results.json", "w", encoding="utf-8") as f:
-        json.dump(results, f, ensure_ascii=False, indent=2)
-    print("\nنتایج ذخیره شد: scenario5_results.json")
+    output_dir = Path(__file__).resolve().parent / "results"
+    output_dir.mkdir(parents=True, exist_ok=True)
+    out = output_dir / "scenario5_results_v2.json"
+    out.write_text(json.dumps(results, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    print(f"saved: {out}")

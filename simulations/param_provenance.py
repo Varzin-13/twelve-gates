@@ -27,6 +27,8 @@ PARAM_PROVENANCE = {
         "label": "ARBITRARY", "source": "بدون داده؛ تحلیل حساسیت نشان داد نتیجه در ۰.۶۰-۰.۶۵ کاملاً معکوس می‌شود"},
     "coalition weights (w1..w5)": {
         "label": "ARBITRARY", "source": "بدون داده؛ فقط نسبتاً کم‌حساس در تحلیل حساسیت"},
+    "coalition pair_aggregation structural rule": {
+        "label": "ARBITRARY", "source": "انتخاب ساختاری مدل؛ baseline=mean و minimum/maximum فقط برای robustness bounds"},
     "exec_power اولیه‌ی هر گیت": {
         "label": "ARBITRARY", "source": "بدون داده؛ تحلیل حساسیت نشان داد این مهم‌ترین محرک نتیجه‌ی کارتل است"},
     "trust_row / affinity_row / overlap_row اولیه": {
@@ -39,12 +41,16 @@ PARAM_PROVENANCE = {
         "label": "DESIGN", "source": "عملیاتی‌سازی مستقیم بند ۳.۵/۳.۶، ولی آستانه‌های عددی‌اش دلبخواه"},
     "emergency_court.independence_mode": {
         "label": "ARBITRARY", "source": "بند ۳.۶ فقط 'مرجع مستقل' می‌گوید؛ ترکیب/رفتار حل‌نشده — PLACEHOLDER صریح"},
+    "emergency_extension.support_probability = 0.55": {
+        "label": "ARBITRARY", "source": "احتمال سناریویی حمایت هر گیت غیردرگیر؛ داده‌ی تجربی ندارد و باید حساسیت‌سنجی شود"},
     "gate_zero.appeal_board = random_placeholder": {
         "label": "ARBITRARY", "source": "بند ۱.۴/۳.۱ — بازگشتی حل‌نشده، PLACEHOLDER صریح در کد"},
     "rotation_period_ticks = 26": {
         "label": "ARBITRARY", "source": "سند مدت واقعی دوره‌ی چرخش را مشخص نکرده — dependency حل‌نشده"},
     "coordination_capacity precondition threshold": {
         "label": "DESIGN", "source": "بند ۱۰.۶.۷ — اصل مفهومی مستند، آستانه‌ی عددی‌اش دلبخواه"},
+    "active behavioral constants bundle": {
+        "label": "ARBITRARY", "source": "۱۷ مقدار رفتاری که قبلاً داخل فرمول‌های کد hard-coded بودند؛ اکنون در model_assumptions صریح و قابل حساسیت‌سنجی‌اند"},
 }
 
 def print_provenance_table():

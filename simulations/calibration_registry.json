@@ -1,0 +1,222 @@
+{
+  "schema": "twelve-gates/calibration-registry/v1",
+  "claim_boundary": "No parameter is empirically accepted merely by appearing in this registry.",
+  "parameters": [
+    {
+      "id": "resource_share_baseline",
+      "label": "DOCUMENT",
+      "value": "1/12",
+      "source": "design document",
+      "empirical_accepted": false,
+      "empirical_source": null,
+      "mapping_method": null,
+      "uncertainty": null
+    },
+    {
+      "id": "emergency_fuse_ticks",
+      "label": "DOCUMENT",
+      "value": 2,
+      "source": "design document",
+      "empirical_accepted": false,
+      "empirical_source": null,
+      "mapping_method": null,
+      "uncertainty": null
+    },
+    {
+      "id": "rotation_rule",
+      "label": "DOCUMENT",
+      "value": "P=5t mod12; A=P+6 mod12",
+      "source": "design document",
+      "empirical_accepted": false,
+      "empirical_source": null,
+      "mapping_method": null,
+      "uncertainty": null
+    },
+    {
+      "id": "annual_delta_cap",
+      "label": "DOCUMENT",
+      "value": 0.15,
+      "source": "design document",
+      "empirical_accepted": false,
+      "empirical_source": null,
+      "mapping_method": null,
+      "uncertainty": null
+    },
+    {
+      "id": "budget_reallocation_threshold",
+      "label": "DESIGN",
+      "value": "2/3",
+      "source": "engineered rule",
+      "empirical_accepted": false,
+      "empirical_source": null,
+      "mapping_method": null,
+      "uncertainty": null
+    },
+    {
+      "id": "cross_verification_threshold",
+      "label": "DOCUMENT",
+      "value": 2,
+      "source": "design document",
+      "empirical_accepted": false,
+      "empirical_source": null,
+      "mapping_method": null,
+      "uncertainty": null
+    },
+    {
+      "id": "geo_redundancy_reference",
+      "label": "DOCUMENT",
+      "value": 3,
+      "source": "design document",
+      "empirical_accepted": false,
+      "empirical_source": null,
+      "mapping_method": null,
+      "uncertainty": null
+    },
+    {
+      "id": "theta_pair",
+      "label": "ARBITRARY",
+      "value": 0.55,
+      "source": "uncalibrated scenario value",
+      "empirical_accepted": false,
+      "empirical_source": null,
+      "mapping_method": null,
+      "uncertainty": null
+    },
+    {
+      "id": "coalition_weights",
+      "label": "ARBITRARY",
+      "value": [
+        0.3,
+        0.25,
+        0.25,
+        0.1,
+        0.1
+      ],
+      "source": "uncalibrated scenario values",
+      "empirical_accepted": false,
+      "empirical_source": null,
+      "mapping_method": null,
+      "uncertainty": null
+    },
+    {
+      "id": "initial_exec_power",
+      "label": "ARBITRARY",
+      "value": "gate-specific",
+      "source": "uncalibrated scenario values",
+      "empirical_accepted": false,
+      "empirical_source": null,
+      "mapping_method": null,
+      "uncertainty": null
+    },
+    {
+      "id": "initial_trust_affinity_overlap",
+      "label": "ARBITRARY",
+      "value": "matrix values",
+      "source": "uncalibrated scenario values",
+      "empirical_accepted": false,
+      "empirical_source": null,
+      "mapping_method": null,
+      "uncertainty": null
+    },
+    {
+      "id": "info_reliability",
+      "label": "ARBITRARY",
+      "value": 0.95,
+      "source": "uncalibrated scenario value",
+      "empirical_accepted": false,
+      "empirical_source": null,
+      "mapping_method": null,
+      "uncertainty": null
+    },
+    {
+      "id": "verification_accuracy",
+      "label": "ARBITRARY",
+      "value": 0.8,
+      "source": "uncalibrated scenario value",
+      "empirical_accepted": false,
+      "empirical_source": null,
+      "mapping_method": null,
+      "uncertainty": null
+    },
+    {
+      "id": "cartel_threshold_bundle",
+      "label": "DESIGN",
+      "value": "mixed",
+      "source": "engineered operationalization; numeric thresholds uncalibrated",
+      "empirical_accepted": false,
+      "empirical_source": null,
+      "mapping_method": null,
+      "uncertainty": null
+    },
+    {
+      "id": "emergency_court_independence",
+      "label": "ARBITRARY",
+      "value": "erodible",
+      "source": "placeholder/scenario choice",
+      "empirical_accepted": false,
+      "empirical_source": null,
+      "mapping_method": null,
+      "uncertainty": null
+    },
+    {
+      "id": "emergency_extension_support_probability",
+      "label": "ARBITRARY",
+      "value": 0.55,
+      "source": "uncalibrated scenario value",
+      "empirical_accepted": false,
+      "empirical_source": null,
+      "mapping_method": null,
+      "uncertainty": null
+    },
+    {
+      "id": "gate_zero_appeal_board",
+      "label": "ARBITRARY",
+      "value": "random_placeholder",
+      "source": "placeholder",
+      "empirical_accepted": false,
+      "empirical_source": null,
+      "mapping_method": null,
+      "uncertainty": null
+    },
+    {
+      "id": "rotation_period_ticks",
+      "label": "ARBITRARY",
+      "value": 26,
+      "source": "uncalibrated scenario value",
+      "empirical_accepted": false,
+      "empirical_source": null,
+      "mapping_method": null,
+      "uncertainty": null
+    },
+    {
+      "id": "coordination_capacity_threshold",
+      "label": "DESIGN",
+      "value": 0.3,
+      "source": "engineered threshold",
+      "empirical_accepted": false,
+      "empirical_source": null,
+      "mapping_method": null,
+      "uncertainty": null
+    },
+    {
+      "id": "active_behavioral_constants_bundle",
+      "label": "ARBITRARY",
+      "value": "17 values under model_assumptions",
+      "source": "Previously hard-coded active-model constants; exposed in v0.32 for provenance and sensitivity analysis",
+      "empirical_accepted": false,
+      "empirical_source": null,
+      "mapping_method": null,
+      "uncertainty": null
+    },
+    {
+      "id": "coalition_pair_aggregation",
+      "label": "ARBITRARY",
+      "value": "mean baseline; minimum/maximum structural bounds",
+      "source": "Structural model choice introduced for robustness analysis; no empirical mapping accepted",
+      "empirical_accepted": false,
+      "empirical_source": null,
+      "mapping_method": null,
+      "uncertainty": null
+    }
+  ]
+}

@@ -1,0 +1,1732 @@
+{
+  "schema": "twelve-gates/sensitivity-v032-lhs-post-budget/v1",
+  "claim_label": "exploratory_hypothesis",
+  "not_calibration": true,
+  "not_empirical_validation": true,
+  "git_head": "baad89d34828e632f8ecf1938eba3dc9ad1cd7e5",
+  "script_sha256": "482caa6f94a64d48d24bb308ae719850530b4fab5d407109290a572272870623",
+  "pre_budget_artifact_sha256": "8e02c993703b1baecdd0821641d8c9fd45f6cd38bb259939d134f1f9b68f4f41",
+  "n_points": 64,
+  "seeds_per_point": 6,
+  "max_ticks": 520,
+  "design_seed": 32032,
+  "run_seed_master": 32033,
+  "common_run_seeds": [
+    357906439,
+    1985811428,
+    594037866,
+    891892207,
+    163159766,
+    1783962279
+  ],
+  "parameter_ranges": {
+    "theta_pair": {
+      "min": 0.45,
+      "max": 0.7,
+      "status": "ARBITRARY_EXPLORATION_RANGE"
+    },
+    "material_exec_multiplier": {
+      "min": 0.7,
+      "max": 1.1,
+      "status": "ARBITRARY_EXPLORATION_RANGE"
+    },
+    "emergency_support_probability": {
+      "min": 0.3,
+      "max": 0.8,
+      "status": "ARBITRARY_EXPLORATION_RANGE"
+    },
+    "audit_detection_prob": {
+      "min": 0.1,
+      "max": 0.7,
+      "status": "ARBITRARY_EXPLORATION_RANGE"
+    },
+    "verification_accuracy": {
+      "min": 0.6,
+      "max": 0.95,
+      "status": "ARBITRARY_EXPLORATION_RANGE"
+    },
+    "trust_learning_rate": {
+      "min": 0.02,
+      "max": 0.2,
+      "status": "ARBITRARY_EXPLORATION_RANGE"
+    },
+    "vote_support_intercept": {
+      "min": 0.25,
+      "max": 0.55,
+      "status": "ARBITRARY_EXPLORATION_RANGE"
+    },
+    "bureaucracy_drift_rate": {
+      "min": 0.0,
+      "max": 0.002,
+      "status": "ARBITRARY_EXPLORATION_RANGE"
+    }
+  },
+  "output_ranges": {
+    "cartel_capture_rate": {
+      "min": 0.0,
+      "max": 1.0,
+      "median": 0.3333333333333333
+    },
+    "emergency_time_share_mean": {
+      "min": 0.5522435897435898,
+      "max": 0.5798076923076924,
+      "median": 0.5615384615384614
+    },
+    "coalition_rmst_ticks_mean_valid_runs": {
+      "min": 19.75889132940991,
+      "max": 208.70833333333334,
+      "median": 67.46323953823953
+    },
+    "legitimacy_internal_mean": {
+      "min": 0.5721045628864633,
+      "max": 0.6246196139310244,
+      "median": 0.6153210031993996
+    },
+    "capture_pressure_mean": {
+      "min": 0.579579765974166,
+      "max": 0.5800000000000001,
+      "median": 0.5800000000000001
+    },
+    "bureaucracy_politicization_mean": {
+      "min": 0.2074834355466613,
+      "max": 0.9213331463291384,
+      "median": 0.5615029523172272
+    },
+    "civil_society_legitimacy_proxy_mean": {
+      "min": 0.5723219932578089,
+      "max": 0.624526709105472,
+      "median": 0.6155113588448156
+    },
+    "proposal_pass_fraction_mean_valid_runs": {
+      "min": 0.4401901901901902,
+      "max": 0.9968718718718718,
+      "median": 0.8636136136136137
+    }
+  },
+  "spearman_rank_correlations_exploratory": {
+    "cartel_capture_rate": {
+      "theta_pair": -0.7070069011592006,
+      "material_exec_multiplier": 0.5773984147653974,
+      "emergency_support_probability": 0.05677147388808415,
+      "audit_detection_prob": 0.12298021969419616,
+      "verification_accuracy": 0.004706315760687531,
+      "trust_learning_rate": -0.23110228020674534,
+      "vote_support_intercept": 0.22341447645106727,
+      "bureaucracy_drift_rate": -0.051991236937438165
+    },
+    "emergency_time_share_mean": {
+      "theta_pair": 0.0729383777484837,
+      "material_exec_multiplier": 0.008793826391025978,
+      "emergency_support_probability": 0.9818627773834344,
+      "audit_detection_prob": 0.05720567272078879,
+      "verification_accuracy": 0.0925183818222525,
+      "trust_learning_rate": -0.08219021593070895,
+      "vote_support_intercept": -0.051778232995077444,
+      "bureaucracy_drift_rate": -0.08143449647523016
+    },
+    "coalition_rmst_ticks_mean_valid_runs": {
+      "theta_pair": null,
+      "material_exec_multiplier": null,
+      "emergency_support_probability": null,
+      "audit_detection_prob": null,
+      "verification_accuracy": null,
+      "trust_learning_rate": null,
+      "vote_support_intercept": null,
+      "bureaucracy_drift_rate": null
+    },
+    "legitimacy_internal_mean": {
+      "theta_pair": -0.010485347985347985,
+      "material_exec_multiplier": 0.053708791208791205,
+      "emergency_support_probability": 0.10439560439560439,
+      "audit_detection_prob": -0.18383699633699632,
+      "verification_accuracy": 0.822664835164835,
+      "trust_learning_rate": -0.5030677655677654,
+      "vote_support_intercept": -0.060302197802197796,
+      "bureaucracy_drift_rate": 0.05347985347985347
+    },
+    "capture_pressure_mean": {
+      "theta_pair": 0.06233329041663667,
+      "material_exec_multiplier": -0.055156202580813586,
+      "emergency_support_probability": -0.05549527759667925,
+      "audit_detection_prob": 0.027691126295695347,
+      "verification_accuracy": 0.13150459365323078,
+      "trust_learning_rate": -0.06374610298274358,
+      "vote_support_intercept": -0.21291085371231064,
+      "bureaucracy_drift_rate": -0.1119512677383112
+    },
+    "bureaucracy_politicization_mean": {
+      "theta_pair": 0.01955128205128205,
+      "material_exec_multiplier": -0.01172161172161172,
+      "emergency_support_probability": -0.06195054945054944,
+      "audit_detection_prob": -0.018864468864468863,
+      "verification_accuracy": -0.0012820512820512818,
+      "trust_learning_rate": -0.1448260073260073,
+      "vote_support_intercept": 0.011446886446886444,
+      "bureaucracy_drift_rate": 0.9999999999999998
+    },
+    "civil_society_legitimacy_proxy_mean": {
+      "theta_pair": -0.01891025641025641,
+      "material_exec_multiplier": 0.04542124542124542,
+      "emergency_support_probability": 0.09148351648351648,
+      "audit_detection_prob": -0.17788461538461536,
+      "verification_accuracy": 0.8334249084249082,
+      "trust_learning_rate": -0.4842032967032967,
+      "vote_support_intercept": -0.06639194139194138,
+      "bureaucracy_drift_rate": 0.04835164835164834
+    },
+    "proposal_pass_fraction_mean_valid_runs": {
+      "theta_pair": -0.2332875457875458,
+      "material_exec_multiplier": 0.0472069597069597,
+      "emergency_support_probability": -0.013598901098901097,
+      "audit_detection_prob": -0.032097069597069594,
+      "verification_accuracy": 0.142032967032967,
+      "trust_learning_rate": -0.10173992673992673,
+      "vote_support_intercept": 0.970054945054945,
+      "bureaucracy_drift_rate": 0.007234432234432234
+    }
+  },
+  "paired_cartel_capture_point_differences": {
+    "n_changed_points": 10,
+    "mean_difference": 0.018229166666666664,
+    "mean_absolute_difference": 0.03385416666666667,
+    "max_absolute_difference": 0.5,
+    "changed_points": [
+      {
+        "point_id": 0,
+        "difference": 0.16666666666666674,
+        "pre": 0.6666666666666666,
+        "post": 0.8333333333333334
+      },
+      {
+        "point_id": 11,
+        "difference": -0.16666666666666674,
+        "pre": 0.8333333333333334,
+        "post": 0.6666666666666666
+      },
+      {
+        "point_id": 14,
+        "difference": 0.16666666666666666,
+        "pre": 0.16666666666666666,
+        "post": 0.3333333333333333
+      },
+      {
+        "point_id": 24,
+        "difference": 0.16666666666666666,
+        "pre": 0.0,
+        "post": 0.16666666666666666
+      },
+      {
+        "point_id": 30,
+        "difference": 0.16666666666666663,
+        "pre": 0.5,
+        "post": 0.6666666666666666
+      },
+      {
+        "point_id": 31,
+        "difference": -0.3333333333333333,
+        "pre": 0.3333333333333333,
+        "post": 0.0
+      },
+      {
+        "point_id": 39,
+        "difference": 0.16666666666666666,
+        "pre": 0.0,
+        "post": 0.16666666666666666
+      },
+      {
+        "point_id": 51,
+        "difference": 0.16666666666666666,
+        "pre": 0.0,
+        "post": 0.16666666666666666
+      },
+      {
+        "point_id": 52,
+        "difference": 0.5,
+        "pre": 0.16666666666666666,
+        "post": 0.6666666666666666
+      },
+      {
+        "point_id": 61,
+        "difference": 0.16666666666666663,
+        "pre": 0.8333333333333334,
+        "post": 1.0
+      }
+    ]
+  },
+  "points": [
+    {
+      "point_id": 0,
+      "parameters": {
+        "theta_pair": 0.5729479738879347,
+        "material_exec_multiplier": 0.8560582464000933,
+        "emergency_support_probability": 0.427532218235862,
+        "audit_detection_prob": 0.5542159465900879,
+        "verification_accuracy": 0.6599819227311189,
+        "trust_learning_rate": 0.04395174268513344,
+        "vote_support_intercept": 0.4245895738430743,
+        "bureaucracy_drift_rate": 0.0006604877378504623
+      },
+      "outputs": {
+        "cartel_capture_rate": 0.8333333333333334,
+        "emergency_time_share_mean": 0.5548076923076923,
+        "coalition_rmst_ticks_mean_valid_runs": 67.10838779956428,
+        "legitimacy_internal_mean": 0.6140120643287166,
+        "capture_pressure_mean": 0.5800000000000001,
+        "bureaucracy_politicization_mean": 0.44041753657756405,
+        "civil_society_legitimacy_proxy_mean": 0.6146688116147253,
+        "proposal_pass_fraction_mean_valid_runs": 0.8922672672672672
+      }
+    },
+    {
+      "point_id": 1,
+      "parameters": {
+        "theta_pair": 0.5003037386753646,
+        "material_exec_multiplier": 0.9813604653286108,
+        "emergency_support_probability": 0.6161505397416096,
+        "audit_detection_prob": 0.5388998123478841,
+        "verification_accuracy": 0.7054590010315502,
+        "trust_learning_rate": 0.041288637972959286,
+        "vote_support_intercept": 0.38459001915039065,
+        "bureaucracy_drift_rate": 0.00031795690211714237
+      },
+      "outputs": {
+        "cartel_capture_rate": 1.0,
+        "emergency_time_share_mean": 0.5679487179487178,
+        "coalition_rmst_ticks_mean_valid_runs": 54.27037037037038,
+        "legitimacy_internal_mean": 0.6163460683036474,
+        "capture_pressure_mean": 0.5800000000000001,
+        "bureaucracy_politicization_mean": 0.3157363123706401,
+        "civil_society_legitimacy_proxy_mean": 0.6171864872133802,
+        "proposal_pass_fraction_mean_valid_runs": 0.8367117117117117
+      }
+    },
+    {
+      "point_id": 2,
+      "parameters": {
+        "theta_pair": 0.4835821605882922,
+        "material_exec_multiplier": 1.0809188888783907,
+        "emergency_support_probability": 0.4555494351199889,
+        "audit_detection_prob": 0.3064625934579537,
+        "verification_accuracy": 0.8313171566528059,
+        "trust_learning_rate": 0.19458447239279625,
+        "vote_support_intercept": 0.5149788619173938,
+        "bureaucracy_drift_rate": 0.0006385834748111241
+      },
+      "outputs": {
+        "cartel_capture_rate": 1.0,
+        "emergency_time_share_mean": 0.5564102564102563,
+        "coalition_rmst_ticks_mean_valid_runs": 52.82430069930069,
+        "legitimacy_internal_mean": 0.6136983766034487,
+        "capture_pressure_mean": 0.58,
+        "bureaucracy_politicization_mean": 0.4324443848312452,
+        "civil_society_legitimacy_proxy_mean": 0.6138316193970813,
+        "proposal_pass_fraction_mean_valid_runs": 0.9908658658658659
+      }
+    },
+    {
+      "point_id": 3,
+      "parameters": {
+        "theta_pair": 0.648144618079024,
+        "material_exec_multiplier": 0.7173746251485484,
+        "emergency_support_probability": 0.7319396586255119,
+        "audit_detection_prob": 0.6886945698214729,
+        "verification_accuracy": 0.6229118916693591,
+        "trust_learning_rate": 0.11089111353945605,
+        "vote_support_intercept": 0.27934083414783517,
+        "bureaucracy_drift_rate": 0.001034537821646423
+      },
+      "outputs": {
+        "cartel_capture_rate": 0.0,
+        "emergency_time_share_mean": 0.5733974358974359,
+        "coalition_rmst_ticks_mean_valid_runs": null,
+        "legitimacy_internal_mean": 0.5891539077724172,
+        "capture_pressure_mean": 0.5800000000000001,
+        "bureaucracy_politicization_mean": 0.5765717670793026,
+        "civil_society_legitimacy_proxy_mean": 0.5909295565053057,
+        "proposal_pass_fraction_mean_valid_runs": 0.4401901901901902
+      }
+    },
+    {
+      "point_id": 4,
+      "parameters": {
+        "theta_pair": 0.6358368736531759,
+        "material_exec_multiplier": 0.7963711365538095,
+        "emergency_support_probability": 0.5385597836650159,
+        "audit_detection_prob": 0.5734680954655975,
+        "verification_accuracy": 0.6635018298911385,
+        "trust_learning_rate": 0.10125729647828559,
+        "vote_support_intercept": 0.4801991384148358,
+        "bureaucracy_drift_rate": 0.0014977852515247287
+      },
+      "outputs": {
+        "cartel_capture_rate": 0.0,
+        "emergency_time_share_mean": 0.5608974358974358,
+        "coalition_rmst_ticks_mean_valid_runs": null,
+        "legitimacy_internal_mean": 0.6038245046451429,
+        "capture_pressure_mean": 0.5800000000000001,
+        "bureaucracy_politicization_mean": 0.7451938315550065,
+        "civil_society_legitimacy_proxy_mean": 0.6030035898825402,
+        "proposal_pass_fraction_mean_valid_runs": 0.9538288288288288
+      }
+    },
+    {
+      "point_id": 5,
+      "parameters": {
+        "theta_pair": 0.6931271782202717,
+        "material_exec_multiplier": 0.9619419748323497,
+        "emergency_support_probability": 0.342681442810048,
+        "audit_detection_prob": 0.3946008637439187,
+        "verification_accuracy": 0.6441106710561464,
+        "trust_learning_rate": 0.1986487083186564,
+        "vote_support_intercept": 0.3603963819390257,
+        "bureaucracy_drift_rate": 0.0017270677147818822
+      },
+      "outputs": {
+        "cartel_capture_rate": 0.0,
+        "emergency_time_share_mean": 0.5532051282051281,
+        "coalition_rmst_ticks_mean_valid_runs": null,
+        "legitimacy_internal_mean": 0.5792400266751481,
+        "capture_pressure_mean": 0.58,
+        "bureaucracy_politicization_mean": 0.8286526481805948,
+        "civil_society_legitimacy_proxy_mean": 0.5749486735396445,
+        "proposal_pass_fraction_mean_valid_runs": 0.6291291291291291
+      }
+    },
+    {
+      "point_id": 6,
+      "parameters": {
+        "theta_pair": 0.4666958575562408,
+        "material_exec_multiplier": 0.937423819290474,
+        "emergency_support_probability": 0.6237003483266669,
+        "audit_detection_prob": 0.5834691121338915,
+        "verification_accuracy": 0.7245817910996137,
+        "trust_learning_rate": 0.16864854686784117,
+        "vote_support_intercept": 0.4432415897525981,
+        "bureaucracy_drift_rate": 0.0006243689158644598
+      },
+      "outputs": {
+        "cartel_capture_rate": 1.0,
+        "emergency_time_share_mean": 0.5644230769230769,
+        "coalition_rmst_ticks_mean_valid_runs": 24.41312582345191,
+        "legitimacy_internal_mean": 0.6001160386096928,
+        "capture_pressure_mean": 0.5800000000000001,
+        "bureaucracy_politicization_mean": 0.42727028537466555,
+        "civil_society_legitimacy_proxy_mean": 0.6006089554763413,
+        "proposal_pass_fraction_mean_valid_runs": 0.908908908908909
+      }
+    },
+    {
+      "point_id": 7,
+      "parameters": {
+        "theta_pair": 0.6514122195972256,
+        "material_exec_multiplier": 1.0415840634268037,
+        "emergency_support_probability": 0.40074934093351355,
+        "audit_detection_prob": 0.617871715855076,
+        "verification_accuracy": 0.7417901903051554,
+        "trust_learning_rate": 0.18132835506191747,
+        "vote_support_intercept": 0.3511338871661469,
+        "bureaucracy_drift_rate": 0.0010699263689393122
+      },
+      "outputs": {
+        "cartel_capture_rate": 0.0,
+        "emergency_time_share_mean": 0.5535256410256411,
+        "coalition_rmst_ticks_mean_valid_runs": null,
+        "legitimacy_internal_mean": 0.6019871291276742,
+        "capture_pressure_mean": 0.5800000000000001,
+        "bureaucracy_politicization_mean": 0.5894531982939143,
+        "civil_society_legitimacy_proxy_mean": 0.6005290632161028,
+        "proposal_pass_fraction_mean_valid_runs": 0.7177177177177176
+      }
+    },
+    {
+      "point_id": 8,
+      "parameters": {
+        "theta_pair": 0.6441407848041532,
+        "material_exec_multiplier": 0.8217138831275347,
+        "emergency_support_probability": 0.5230838307260461,
+        "audit_detection_prob": 0.17463261543932307,
+        "verification_accuracy": 0.7868199681149763,
+        "trust_learning_rate": 0.08707392021884244,
+        "vote_support_intercept": 0.472805010200692,
+        "bureaucracy_drift_rate": 0.0019436275674090502
+      },
+      "outputs": {
+        "cartel_capture_rate": 0.0,
+        "emergency_time_share_mean": 0.5583333333333335,
+        "coalition_rmst_ticks_mean_valid_runs": null,
+        "legitimacy_internal_mean": 0.6168643054340982,
+        "capture_pressure_mean": 0.58,
+        "bureaucracy_politicization_mean": 0.9074804345369056,
+        "civil_society_legitimacy_proxy_mean": 0.6169458454711618,
+        "proposal_pass_fraction_mean_valid_runs": 0.9670920920920921
+      }
+    },
+    {
+      "point_id": 9,
+      "parameters": {
+        "theta_pair": 0.6878239902927462,
+        "material_exec_multiplier": 0.9727210530905318,
+        "emergency_support_probability": 0.7211146372998313,
+        "audit_detection_prob": 0.32134261029376876,
+        "verification_accuracy": 0.7814639514241969,
+        "trust_learning_rate": 0.02982312527177148,
+        "vote_support_intercept": 0.2690878686900584,
+        "bureaucracy_drift_rate": 0.0014127188443236723
+      },
+      "outputs": {
+        "cartel_capture_rate": 0.0,
+        "emergency_time_share_mean": 0.5740384615384615,
+        "coalition_rmst_ticks_mean_valid_runs": null,
+        "legitimacy_internal_mean": 0.6227406723278961,
+        "capture_pressure_mean": 0.5800000000000001,
+        "bureaucracy_politicization_mean": 0.7142296593338279,
+        "civil_society_legitimacy_proxy_mean": 0.6226815126555809,
+        "proposal_pass_fraction_mean_valid_runs": 0.5559309309309309
+      }
+    },
+    {
+      "point_id": 10,
+      "parameters": {
+        "theta_pair": 0.5901065603931416,
+        "material_exec_multiplier": 0.7920377158476135,
+        "emergency_support_probability": 0.41923566933513934,
+        "audit_detection_prob": 0.26639928875327,
+        "verification_accuracy": 0.8774933479009444,
+        "trust_learning_rate": 0.17768177495877768,
+        "vote_support_intercept": 0.534592306530987,
+        "bureaucracy_drift_rate": 0.00013437261123178882
+      },
+      "outputs": {
+        "cartel_capture_rate": 0.6666666666666666,
+        "emergency_time_share_mean": 0.5541666666666667,
+        "coalition_rmst_ticks_mean_valid_runs": 124.72436868686869,
+        "legitimacy_internal_mean": 0.618942666762769,
+        "capture_pressure_mean": 0.5800000000000001,
+        "bureaucracy_politicization_mean": 0.24891163048837409,
+        "civil_society_legitimacy_proxy_mean": 0.6189510239763955,
+        "proposal_pass_fraction_mean_valid_runs": 0.9953703703703703
+      }
+    },
+    {
+      "point_id": 11,
+      "parameters": {
+        "theta_pair": 0.5864873901490586,
+        "material_exec_multiplier": 1.0048748870867386,
+        "emergency_support_probability": 0.5134378811516342,
+        "audit_detection_prob": 0.23920811843920486,
+        "verification_accuracy": 0.9404575626996352,
+        "trust_learning_rate": 0.09418483731084805,
+        "vote_support_intercept": 0.47577280636502506,
+        "bureaucracy_drift_rate": 0.0013280194413037637
+      },
+      "outputs": {
+        "cartel_capture_rate": 0.6666666666666666,
+        "emergency_time_share_mean": 0.5583333333333335,
+        "coalition_rmst_ticks_mean_valid_runs": 127.35787037037039,
+        "legitimacy_internal_mean": 0.6235729570104418,
+        "capture_pressure_mean": 0.5800000000000001,
+        "bureaucracy_politicization_mean": 0.683399076634572,
+        "civil_society_legitimacy_proxy_mean": 0.623695562798955,
+        "proposal_pass_fraction_mean_valid_runs": 0.9757257257257258
+      }
+    },
+    {
+      "point_id": 12,
+      "parameters": {
+        "theta_pair": 0.5083430646467874,
+        "material_exec_multiplier": 1.085895823820234,
+        "emergency_support_probability": 0.6494253510876906,
+        "audit_detection_prob": 0.6382226785615199,
+        "verification_accuracy": 0.7324222961645341,
+        "trust_learning_rate": 0.037848658482113384,
+        "vote_support_intercept": 0.4996889697680241,
+        "bureaucracy_drift_rate": 0.0018778629769773604
+      },
+      "outputs": {
+        "cartel_capture_rate": 1.0,
+        "emergency_time_share_mean": 0.567948717948718,
+        "coalition_rmst_ticks_mean_valid_runs": 61.15686522083581,
+        "legitimacy_internal_mean": 0.6197910305876889,
+        "capture_pressure_mean": 0.5800000000000001,
+        "bureaucracy_politicization_mean": 0.8835421236197519,
+        "civil_society_legitimacy_proxy_mean": 0.6198311673090119,
+        "proposal_pass_fraction_mean_valid_runs": 0.9784784784784785
+      }
+    },
+    {
+      "point_id": 13,
+      "parameters": {
+        "theta_pair": 0.6568161704290776,
+        "material_exec_multiplier": 0.7588336299166963,
+        "emergency_support_probability": 0.4904863381470459,
+        "audit_detection_prob": 0.5262258772839411,
+        "verification_accuracy": 0.6153045811670026,
+        "trust_learning_rate": 0.15108531569618577,
+        "vote_support_intercept": 0.538555863370402,
+        "bureaucracy_drift_rate": 0.0009351237646155703
+      },
+      "outputs": {
+        "cartel_capture_rate": 0.0,
+        "emergency_time_share_mean": 0.5560897435897436,
+        "coalition_rmst_ticks_mean_valid_runs": null,
+        "legitimacy_internal_mean": 0.5721045628864633,
+        "capture_pressure_mean": 0.58,
+        "bureaucracy_politicization_mean": 0.5403850503200599,
+        "civil_society_legitimacy_proxy_mean": 0.5723219932578089,
+        "proposal_pass_fraction_mean_valid_runs": 0.9679679679679679
+      }
+    },
+    {
+      "point_id": 14,
+      "parameters": {
+        "theta_pair": 0.610453785690264,
+        "material_exec_multiplier": 0.8702717271602172,
+        "emergency_support_probability": 0.4386144656826056,
+        "audit_detection_prob": 0.4857454176508248,
+        "verification_accuracy": 0.7728881887708187,
+        "trust_learning_rate": 0.09859652444836936,
+        "vote_support_intercept": 0.5199031143249865,
+        "bureaucracy_drift_rate": 0.0016410128877237518
+      },
+      "outputs": {
+        "cartel_capture_rate": 0.3333333333333333,
+        "emergency_time_share_mean": 0.555128205128205,
+        "coalition_rmst_ticks_mean_valid_runs": 145.9672619047619,
+        "legitimacy_internal_mean": 0.6152897362285698,
+        "capture_pressure_mean": 0.58,
+        "bureaucracy_politicization_mean": 0.7973286911314447,
+        "civil_society_legitimacy_proxy_mean": 0.6151906459511386,
+        "proposal_pass_fraction_mean_valid_runs": 0.9904904904904904
+      }
+    },
+    {
+      "point_id": 15,
+      "parameters": {
+        "theta_pair": 0.6843592581456297,
+        "material_exec_multiplier": 0.8074545597601047,
+        "emergency_support_probability": 0.5293628274162288,
+        "audit_detection_prob": 0.28585057029595723,
+        "verification_accuracy": 0.7032901435358341,
+        "trust_learning_rate": 0.14037512202807145,
+        "vote_support_intercept": 0.5229727981063501,
+        "bureaucracy_drift_rate": 0.00022284840820600791
+      },
+      "outputs": {
+        "cartel_capture_rate": 0.0,
+        "emergency_time_share_mean": 0.5592948717948718,
+        "coalition_rmst_ticks_mean_valid_runs": null,
+        "legitimacy_internal_mean": 0.5998317331717345,
+        "capture_pressure_mean": 0.5800000000000001,
+        "bureaucracy_politicization_mean": 0.2811168205869861,
+        "civil_society_legitimacy_proxy_mean": 0.5988432760572973,
+        "proposal_pass_fraction_mean_valid_runs": 0.9826076076076076
+      }
+    },
+    {
+      "point_id": 16,
+      "parameters": {
+        "theta_pair": 0.5605159292317592,
+        "material_exec_multiplier": 0.8445702483005795,
+        "emergency_support_probability": 0.5764290443728751,
+        "audit_detection_prob": 0.675392356757119,
+        "verification_accuracy": 0.9094928537549456,
+        "trust_learning_rate": 0.09191775876716855,
+        "vote_support_intercept": 0.5446049936491066,
+        "bureaucracy_drift_rate": 0.0007922338605104459
+      },
+      "outputs": {
+        "cartel_capture_rate": 1.0,
+        "emergency_time_share_mean": 0.5637820512820513,
+        "coalition_rmst_ticks_mean_valid_runs": 49.77733488132096,
+        "legitimacy_internal_mean": 0.6225627866993554,
+        "capture_pressure_mean": 0.5800000000000001,
+        "bureaucracy_politicization_mean": 0.48837312522579396,
+        "civil_society_legitimacy_proxy_mean": 0.6227301671681719,
+        "proposal_pass_fraction_mean_valid_runs": 0.9968718718718718
+      }
+    },
+    {
+      "point_id": 17,
+      "parameters": {
+        "theta_pair": 0.4722728943826491,
+        "material_exec_multiplier": 0.7188002047414491,
+        "emergency_support_probability": 0.33199181852852383,
+        "audit_detection_prob": 0.16232969184379833,
+        "verification_accuracy": 0.6182631751751066,
+        "trust_learning_rate": 0.06855510090761917,
+        "vote_support_intercept": 0.3660959004205184,
+        "bureaucracy_drift_rate": 0.0015617703883117268
+      },
+      "outputs": {
+        "cartel_capture_rate": 0.0,
+        "emergency_time_share_mean": 0.5532051282051281,
+        "coalition_rmst_ticks_mean_valid_runs": 91.92083333333333,
+        "legitimacy_internal_mean": 0.6028407754642039,
+        "capture_pressure_mean": 0.58,
+        "bureaucracy_politicization_mean": 0.768484421345479,
+        "civil_society_legitimacy_proxy_mean": 0.601154748544562,
+        "proposal_pass_fraction_mean_valid_runs": 0.7293543543543545
+      }
+    },
+    {
+      "point_id": 18,
+      "parameters": {
+        "theta_pair": 0.465509909723894,
+        "material_exec_multiplier": 1.0470157053611906,
+        "emergency_support_probability": 0.5073644448847339,
+        "audit_detection_prob": 0.6916337919614883,
+        "verification_accuracy": 0.6391136742979631,
+        "trust_learning_rate": 0.14659854116756013,
+        "vote_support_intercept": 0.5053286646181625,
+        "bureaucracy_drift_rate": 0.0004284922652646675
+      },
+      "outputs": {
+        "cartel_capture_rate": 1.0,
+        "emergency_time_share_mean": 0.5586538461538462,
+        "coalition_rmst_ticks_mean_valid_runs": 28.228882827811322,
+        "legitimacy_internal_mean": 0.5802193096279299,
+        "capture_pressure_mean": 0.58,
+        "bureaucracy_politicization_mean": 0.35597118455634275,
+        "civil_society_legitimacy_proxy_mean": 0.5810566301731729,
+        "proposal_pass_fraction_mean_valid_runs": 0.9555805805805807
+      }
+    },
+    {
+      "point_id": 19,
+      "parameters": {
+        "theta_pair": 0.4908783974145571,
+        "material_exec_multiplier": 0.7841696186655969,
+        "emergency_support_probability": 0.7127241460559222,
+        "audit_detection_prob": 0.5632143045007116,
+        "verification_accuracy": 0.9484001881558929,
+        "trust_learning_rate": 0.05021096110479693,
+        "vote_support_intercept": 0.43474054662113093,
+        "bureaucracy_drift_rate": 0.0015986327562784973
+      },
+      "outputs": {
+        "cartel_capture_rate": 1.0,
+        "emergency_time_share_mean": 0.5746794871794871,
+        "coalition_rmst_ticks_mean_valid_runs": 32.43960489993099,
+        "legitimacy_internal_mean": 0.6246196139310244,
+        "capture_pressure_mean": 0.5800000000000001,
+        "bureaucracy_politicization_mean": 0.7819023232853662,
+        "civil_society_legitimacy_proxy_mean": 0.624526709105472,
+        "proposal_pass_fraction_mean_valid_runs": 0.9375625625625625
+      }
+    },
+    {
+      "point_id": 20,
+      "parameters": {
+        "theta_pair": 0.6735419329559611,
+        "material_exec_multiplier": 0.7796721911862696,
+        "emergency_support_probability": 0.4768022820349206,
+        "audit_detection_prob": 0.5026918325501704,
+        "verification_accuracy": 0.6341653771220792,
+        "trust_learning_rate": 0.1042341811804142,
+        "vote_support_intercept": 0.36859529612878394,
+        "bureaucracy_drift_rate": 0.0008554764962068452
+      },
+      "outputs": {
+        "cartel_capture_rate": 0.0,
+        "emergency_time_share_mean": 0.5576923076923076,
+        "coalition_rmst_ticks_mean_valid_runs": null,
+        "legitimacy_internal_mean": 0.5943639230292873,
+        "capture_pressure_mean": 0.58,
+        "bureaucracy_politicization_mean": 0.5113934446192968,
+        "civil_society_legitimacy_proxy_mean": 0.5934474876635846,
+        "proposal_pass_fraction_mean_valid_runs": 0.714964964964965
+      }
+    },
+    {
+      "point_id": 21,
+      "parameters": {
+        "theta_pair": 0.5204994738133603,
+        "material_exec_multiplier": 0.7489395110651079,
+        "emergency_support_probability": 0.4873301095477661,
+        "audit_detection_prob": 0.1902207847375723,
+        "verification_accuracy": 0.9242482511044054,
+        "trust_learning_rate": 0.1442994768482945,
+        "vote_support_intercept": 0.4649376728570429,
+        "bureaucracy_drift_rate": 0.00040185717059870783
+      },
+      "outputs": {
+        "cartel_capture_rate": 0.0,
+        "emergency_time_share_mean": 0.5583333333333332,
+        "coalition_rmst_ticks_mean_valid_runs": 130.8698412698413,
+        "legitimacy_internal_mean": 0.6220848590535699,
+        "capture_pressure_mean": 0.5800000000000001,
+        "bureaucracy_politicization_mean": 0.34627601009793607,
+        "civil_society_legitimacy_proxy_mean": 0.6218939128778499,
+        "proposal_pass_fraction_mean_valid_runs": 0.9694694694694697
+      }
+    },
+    {
+      "point_id": 22,
+      "parameters": {
+        "theta_pair": 0.6616725098597179,
+        "material_exec_multiplier": 0.8899551020405961,
+        "emergency_support_probability": 0.772827116824266,
+        "audit_detection_prob": 0.2700589542255113,
+        "verification_accuracy": 0.6719611541873693,
+        "trust_learning_rate": 0.15263525459724617,
+        "vote_support_intercept": 0.29007319072921706,
+        "bureaucracy_drift_rate": 0.0019066797780648021
+      },
+      "outputs": {
+        "cartel_capture_rate": 0.0,
+        "emergency_time_share_mean": 0.5762820512820513,
+        "coalition_rmst_ticks_mean_valid_runs": null,
+        "legitimacy_internal_mean": 0.5938655751735188,
+        "capture_pressure_mean": 0.5800000000000001,
+        "bureaucracy_politicization_mean": 0.8940314392156042,
+        "civil_society_legitimacy_proxy_mean": 0.5932514572067363,
+        "proposal_pass_fraction_mean_valid_runs": 0.5032532532532532
+      }
+    },
+    {
+      "point_id": 23,
+      "parameters": {
+        "theta_pair": 0.5759499930489421,
+        "material_exec_multiplier": 0.9302516456126416,
+        "emergency_support_probability": 0.6608477143032965,
+        "audit_detection_prob": 0.443456481088921,
+        "verification_accuracy": 0.7151077952370832,
+        "trust_learning_rate": 0.07884588163452312,
+        "vote_support_intercept": 0.401463764190388,
+        "bureaucracy_drift_rate": 0.0012149530653502052
+      },
+      "outputs": {
+        "cartel_capture_rate": 0.8333333333333334,
+        "emergency_time_share_mean": 0.5701923076923077,
+        "coalition_rmst_ticks_mean_valid_runs": 71.14848901098902,
+        "legitimacy_internal_mean": 0.613551418702058,
+        "capture_pressure_mean": 0.58,
+        "bureaucracy_politicization_mean": 0.6422429157874721,
+        "civil_society_legitimacy_proxy_mean": 0.6130398127792599,
+        "proposal_pass_fraction_mean_valid_runs": 0.8594844844844846
+      }
+    },
+    {
+      "point_id": 24,
+      "parameters": {
+        "theta_pair": 0.6207527560129289,
+        "material_exec_multiplier": 0.9949618664384947,
+        "emergency_support_probability": 0.6739171338920211,
+        "audit_detection_prob": 0.1507717578732892,
+        "verification_accuracy": 0.6885585055914363,
+        "trust_learning_rate": 0.1731533777920628,
+        "vote_support_intercept": 0.4877188019268846,
+        "bureaucracy_drift_rate": 0.0002959117329507189
+      },
+      "outputs": {
+        "cartel_capture_rate": 0.16666666666666666,
+        "emergency_time_share_mean": 0.5721153846153847,
+        "coalition_rmst_ticks_mean_valid_runs": 208.70833333333334,
+        "legitimacy_internal_mean": 0.5985460117262127,
+        "capture_pressure_mean": 0.5800000000000001,
+        "bureaucracy_politicization_mean": 0.30771187079406276,
+        "civil_society_legitimacy_proxy_mean": 0.5983869670039642,
+        "proposal_pass_fraction_mean_valid_runs": 0.953953953953954
+      }
+    },
+    {
+      "point_id": 25,
+      "parameters": {
+        "theta_pair": 0.5586435529506721,
+        "material_exec_multiplier": 1.0135788914019412,
+        "emergency_support_probability": 0.7647338130930972,
+        "audit_detection_prob": 0.5917293644711669,
+        "verification_accuracy": 0.7793102359195435,
+        "trust_learning_rate": 0.13644646473532546,
+        "vote_support_intercept": 0.3443925874684538,
+        "bureaucracy_drift_rate": 0.0005544901695527884
+      },
+      "outputs": {
+        "cartel_capture_rate": 1.0,
+        "emergency_time_share_mean": 0.5737179487179486,
+        "coalition_rmst_ticks_mean_valid_runs": 52.13338166463168,
+        "legitimacy_internal_mean": 0.6153522701702295,
+        "capture_pressure_mean": 0.5800000000000001,
+        "bureaucracy_politicization_mean": 0.40183442171721745,
+        "civil_society_legitimacy_proxy_mean": 0.6129955408102429,
+        "proposal_pass_fraction_mean_valid_runs": 0.7366116116116116
+      }
+    },
+    {
+      "point_id": 26,
+      "parameters": {
+        "theta_pair": 0.569305020652746,
+        "material_exec_multiplier": 0.8143250970477398,
+        "emergency_support_probability": 0.6286098080200534,
+        "audit_detection_prob": 0.6567612865033206,
+        "verification_accuracy": 0.8408881398141537,
+        "trust_learning_rate": 0.15781515752093306,
+        "vote_support_intercept": 0.2931730526972653,
+        "bureaucracy_drift_rate": 0.0010942043723069785
+      },
+      "outputs": {
+        "cartel_capture_rate": 1.0,
+        "emergency_time_share_mean": 0.569551282051282,
+        "coalition_rmst_ticks_mean_valid_runs": 56.17582972582974,
+        "legitimacy_internal_mean": 0.6158339681237842,
+        "capture_pressure_mean": 0.5800000000000001,
+        "bureaucracy_politicization_mean": 0.5982903915197372,
+        "civil_society_legitimacy_proxy_mean": 0.6170974808523163,
+        "proposal_pass_fraction_mean_valid_runs": 0.6118618618618619
+      }
+    },
+    {
+      "point_id": 27,
+      "parameters": {
+        "theta_pair": 0.5448603878628607,
+        "material_exec_multiplier": 1.0343362340220144,
+        "emergency_support_probability": 0.7995108903742536,
+        "audit_detection_prob": 0.5471888613912865,
+        "verification_accuracy": 0.7279812959078577,
+        "trust_learning_rate": 0.05987550194136021,
+        "vote_support_intercept": 0.5485416630181734,
+        "bureaucracy_drift_rate": 0.0019816844679371635
+      },
+      "outputs": {
+        "cartel_capture_rate": 1.0,
+        "emergency_time_share_mean": 0.5737179487179488,
+        "coalition_rmst_ticks_mean_valid_runs": 49.780974132077084,
+        "legitimacy_internal_mean": 0.6160035546325482,
+        "capture_pressure_mean": 0.579579765974166,
+        "bureaucracy_politicization_mean": 0.9213331463291384,
+        "civil_society_legitimacy_proxy_mean": 0.6157807263192258,
+        "proposal_pass_fraction_mean_valid_runs": 0.9936186186186187
+      }
+    },
+    {
+      "point_id": 28,
+      "parameters": {
+        "theta_pair": 0.6412064934314801,
+        "material_exec_multiplier": 0.83717350912488,
+        "emergency_support_probability": 0.35552152937492815,
+        "audit_detection_prob": 0.40073200522160257,
+        "verification_accuracy": 0.888780310354105,
+        "trust_learning_rate": 0.05174292752658663,
+        "vote_support_intercept": 0.33302630494278196,
+        "bureaucracy_drift_rate": 0.001176533717748875
+      },
+      "outputs": {
+        "cartel_capture_rate": 0.0,
+        "emergency_time_share_mean": 0.5532051282051283,
+        "coalition_rmst_ticks_mean_valid_runs": null,
+        "legitimacy_internal_mean": 0.623301368540794,
+        "capture_pressure_mean": 0.5800000000000001,
+        "bureaucracy_politicization_mean": 0.628258273260588,
+        "civil_society_legitimacy_proxy_mean": 0.6233015209925893,
+        "proposal_pass_fraction_mean_valid_runs": 0.7443693693693695
+      }
+    },
+    {
+      "point_id": 29,
+      "parameters": {
+        "theta_pair": 0.48799235569882327,
+        "material_exec_multiplier": 0.7354903532409007,
+        "emergency_support_probability": 0.636428884259665,
+        "audit_detection_prob": 0.4786562724193122,
+        "verification_accuracy": 0.7148278702563248,
+        "trust_learning_rate": 0.1926048476932217,
+        "vote_support_intercept": 0.45998560952250267,
+        "bureaucracy_drift_rate": 0.001264949635993569
+      },
+      "outputs": {
+        "cartel_capture_rate": 0.0,
+        "emergency_time_share_mean": 0.5708333333333333,
+        "coalition_rmst_ticks_mean_valid_runs": 34.643783227006914,
+        "legitimacy_internal_mean": 0.5950976386032292,
+        "capture_pressure_mean": 0.58,
+        "bureaucracy_politicization_mean": 0.6604416675016581,
+        "civil_society_legitimacy_proxy_mean": 0.5958890952728245,
+        "proposal_pass_fraction_mean_valid_runs": 0.9266766766766769
+      }
+    },
+    {
+      "point_id": 30,
+      "parameters": {
+        "theta_pair": 0.6092599814790618,
+        "material_exec_multiplier": 0.8289028798087155,
+        "emergency_support_probability": 0.5442312920020589,
+        "audit_detection_prob": 0.13115937668904123,
+        "verification_accuracy": 0.8026611041670499,
+        "trust_learning_rate": 0.1310572682611879,
+        "vote_support_intercept": 0.27415291970622896,
+        "bureaucracy_drift_rate": 5.337883186899821e-05
+      },
+      "outputs": {
+        "cartel_capture_rate": 0.6666666666666666,
+        "emergency_time_share_mean": 0.5637820512820513,
+        "coalition_rmst_ticks_mean_valid_runs": 191.58333333333334,
+        "legitimacy_internal_mean": 0.6152368954199368,
+        "capture_pressure_mean": 0.5800000000000001,
+        "bureaucracy_politicization_mean": 0.2194298948003113,
+        "civil_society_legitimacy_proxy_mean": 0.6146825152999744,
+        "proposal_pass_fraction_mean_valid_runs": 0.5504254254254254
+      }
+    },
+    {
+      "point_id": 31,
+      "parameters": {
+        "theta_pair": 0.6230221648795465,
+        "material_exec_multiplier": 0.9886628941386839,
+        "emergency_support_probability": 0.3278232478258517,
+        "audit_detection_prob": 0.3499865258826292,
+        "verification_accuracy": 0.9304061207761976,
+        "trust_learning_rate": 0.12093818879300985,
+        "vote_support_intercept": 0.32467024811416606,
+        "bureaucracy_drift_rate": 0.001591972412193697
+      },
+      "outputs": {
+        "cartel_capture_rate": 0.0,
+        "emergency_time_share_mean": 0.5522435897435898,
+        "coalition_rmst_ticks_mean_valid_runs": 168.47222222222223,
+        "legitimacy_internal_mean": 0.6236257024000795,
+        "capture_pressure_mean": 0.58,
+        "bureaucracy_politicization_mean": 0.7794779580385196,
+        "civil_society_legitimacy_proxy_mean": 0.6228868800842191,
+        "proposal_pass_fraction_mean_valid_runs": 0.7253503503503503
+      }
+    },
+    {
+      "point_id": 32,
+      "parameters": {
+        "theta_pair": 0.4746512415121842,
+        "material_exec_multiplier": 1.025549200827729,
+        "emergency_support_probability": 0.5026231354894731,
+        "audit_detection_prob": 0.28820996914277164,
+        "verification_accuracy": 0.8637038657934004,
+        "trust_learning_rate": 0.08903748149129512,
+        "vote_support_intercept": 0.4691573904113186,
+        "bureaucracy_drift_rate": 0.0009556430998421332
+      },
+      "outputs": {
+        "cartel_capture_rate": 1.0,
+        "emergency_time_share_mean": 0.5605769230769231,
+        "coalition_rmst_ticks_mean_valid_runs": 39.576320901320905,
+        "legitimacy_internal_mean": 0.6200534732504838,
+        "capture_pressure_mean": 0.58,
+        "bureaucracy_politicization_mean": 0.5478540883425403,
+        "civil_society_legitimacy_proxy_mean": 0.6210238748559859,
+        "proposal_pass_fraction_mean_valid_runs": 0.9692192192192194
+      }
+    },
+    {
+      "point_id": 33,
+      "parameters": {
+        "theta_pair": 0.6696072511710331,
+        "material_exec_multiplier": 0.9127236123742581,
+        "emergency_support_probability": 0.4648107399541001,
+        "audit_detection_prob": 0.17849532295076231,
+        "verification_accuracy": 0.8727245949483068,
+        "trust_learning_rate": 0.03340201042026154,
+        "vote_support_intercept": 0.3084229380629085,
+        "bureaucracy_drift_rate": 0.0001702272361755296
+      },
+      "outputs": {
+        "cartel_capture_rate": 0.0,
+        "emergency_time_share_mean": 0.5583333333333335,
+        "coalition_rmst_ticks_mean_valid_runs": null,
+        "legitimacy_internal_mean": 0.6239878178660526,
+        "capture_pressure_mean": 0.58,
+        "bureaucracy_politicization_mean": 0.261962713967893,
+        "civil_society_legitimacy_proxy_mean": 0.6238517014622529,
+        "proposal_pass_fraction_mean_valid_runs": 0.6844344344344345
+      }
+    },
+    {
+      "point_id": 34,
+      "parameters": {
+        "theta_pair": 0.49333089565785604,
+        "material_exec_multiplier": 0.767557872092583,
+        "emergency_support_probability": 0.36561953532475444,
+        "audit_detection_prob": 0.24905660123019394,
+        "verification_accuracy": 0.8842291494611916,
+        "trust_learning_rate": 0.15722631149847144,
+        "vote_support_intercept": 0.37728015522287484,
+        "bureaucracy_drift_rate": 0.0018714293513032053
+      },
+      "outputs": {
+        "cartel_capture_rate": 0.0,
+        "emergency_time_share_mean": 0.5544871794871794,
+        "coalition_rmst_ticks_mean_valid_runs": 48.37053502053502,
+        "legitimacy_internal_mean": 0.6186474217576375,
+        "capture_pressure_mean": 0.5800000000000001,
+        "bureaucracy_politicization_mean": 0.8812002838743637,
+        "civil_society_legitimacy_proxy_mean": 0.6189211683567971,
+        "proposal_pass_fraction_mean_valid_runs": 0.8404654654654656
+      }
+    },
+    {
+      "point_id": 35,
+      "parameters": {
+        "theta_pair": 0.6672113377259712,
+        "material_exec_multiplier": 0.9542239808198303,
+        "emergency_support_probability": 0.6539558370028241,
+        "audit_detection_prob": 0.43598436848415356,
+        "verification_accuracy": 0.9371406838559512,
+        "trust_learning_rate": 0.12953033652939022,
+        "vote_support_intercept": 0.32896550574043276,
+        "bureaucracy_drift_rate": 7.518287213391332e-05
+      },
+      "outputs": {
+        "cartel_capture_rate": 0.0,
+        "emergency_time_share_mean": 0.5701923076923077,
+        "coalition_rmst_ticks_mean_valid_runs": null,
+        "legitimacy_internal_mean": 0.623200967548203,
+        "capture_pressure_mean": 0.5800000000000001,
+        "bureaucracy_politicization_mean": 0.22736656545674674,
+        "civil_society_legitimacy_proxy_mean": 0.6227698130393123,
+        "proposal_pass_fraction_mean_valid_runs": 0.7303553553553552
+      }
+    },
+    {
+      "point_id": 36,
+      "parameters": {
+        "theta_pair": 0.4509724255198309,
+        "material_exec_multiplier": 1.0570137335668368,
+        "emergency_support_probability": 0.4163861967219525,
+        "audit_detection_prob": 0.11100849671056864,
+        "verification_accuracy": 0.6276868253917013,
+        "trust_learning_rate": 0.06598053533741656,
+        "vote_support_intercept": 0.3430599377329791,
+        "bureaucracy_drift_rate": 0.00047083284889787546
+      },
+      "outputs": {
+        "cartel_capture_rate": 1.0,
+        "emergency_time_share_mean": 0.5544871794871796,
+        "coalition_rmst_ticks_mean_valid_runs": 53.99851594483948,
+        "legitimacy_internal_mean": 0.6054927560114972,
+        "capture_pressure_mean": 0.5800000000000001,
+        "bureaucracy_politicization_mean": 0.37138315699883023,
+        "civil_society_legitimacy_proxy_mean": 0.6034965218581686,
+        "proposal_pass_fraction_mean_valid_runs": 0.6809309309309309
+      }
+    },
+    {
+      "point_id": 37,
+      "parameters": {
+        "theta_pair": 0.45921645626508373,
+        "material_exec_multiplier": 0.9633461440816201,
+        "emergency_support_probability": 0.3217063769410234,
+        "audit_detection_prob": 0.5120821624001526,
+        "verification_accuracy": 0.7689705758885119,
+        "trust_learning_rate": 0.1648607991222365,
+        "vote_support_intercept": 0.3019155504777831,
+        "bureaucracy_drift_rate": 0.00034874727591879703
+      },
+      "outputs": {
+        "cartel_capture_rate": 1.0,
+        "emergency_time_share_mean": 0.5525641025641027,
+        "coalition_rmst_ticks_mean_valid_runs": 19.75889132940991,
+        "legitimacy_internal_mean": 0.608347394028057,
+        "capture_pressure_mean": 0.5800000000000001,
+        "bureaucracy_politicization_mean": 0.32694400843443533,
+        "civil_society_legitimacy_proxy_mean": 0.6091694153413793,
+        "proposal_pass_fraction_mean_valid_runs": 0.6092342342342342
+      }
+    },
+    {
+      "point_id": 38,
+      "parameters": {
+        "theta_pair": 0.6037487237503141,
+        "material_exec_multiplier": 0.7087596770338274,
+        "emergency_support_probability": 0.5687533962016222,
+        "audit_detection_prob": 0.3878461295880774,
+        "verification_accuracy": 0.903187956265712,
+        "trust_learning_rate": 0.05692718101634496,
+        "vote_support_intercept": 0.4536559488460966,
+        "bureaucracy_drift_rate": 0.000563338651535674
+      },
+      "outputs": {
+        "cartel_capture_rate": 0.0,
+        "emergency_time_share_mean": 0.5647435897435898,
+        "coalition_rmst_ticks_mean_valid_runs": 81.18639369889372,
+        "legitimacy_internal_mean": 0.6238499559390638,
+        "capture_pressure_mean": 0.5800000000000001,
+        "bureaucracy_politicization_mean": 0.4050552691589749,
+        "civil_society_legitimacy_proxy_mean": 0.6235848547736785,
+        "proposal_pass_fraction_mean_valid_runs": 0.9582082082082083
+      }
+    },
+    {
+      "point_id": 39,
+      "parameters": {
+        "theta_pair": 0.5948573045071743,
+        "material_exec_multiplier": 0.8638051573081615,
+        "emergency_support_probability": 0.4602379291450056,
+        "audit_detection_prob": 0.45900575048419945,
+        "verification_accuracy": 0.6086368118219461,
+        "trust_learning_rate": 0.04670379431801834,
+        "vote_support_intercept": 0.4921990209306102,
+        "bureaucracy_drift_rate": 0.001232328820041148
+      },
+      "outputs": {
+        "cartel_capture_rate": 0.16666666666666666,
+        "emergency_time_share_mean": 0.5564102564102563,
+        "coalition_rmst_ticks_mean_valid_runs": 170.7166666666667,
+        "legitimacy_internal_mean": 0.6068374133207706,
+        "capture_pressure_mean": 0.5800000000000001,
+        "bureaucracy_politicization_mean": 0.6485676904949765,
+        "civil_society_legitimacy_proxy_mean": 0.6063777905268557,
+        "proposal_pass_fraction_mean_valid_runs": 0.9575825825825826
+      }
+    },
+    {
+      "point_id": 40,
+      "parameters": {
+        "theta_pair": 0.6581650698691521,
+        "material_exec_multiplier": 0.7036743424762819,
+        "emergency_support_probability": 0.7440654720346511,
+        "audit_detection_prob": 0.41070672808290687,
+        "verification_accuracy": 0.8361980510889439,
+        "trust_learning_rate": 0.11550369990457829,
+        "vote_support_intercept": 0.5113504217677556,
+        "bureaucracy_drift_rate": 0.0010056462601109775
+      },
+      "outputs": {
+        "cartel_capture_rate": 0.0,
+        "emergency_time_share_mean": 0.5775641025641026,
+        "coalition_rmst_ticks_mean_valid_runs": null,
+        "legitimacy_internal_mean": 0.6196039938175891,
+        "capture_pressure_mean": 0.5800000000000001,
+        "bureaucracy_politicization_mean": 0.5660552386804022,
+        "civil_society_legitimacy_proxy_mean": 0.6193815468580245,
+        "proposal_pass_fraction_mean_valid_runs": 0.9903653653653653
+      }
+    },
+    {
+      "point_id": 41,
+      "parameters": {
+        "theta_pair": 0.5142986791127019,
+        "material_exec_multiplier": 1.0547266093509207,
+        "emergency_support_probability": 0.5824115032777136,
+        "audit_detection_prob": 0.1951582663544288,
+        "verification_accuracy": 0.6500511977016873,
+        "trust_learning_rate": 0.1434592537153823,
+        "vote_support_intercept": 0.37565064739102894,
+        "bureaucracy_drift_rate": 0.0015183315916090653
+      },
+      "outputs": {
+        "cartel_capture_rate": 1.0,
+        "emergency_time_share_mean": 0.5666666666666665,
+        "coalition_rmst_ticks_mean_valid_runs": 137.95833333333334,
+        "legitimacy_internal_mean": 0.5785014135798277,
+        "capture_pressure_mean": 0.5800000000000001,
+        "bureaucracy_politicization_mean": 0.7526726993457064,
+        "civil_society_legitimacy_proxy_mean": 0.5804795428846855,
+        "proposal_pass_fraction_mean_valid_runs": 0.7229729729729731
+      }
+    },
+    {
+      "point_id": 42,
+      "parameters": {
+        "theta_pair": 0.5516387552399453,
+        "material_exec_multiplier": 0.7507989310201487,
+        "emergency_support_probability": 0.7510265686249911,
+        "audit_detection_prob": 0.1257804448045114,
+        "verification_accuracy": 0.8244684395740296,
+        "trust_learning_rate": 0.18616167923812038,
+        "vote_support_intercept": 0.2627432660989028,
+        "bureaucracy_drift_rate": 0.0008926659813801957
+      },
+      "outputs": {
+        "cartel_capture_rate": 0.0,
+        "emergency_time_share_mean": 0.5756410256410257,
+        "coalition_rmst_ticks_mean_valid_runs": 178.443253968254,
+        "legitimacy_internal_mean": 0.6137174739855685,
+        "capture_pressure_mean": 0.58,
+        "bureaucracy_politicization_mean": 0.52493041722238,
+        "civil_society_legitimacy_proxy_mean": 0.61451317382723,
+        "proposal_pass_fraction_mean_valid_runs": 0.511011011011011
+      }
+    },
+    {
+      "point_id": 43,
+      "parameters": {
+        "theta_pair": 0.5427730172543065,
+        "material_exec_multiplier": 0.7432131315302997,
+        "emergency_support_probability": 0.5565152731031225,
+        "audit_detection_prob": 0.42529131627312444,
+        "verification_accuracy": 0.8199476647975141,
+        "trust_learning_rate": 0.16975688991413093,
+        "vote_support_intercept": 0.26870406553057014,
+        "bureaucracy_drift_rate": 0.0018042609470759435
+      },
+      "outputs": {
+        "cartel_capture_rate": 0.0,
+        "emergency_time_share_mean": 0.5605769230769231,
+        "coalition_rmst_ticks_mean_valid_runs": 67.09050925925926,
+        "legitimacy_internal_mean": 0.6149260431490352,
+        "capture_pressure_mean": 0.5800000000000001,
+        "bureaucracy_politicization_mean": 0.8567509847356279,
+        "civil_society_legitimacy_proxy_mean": 0.6152419913704055,
+        "proposal_pass_fraction_mean_valid_runs": 0.5252752752752753
+      }
+    },
+    {
+      "point_id": 44,
+      "parameters": {
+        "theta_pair": 0.565637521502801,
+        "material_exec_multiplier": 0.8784042767238235,
+        "emergency_support_probability": 0.40295986728895,
+        "audit_detection_prob": 0.45473605693041363,
+        "verification_accuracy": 0.8470465081623303,
+        "trust_learning_rate": 0.0760314494085386,
+        "vote_support_intercept": 0.2858365398865811,
+        "bureaucracy_drift_rate": 0.0018162202015941057
+      },
+      "outputs": {
+        "cartel_capture_rate": 1.0,
+        "emergency_time_share_mean": 0.5548076923076923,
+        "coalition_rmst_ticks_mean_valid_runs": 59.855555555555576,
+        "legitimacy_internal_mean": 0.6202960340643707,
+        "capture_pressure_mean": 0.5800000000000001,
+        "bureaucracy_politicization_mean": 0.8611041533802662,
+        "civil_society_legitimacy_proxy_mean": 0.6212431260532657,
+        "proposal_pass_fraction_mean_valid_runs": 0.6114864864864865
+      }
+    },
+    {
+      "point_id": 45,
+      "parameters": {
+        "theta_pair": 0.5037708418032916,
+        "material_exec_multiplier": 0.9076560982302939,
+        "emergency_support_probability": 0.7817611870061767,
+        "audit_detection_prob": 0.2310519934598409,
+        "verification_accuracy": 0.7462799916655412,
+        "trust_learning_rate": 0.08372333351228792,
+        "vote_support_intercept": 0.49497349704507865,
+        "bureaucracy_drift_rate": 0.0007135330992071175
+      },
+      "outputs": {
+        "cartel_capture_rate": 1.0,
+        "emergency_time_share_mean": 0.5798076923076924,
+        "coalition_rmst_ticks_mean_valid_runs": 78.41819846819847,
+        "legitimacy_internal_mean": 0.6151688509890875,
+        "capture_pressure_mean": 0.5796537992173014,
+        "bureaucracy_politicization_mean": 0.4597260481113928,
+        "civil_society_legitimacy_proxy_mean": 0.6139333580006678,
+        "proposal_pass_fraction_mean_valid_runs": 0.976976976976977
+      }
+    },
+    {
+      "point_id": 46,
+      "parameters": {
+        "theta_pair": 0.697454608139171,
+        "material_exec_multiplier": 0.8940444654237473,
+        "emergency_support_probability": 0.7060877644965211,
+        "audit_detection_prob": 0.46971706313074435,
+        "verification_accuracy": 0.8532474498331587,
+        "trust_learning_rate": 0.17550930809947352,
+        "vote_support_intercept": 0.298805757251065,
+        "bureaucracy_drift_rate": 0.0007797276509257969
+      },
+      "outputs": {
+        "cartel_capture_rate": 0.0,
+        "emergency_time_share_mean": 0.5740384615384615,
+        "coalition_rmst_ticks_mean_valid_runs": null,
+        "legitimacy_internal_mean": 0.615914290868588,
+        "capture_pressure_mean": 0.5800000000000001,
+        "bureaucracy_politicization_mean": 0.48382086493699633,
+        "civil_society_legitimacy_proxy_mean": 0.617804818515081,
+        "proposal_pass_fraction_mean_valid_runs": 0.6303803803803804
+      }
+    },
+    {
+      "point_id": 47,
+      "parameters": {
+        "theta_pair": 0.5337749668256426,
+        "material_exec_multiplier": 0.9393377791596169,
+        "emergency_support_probability": 0.7548430098018094,
+        "audit_detection_prob": 0.25480857646773225,
+        "verification_accuracy": 0.7978651844444163,
+        "trust_learning_rate": 0.03410302507375289,
+        "vote_support_intercept": 0.3569264459584813,
+        "bureaucracy_drift_rate": 0.0012958728770230705
+      },
+      "outputs": {
+        "cartel_capture_rate": 1.0,
+        "emergency_time_share_mean": 0.5740384615384615,
+        "coalition_rmst_ticks_mean_valid_runs": 101.38257575757576,
+        "legitimacy_internal_mean": 0.6224164374944127,
+        "capture_pressure_mean": 0.58,
+        "bureaucracy_politicization_mean": 0.6716977272364043,
+        "civil_society_legitimacy_proxy_mean": 0.6224657711879263,
+        "proposal_pass_fraction_mean_valid_runs": 0.7960460460460461
+      }
+    },
+    {
+      "point_id": 48,
+      "parameters": {
+        "theta_pair": 0.54863795419677,
+        "material_exec_multiplier": 0.774988939149851,
+        "emergency_support_probability": 0.7885631255264096,
+        "audit_detection_prob": 0.357006912417804,
+        "verification_accuracy": 0.7561168744382408,
+        "trust_learning_rate": 0.16258396811787912,
+        "vote_support_intercept": 0.3930062193029939,
+        "bureaucracy_drift_rate": 0.00010387491626230567
+      },
+      "outputs": {
+        "cartel_capture_rate": 0.0,
+        "emergency_time_share_mean": 0.5775641025641026,
+        "coalition_rmst_ticks_mean_valid_runs": 78.47435573685574,
+        "legitimacy_internal_mean": 0.603414377722639,
+        "capture_pressure_mean": 0.5800000000000001,
+        "bureaucracy_politicization_mean": 0.23781046951948584,
+        "civil_society_legitimacy_proxy_mean": 0.6053583602049268,
+        "proposal_pass_fraction_mean_valid_runs": 0.833958958958959
+      }
+    },
+    {
+      "point_id": 49,
+      "parameters": {
+        "theta_pair": 0.6305596259285583,
+        "material_exec_multiplier": 0.72845503201322,
+        "emergency_support_probability": 0.31349934227836135,
+        "audit_detection_prob": 0.5172267860464502,
+        "verification_accuracy": 0.9120530657584773,
+        "trust_learning_rate": 0.18374159570957746,
+        "vote_support_intercept": 0.33698567347286745,
+        "bureaucracy_drift_rate": 0.001132851102124452
+      },
+      "outputs": {
+        "cartel_capture_rate": 0.0,
+        "emergency_time_share_mean": 0.5522435897435898,
+        "coalition_rmst_ticks_mean_valid_runs": null,
+        "legitimacy_internal_mean": 0.6196640698215654,
+        "capture_pressure_mean": 0.5800000000000001,
+        "bureaucracy_politicization_mean": 0.6123578011733076,
+        "civil_society_legitimacy_proxy_mean": 0.61970102346812,
+        "proposal_pass_fraction_mean_valid_runs": 0.755005005005005
+      }
+    },
+    {
+      "point_id": 50,
+      "parameters": {
+        "theta_pair": 0.5310246992039508,
+        "material_exec_multiplier": 1.021221173419315,
+        "emergency_support_probability": 0.6835322218898421,
+        "audit_detection_prob": 0.668692971957788,
+        "verification_accuracy": 0.8571456991699574,
+        "trust_learning_rate": 0.18882442830788976,
+        "vote_support_intercept": 0.40798929470546086,
+        "bureaucracy_drift_rate": 2.0558888864455525e-05
+      },
+      "outputs": {
+        "cartel_capture_rate": 1.0,
+        "emergency_time_share_mean": 0.5746794871794871,
+        "coalition_rmst_ticks_mean_valid_runs": 42.47463235294118,
+        "legitimacy_internal_mean": 0.6152249980295158,
+        "capture_pressure_mean": 0.57983120584884,
+        "bureaucracy_politicization_mean": 0.2074834355466613,
+        "civil_society_legitimacy_proxy_mean": 0.6157909240902762,
+        "proposal_pass_fraction_mean_valid_runs": 0.8866366366366365
+      }
+    },
+    {
+      "point_id": 51,
+      "parameters": {
+        "theta_pair": 0.6154069187284394,
+        "material_exec_multiplier": 1.0904427911174257,
+        "emergency_support_probability": 0.563592147425261,
+        "audit_detection_prob": 0.3764778505339186,
+        "verification_accuracy": 0.7627807239937199,
+        "trust_learning_rate": 0.1181087141228071,
+        "vote_support_intercept": 0.315705255191804,
+        "bureaucracy_drift_rate": 0.0004573154080045441
+      },
+      "outputs": {
+        "cartel_capture_rate": 0.16666666666666666,
+        "emergency_time_share_mean": 0.5621794871794871,
+        "coalition_rmst_ticks_mean_valid_runs": 153.44128787878788,
+        "legitimacy_internal_mean": 0.6133680811848751,
+        "capture_pressure_mean": 0.5800000000000001,
+        "bureaucracy_politicization_mean": 0.36646280851364993,
+        "civil_society_legitimacy_proxy_mean": 0.6120841452767912,
+        "proposal_pass_fraction_mean_valid_runs": 0.6572822822822822
+      }
+    },
+    {
+      "point_id": 52,
+      "parameters": {
+        "theta_pair": 0.5820203253098288,
+        "material_exec_multiplier": 0.9765505045455023,
+        "emergency_support_probability": 0.3888446401719681,
+        "audit_detection_prob": 0.6289203684818113,
+        "verification_accuracy": 0.6867584433826632,
+        "trust_learning_rate": 0.12551199367518354,
+        "vote_support_intercept": 0.418987298161012,
+        "bureaucracy_drift_rate": 0.0017727587915218762
+      },
+      "outputs": {
+        "cartel_capture_rate": 0.6666666666666666,
+        "emergency_time_share_mean": 0.555448717948718,
+        "coalition_rmst_ticks_mean_valid_runs": 61.85747354497355,
+        "legitimacy_internal_mean": 0.5963264154590843,
+        "capture_pressure_mean": 0.58,
+        "bureaucracy_politicization_mean": 0.8452842001139648,
+        "civil_society_legitimacy_proxy_mean": 0.5980197136450475,
+        "proposal_pass_fraction_mean_valid_runs": 0.8677427427427427
+      }
+    },
+    {
+      "point_id": 53,
+      "parameters": {
+        "theta_pair": 0.5165255437237842,
+        "material_exec_multiplier": 0.947114718557885,
+        "emergency_support_probability": 0.38408334326497817,
+        "audit_detection_prob": 0.10303551043938003,
+        "verification_accuracy": 0.9206533074157888,
+        "trust_learning_rate": 0.1237100887440878,
+        "vote_support_intercept": 0.41802997633868666,
+        "bureaucracy_drift_rate": 0.0014534260178104034
+      },
+      "outputs": {
+        "cartel_capture_rate": 1.0,
+        "emergency_time_share_mean": 0.5535256410256411,
+        "coalition_rmst_ticks_mean_valid_runs": 170.02182539682542,
+        "legitimacy_internal_mean": 0.621876007859998,
+        "capture_pressure_mean": 0.5800000000000001,
+        "bureaucracy_politicization_mean": 0.7290470704829798,
+        "civil_society_legitimacy_proxy_mean": 0.6224698752614802,
+        "proposal_pass_fraction_mean_valid_runs": 0.91504004004004
+      }
+    },
+    {
+      "point_id": 54,
+      "parameters": {
+        "theta_pair": 0.5986668457310523,
+        "material_exec_multiplier": 0.8011364645509369,
+        "emergency_support_probability": 0.5911294257785709,
+        "audit_detection_prob": 0.6497576575947738,
+        "verification_accuracy": 0.814141227167032,
+        "trust_learning_rate": 0.10741852844903947,
+        "vote_support_intercept": 0.2583193217207792,
+        "bureaucracy_drift_rate": 0.0007253641121013857
+      },
+      "outputs": {
+        "cartel_capture_rate": 0.3333333333333333,
+        "emergency_time_share_mean": 0.5660256410256409,
+        "coalition_rmst_ticks_mean_valid_runs": 67.46323953823953,
+        "legitimacy_internal_mean": 0.6175403799688167,
+        "capture_pressure_mean": 0.5800000000000001,
+        "bureaucracy_politicization_mean": 0.4640325368049119,
+        "civil_society_legitimacy_proxy_mean": 0.6175894466888237,
+        "proposal_pass_fraction_mean_valid_runs": 0.5062562562562563
+      }
+    },
+    {
+      "point_id": 55,
+      "parameters": {
+        "theta_pair": 0.5252224912053419,
+        "material_exec_multiplier": 1.0742949689252166,
+        "emergency_support_probability": 0.6030030840577194,
+        "audit_detection_prob": 0.36703875819839715,
+        "verification_accuracy": 0.9000569364517842,
+        "trust_learning_rate": 0.07192049464818011,
+        "vote_support_intercept": 0.5270946474937619,
+        "bureaucracy_drift_rate": 0.0016648234600183734
+      },
+      "outputs": {
+        "cartel_capture_rate": 1.0,
+        "emergency_time_share_mean": 0.5676282051282051,
+        "coalition_rmst_ticks_mean_valid_runs": 94.13686267436269,
+        "legitimacy_internal_mean": 0.6225481649551757,
+        "capture_pressure_mean": 0.5800000000000001,
+        "bureaucracy_politicization_mean": 0.8059957394466898,
+        "civil_society_legitimacy_proxy_mean": 0.6226234447206299,
+        "proposal_pass_fraction_mean_valid_runs": 0.9941191191191193
+      }
+    },
+    {
+      "point_id": 56,
+      "parameters": {
+        "theta_pair": 0.51116246240124,
+        "material_exec_multiplier": 1.095746255422985,
+        "emergency_support_probability": 0.6774916999339133,
+        "audit_detection_prob": 0.13869629348187654,
+        "verification_accuracy": 0.8096938584684757,
+        "trust_learning_rate": 0.023872665918710193,
+        "vote_support_intercept": 0.41276038332553533,
+        "bureaucracy_drift_rate": 0.0009806336976759728
+      },
+      "outputs": {
+        "cartel_capture_rate": 1.0,
+        "emergency_time_share_mean": 0.5701923076923077,
+        "coalition_rmst_ticks_mean_valid_runs": 123.82301587301588,
+        "legitimacy_internal_mean": 0.6235531717625024,
+        "capture_pressure_mean": 0.5800000000000001,
+        "bureaucracy_politicization_mean": 0.5569506659540523,
+        "civil_society_legitimacy_proxy_mean": 0.6235104772276622,
+        "proposal_pass_fraction_mean_valid_runs": 0.8976476476476476
+      }
+    },
+    {
+      "point_id": 57,
+      "parameters": {
+        "theta_pair": 0.48021988825386147,
+        "material_exec_multiplier": 0.8597253830610601,
+        "emergency_support_probability": 0.30699723512369254,
+        "audit_detection_prob": 0.21190507260993885,
+        "verification_accuracy": 0.6675030144445594,
+        "trust_learning_rate": 0.13527258526090713,
+        "vote_support_intercept": 0.43045419979565847,
+        "bureaucracy_drift_rate": 0.0013893813783803102
+      },
+      "outputs": {
+        "cartel_capture_rate": 1.0,
+        "emergency_time_share_mean": 0.5525641025641027,
+        "coalition_rmst_ticks_mean_valid_runs": 76.01898148148149,
+        "legitimacy_internal_mean": 0.5910845114784176,
+        "capture_pressure_mean": 0.5800000000000001,
+        "bureaucracy_politicization_mean": 0.7057348217304346,
+        "civil_society_legitimacy_proxy_mean": 0.5922931654103726,
+        "proposal_pass_fraction_mean_valid_runs": 0.8717467467467469
+      }
+    },
+    {
+      "point_id": 58,
+      "parameters": {
+        "theta_pair": 0.6795606109735723,
+        "material_exec_multiplier": 0.9058341338581863,
+        "emergency_support_probability": 0.6960130359016959,
+        "audit_detection_prob": 0.21679151072111708,
+        "verification_accuracy": 0.8926992208893685,
+        "trust_learning_rate": 0.08063475920141541,
+        "vote_support_intercept": 0.3144686449207054,
+        "bureaucracy_drift_rate": 0.0017134689545313252
+      },
+      "outputs": {
+        "cartel_capture_rate": 0.0,
+        "emergency_time_share_mean": 0.5746794871794871,
+        "coalition_rmst_ticks_mean_valid_runs": null,
+        "legitimacy_internal_mean": 0.6234728265302764,
+        "capture_pressure_mean": 0.5800000000000001,
+        "bureaucracy_politicization_mean": 0.8237026994493896,
+        "civil_society_legitimacy_proxy_mean": 0.6226983182504574,
+        "proposal_pass_fraction_mean_valid_runs": 0.6943193193193192
+      }
+    },
+    {
+      "point_id": 59,
+      "parameters": {
+        "theta_pair": 0.5941564457348848,
+        "material_exec_multiplier": 1.0089274841312008,
+        "emergency_support_probability": 0.4432959120720449,
+        "audit_detection_prob": 0.32500187054908836,
+        "verification_accuracy": 0.6933773277349069,
+        "trust_learning_rate": 0.054205543481392546,
+        "vote_support_intercept": 0.4488864139653371,
+        "bureaucracy_drift_rate": 0.0013520047700517413
+      },
+      "outputs": {
+        "cartel_capture_rate": 0.3333333333333333,
+        "emergency_time_share_mean": 0.557051282051282,
+        "coalition_rmst_ticks_mean_valid_runs": 126.17513227513228,
+        "legitimacy_internal_mean": 0.6145969158975105,
+        "capture_pressure_mean": 0.5800000000000001,
+        "bureaucracy_politicization_mean": 0.6921297362988273,
+        "civil_society_legitimacy_proxy_mean": 0.6146755173217703,
+        "proposal_pass_fraction_mean_valid_runs": 0.9384384384384382
+      }
+    },
+    {
+      "point_id": 60,
+      "parameters": {
+        "theta_pair": 0.6899256619788772,
+        "material_exec_multiplier": 0.8814437843087726,
+        "emergency_support_probability": 0.3751067511663459,
+        "audit_detection_prob": 0.6147362876648482,
+        "verification_accuracy": 0.6021589774406853,
+        "trust_learning_rate": 0.10699513429344412,
+        "vote_support_intercept": 0.3873973301052806,
+        "bureaucracy_drift_rate": 0.00020653743769406731
+      },
+      "outputs": {
+        "cartel_capture_rate": 0.0,
+        "emergency_time_share_mean": 0.5544871794871796,
+        "coalition_rmst_ticks_mean_valid_runs": null,
+        "legitimacy_internal_mean": 0.5854067590561284,
+        "capture_pressure_mean": 0.5800000000000001,
+        "bureaucracy_politicization_mean": 0.2751796273206473,
+        "civil_society_legitimacy_proxy_mean": 0.5853405704927469,
+        "proposal_pass_fraction_mean_valid_runs": 0.7203453453453453
+      }
+    },
+    {
+      "point_id": 61,
+      "parameters": {
+        "theta_pair": 0.53739724752847,
+        "material_exec_multiplier": 1.06364341940574,
+        "emergency_support_probability": 0.6121334849353733,
+        "audit_detection_prob": 0.6045979488370394,
+        "verification_accuracy": 0.6775353564637171,
+        "trust_learning_rate": 0.021915135767382042,
+        "vote_support_intercept": 0.2542292400446213,
+        "bureaucracy_drift_rate": 0.0008399519282473889
+      },
+      "outputs": {
+        "cartel_capture_rate": 1.0,
+        "emergency_time_share_mean": 0.5663461538461538,
+        "coalition_rmst_ticks_mean_valid_runs": 53.95855022170813,
+        "legitimacy_internal_mean": 0.6199086048217194,
+        "capture_pressure_mean": 0.5800000000000001,
+        "bureaucracy_politicization_mean": 0.5057425018820411,
+        "civil_society_legitimacy_proxy_mean": 0.619952265050521,
+        "proposal_pass_fraction_mean_valid_runs": 0.4771021021021021
+      }
+    },
+    {
+      "point_id": 62,
+      "parameters": {
+        "theta_pair": 0.6268519831882636,
+        "material_exec_multiplier": 0.8401967447309495,
+        "emergency_support_probability": 0.7269981623059334,
+        "audit_detection_prob": 0.3382618447588675,
+        "verification_accuracy": 0.7945602970328938,
+        "trust_learning_rate": 0.06226336119974489,
+        "vote_support_intercept": 0.39548452921012045,
+        "bureaucracy_drift_rate": 0.0005264885458827361
+      },
+      "outputs": {
+        "cartel_capture_rate": 0.0,
+        "emergency_time_share_mean": 0.5759615384615384,
+        "coalition_rmst_ticks_mean_valid_runs": null,
+        "legitimacy_internal_mean": 0.6200472326318386,
+        "capture_pressure_mean": 0.58,
+        "bureaucracy_politicization_mean": 0.39164183070132635,
+        "civil_society_legitimacy_proxy_mean": 0.619676634130259,
+        "proposal_pass_fraction_mean_valid_runs": 0.869994994994995
+      }
+    },
+    {
+      "point_id": 63,
+      "parameters": {
+        "theta_pair": 0.4567193346223157,
+        "material_exec_multiplier": 0.9211779548858418,
+        "emergency_support_probability": 0.3525759216440997,
+        "audit_detection_prob": 0.29975324593168345,
+        "verification_accuracy": 0.7485397678637669,
+        "trust_learning_rate": 0.02663762547874827,
+        "vote_support_intercept": 0.4378806086962671,
+        "bureaucracy_drift_rate": 0.0002511605644724639
+      },
+      "outputs": {
+        "cartel_capture_rate": 1.0,
+        "emergency_time_share_mean": 0.5538461538461538,
+        "coalition_rmst_ticks_mean_valid_runs": 30.252349286356644,
+        "legitimacy_internal_mean": 0.6222420640287154,
+        "capture_pressure_mean": 0.5800000000000001,
+        "bureaucracy_politicization_mean": 0.29142244546797363,
+        "civil_society_legitimacy_proxy_mean": 0.6221506840154917,
+        "proposal_pass_fraction_mean_valid_runs": 0.9284284284284284
+      }
+    }
+  ],
+  "elapsed_seconds": 180.695,
+  "interpretation_boundary": "Paired exploratory behavior-space comparison after a software-rule correction. Rank correlations are screening statistics, not causal effects or real-world political probabilities."
+}

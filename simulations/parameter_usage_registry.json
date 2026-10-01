@@ -1,0 +1,309 @@
+{
+  "schema": "twelve-gates/parameter-usage-registry/v1",
+  "audited_against": "research/v0.32-execution-audit",
+  "claim_boundary": "Software reachability/usage audit only. ACTIVE does not mean empirically valid; INERT does not mean normatively unimportant.",
+  "statuses": {
+    "ACTIVE": "Directly changes current ABM state transitions or reported outputs.",
+    "PARTIAL": "Used in a limited path but does not implement the broader documented construct.",
+    "DIAGNOSTIC_ONLY": "Computed/stored but does not currently drive the main ABM transition logic.",
+    "INERT_MAIN_ABM": "Present in config/state but does not currently affect main ABM dynamics.",
+    "INTERFACE_ONLY": "Enforced in a separate interface/formal layer, not behaviorally coupled to main ABM."
+  },
+  "entries": [
+    {
+      "path": "time.rotation_period_ticks",
+      "status": "ACTIVE",
+      "evidence": "TwelveGatesModel.rotation_index"
+    },
+    {
+      "path": "time.emergency_fuse_ticks",
+      "status": "ACTIVE",
+      "evidence": "TwelveGatesModel.process_emergency"
+    },
+    {
+      "path": "time.budget_review_period_ticks",
+      "status": "PARTIAL",
+      "evidence": "Used as the denominator for per-tick annual-delta cap; a discrete periodic review event is still not implemented."
+    },
+    {
+      "path": "emergency_extension.support_probability",
+      "status": "ACTIVE",
+      "evidence": "Individual simulated extension votes."
+    },
+    {
+      "path": "emergency_extension.required_fraction",
+      "status": "ACTIVE",
+      "evidence": "Extension threshold calculation."
+    },
+    {
+      "path": "budget.annual_delta_cap",
+      "status": "ACTIVE",
+      "evidence": "Proposal delta cap."
+    },
+    {
+      "path": "budget.reallocation_rule",
+      "status": "ACTIVE",
+      "evidence": "Implementation supports and enforces the qualified_majority rule explicitly."
+    },
+    {
+      "path": "budget.reallocation_required_fraction",
+      "status": "ACTIVE",
+      "evidence": "Used to compute ceil(fraction * 12); baseline 2/3 requires 8 yes votes."
+    },
+    {
+      "path": "coalitions.weights",
+      "status": "ACTIVE",
+      "evidence": "Bilateral coalition score."
+    },
+    {
+      "path": "coalitions.theta_pair",
+      "status": "ACTIVE",
+      "evidence": "Coalition formation threshold."
+    },
+    {
+      "path": "coalitions.theta_audit",
+      "status": "INERT_MAIN_ABM",
+      "evidence": "Present in baseline config but current audit detection path does not read it."
+    },
+    {
+      "path": "coalitions.trust_dissolve_floor",
+      "status": "ACTIVE",
+      "evidence": "Coalition dissolution."
+    },
+    {
+      "path": "coalitions.crisis_divergence_max",
+      "status": "INERT_MAIN_ABM",
+      "evidence": "Present in config but not read by current coalition logic."
+    },
+    {
+      "path": "coalitions.cartel.K_min_duration_ticks",
+      "status": "ACTIVE",
+      "evidence": "Cartel criterion requires active duration."
+    },
+    {
+      "path": "coalitions.cartel.theta_power_sum",
+      "status": "ACTIVE",
+      "evidence": "Cartel power threshold."
+    },
+    {
+      "path": "coalitions.cartel.M_consecutive_decisions",
+      "status": "ACTIVE",
+      "evidence": "Cartel criterion requires consecutive passed decisions."
+    },
+    {
+      "path": "coalitions.cartel.material_cluster",
+      "status": "ACTIVE",
+      "evidence": "Capture pressure and cartel membership criterion."
+    },
+    {
+      "path": "gate.resource_share",
+      "status": "ACTIVE",
+      "evidence": "Coalition score, capture pressure, proposal implementation and conservation."
+    },
+    {
+      "path": "gate.exec_power",
+      "status": "ACTIVE",
+      "evidence": "Cartel power sum."
+    },
+    {
+      "path": "gate.trust_row",
+      "status": "ACTIVE",
+      "evidence": "Coalition score, voting and internal legitimacy."
+    },
+    {
+      "path": "gate.affinity_row",
+      "status": "ACTIVE",
+      "evidence": "Coalition score and capture-pressure proxy."
+    },
+    {
+      "path": "gate.info_reliability",
+      "status": "ACTIVE",
+      "evidence": "Report truth generation."
+    },
+    {
+      "path": "gate.audit_exposure",
+      "status": "ACTIVE",
+      "evidence": "Coalition score, dissent chilling and audit detection."
+    },
+    {
+      "path": "gate.initial_crisis_load",
+      "status": "ACTIVE",
+      "evidence": "Proposal/emergency activation path."
+    },
+    {
+      "path": "gate.legitimacy_internal",
+      "status": "ACTIVE",
+      "evidence": "Initial state; later updated from modeled trust."
+    },
+    {
+      "path": "gate.external_exposure",
+      "status": "PARTIAL",
+      "evidence": "Updated by shocks but not currently used in downstream main transitions."
+    },
+    {
+      "path": "gate.overlap_row",
+      "status": "ACTIVE",
+      "evidence": "Coalition score and capture-pressure proxy."
+    },
+    {
+      "path": "gate.memory_dependence",
+      "status": "INERT_MAIN_ABM",
+      "evidence": "Stored on GateAgent but not read by current transition rules."
+    },
+    {
+      "path": "gate.critical_report_threshold",
+      "status": "ACTIVE",
+      "evidence": "Critical-report classification."
+    },
+    {
+      "path": "gate.verification_accuracy",
+      "status": "ACTIVE",
+      "evidence": "Cross-verification."
+    },
+    {
+      "path": "gate.decision_backlog",
+      "status": "PARTIAL",
+      "evidence": "Can trigger proposals and is decremented, but current main model has no endogenous increment path."
+    },
+    {
+      "path": "gate.coalition_propensity",
+      "status": "DIAGNOSTIC_ONLY",
+      "evidence": "Computed each tick but coalition formation uses bilateral pair score instead."
+    },
+    {
+      "path": "mirror13.enabled",
+      "status": "INERT_MAIN_ABM",
+      "evidence": "Mirror13Subsystem instantiated; helper methods are not called by main ABM stages."
+    },
+    {
+      "path": "mirror13.coordination_gain",
+      "status": "INERT_MAIN_ABM",
+      "evidence": "Only used by Mirror13Subsystem helper methods not coupled to main stages."
+    },
+    {
+      "path": "gate_zero.admission_threshold",
+      "status": "INERT_MAIN_ABM",
+      "evidence": "Stored in GateZeroProcess config; no main ABM admission lifecycle."
+    },
+    {
+      "path": "gate_zero.measurement_noise_sd",
+      "status": "INERT_MAIN_ABM",
+      "evidence": "Stored in config; no main ABM admission measurement path."
+    },
+    {
+      "path": "gate_zero.entropy_manipulability",
+      "status": "DIAGNOSTIC_ONLY",
+      "evidence": "Exposed by helper method, not used in main ABM transition logic."
+    },
+    {
+      "path": "gate_zero.appeal_board",
+      "status": "INERT_MAIN_ABM",
+      "evidence": "Placeholder config; separate GateZeroInterface implements lifecycle without behavioral probabilities."
+    },
+    {
+      "path": "emergency_court.independence_mode",
+      "status": "ACTIVE",
+      "evidence": "Court extension approval/erosion path."
+    },
+    {
+      "path": "emergency_court.erosion_rate",
+      "status": "ACTIVE",
+      "evidence": "Court independence erosion per extension review."
+    },
+    {
+      "path": "bureaucracy.memory_stock",
+      "status": "ACTIVE",
+      "evidence": "Politicization drift."
+    },
+    {
+      "path": "bureaucracy.politicization_risk",
+      "status": "ACTIVE",
+      "evidence": "Updated and reported output proxy."
+    },
+    {
+      "path": "bureaucracy.service_continuity",
+      "status": "PARTIAL",
+      "evidence": "Can be degraded by system disaster, but not currently linked to decision latency despite comment."
+    },
+    {
+      "path": "bureaucracy.archive_integrity",
+      "status": "PARTIAL",
+      "evidence": "Can be degraded by disaster; no ledger integrity coupling."
+    },
+    {
+      "path": "bureaucracy.geo_redundancy",
+      "status": "ACTIVE",
+      "evidence": "Conditions disaster damage to archive/continuity."
+    },
+    {
+      "path": "bureaucracy.redundancy_floor",
+      "status": "ACTIVE",
+      "evidence": "Conditions disaster damage."
+    },
+    {
+      "path": "civil_society.mobilization_capacity",
+      "status": "INERT_MAIN_ABM",
+      "evidence": "Stored but not read in current transitions."
+    },
+    {
+      "path": "civil_society.oversight_strength",
+      "status": "INERT_MAIN_ABM",
+      "evidence": "Stored but not read in current transitions."
+    },
+    {
+      "path": "civil_society.media_visibility",
+      "status": "INERT_MAIN_ABM",
+      "evidence": "Stored but not read in current transitions."
+    },
+    {
+      "path": "civil_society.union_density_proxy",
+      "status": "INERT_MAIN_ABM",
+      "evidence": "Stored but not read in current transitions."
+    },
+    {
+      "path": "civil_society.public_legitimacy_signal",
+      "status": "PARTIAL",
+      "evidence": "Updated as an internal smoothing proxy; not measured public opinion."
+    },
+    {
+      "path": "armed_blocs",
+      "status": "PARTIAL",
+      "evidence": "Behavior exists if configured; baseline instantiates zero armed-bloc agents."
+    },
+    {
+      "path": "external_timeline",
+      "status": "ACTIVE",
+      "evidence": "Typed same-tick event driver with gate/system targets."
+    },
+    {
+      "path": "trust_dynamics.trust_learning_rate",
+      "status": "ACTIVE",
+      "evidence": "Trust update after report verification."
+    },
+    {
+      "path": "trust_dynamics.audit_detection_prob",
+      "status": "ACTIVE",
+      "evidence": "Coalition exposure audit probability."
+    },
+    {
+      "path": "trust_dynamics.dissent_chilling_beta",
+      "status": "ACTIVE",
+      "evidence": "Dissent-recording probability."
+    },
+    {
+      "path": "model_assumptions",
+      "status": "ACTIVE",
+      "evidence": "Explicit bundle replacing previously hard-coded behavioral constants."
+    },
+    {
+      "path": "GateZeroInterface",
+      "status": "INTERFACE_ONLY",
+      "evidence": "Separate bounded state machine; not coupled to main ABM behavior."
+    },
+    {
+      "path": "Mirror13Interface",
+      "status": "INTERFACE_ONLY",
+      "evidence": "Separate negative-competence contract; not coupled to main ABM behavior."
+    }
+  ]
+}
