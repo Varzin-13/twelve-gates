@@ -1,6 +1,6 @@
 {
   "schema": "twelve-gates/frozen-artifact-manifest/v1",
-  "rule": "Any content change to a frozen artifact must update this manifest explicitly in the same reviewed change.",
+  "rule": "Frozen artifacts are immutable provenance records. New corrected results must use new files; do not overwrite a frozen artifact.",
   "artifacts": [
     {
       "path": "simulations/results/stress_v032_execution_audit_results.json",
@@ -30,25 +30,36 @@
       "path": "simulations/results/stress_v032_post_budget_majority_results.json",
       "git_blob_sha": "0385e4ef43c2fa416f407bb405d0274b5b2b8af8",
       "class": "POST_BUDGET_FIX",
-      "claim_label": "software_effect_hypothesis"
+      "claim_label": "software_effect_hypothesis",
+      "note": "Generated after the 2/3 budget-threshold correction; may predate the later numeric-threshold tolerance correction unless its embedded git_head/model hash says otherwise."
     },
     {
       "path": "simulations/results/structural_robustness_v032_post_budget_results.json",
       "git_blob_sha": "468b84f82c4d0d00d0b99525d5a852f720131e6a",
       "class": "POST_BUDGET_FIX",
-      "claim_label": "exploratory_structural_uncertainty"
+      "claim_label": "exploratory_structural_uncertainty",
+      "note": "Generated after the 2/3 budget-threshold correction; may predate the later numeric-threshold tolerance correction unless its embedded git_head/model hash says otherwise."
     },
     {
       "path": "simulations/results/sensitivity_v032_lhs_post_budget_results.json",
       "git_blob_sha": "d964aae7246a18f8a2c625801a400832dd9eb4ca",
       "class": "POST_BUDGET_FIX",
-      "claim_label": "exploratory_hypothesis"
+      "claim_label": "exploratory_hypothesis",
+      "note": "Generated after the 2/3 budget-threshold correction; may predate the later numeric-threshold tolerance correction unless its embedded git_head/model hash says otherwise."
     },
     {
       "path": "simulations/results/phase_map_v032_post_budget_refined_results.json",
       "git_blob_sha": "91b661e5a4bd7df3c62882f8c2b237291693e0fb",
       "class": "POST_BUDGET_FIX_REFINED_PHASE",
-      "claim_label": "exploratory_refined_phase_map"
+      "claim_label": "exploratory_refined_phase_map",
+      "note": "Generated after the 2/3 budget-threshold correction; may predate the later numeric-threshold tolerance correction unless its embedded git_head/model hash says otherwise."
+    },
+    {
+      "path": "simulations/results/stress_v032_post_numeric_threshold_results.json",
+      "git_blob_sha": "f8be26cd7e3cc84dbc66995e293cb32de74bdfdf",
+      "class": "CURRENT_STRESS_AFTER_NUMERIC_THRESHOLD_FIX",
+      "claim_label": "software_effect_hypothesis",
+      "note": "Latest frozen 300x520 stress artifact in the v0.32 execution-audit lineage."
     }
   ]
 }
