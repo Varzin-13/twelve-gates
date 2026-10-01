@@ -2,10 +2,11 @@
 
 ## نصب و اجرای سریع
 ```bash
+cd simulations
 pip install numpy --break-system-packages
 python3 test_model.py                    # اجرای regression suite فعلی
 python3 run_model.py --list-params       # جدول منبع/وضعیت هر پارامتر
-python3 run_model.py --config baseline_config.json --n-runs 300 \
+python3 run_model.py --config results/baseline_config.json --n-runs 300 \
     --shock security,energy,economy --shock-magnitude 0.02 --out results.json
 ```
 
@@ -16,7 +17,7 @@ python3 run_model.py --config baseline_config.json --n-runs 300 \
 | `run_model.py` | رابط خط‌فرمان — اعتبارسنجی config، اعمال شوک، اجرای دسته‌ای |
 | `param_provenance.py` | جدول شفاف: کدام پارامتر از سند، کدام دلبخواه |
 | `test_model.py` | regression suite فعال — تعداد تست‌ها در CI گزارش می‌شود و ثابت فرض نمی‌شود |
-| `baseline_config.json` | نمونه کانفیگ قابل‌ویرایش (بدون دستکاری کد پایتون) |
+| `results/baseline_config.json` | نمونه کانفیگ قابل‌ویرایش (بدون دستکاری کد پایتون) |
 | `sensitivity_analysis.py` | تحلیل حساسیت سه پارامتر کلیدی |
 
 ## دو باگ واقعی که در ساخت همین ابزار پیدا و رفع شد

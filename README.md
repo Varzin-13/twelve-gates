@@ -1,116 +1,94 @@
-# Twelve Gates | دوازده گیت
+# Twelve Gates | دوازده گیت — v0.32
 
-**Research framework under audit — not an implementation-ready governance plan.**
+**چارچوب پژوهشی قابل‌ممیزی برای طراحی نهادی — نه طرح آمادهٔ اجرا و نه پیش‌بینی سیاسی.**
 
-**چارچوب پژوهشی تحت ممیزی — نه طرح آمادهٔ اجرا برای حکمرانی.**
+Twelve Gates is an auditable institutional-design research project with an executable hypothesis model, formal/software checks, parameter-provenance tracking, sensitivity analysis and frozen reproducibility artifacts.
 
-Twelve Gates is an auditable research framework and executable **hypothesis model** for a proposed decentralized, twelve-gate institutional design for Iran. The written proposal examines rotating council roles, Gate Zero, Mirror-13, emergency authority, and risks of concentrated material power. Code and stored simulations make selected assumptions inspectable; they do not establish that the institutions would work in practice or predict political outcomes.
+> Current scientific boundary: the model is reproducible, but it is not empirically calibrated for real-world political prediction. The calibration registry currently accepts **0 empirical parameter mappings**.
 
-دوازده گیت یک چارچوب پژوهشی برای طراحی و نقد نهادی است. شبیه‌سازی‌ها رفتار مدل را **تحت فرض‌های مشخص** نشان می‌دهند، نه اعتبار تجربی طرح یا پیش‌بینی آیندهٔ ایران.
+## Start here | شروع از اینجا
 
-## Research framework | چارچوب پژوهش
+- **[Final v0.32 Research Status](docs/FINAL_RESEARCH_STATUS_v0.32.md)** — current technical summary
+- **[Public project page](https://varzin-13.github.io/twelve-gates/)** — public landing page
+- **[Scientific execution audit](docs/SCIENTIFIC_EXECUTION_AUDIT_2026-09-30.md)**
+- **[ABM v2 ODD specification](docs/ABM_V2_ODD_SPEC.md)**
+- **[Formal execution specification](docs/FORMAL_EXECUTION_SPEC_v0_1.md)**
+- **[Calibration & validation plan](docs/ABM_V2_CALIBRATION_VALIDATION_PLAN.md)**
 
-The design documents ask how a decentralized council might distribute authority while facing coalition capture, prolonged emergency powers, coordination failure, and infrastructure disruption. They also retain unresolved problems and rejected proposals. Start with the [current design and audit history](CHANGELOG.md), the [public project framing](index.html), and the [contribution guide](CONTRIBUTING.md). Written proposals, software behavior, simulation outputs, and real-world evidence are different kinds of claims.
+## Current technical status
 
-## Executable model | مدل اجرایی
+| Layer | v0.32 status |
+|---|---|
+| Executable twelve-gate ABM | Implemented as a hypothesis model |
+| Regression / interface / invariant checks | Automated in GitHub Actions |
+| Parameter provenance | Machine-readable |
+| Active vs inert mechanism audit | Machine-readable |
+| Frozen result artifacts | Protected by Git blob hashes |
+| Formal layer | TLA+ research skeleton + finite-state checker |
+| Accepted empirical calibration mappings | **0** |
+| Real-world predictive validity | **Not established** |
+| Implementation readiness | **Not established** |## Key model findings — with claim boundary
 
-[simulations/twelve_gates_model.py](simulations/twelve_gates_model.py) implements a twelve-gate agent-based **hypothesis model** with manually staged updates, coalition and emergency logic, and simplified institutional components. It does not require the Mesa package. Gate Zero's appeal board is a placeholder, and other institutional behaviors are simplified. The executable model is intended to make assumptions inspectable and hypotheses testable in code. **It is not empirically calibrated for real-world prediction.**
+These are properties/results of the model under its assumptions, not probabilities of real political outcomes.
 
-[simulations/run_model.py](simulations/run_model.py) provides an `argparse` CLI with `--config`, `--n-runs`, `--max-ticks`, `--seed`, `--shock`, `--shock-magnitude`, `--out`, and `--list-params`. It normalizes numeric JSON dictionary keys and performs partial config validation. The CLI warns if a config lacks `claim_label: hypothesis`; it does not make an uncalibrated config valid for prediction.
+- Latest frozen 300×520 stress lineage after implementation/numeric corrections: coded capture endpoint **0.9700**.
+- Post-budget LHS screening: coded capture spans **0–1** across the exploratory parameter space; strongest rank associations are theta_pair ≈ **−0.707** and material-power multiplier ≈ **+0.577**.
+- The coded material-triad power boundary is mathematically **1.8 / 2.30 = 0.7826086957...**
+- Refined phase mapping shows zero modeled capture immediately below that power boundary and theta-dependent behavior immediately above it.
+- Structural alternatives for bilateral coalition-score aggregation change some outputs, showing structural-model uncertainty.
+- The fixed +6 audit schedule covers 12 of 132 possible non-self ordered coordinator-to-auditor pairs in one cycle.
 
-## Parameter provenance | منشأ پارامترها
+Full details and provenance: **[Final v0.32 Research Status](docs/FINAL_RESEARCH_STATUS_v0.32.md)**.
 
-The [parameter register](simulations/param_provenance.py) classifies **20 tracked parameter groups: 6 `DOCUMENT`, 3 `DESIGN`, and 11 `ARBITRARY`/uncalibrated**. The machine-readable [calibration registry](simulations/calibration_registry.json) currently accepts **0 empirical mappings**, intentionally; a parameter is not promoted to empirical merely because an external dataset exists.
+## Reproduce
 
-| Label | Meaning | Evidential boundary |
-|---|---|---|
-| `DOCUMENT` | An explicit rule or value in the project's source design document | Source-document provenance, **not** empirical calibration |
-| `DESIGN` | An engineered project choice | Documented choice, not a measured constant |
-| `ARBITRARY` | A scenario assumption without supporting calibration data | Its numerical effect must be tested and reported conditionally |
+Requirements: Python 3 and NumPy.
 
-The majority of tracked parameter groups are uncalibrated; consequential examples include coalition thresholds, initial executive power, trust matrices, institutional-response assumptions, and a 17-value behavioral-constants bundle that v0.32 moved out of hard-coded formulas into explicit configuration. The model and stored baseline config retain `claim_label: hypothesis`. **فرضیه، نه پیش‌بینی:** source-document rules and runnable code do not turn scenario parameters into measured facts.
+    cd simulations
+    python3 test_model.py
+    python3 test_institutional_interfaces.py
+    python3 validate_calibration_registry.py
+    python3 validate_parameter_usage_registry.py
+    python3 validate_frozen_artifacts.py
+    python3 audit_schedule.py
 
-## Three documented independent simulation questions | سه پرسش شبیه‌سازی مستقل مستندشده
+Then:
 
-[simulations/README.md](simulations/README.md) identifies three independent simulation questions/scripts that the repository describes as preregistered. The scripts state questions and failure criteria, but an external timestamped preregistration record has not been verified in this audit. Their outputs are simulation-only and depend on stipulated inputs.
+    cd ..
+    python3 formal/abstract_model_check.py
 
-| Script and question | Stored result under its assumptions | Essential limitation |
-|---|---|---|
-| [Scenario 1: coalition capture](simulations/scenario1_coalition_capture.py) — does a security–energy–economy coalition remain influential after proposed mitigations? | [Stored output](simulations/results/scenario1_results.json): mean modeled capture `0.2815 → 0.2392` (about 15.0% reduction); mitigated random-trio control `0.0990`. | Collusion, leverage, and mitigation effects are assumed; this is not a measured capture rate. |
-| [Scenario 2: emergency institutionalization](simulations/scenario2_emergency_institutionalization.py) — does a 14-day fuse with judicial review prevent prolonged emergency powers? | [Stored output](simulations/results/scenario2_results.json): mean emergency share of **war-active cycles** `0.7601 → 0.6982` with the modeled judicial check. | War continuation and judicial independence are assumed. The mean with review does **not** meet the script's stated `>80%` failure threshold; its separate `>50%` observation must not be confused with that threshold. |
-| [Scenario 3: simultaneous failure](simulations/scenario3_simultaneous_failure.py) — does geographic distribution shorten modeled recovery after a single-city disaster? | [Stored output](simulations/results/scenario3_results.json): mean modeled recovery `39.36`, `32.22`, and `20.56` days for one, two, and three cities. | The script stipulates which components are damaged and uses assumed repair times; it omits wider network failures. |
+The active CI workflow is .github/workflows/execution-audit.yml.
+Completed one-off experiment workflows are intentionally removed after their results are frozen.
 
-These figures are **committed results, not independently rerun results in this README**. They describe program outputs under specified assumptions, not forecasts for Iran.
+## Repository map
 
-## Additional scenarios and diagnostics | سناریوها و ابزارهای دیگر
+- index.html — public GitHub Pages landing page
+- docs/FINAL_RESEARCH_STATUS_v0.32.md — single current status document
+- docs/ — formal, methodological and audit documentation
+- simulations/twelve_gates_model.py — executable ABM core
+- simulations/run_model.py — CLI runner
+- simulations/results/ — frozen and versioned result artifacts
+- simulations/results/FROZEN_ARTIFACT_MANIFEST.json — artifact integrity manifest
+- formal/ — formal-specification research layer
+- CHANGELOG.md — correction and development history## Claim discipline
 
-The repository also contains [scenario 4](simulations/scenario4_guardian_model_deadline.py) and [scenario 5](simulations/scenario5_ncri_coalition.py). The v0.32 execution audit reclassifies both as **conditional synthetic sensitivity scripts**, not estimates of the success, failure, timing, or dominance probability of any real political actor or proposal. Their timing and leverage inputs are not empirically calibrated; see the [Scenario 4–5 claim-boundary audit](docs/SCENARIO4_5_CLAIM_BOUNDARY_AUDIT.md). Historical prose/results remain provenance artifacts and must not be read as outputs of the corrected v2 scripts. Other diagnostic artifacts include [baseline](simulations/run_baseline.py), [stress](simulations/run_stress.py), and [sensitivity](simulations/sensitivity_analysis.py) runners.
+This repository distinguishes:
+- software/mathematical properties;
+- simulation results conditional on model assumptions;
+- empirical institutional claims;
+- normative/constitutional choices.
 
-The [stored baseline](simulations/results/mesa_baseline_results.json) and [stored stress output](simulations/results/mesa_stress_results.json) both carry `claim_label: hypothesis`. `run_baseline.py` is configured for **300 runs**, reduced from a **3,000-run specification** for computational-time reasons; a 3,000-run baseline is not claimed. `run_stress.py` describes its run as a **functional sanity check**, not empirical validation. The v0.32 execution-audit code now gates the documented stress shock at tick 52. The historical committed stress JSON is **not** silently relabeled as a result of the corrected implementation and should be treated as a historical artifact until a provenance-complete rerun is committed.
+Evidence from one class is not automatically promoted into another.
 
-The [stored sensitivity output](simulations/results/sensitivity_results.json) changes sharply with some assumed inputs: modeled cartel capture is `1.0` at coalition threshold `0.60` and `0.0` at `0.65` in its recorded runs. This demonstrates parameter dependence within the model, **not** empirical validity. The sensitivity script's header describes 150 runs per variant, but its current executable setting is `N_RUNS = 40` and `MAX_TICKS = 400`; use the executable settings when describing that artifact.
+The project does not claim that code, algebra, cryptography or simulation can manufacture founding legitimacy, public acceptance, compliance, or successful political transition.
 
-The v0.32 [Latin-hypercube behavior-space exploration](simulations/results/sensitivity_v032_lhs_results.json) broadens that audit: across 64 exploratory points, modeled cartel capture spans `0.0–1.0` and is most strongly associated with `theta_pair` (rank correlation about `-0.708`) and the material-cluster executive-power multiplier (about `+0.540`). Modeled emergency-time share is strongly associated with the explicitly arbitrary extension-support probability (about `+0.982`). These are exploratory screening statistics over arbitrary ranges, not causal estimates or political forecasts.
+Historical scripts/results remain where necessary for reproducibility and are not the recommended starting point for new readers.
 
-## Reproduce and inspect | بازتولید و بررسی
+## License
 
-From the repository root, use a Python environment with NumPy for the model and Matplotlib for chart-producing scenario scripts. This repository does not currently provide a pinned dependency manifest. FreeSerif improves Persian chart rendering but is not required for numerical execution.
+- Software/code: [MIT](LICENSE)
+- Research prose/documentation: [CC BY-SA 4.0](LICENSE.md)
 
-```bash
-cd simulations
-python3 test_model.py
-python3 param_provenance.py
-python3 run_model.py --list-params
-python3 run_model.py --config results/baseline_config.json --n-runs 1 --max-ticks 10 --seed 42 --out /tmp/twelve-gates-demo.json
-```
+## Critique and contributions
 
-The committed [baseline configuration](simulations/results/baseline_config.json) has twelve gates, passes the CLI's current validator, and declares `claim_label: hypothesis`. The [model guide](README_mesa.md) gives further context; its example config path should be read as `results/baseline_config.json` when run from `simulations/`. The v0.32 [test script](simulations/test_model.py) now covers emergency-extension configuration, stress timing, resource conservation, bilateral coalition semantics, cartel decision streaks, dissent draws, external timeline behavior, exposed behavioral assumptions, claim-boundary outputs, and Z12/affine audit properties. A separate interface suite tests Gate Zero and Mirror-13 contracts. These are software tests, not political empirical validation. The baseline, stress, sensitivity, and scenario 1–3 JSON runners write to `simulations/results/` relative to their scripts. Scenarios 4 and 5 still use hard-coded `/home/claude/` JSON output paths. Stored JSON results and charts remain available under `simulations/results/` and `simulations/`.
-
-**Reproducibility means that computational procedures and assumptions are exposed for inspection and rerunning; it does not establish empirical validity of the underlying institutional assumptions.**
-
-**بازتولیدپذیری محاسباتی، جایگزین کالیبراسیون و آزمون تجربی نهادی نیست.**
-
-## Repository map | راهنمای مخزن
-
-- `README.md`, [README_mesa.md](README_mesa.md), [CHANGELOG.md](CHANGELOG.md), and [CONTRIBUTING.md](CONTRIBUTING.md): project overview, model guide, corrective history, and critique process.
-- `index.html` and Persian design/legal/history documents: public presentation and documentary proposals; these are not executable or legally adopted institutions.
-- `simulations/twelve_gates_model.py`, `run_model.py`, and `param_provenance.py`: model, CLI, and parameter register.
-- `simulations/scenario*.py`, `run_baseline.py`, `run_stress.py`, and `sensitivity_analysis.py`: distinct scenarios and diagnostics.
-- `simulations/results/`: committed configuration and reported output JSON; inspect each result with its own script and assumptions.
-
-## v0.32 execution-audit layer | لایهٔ ممیزی اجرایی v0.32
-
-This branch adds a separate execution-audit layer without declaring the governance design implementation-ready:
-
-- [Scientific & Execution Audit](docs/SCIENTIFIC_EXECUTION_AUDIT_2026-09-30.md)
-- [Formal Execution Specification v0.1](docs/FORMAL_EXECUTION_SPEC_v0_1.md)
-- [ABM v2 preregistration scaffold](docs/ABM_V2_ODD_TRACE_PREREG_2026-09-30.md)
-- [ABM v2 ODD specification](docs/ABM_V2_ODD_SPEC.md)
-- [ABM v2 calibration/validation plan](docs/ABM_V2_CALIBRATION_VALIDATION_PLAN.md)
-- [Post-budget-majority paired stress audit](docs/STRESS_V032_POST_BUDGET_MAJORITY_2026-10-01.md) — same 300 seeds, corrected 8/12 threshold; modeled capture 0.973333 → 0.976667 with 7/300 runs changing capture state.
-- [Gate Zero / Mirror-13 executable interfaces](simulations/institutional_interfaces.py)
-- [Z12 / affine audit-schedule utility](simulations/audit_schedule.py)
-- [Calibration registry](simulations/calibration_registry.json)
-- [Parameter usage registry](simulations/parameter_usage_registry.json)
-- [Parameter usage audit](docs/PARAMETER_USAGE_AUDIT_2026-09-30.md)
-- [Calibration source matrix](docs/CALIBRATION_SOURCE_MATRIX_2026-09-30.md)
-- [v0.32 LHS behavior-space artifact](simulations/results/sensitivity_v032_lhs_results.json)
-- [v0.32 LHS interpretation audit](docs/SENSITIVITY_V032_INTERPRETATION_AUDIT.md)
-- [Finite-state checker](formal/abstract_model_check.py)
-- [Parameter usage audit](docs/PARAMETER_USAGE_AUDIT_2026-09-30.md) + machine-readable registry distinguishing active/partial/inert mechanisms
-- [TLA+ research skeleton](formal/TwelveGates.tla)
-- [GitHub Actions execution-audit workflow](.github/workflows/execution-audit.yml)
-
-The fixed `+6` auditor rule is retained as the documented rule. The affine and full-offset schedules are analytical benchmarks, not adopted constitutional replacements.
-
-Coalition lifetime outputs now preserve the historical dissolved-only field while also reporting right-censoring-aware quantities, including active ages and Kaplan-Meier RMST. Historical sensitivity artifacts are not retroactively rewritten.
-
-## Limits and claim discipline | محدودیت‌ها و مرز ادعا
-
-No real-world parameter calibration, institutional pilot, legal adoption, or predictive accuracy is established by this repository. The model includes placeholders; simulation behavior may change materially with parameter choices. The written record preserves negative and corrective findings and open phases in [CHANGELOG.md](CHANGELOG.md). Claims of external audit completion, implementation readiness, or real-world success require evidence beyond runnable code and internal results.
-
-Licensing is split by content: software/code is under the [MIT License](LICENSE), while research documents, prose, documentation, and other non-code written content are under [CC BY-SA 4.0](LICENSE.md). An individual file's explicit license notice remains applicable to that file; this clarification does not erase historical notices or retroactively revoke earlier grants.
-
-## Contribute and critique | مشارکت و نقد
-
-The project invites counterexamples, code or statistical error reports, missed sources, and identified overclaims through [Issues and the contribution guide](CONTRIBUTING.md). Cite the specific script, config, result file, or document section when discussing a claim; preserve its date, assumptions, and correction history. Author/contact information appears in [LICENSE.md](LICENSE.md); a preferred formal citation has not been established in this README.
+Counterexamples, reproducibility problems, statistical errors, missed sources and identified overclaims are welcome through GitHub Issues and [CONTRIBUTING.md](CONTRIBUTING.md).

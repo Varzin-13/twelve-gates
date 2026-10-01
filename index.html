@@ -3,8 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>مدل ۱۲گیتی — یک گزینه‌ی غیرمتمرکز برای طراحی قانون اساسی و گذار امن ایران (v0.29)</title>
-<meta name="description" content="طراحی و ممیزی یک مدل حکمرانی غیرمتمرکز برای ایران — چارچوب پژوهشی تحت ممیزی، نه طرح آماده‌ی اجرا.">
+<title>دوازده گیت — چارچوب پژوهشی و مدل فرضیه‌ای قابل‌ممیزی (v0.32)</title>
+<meta name="description" content="دوازده گیت v0.32 — چارچوب پژوهشی قابل‌ممیزی برای طراحی نهادی، همراه با مدل فرضیه‌ای، تست‌های بازتولیدپذیر و مرز ادعای صریح.">
+<link rel="canonical" href="https://varzin-13.github.io/twelve-gates/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fa_IR">
+<meta property="og:title" content="دوازده گیت — Twelve Gates v0.32">
+<meta property="og:description" content="چارچوب پژوهشی قابل‌ممیزی برای طراحی نهادی؛ مدل فرضیه‌ای و بازتولیدپذیر، نه طرح آماده‌ی اجرا و نه پیش‌بینی سیاسی.">
+<meta property="og:url" content="https://varzin-13.github.io/twelve-gates/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="دوازده گیت — Twelve Gates v0.32">
+<meta name="twitter:description" content="چارچوب پژوهشی قابل‌ممیزی با مدل فرضیه‌ای، تست‌های بازتولیدپذیر و مرز ادعای صریح.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;900&display=swap" rel="stylesheet">
@@ -237,7 +246,7 @@ ol.steps li::marker{color:var(--accent);font-weight:900}
 
 <nav>
   <div class="nav-inner">
-    <a class="brand" href="#top">۱۲ گیت <span>v0.29</span></a>
+    <a class="brand" href="#top">۱۲ گیت <span>v0.32</span></a>
     <div class="nav-links" id="navLinks">
       <a href="#structure">ساختار</a>
       <a href="#rotation">چرخش</a>
@@ -266,9 +275,9 @@ ol.steps li::marker{color:var(--accent);font-weight:900}
 <header class="hero" id="top">
   <div class="container">
     <div class="badge-row">
-      <span class="pill info">نسخه‌ی ۰.۲۹ · چارچوب پژوهشی تحت ممیزی</span>
-      <span class="pill warn">نه طرح آماده‌ی اجرا</span>
-      <span class="pill">۳ شبیه‌سازی مونت‌کارلو با معیار شکست پیش‌ثبت‌شده</span>
+      <span class="pill info">نسخه‌ی ۰.۳۲ · ممیزی اجرایی و بازتولیدپذیری</span>
+      <span class="pill warn">نه طرح آماده‌ی اجرا و نه پیش‌بینی سیاسی</span>
+      <span class="pill">مدل فرضیه‌ای · ۰ نگاشت تجربی پذیرفته‌شده</span>
     </div>
     <h1>مدل ۱۲گیتی <em>گزینه‌ای غیرمتمرکز برای قانون اساسی و گذار امن ایران</em></h1>
     <p style="font-size:.85rem;color:var(--ink3);margin-top:-10px">
@@ -276,8 +285,8 @@ ol.steps li::marker{color:var(--accent);font-weight:900}
     </p>
     <p class="lead">
       دوازده گیت مستقل، یک هماهنگ‌کننده‌ی چرخشی بدون قدرت اضافه (Mirror-13)، و یک لایه‌ی
-      اعتبارسنجی شایستگی (Gate Zero) — طراحی و آزموده‌شده با این انضباط:
-      هر ادعا یا با شواهد تأیید می‌شود، یا صریحاً به‌عنوان سؤال باز ثبت می‌ماند.
+      اعتبارسنجی شایستگی (Gate Zero) — طراحی و ممیزی‌شده با این انضباط:
+      ادعاهای نرم‌افزاری، شبیه‌سازی، تجربی و هنجاری از هم جدا می‌شوند و شکاف‌های باز صریح می‌مانند.
     </p>
     <p style="font-size:.95rem;color:var(--ink2);margin-top:-8px">
       نویسنده و پژوهشگر مستقل: <b>رضا نیرویار (RAHTALĒN)</b>
@@ -289,23 +298,21 @@ ol.steps li::marker{color:var(--accent);font-weight:900}
       <a class="btn ghost" href="منشور_عمومی_دوازده_گیت.md" target="_rel">📜 منشور عمومی ↗</a>
       <a class="btn ghost" href="پیوست_حقوقی.md" target="_rel">⚖️ پیوست حقوقی ↗</a>
       <a class="btn ghost" href="پیوست_شبیه‌سازی_و_کد.md" target="_rel">🧪 پیوست شبیه‌سازی/کد ↗</a>
-      <a class="btn ghost" href="https://github.com/Varzin-13/twelve-gates" target="_rel">مخزن گیت‌هاب ↗</a>
+      <a class="btn ghost" href="https://github.com/Varzin-13/twelve-gates" target="_blank" rel="noopener">مخزن گیت‌هاب ↗</a>
+      <a class="btn ghost" href="https://github.com/Varzin-13/twelve-gates/blob/main/docs/FINAL_RESEARCH_STATUS_v0.32.md" target="_blank" rel="noopener">وضعیت علمی v0.32 ↗</a>
     </div>
     <div class="note" style="max-width:720px;margin:18px auto 0;text-align:right">
-      <b>یادداشت نسخه (v0.29):</b> عنوان سند به «مدل ۱۲گیتی: یک گزینه‌ی غیرمتمرکز برای طراحی قانون
-      اساسی و گذار امن ایران» تغییر یافت (عنوان قدیم به‌عنوان زیرعنوان نگه داشته شده). تفکیک به پنج
-      محصول مستقل کامل شد — نسخه‌ی اجرایی ۳۰صفحه‌ای، منشور عمومی یک‌صفحه‌ای، پیوست حقوقی، و پیوست
-      شبیه‌سازی/کد اکنون فایل‌های جداگانه‌اند (دکمه‌های بالا). بخش <a href="#next">«مراحل بعدی»</a>
-      اکنون فازبندی کامل A تا E و نقشه‌ی حداقلی هشت‌گامی را هم دارد. نسخه‌ی v0.28 پیش‌تر یادداشت دیدگاه
-      شخصی نویسنده درباره‌ی مقامات کشته‌شده (بخش <a href="#parties">۹.۰</a>) را اضافه کرده بود؛ v0.27
-      ده افزوده‌ی ساختاری (بخش <a href="#execpackage">«بسته‌ی اجرایی»</a>)؛ و v0.26 اصل ایران/ضدقیمومت
-      خارجی را. بخش‌های ۹، ۱۰، و ۱۱ تلخیص نیستند، و بخش ۱۲ (تاریخ تمدن‌ها) کامل در صفحه حاضر است.
+      <b>وضعیت نسخه v0.32:</b> مدل اجرایی، ممیزی پارامترها، آزمون‌های regression/interface، بررسی‌های
+      finite-state، تحلیل حساسیت و artifactهای فریز‌شده با hash به مخزن اضافه شده‌اند. رجیستری کالیبراسیون
+      در این نسخه <b>۰ نگاشت تجربی پذیرفته‌شده</b> دارد؛ بنابراین اعداد شبیه‌سازی پیش‌بینی سیاسی نیستند.
+      برای خلاصه‌ی دقیق وضعیت فعلی، <a href="https://github.com/Varzin-13/twelve-gates/blob/main/docs/FINAL_RESEARCH_STATUS_v0.32.md" target="_blank" rel="noopener">گزارش نهایی v0.32</a>
+      و برای تاریخچه‌ی اصلاحات <a href="https://github.com/Varzin-13/twelve-gates/blob/main/CHANGELOG.md" target="_blank" rel="noopener">CHANGELOG</a> را ببینید.
     </div>
     <div class="stats">
-      <div class="stat"><b>۱۲</b><span>گیت کارکردی مستقل</span></div>
-      <div class="stat"><b>۳</b><span>بن‌بست ساختاری اذعان‌شده</span></div>
-      <div class="stat"><b>۴</b><span>محدودیت بنیادین باز</span></div>
-      <div class="stat"><b>۲۸۰۰</b><span>اجرای مستقل مونت‌کارلو</span></div>
+      <div class="stat"><b>۱۲</b><span>گیت کارکردی</span></div>
+      <div class="stat"><b>۰</b><span>نگاشت تجربی پذیرفته‌شده</span></div>
+      <div class="stat"><b>۹</b><span>artifact فریز‌شده با hash</span></div>
+      <div class="stat"><b>v0.32</b><span>لایه‌ی ممیزی اجرایی</span></div>
     </div>
   </div>
 </header>
@@ -316,9 +323,9 @@ ol.steps li::marker{color:var(--accent);font-weight:900}
     <div class="kicker">بخش ۱ · اصل صفر</div>
     <h2>ساختار پایه</h2>
     <p class="desc">
-      این سند از انضباط ممیزی VARZIN پیروی می‌کند اما پروژه‌ای کاملاً جداست — فقط روش ممیزی مشترک است؛
-      هیچ ادعای علمی یا زبان‌شناختی آن پروژه به این‌جا منتقل نمی‌شود. این یک پروژه‌ی طراحی سیستم
-      حکمرانی است، بدون موضع‌گیری درباره‌ی هیچ کشور یا نظام سیاسی مشخص.
+      این پروژه از انضباط ممیزی VARZIN استفاده می‌کند، اما هیچ نتیجه‌ی علمی یا زبان‌شناختی VARZIN را
+      به این حوزه منتقل نمی‌کند. موضوع این صفحه طراحی و نقد نهادی برای ایران است؛ نتایج شبیه‌سازی فقط
+      رفتار مدل تحت فرض‌های صریح‌اند و از ادعاهای تجربی یا انتخاب‌های هنجاری جدا نگه داشته می‌شوند.
     </p>
 
     <div class="wheel-wrap">
